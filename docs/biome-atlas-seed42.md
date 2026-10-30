@@ -23,54 +23,54 @@ None of Biomic's own biomes is on the overworld surface in this world. Soulbligh
 | Chalk Cliffs | `biomic:chalk_cliffs` | 6006 | 6144 237 1344 (6289 m) | `/tp ReviewBot 6144 237 1344` | 6432 253 -1968; 7120 227 -4016; 7280 251 6672 |  |
 | Towering Cliffs | `biomic:towering_cliffs` | 6007 | 448 261 3168 (3200 m) | `/tp ReviewBot 448 261 3168` | -3243 191 -1433; 3728 269 -896; -4672 220 -32 |  |
 | Redwoods | `biomic:redwoods` | 6008 | -32 242 -192 (195 m) | `/tp ReviewBot -32 242 -192` | 528 256 -2960; -4688 244 208; 2736 198 3857 |  |
-| Bayou | `biomic:bayou` | 6009 | -576 198 -2784 (2843 m) | `/tp ReviewBot -576 198 -2784` | -3920 189 -2752; 5904 191 -153; 2128 201 6416 |  |
+| Bayou (RU) | `biomic:bayou` | 6009 | -576 198 -2784 (2843 m) | `/tp ReviewBot -576 198 -2784` | -3920 189 -2752; 5904 191 -153; 2128 201 6416 |  |
 | Old Growth Bayou | `biomic:old_growth_bayou` | 6010 | 320 196 2016 (2041 m) | `/tp ReviewBot 320 196 2016` | 3632 194 -752; 1808 191 -3908; -3888 193 3648 |  |
 | Joshua Desert | `biomic:joshua_desert` | 6011 | -1104 195 2608 (2832 m) | `/tp ReviewBot -1104 195 2608` | -848 248 -3216; -4560 250 2224; -2192 194 -4960 |  |
 | Pine Slopes | `biomic:pine_slopes` | 6014 | 464 208 16 (464 m) | `/tp ReviewBot 464 208 16` | 352 193 2288; 912 202 -3504; -3475 191 -2240 |  |
 | Grassy Beach | `biomic:grassy_beach` | 6015 | -480 193 2416 (2463 m) | `/tp ReviewBot -480 193 2416` | -3024 193 2768; -2464 193 -5712; 6464 193 -1792 |  |
-| Eucalyptus Forest | `biomic:eucalyptus_forest` | 6016 | -3183 200 -4784 (5746 m) | `/tp ReviewBot -3183 200 -4784` | -1437 90 -5919; -1600 198 -8464; -5792 92 6560 |  |
+| Eucalyptus Forest (RU) | `biomic:eucalyptus_forest` | 6016 | -3183 200 -4784 (5746 m) | `/tp ReviewBot -3183 200 -4784` | -1437 90 -5919; -1600 198 -8464; -5792 92 6560 |  |
 | Alpha Grove | `biomic:alpha_grove` | 6017 | 7104 237 8513 (11088 m) | `/tp ReviewBot 7104 237 8513` | 21584 211 4658; -16048 245 22464; -25232 239 17536 |  |
 | Ashen Woodland | `biomic:ashen_woodland` | 6018 | -1712 196 704 (1851 m) | `/tp ReviewBot -1712 196 704` | 1696 254 -7408; -9264 258 7296; -12352 196 7056 |  |
 | Autumnal Maple Forest | `biomic:autumnal_maple_forest` | 6019 | -4928 213 1488 (5148 m) | `/tp ReviewBot -4928 213 1488` | 2480 257 -6864; -6528 227 -6272; -8928 209 -6336 | standalone shows Alpha Grove here |
-| Bamboo Forest | `biomic:bamboo_forest` | 6020 | -1616 227 1568 (2252 m) | `/tp ReviewBot -1616 227 1568` | -2608 223 -176; -4432 228 1120; 4736 90 -1344 |  |
+| Bamboo Forest (RU) | `biomic:bamboo_forest` | 6020 | -1616 227 1568 (2252 m) | `/tp ReviewBot -1616 227 1568` | -2608 223 -176; -4432 228 1120; 4736 90 -1344 |  |
 | Baobab Savanna | `biomic:baobab_savanna` | 6021 | -2336 201 881 (2497 m) | `/tp ReviewBot -2336 201 881` | 464 229 -4544; -1456 196 -6160; 5040 194 6272 |  |
 | Blackwood Taiga | `biomic:blackwood_taiga` | 6022 | -480 242 -816 (947 m) | `/tp ReviewBot -480 242 -816` | 3952 251 -304; -3408 248 -3008; 2160 240 -4064 |  |
 | Boreal Taiga | `biomic:boreal_taiga` | 6023 | 736 230 -2672 (2772 m) | `/tp ReviewBot 736 230 -2672` | 2912 239 3728; 1376 235 5024; -5215 233 -160 |  |
 | Cold Boreal Taiga | `biomic:cold_boreal_taiga` | 6024 | -7280 232 -7024 (10116 m) | `/tp ReviewBot -7280 232 -7024` | -15728 224 8608; -10976 236 -15919; -23312 244 12032 |  |
 | Cold River | `biomic:cold_river` | 6025 | -560 191 5008 (5039 m) | `/tp ReviewBot -560 191 5008` | -7824 191 3920; -4720 191 -8192; 7344 191 -8096 |  |
 | Dry Bushland | `biomic:dry_bushland` | 6026 | 3408 195 6576 (7407 m) | `/tp ReviewBot 3408 195 6576` | -928 196 10528; -17760 197 272; -1856 197 -18400 |  |
-| Fen | `biomic:fen` | 6027 | 32 190 -64 (72 m) | `/tp ReviewBot 32 190 -64` | -3216 195 -399; 272 206 -3536; 2608 195 3264 | on the sea floor, 1 blocks of water (surface y 191) |
+| Fen (RU) | `biomic:fen` | 6027 | 32 190 -64 (72 m) | `/tp ReviewBot 32 190 -64` | -3216 195 -399; 272 206 -3536; 2608 195 3264 | on the sea floor, 1 blocks of water (surface y 191) |
 | Flower Fields | `biomic:flower_fields` | 6028 | 1376 198 -11264 (11348 m) | `/tp ReviewBot 1376 198 -11264` | -8816 164 7584; -5408 194 10496; -11824 199 -4848 |  |
 | Frozen Pine Taiga | `biomic:frozen_pine_taiga` | 6029 | 2624 221 -1088 (2841 m) | `/tp ReviewBot 2624 221 -1088` | 560 224 28464; -24848 242 -18256; -32304 216 1328 |  |
 | Fungal Fen | `biomic:fungal_fen` | 6030 | 608 198 -64 (611 m) | `/tp ReviewBot 608 198 -64` | 1280 203 2176; -480 198 3136; 3424 192 -2608 |  |
-| Grassland | `biomic:grassland` | 6031 | -1984 210 -1104 (2270 m) | `/tp ReviewBot -1984 210 -1104` | -3680 200 6256; 7776 250 -960; 6272 200 -5552 |  |
+| Grassland (RU) | `biomic:grassland` | 6031 | -1984 210 -1104 (2270 m) | `/tp ReviewBot -1984 210 -1104` | -3680 200 6256; 7776 250 -960; 6272 200 -5552 |  |
 | Gravel Beach | `biomic:gravel_beach` | 6032 | 0 193 240 (240 m) | `/tp ReviewBot 0 193 240` | -3280 185 -336; 3191 191 -1200; -4064 197 -2176 |  |
 | Highland Fields | `biomic:highland_fields` | 6033 | 1232 219 48 (1233 m) | `/tp ReviewBot 1232 219 48` | 1440 211 2048; 3281 214 -1008; -576 256 4288 |  |
 | Hyacinth Deeps | `biomic:hyacinth_deeps` | 6034 | -1209 153 -56 (1210 m) | `/tp ReviewBot -1209 153 -56` | -184 167 -4280; -2040 170 -5048 | on the sea floor, 38 blocks of water (surface y 191); a sea-floor identity: the surface map above it shows the ocean |
 | Icy Heights | `biomic:icy_heights` | 6035 | -4576 232 -1280 (4752 m) | `/tp ReviewBot -4576 232 -1280` | -2512 225 5904; -5648 191 3280; -6528 213 -1728 |  |
 | Magnolia Woodland | `biomic:magnolia_woodland` | 6037 | -720 226 -608 (942 m) | `/tp ReviewBot -720 226 -608` | 400 251 1216; 48 201 -3200; -3616 197 -1808 |  |
 | Maple Forest | `biomic:maple_forest` | 6038 | 480 224 2272 (2322 m) | `/tp ReviewBot 480 224 2272` | 176 214 -3280; -4016 199 0; 4192 236 -896 |  |
-| Marsh | `biomic:marsh` | 6039 | 896 191 1440 (1696 m) | `/tp ReviewBot 896 191 1440` | -3808 192 -3966; 1616 191 -7108; -8048 205 -7280 |  |
+| Marsh (RU) | `biomic:marsh` | 6039 | 896 191 1440 (1696 m) | `/tp ReviewBot 896 191 1440` | -3808 192 -3966; 1616 191 -7108; -8048 205 -7280 |  |
 | Muddy River | `biomic:muddy_river` | 6040 | -1888 178 -576 (1974 m) | `/tp ReviewBot -1888 178 -576` | -624 178 1936; 2896 184 624; -4176 176 -208 | on the sea floor, 13 blocks of water (surface y 191) |
 | Old Growth Boreal Taiga | `biomic:old_growth_boreal_taiga` | 6041 | -2624 238 5424 (6025 m) | `/tp ReviewBot -2624 238 5424` | 5840 254 2368; 8080 209 2848; -5984 231 -10703 |  |
 | Old Growth Forest | `biomic:old_growth_forest` | 6042 | 432 207 -320 (538 m) | `/tp ReviewBot 432 207 -320` | -2272 211 -528; 4368 208 -1040; -2496 207 3968 |  |
 | Old Growth Golden Boreal Taiga | `biomic:old_growth_golden_boreal_taiga` | 6043 | 2656 134 -1408 (3006 m) | `/tp ReviewBot 2656 134 -1408` | 8944 215 -47; 5104 216 -7888; 8816 85 4496 | on a sinkhole floor, far below the land around it |
-| Orchard | `biomic:orchard` | 6044 | -3904 218 -7072 (8078 m) | `/tp ReviewBot -3904 218 -7072` | 3472 237 8128; -3056 194 8352; -6656 223 6352 |  |
-| Outback | `biomic:outback` | 6045 | -1328 252 2400 (2743 m) | `/tp ReviewBot -1328 252 2400` | -1184 199 -3264; 641 194 -6847; -7472 234 7312 |  |
+| Orchard (RU) | `biomic:orchard` | 6044 | -3904 218 -7072 (8078 m) | `/tp ReviewBot -3904 218 -7072` | 3472 237 8128; -3056 194 8352; -6656 223 6352 |  |
+| Outback (RU) | `biomic:outback` | 6045 | -1328 252 2400 (2743 m) | `/tp ReviewBot -1328 252 2400` | -1184 199 -3264; 641 194 -6847; -7472 234 7312 |  |
 | Pine Taiga | `biomic:pine_taiga` | 6046 | 2289 222 -1261 (2613 m) | `/tp ReviewBot 2289 222 -1261` | -144 88 -2768; 3376 229 2576; 4928 89 -768 |  |
 | Poppy Fields | `biomic:poppy_fields` | 6047 | -5056 161 128 (5058 m) | `/tp ReviewBot -5056 161 128` | 5712 211 1344; 8592 226 3568; 2224 199 -9440 |  |
-| Prairie | `biomic:prairie` | 6048 | -16 199 4416 (4416 m) | `/tp ReviewBot -16 199 4416` | 11152 222 3632; 7312 201 -10928; -12560 186 -4960 |  |
-| Rainforest | `biomic:rainforest` | 6049 | -4190 234 1280 (4381 m) | `/tp ReviewBot -4190 234 1280` | -2731 192 -4672; 1104 276 -7136; -3616 206 -6608 |  |
+| Prairie (RU) | `biomic:prairie` | 6048 | -16 199 4416 (4416 m) | `/tp ReviewBot -16 199 4416` | 11152 222 3632; 7312 201 -10928; -12560 186 -4960 |  |
+| Rainforest (RU) | `biomic:rainforest` | 6049 | -4190 234 1280 (4381 m) | `/tp ReviewBot -4190 234 1280` | -2731 192 -4672; 1104 276 -7136; -3616 206 -6608 |  |
 | Rocky Reef | `biomic:rocky_reef` | 6050 | -1904 186 2304 (2989 m) | `/tp ReviewBot -1904 186 2304` | -3392 199 944; 128 162 -4256; 4549 191 6326 | on the sea floor, 5 blocks of water (surface y 191) |
 | Saguaro Desert | `biomic:saguaro_desert` | 6051 | -128 215 1280 (1286 m) | `/tp ReviewBot -128 215 1280` | -2512 198 1200; -560 250 -3168; 4560 255 -1632 |  |
-| Shrubland | `biomic:shrubland` | 6052 | 608 233 -1504 (1622 m) | `/tp ReviewBot 608 233 -1504` | -1040 163 6688; 12960 197 -3776; 14672 160 5392 |  |
+| Shrubland (RU) | `biomic:shrubland` | 6052 | 608 233 -1504 (1622 m) | `/tp ReviewBot 608 233 -1504` | -1040 163 6688; 12960 197 -3776; 14672 160 5392 |  |
 | Silver Birch Forest | `biomic:silver_birch_forest` | 6053 | 1360 248 704 (1531 m) | `/tp ReviewBot 1360 248 704` | 256 234 -1856; 112 86 2272; 2752 206 3472 |  |
 | Sparse Rainforest | `biomic:sparse_rainforest` | 6054 | 5360 197 -1648 (5608 m) | `/tp ReviewBot 5360 197 -1648` | 2208 168 8272; -5552 207 6800; -2944 92 -8416 |  |
 | Sparse Redwoods | `biomic:sparse_redwoods` | 6055 | -1904 200 3888 (4329 m) | `/tp ReviewBot -1904 200 3888` | 2352 200 -4736; -3808 219 -4800; -4224 261 6768 |  |
 | Spires | `biomic:spires` | 6056 | 848 207 -176 (866 m) | `/tp ReviewBot 848 207 -176` | 3120 195 288; 1728 208 -2720; 2720 200 2256 |  |
 | Tropical River | `biomic:tropical_river` | 6057 | -2544 184 -8528 (8899 m) | `/tp ReviewBot -2544 184 -8528` | -3040 242 8928; 9456 213 -6256; -15152 182 4400 | on the sea floor, 7 blocks of water (surface y 191) |
-| Tropics | `biomic:tropics` | 6058 | -1920 191 -80 (1922 m) | `/tp ReviewBot -1920 191 -80` | -992 194 2432; 5760 194 -768; -1680 191 -5840 |  |
-| Tundra | `biomic:tundra` | 6059 | -10160 259 23264 (25386 m) | `/tp ReviewBot -10160 259 23264` | -1901 240 -28350; -31760 215 -15872; 19872 243 31056 |  |
+| Tropics (RU) | `biomic:tropics` | 6058 | -1920 191 -80 (1922 m) | `/tp ReviewBot -1920 191 -80` | -992 194 2432; 5760 194 -768; -1680 191 -5840 |  |
+| Tundra (RU) | `biomic:tundra` | 6059 | -10160 259 23264 (25386 m) | `/tp ReviewBot -10160 259 23264` | -1901 240 -28350; -31760 215 -15872; 19872 243 31056 |  |
 | Willow Forest | `biomic:willow_forest` | 6060 | 1184 198 -3584 (3775 m) | `/tp ReviewBot 1184 198 -3584` | -4160 221 512; 2272 226 4368; -3696 245 -4672 |  |
 | Windswept Maple Forest | `biomic:windswept_maple_forest` | 6061 | 672 246 1520 (1662 m) | `/tp ReviewBot 672 246 1520` | -1680 228 -2032; -3744 199 -704; 4640 213 576 |  |
 
@@ -100,7 +100,7 @@ None of Biomic's own biomes is on the overworld surface in this world. Soulbligh
 | Marine Monoliths | `biomic:origen/marine_monoliths` | 6121 | 2800 191 3250 (4290 m) | `/tp ReviewBot 2800 191 3250` | -1008 244 -4640; 3616 241 -3552; 5327 165 4127 |  |
 | Mesa Monuments | `biomic:origen/mesa_monuments` | 6122 | -752 196 -64 (755 m) | `/tp ReviewBot -752 196 -64` | -1168 205 2032; -2720 199 304; -1408 200 -2800 |  |
 | Murky Marshlands | `biomic:origen/murky_marshlands` | 6123 | 608 198 -864 (1056 m) | `/tp ReviewBot 608 198 -864` | 1344 212 1744; -1728 197 -1744; 704 232 -3040 |  |
-| Oasis | `biomic:origen/oasis` | 6124 | -2096 192 576 (2174 m) | `/tp ReviewBot -2096 192 576` | -1136 192 2800; -2064 192 -3936; 656 192 -7168 |  |
+| Oasis (Origen) | `biomic:origen/oasis` | 6124 | -2096 192 576 (2174 m) | `/tp ReviewBot -2096 192 576` | -1136 192 2800; -2064 192 -3936; 656 192 -7168 |  |
 | Pillow Plains Inner | `biomic:origen/pillow_plains_inner` | 6125 | -3152 195 -784 (3248 m) | `/tp ReviewBot -3152 195 -784` | -784 159 6512; -6208 159 5408; -7504 193 -4368 |  |
 | Pillow Plains Middle | `biomic:origen/pillow_plains_middle` | 6126 | -2720 188 -784 (2831 m) | `/tp ReviewBot -2720 188 -784` | -800 197 6464; -6064 201 5408; -4608 199 -7120 | on the sea floor, 3 blocks of water (surface y 191) |
 | Pillow Plains Outer | `biomic:origen/pillow_plains_outer` | 6127 | -2721 201 -752 (2823 m) | `/tp ReviewBot -2721 201 -752` | -768 207 6448; -5984 198 5408; -4576 193 -7120 |  |
@@ -125,11 +125,11 @@ None of Biomic's own biomes is on the overworld surface in this world. Soulbligh
 | White Wallows | `biomic:origen/white_wallows` | 6147 | 1056 236 -432 (1141 m) | `/tp ReviewBot 1056 236 -432` | 752 248 1712; -1920 216 -1824; 384 234 -3280 |  |
 | Alpine Ascendancy River | `biomic:origen/alpine_ascendancy_river` | 6148 | 1376 337 -464 (1452 m) | `/tp ReviewBot 1376 337 -464` | -224 225 -1680; -4320 292 -1072; 4144 191 1792 |  |
 | Badlands Balconies River | `biomic:origen/bad_balcoonies_river` | 6149 | -944 177 1936 (2154 m) | `/tp ReviewBot -944 177 1936` | -758 191 -3088; -3136 179 2224; 544 174 -4608 | on the sea floor, 14 blocks of water (surface y 191) |
-| Beach | `biomic:origen/beach` | 6150 | 128 192 288 (315 m) | `/tp ReviewBot 128 192 288` | -1552 193 -816; -1552 193 1392; 1760 193 -1808 |  |
+| Temperate Beach | `biomic:origen/beach` | 6150 | 128 192 288 (315 m) | `/tp ReviewBot 128 192 288` | -1552 193 -816; -1552 193 1392; 1760 193 -1808 |  |
 | Cold Steppe | `biomic:origen/cold_steppe` | 6151 | 1488 215 -800 (1689 m) | `/tp ReviewBot 1488 215 -800` | 3104 193 496; 2240 221 -2976; 3488 197 2496 |  |
 | Coral Ocean | `biomic:origen/coral_ocean` | 6152 | -224 186 2304 (2315 m) | `/tp ReviewBot -224 186 2304` | -2000 173 -3168; -256 187 -4160; 1344 162 -5984 | on the sea floor, 5 blocks of water (surface y 191) |
-| Deep Ocean | `biomic:origen/deep_ocean` | 6154 | 0 149 336 (336 m) | `/tp ReviewBot 0 149 336` | -1296 153 -1344; 1712 159 1376; 288 150 -2576 | on the sea floor, 42 blocks of water (surface y 191) |
-| Desert | `biomic:origen/desert` | 6155 | -800 201 -352 (874 m) | `/tp ReviewBot -800 201 -352` | -928 195 1840; -2592 195 720; -944 193 -2736 |  |
+| Temperate Deep Ocean | `biomic:origen/deep_ocean` | 6154 | 0 149 336 (336 m) | `/tp ReviewBot 0 149 336` | -1296 153 -1344; 1712 159 1376; 288 150 -2576 | on the sea floor, 42 blocks of water (surface y 191) |
+| Desert Dunes | `biomic:origen/desert` | 6155 | -800 201 -352 (874 m) | `/tp ReviewBot -800 201 -352` | -928 195 1840; -2592 195 720; -944 193 -2736 |  |
 | Golden Desert Spikes | `biomic:origen/desert_spikes_gold` | 6156 | -688 191 144 (703 m) | `/tp ReviewBot -688 191 144` | -800 209 2144; -2736 197 752; -688 221 -3248 |  |
 | Flowering Forest | `biomic:origen/flowering_forest` | 6158 | 4432 199 -3616 (5720 m) | `/tp ReviewBot 4432 199 -3616` | 8112 229 -3120; -2928 194 8224; 9191 191 2342 |  |
 | Frozen Fungi River | `biomic:origen/frozen_fungi_river` | 6159 | 1664 212 96 (1667 m) | `/tp ReviewBot 1664 212 96` | 1936 191 -2800; -832 212 5168; 2960 240 -5296 |  |
@@ -140,12 +140,12 @@ None of Biomic's own biomes is on the overworld surface in this world. Soulbligh
 | Lush Loops River | `biomic:origen/loops_river` | 6164 | -800 185 -7600 (7642 m) | `/tp ReviewBot -800 185 -7600` | 2544 283 8144; -1120 186 10720; 19856 201 5579 | on the sea floor, 6 blocks of water (surface y 191) |
 | Mangrove Swamp | `biomic:origen/mangrove_swamp` | 6166 | -1600 179 560 (1695 m) | `/tp ReviewBot -1600 179 560` | -1712 193 2560; -1680 201 -2696; -3600 200 496 | on the sea floor, 12 blocks of water (surface y 191) |
 | Mountain Mirrors River | `biomic:origen/mountain_mirrors_river` | 6167 | 1696 191 -3232 (3650 m) | `/tp ReviewBot 1696 191 -3232` | 400 191 4352; -4608 191 -1584; 4480 268 2624 |  |
-| Ocean | `biomic:origen/ocean` | 6168 | 544 187 368 (657 m) | `/tp ReviewBot 544 187 368` | -1168 180 -1008; 816 183 -2096; 2448 187 -640 | on the sea floor, 4 blocks of water (surface y 191) |
+| Temperate Ocean | `biomic:origen/ocean` | 6168 | 544 187 368 (657 m) | `/tp ReviewBot 544 187 368` | -1168 180 -1008; 816 183 -2096; 2448 187 -640 | on the sea floor, 4 blocks of water (surface y 191) |
 | Overgrown Cliffs | `biomic:origen/overgrown_cliffs` | 6169 | -672 201 112 (681 m) | `/tp ReviewBot -672 201 112` | -1296 200 2128; -2896 231 272; -1056 291 -2928 |  |
 | Palm Beach | `biomic:origen/palm_beach` | 6170 | -176 194 240 (298 m) | `/tp ReviewBot -176 194 240` | 1440 191 1432; -1536 190 -1456; -1824 191 1504 |  |
 | Foliage Fortress Inner River | `biomic:origen/plateao_river_inner` | 6171 | 2176 243 6096 (6473 m) | `/tp ReviewBot 2176 243 6096` | 3552 230 -5808; 1232 230 -11024; 11888 216 -5424 |  |
 | Foliage Fortress Middle River | `biomic:origen/plateao_river_middle` | 6172 | 2119 239 6096 (6454 m) | `/tp ReviewBot 2119 239 6096` | 1280 229 -11008; 2208 183 -14176; -9872 230 -11248 |  |
-| River | `biomic:origen/river` | 6173 | 0 184 0 (0 m) | `/tp ReviewBot 0 184 0` | -1840 180 -784; 1440 177 1392; 643 191 -1902 | on the sea floor, 7 blocks of water (surface y 191) |
+| Temperate River | `biomic:origen/river` | 6173 | 0 184 0 (0 m) | `/tp ReviewBot 0 184 0` | -1840 180 -784; 1440 177 1392; 643 191 -1902 | on the sea floor, 7 blocks of water (surface y 191) |
 | Salt Flats | `biomic:origen/salt_flats` | 6174 | -928 194 -144 (939 m) | `/tp ReviewBot -928 194 -144` | -1056 194 1856; -2944 194 640; -896 194 -2960 |  |
 | Scarlet Sanctuary River | `biomic:origen/scarlet_sanctuary_river` | 6175 | -560 176 1904 (1985 m) | `/tp ReviewBot -560 176 1904` | -3152 243 1296; -1088 211 -4752; 1179 218 -6990 | on the sea floor, 15 blocks of water (surface y 191) |
 | Shale Beach | `biomic:origen/shale_beach` | 6176 | 848 192 832 (1188 m) | `/tp ReviewBot 848 192 832` | -1152 193 960; -1504 190 -1552; 322 191 -2720 |  |
@@ -303,14 +303,14 @@ Found and checked the same way as the rest of the atlas: the probe read the Neth
 | Bloodless Undergrowth | `biomic:bloodless_undergrowth` | 6311 | 656 42 -31 (657 m) | `/tp ReviewBot 656 42 -31` | 1456 113 -1872; 530 40 2322; -2032 117 1376 | `/tp ReviewBot 656 42 -31` |
 | Bloody Remnants | `biomic:bloody_remnants` | 6312 | -816 201 0 (816 m) | `/tp ReviewBot -816 201 0` | 1040 61 -1263; 624 80 2128; -1376 155 1920 | `/tp ReviewBot 96 93 241` |
 | Corrupted Wastes | `biomic:corrupted_wastes` | 6313 | -16 52 0 (16 m) | `/tp ReviewBot -16 52 0` | 1776 141 896; -2400 90 368 | `/tp ReviewBot -16 52 0` |
-| Crimson Forest | `biomic:crimson_forest` | 6314 | 176 63 720 (741 m) | `/tp ReviewBot 176 63 720` | -560 206 -1280; -1824 91 272; 2016 149 -64 | `/tp ReviewBot 176 63 720` |
+| Crimson Forest (Tartarus) | `biomic:crimson_forest` | 6314 | 176 63 720 (741 m) | `/tp ReviewBot 176 63 720` | -560 206 -1280; -1824 91 272; 2016 149 -64 | `/tp ReviewBot 176 63 720` |
 | Crystalline Veldts | `biomic:crystalline_veldts` | 6315 | -512 68 1376 (1468 m) | `/tp ReviewBot -512 68 1376` | 1377 99 -848; -2032 90 -3552; 288 52 -4256 | `/tp ReviewBot -1504 64 1648` |
 | Flaming Hellscapes | `biomic:flaming_hellscapes` | 6316 | 16 138 800 (800 m) | `/tp ReviewBot 16 138 800` | -496 98 -1520; 1712 48 -1360; 2016 96 880 | `/tp ReviewBot 112 190 80` |
 | Lifeless Spires | `biomic:lifeless_spires` | 6317 | -1065 41 272 (1099 m) | `/tp ReviewBot -1065 41 272` | 1600 84 144; -2512 65 -1632; 1008 68 -2944 | `/tp ReviewBot -297 42 -624` |
 | Serrated Mountains | `biomic:serrated_mountains` | 6318 | 112 143 80 (138 m) | `/tp ReviewBot 112 143 80` | -1888 164 64; 1504 188 -1360; 2400 168 816 | `/tp ReviewBot -480 135 -112` |
 | Soul Valley | `biomic:soul_valley` | 6319 | -240 103 592 (639 m) | `/tp ReviewBot -240 103 592` | 1696 128 -528; -1632 106 -848; 1808 91 1712 | `/tp ReviewBot -448 56 112` |
 | Torrid Crags | `biomic:torrid_crags` | 6320 | -304 147 -624 (694 m) | `/tp ReviewBot -304 147 -624` | 1712 178 -240; -1200 135 1568; -2352 190 -1424 | `/tp ReviewBot -112 128 240` |
-| Warped Forest | `biomic:warped_forest` | 6321 | -480 51 -112 (493 m) | `/tp ReviewBot -480 51 -112` | 1072 156 1408; 656 90 -1760; 2416 168 -80 | `/tp ReviewBot 496 82 96` |
+| Warped Forest (Tartarus) | `biomic:warped_forest` | 6321 | -480 51 -112 (493 m) | `/tp ReviewBot -480 51 -112` | 1072 156 1408; 656 90 -1760; 2416 168 -80 | `/tp ReviewBot 496 82 96` |
 
 ### Gardens of the Dead (Biomic, hosted in the Nether)
 

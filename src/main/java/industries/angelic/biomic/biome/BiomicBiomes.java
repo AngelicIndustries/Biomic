@@ -41,6 +41,29 @@ public final class BiomicBiomes {
         "alexscaves:forlorn_hollows",
         "alexscaves:primordial_caves");
 
+    /**
+     * Names Biomes O' Plenty 2.1.0, Et Futurum Requiem or Netherlicious give their own biomes. Mods that key biomes by
+     * name (Distant Horizons' LOD data, JustAnotherSpawner's biome groups) would take Biomic's for theirs, so Biomic's
+     * carry their source.
+     */
+    private static final Set<String> SHARED_NAMES = Set.of(
+        "Bamboo Forest",
+        "Bayou",
+        "Crimson Forest",
+        "Eucalyptus Forest",
+        "Fen",
+        "Grassland",
+        "Marsh",
+        "Oasis",
+        "Orchard",
+        "Outback",
+        "Prairie",
+        "Rainforest",
+        "Shrubland",
+        "Tropics",
+        "Tundra",
+        "Warped Forest");
+
     private static RegistryState state;
 
     private BiomicBiomes() {}
@@ -256,7 +279,7 @@ public final class BiomicBiomes {
                 new BiomeGenBiomic(
                     ids[tartarusOffset + biome.ordinal()],
                     attachToNumericRegistry,
-                    biome.displayName,
+                    unshared(biome.displayName, "Tartarus"),
                     biome.color,
                     2F,
                     0F,
@@ -453,13 +476,17 @@ public final class BiomicBiomes {
         return new Definition(key, biome, Collections.unmodifiableSet(new LinkedHashSet<>(Arrays.asList(tags))));
     }
 
+    private static String unshared(String name, String source) {
+        return SHARED_NAMES.contains(name) ? name + " (" + source + ")" : name;
+    }
+
     private static Definition ruDefinition(int id, boolean register, RuBiomeDefinition definition) {
         return new Definition(
             definition.getBiomeKey(),
             new BiomeGenBiomic(
                 id,
                 register,
-                definition.getDisplayName(),
+                unshared(definition.getDisplayName(), "RU"),
                 definition.getMapColor(),
                 definition.getTemperature(),
                 definition.getRainfall(),
@@ -516,7 +543,7 @@ public final class BiomicBiomes {
             new BiomeGenBiomic(
                 id,
                 register,
-                profile.getDisplayName(),
+                unshared(profile.getDisplayName(), "Origen"),
                 color,
                 temperature,
                 rainfall,

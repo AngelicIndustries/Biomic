@@ -58,47 +58,47 @@
 | `biomic:hosted/regions_unexplored/alpha_grove` | FLOATING | FOREST, SURFACE, TEMPERATE, FLOATING_ISLAND | Alpha Grove (6017) |
 | `biomic:hosted/regions_unexplored/ashen_woodland` | FLOATING | SURFACE, TEMPERATE, FLOATING_ISLAND | Ashen Woodland (6018) |
 | `biomic:hosted/regions_unexplored/autumnal_maple_forest` | FLOATING | COLD, FOREST, SURFACE, FLOATING_ISLAND | Autumnal Maple Forest (6019) |
-| `biomic:hosted/regions_unexplored/bamboo_forest` | FLOATING | FOREST, HUMID, SURFACE, TEMPERATE, FLOATING_ISLAND | Bamboo Forest (6020) |
+| `biomic:hosted/regions_unexplored/bamboo_forest` | FLOATING | FOREST, HUMID, SURFACE, TEMPERATE, FLOATING_ISLAND | Bamboo Forest (RU) (6020) |
 | `biomic:hosted/regions_unexplored/baobab_savanna` | FLOATING | DRY, FOREST, SURFACE, WARM, FLOATING_ISLAND | Baobab Savanna (6021) |
-| `biomic:hosted/regions_unexplored/bayou` | FLOATING | SURFACE, SWAMP, WARM, HUMID, FLOATING_ISLAND | Bayou (6009) |
+| `biomic:hosted/regions_unexplored/bayou` | FLOATING | SURFACE, SWAMP, WARM, HUMID, FLOATING_ISLAND | Bayou (RU) (6009) |
 | `biomic:hosted/regions_unexplored/blackwood_taiga` | FLOATING | FOREST, HUMID, SURFACE, TEMPERATE, FLOATING_ISLAND | Blackwood Taiga (6022) |
 | `biomic:hosted/regions_unexplored/boreal_taiga` | FLOATING | COLD, FOREST, SURFACE, FLOATING_ISLAND | Boreal Taiga (6023) |
 | `biomic:hosted/regions_unexplored/clover_plains` | FLOATING | SURFACE, PLAINS, FLORAL, WARM, FLOATING_ISLAND | Clover Plains (6004) |
 | `biomic:hosted/regions_unexplored/cold_boreal_taiga` | FLOATING | COLD, FOREST, SURFACE, FLOATING_ISLAND | Cold Boreal Taiga (6024) |
 | `biomic:hosted/regions_unexplored/dry_bushland` | FLOATING | DRY, FOREST, SURFACE, WARM, FLOATING_ISLAND | Dry Bushland (6026) |
-| `biomic:hosted/regions_unexplored/eucalyptus_forest` | FLOATING | SURFACE, FOREST, JUNGLE, WARM, HUMID, FLOATING_ISLAND | Eucalyptus Forest (6016) |
-| `biomic:hosted/regions_unexplored/fen` | FLOATING | HUMID, SURFACE, SWAMP, TEMPERATE, FLOATING_ISLAND | Fen (6027) |
+| `biomic:hosted/regions_unexplored/eucalyptus_forest` | FLOATING | SURFACE, FOREST, JUNGLE, WARM, HUMID, FLOATING_ISLAND | Eucalyptus Forest (RU) (6016) |
+| `biomic:hosted/regions_unexplored/fen` | FLOATING | HUMID, SURFACE, SWAMP, TEMPERATE, FLOATING_ISLAND | Fen (RU) (6027) |
 | `biomic:hosted/regions_unexplored/flower_fields` | FLOATING | FLORAL, HUMID, PLAINS, SURFACE, TEMPERATE, FLOATING_ISLAND | Flower Fields (6028) |
 | `biomic:hosted/regions_unexplored/frozen_pine_taiga` | FLOATING | COLD, FOREST, SURFACE, FLOATING_ISLAND | Frozen Pine Taiga (6029) |
 | `biomic:hosted/regions_unexplored/fungal_fen` | FLOATING | HUMID, SURFACE, SWAMP, TEMPERATE, FLOATING_ISLAND | Fungal Fen (6030) |
-| `biomic:hosted/regions_unexplored/grassland` | FLOATING | PLAINS, SURFACE, WARM, FLOATING_ISLAND | Grassland (6031) |
+| `biomic:hosted/regions_unexplored/grassland` | FLOATING | PLAINS, SURFACE, WARM, FLOATING_ISLAND | Grassland (RU) (6031) |
 | `biomic:hosted/regions_unexplored/highland_fields` | FLOATING | FLORAL, MOUNTAIN, SURFACE, TEMPERATE, FLOATING_ISLAND | Highland Fields (6033) |
 | `biomic:hosted/regions_unexplored/icy_heights` | FLOATING | COLD, FOREST, HUMID, MOUNTAIN, SURFACE, FLOATING_ISLAND | Icy Heights (6035) |
 | `biomic:hosted/regions_unexplored/joshua_desert` | FLOATING | SURFACE, DESERT, WARM, DRY, FLOATING_ISLAND | Joshua Desert (6011) |
 | `biomic:hosted/regions_unexplored/magnolia_woodland` | FLOATING | FOREST, HUMID, SURFACE, TEMPERATE, FLOATING_ISLAND | Magnolia Woodland (6037) |
 | `biomic:hosted/regions_unexplored/maple_forest` | FLOATING | FOREST, SURFACE, TEMPERATE, FLOATING_ISLAND | Maple Forest (6038) |
-| `biomic:hosted/regions_unexplored/marsh` | FLOATING | HUMID, SURFACE, SWAMP, TEMPERATE, FLOATING_ISLAND | Marsh (6039) |
+| `biomic:hosted/regions_unexplored/marsh` | FLOATING | HUMID, SURFACE, SWAMP, TEMPERATE, FLOATING_ISLAND | Marsh (RU) (6039) |
 | `biomic:hosted/regions_unexplored/old_growth_bayou` | FLOATING | SURFACE, SWAMP, FOREST, WARM, HUMID, FLOATING_ISLAND | Old Growth Bayou (6010) |
 | `biomic:hosted/regions_unexplored/old_growth_boreal_taiga` | FLOATING | COLD, FOREST, SURFACE, FLOATING_ISLAND | Old Growth Boreal Taiga (6041) |
 | `biomic:hosted/regions_unexplored/old_growth_forest` | FLOATING | FOREST, SURFACE, TEMPERATE, FLOATING_ISLAND | Old Growth Forest (6042) |
 | `biomic:hosted/regions_unexplored/old_growth_golden_boreal_taiga` | FLOATING | COLD, FOREST, SURFACE, FLOATING_ISLAND | Old Growth Golden Boreal Taiga (6043) |
-| `biomic:hosted/regions_unexplored/orchard` | FLOATING | FOREST, SURFACE, TEMPERATE, FLOATING_ISLAND | Orchard (6044) |
-| `biomic:hosted/regions_unexplored/outback` | FLOATING | DESERT, DRY, FOREST, SURFACE, WARM, FLOATING_ISLAND | Outback (6045) |
+| `biomic:hosted/regions_unexplored/orchard` | FLOATING | FOREST, SURFACE, TEMPERATE, FLOATING_ISLAND | Orchard (RU) (6044) |
+| `biomic:hosted/regions_unexplored/outback` | FLOATING | DESERT, DRY, FOREST, SURFACE, WARM, FLOATING_ISLAND | Outback (RU) (6045) |
 | `biomic:hosted/regions_unexplored/pine_slopes` | FLOATING | SURFACE, MOUNTAIN, FOREST, COLD, FLOATING_ISLAND | Pine Slopes (6014) |
 | `biomic:hosted/regions_unexplored/pine_taiga` | FLOATING | FOREST, SURFACE, TEMPERATE, FLOATING_ISLAND | Pine Taiga (6046) |
 | `biomic:hosted/regions_unexplored/poppy_fields` | FLOATING | COLD, FLORAL, PLAINS, SURFACE, FLOATING_ISLAND | Poppy Fields (6047) |
-| `biomic:hosted/regions_unexplored/prairie` | FLOATING | HUMID, PLAINS, SURFACE, TEMPERATE, FLOATING_ISLAND | Prairie (6048) |
-| `biomic:hosted/regions_unexplored/rainforest` | FLOATING | FOREST, HUMID, JUNGLE, SURFACE, WARM, FLOATING_ISLAND | Rainforest (6049) |
+| `biomic:hosted/regions_unexplored/prairie` | FLOATING | HUMID, PLAINS, SURFACE, TEMPERATE, FLOATING_ISLAND | Prairie (RU) (6048) |
+| `biomic:hosted/regions_unexplored/rainforest` | FLOATING | FOREST, HUMID, JUNGLE, SURFACE, WARM, FLOATING_ISLAND | Rainforest (RU) (6049) |
 | `biomic:hosted/regions_unexplored/redwoods` | FLOATING | SURFACE, FOREST, TEMPERATE, HUMID, FLOATING_ISLAND | Redwoods (6008) |
 | `biomic:hosted/regions_unexplored/saguaro_desert` | FLOATING | DESERT, DRY, SURFACE, WARM, FLOATING_ISLAND | Saguaro Desert (6051) |
-| `biomic:hosted/regions_unexplored/shrubland` | FLOATING | PLAINS, SURFACE, TEMPERATE, FLOATING_ISLAND | Shrubland (6052) |
+| `biomic:hosted/regions_unexplored/shrubland` | FLOATING | PLAINS, SURFACE, TEMPERATE, FLOATING_ISLAND | Shrubland (RU) (6052) |
 | `biomic:hosted/regions_unexplored/silver_birch_forest` | FLOATING | COLD, FOREST, SURFACE, FLOATING_ISLAND | Silver Birch Forest (6053) |
 | `biomic:hosted/regions_unexplored/sparse_rainforest` | FLOATING | FOREST, HUMID, JUNGLE, SURFACE, WARM, FLOATING_ISLAND | Sparse Rainforest (6054) |
 | `biomic:hosted/regions_unexplored/sparse_redwoods` | FLOATING | FOREST, HUMID, SURFACE, TEMPERATE, FLOATING_ISLAND | Sparse Redwoods (6055) |
 | `biomic:hosted/regions_unexplored/spires` | FLOATING | COLD, HUMID, SURFACE, FLOATING_ISLAND | Spires (6056) |
 | `biomic:hosted/regions_unexplored/towering_cliffs` | FLOATING | SURFACE, MOUNTAIN, FOREST, TEMPERATE, HUMID, FLOATING_ISLAND | Towering Cliffs (6007) |
-| `biomic:hosted/regions_unexplored/tropics` | FLOATING | HUMID, JUNGLE, SURFACE, TEMPERATE, FLOATING_ISLAND | Tropics (6058) |
-| `biomic:hosted/regions_unexplored/tundra` | FLOATING | COLD, SURFACE, FLOATING_ISLAND | Tundra (6059) |
+| `biomic:hosted/regions_unexplored/tropics` | FLOATING | HUMID, JUNGLE, SURFACE, TEMPERATE, FLOATING_ISLAND | Tropics (RU) (6058) |
+| `biomic:hosted/regions_unexplored/tundra` | FLOATING | COLD, SURFACE, FLOATING_ISLAND | Tundra (RU) (6059) |
 | `biomic:hosted/regions_unexplored/willow_forest` | FLOATING | FOREST, SURFACE, TEMPERATE, FLOATING_ISLAND | Willow Forest (6060) |
 | `biomic:hosted/regions_unexplored/windswept_maple_forest` | FLOATING | FOREST, SURFACE, TEMPERATE, FLOATING_ISLAND | Windswept Maple Forest (6061) |
 | `biomic:hosted/regions_unexplored/wisteria_grove` | FLOATING | SURFACE, FOREST, FLORAL, WARM, HUMID, FLOATING_ISLAND | Wisteria Grove (6005) |
@@ -119,10 +119,10 @@
 | `biomic:alpha_grove` | SURFACE | FOREST, SURFACE, TEMPERATE | Alpha Grove (6017) |
 | `biomic:ashen_woodland` | SURFACE | SURFACE, TEMPERATE | Ashen Woodland (6018) |
 | `biomic:autumnal_maple_forest` | SURFACE | COLD, FOREST, SURFACE | Autumnal Maple Forest (6019) |
-| `biomic:bamboo_forest` | SURFACE | FOREST, HUMID, SURFACE, TEMPERATE | Bamboo Forest (6020) |
+| `biomic:bamboo_forest` | SURFACE | FOREST, HUMID, SURFACE, TEMPERATE | Bamboo Forest (RU) (6020) |
 | `biomic:baobab_savanna` | SURFACE | DRY, FOREST, SURFACE, WARM | Baobab Savanna (6021) |
 | `biomic:basaltic_deltas` | NETHER | NETHER, WARM, DRY | Basaltic Deltas (6310) |
-| `biomic:bayou` | SURFACE | SURFACE, SWAMP, WARM, HUMID | Bayou (6009) |
+| `biomic:bayou` | SURFACE | SURFACE, SWAMP, WARM, HUMID | Bayou (RU) (6009) |
 | `biomic:blackstone_basin` | NETHER | DRY, NETHER, WARM | Blackstone Basin (6066) |
 | `biomic:blackwood_taiga` | SURFACE | FOREST, HUMID, SURFACE, TEMPERATE | Blackwood Taiga (6022) |
 | `biomic:bloodless_undergrowth` | NETHER | NETHER, WARM, DRY | Bloodless Undergrowth (6311) |
@@ -133,17 +133,17 @@
 | `biomic:cold_boreal_taiga` | SURFACE | COLD, FOREST, SURFACE | Cold Boreal Taiga (6024) |
 | `biomic:cold_river` | SURFACE | HUMID, RIVER, SURFACE, TEMPERATE | Cold River (6025) |
 | `biomic:corrupted_wastes` | NETHER | NETHER, WARM, DRY | Corrupted Wastes (6313) |
-| `biomic:crimson_forest` | NETHER | NETHER, WARM, DRY | Crimson Forest (6314) |
+| `biomic:crimson_forest` | NETHER | NETHER, WARM, DRY | Crimson Forest (Tartarus) (6314) |
 | `biomic:crystalline_veldts` | NETHER | NETHER, WARM, DRY | Crystalline Veldts (6315) |
 | `biomic:dry_bushland` | SURFACE | DRY, FOREST, SURFACE, WARM | Dry Bushland (6026) |
-| `biomic:eucalyptus_forest` | SURFACE | SURFACE, FOREST, JUNGLE, WARM, HUMID | Eucalyptus Forest (6016) |
-| `biomic:fen` | SURFACE | HUMID, SURFACE, SWAMP, TEMPERATE | Fen (6027) |
+| `biomic:eucalyptus_forest` | SURFACE | SURFACE, FOREST, JUNGLE, WARM, HUMID | Eucalyptus Forest (RU) (6016) |
+| `biomic:fen` | SURFACE | HUMID, SURFACE, SWAMP, TEMPERATE | Fen (RU) (6027) |
 | `biomic:flaming_hellscapes` | NETHER | NETHER, WARM, DRY | Flaming Hellscapes (6316) |
 | `biomic:flower_fields` | SURFACE | FLORAL, HUMID, PLAINS, SURFACE, TEMPERATE | Flower Fields (6028) |
 | `biomic:frozen_pine_taiga` | SURFACE | COLD, FOREST, SURFACE | Frozen Pine Taiga (6029) |
 | `biomic:fungal_fen` | SURFACE | HUMID, SURFACE, SWAMP, TEMPERATE | Fungal Fen (6030) |
 | `biomic:glistering_meadow` | NETHER | DRY, NETHER, WARM | Glistering Meadow (6067) |
-| `biomic:grassland` | SURFACE | PLAINS, SURFACE, WARM | Grassland (6031) |
+| `biomic:grassland` | SURFACE | PLAINS, SURFACE, WARM | Grassland (RU) (6031) |
 | `biomic:grassy_beach` | SURFACE | SURFACE, COAST, WARM, HUMID | Grassy Beach (6015) |
 | `biomic:gravel_beach` | SURFACE | COAST, SURFACE, TEMPERATE | Gravel Beach (6032) |
 | `biomic:highland_fields` | SURFACE | FLORAL, MOUNTAIN, SURFACE, TEMPERATE | Highland Fields (6033) |
@@ -154,14 +154,14 @@
 | `biomic:lifeless_spires` | NETHER | NETHER, WARM, DRY | Lifeless Spires (6317) |
 | `biomic:magnolia_woodland` | SURFACE | FOREST, HUMID, SURFACE, TEMPERATE | Magnolia Woodland (6037) |
 | `biomic:maple_forest` | SURFACE | FOREST, SURFACE, TEMPERATE | Maple Forest (6038) |
-| `biomic:marsh` | SURFACE | HUMID, SURFACE, SWAMP, TEMPERATE | Marsh (6039) |
+| `biomic:marsh` | SURFACE | HUMID, SURFACE, SWAMP, TEMPERATE | Marsh (RU) (6039) |
 | `biomic:muddy_river` | SURFACE | HUMID, RIVER, SURFACE, TEMPERATE | Muddy River (6040) |
 | `biomic:mycotoxic_undergrowth` | NETHER | DRY, NETHER, WARM | Mycotoxic Undergrowth (6069) |
 | `biomic:old_growth_bayou` | SURFACE | SURFACE, SWAMP, FOREST, WARM, HUMID | Old Growth Bayou (6010) |
 | `biomic:old_growth_boreal_taiga` | SURFACE | COLD, FOREST, SURFACE | Old Growth Boreal Taiga (6041) |
 | `biomic:old_growth_forest` | SURFACE | FOREST, SURFACE, TEMPERATE | Old Growth Forest (6042) |
 | `biomic:old_growth_golden_boreal_taiga` | SURFACE | COLD, FOREST, SURFACE | Old Growth Golden Boreal Taiga (6043) |
-| `biomic:orchard` | SURFACE | FOREST, SURFACE, TEMPERATE | Orchard (6044) |
+| `biomic:orchard` | SURFACE | FOREST, SURFACE, TEMPERATE | Orchard (RU) (6044) |
 | `biomic:origen/abyssal_alleys` | SURFACE | SURFACE, OCEAN, TEMPERATE | Abyssal Alleys (6100) |
 | `biomic:origen/alpine_ascendancy` | SURFACE | SURFACE, MOUNTAIN, COLD | Alpine Ascendancy (6117) |
 | `biomic:origen/alpine_ascendancy_river` | SURFACE | SURFACE, COLD | Alpine Ascendancy River (6148) |
@@ -171,14 +171,14 @@
 | `biomic:origen/badlands_balconies` | SURFACE | SURFACE, MOUNTAIN, WARM | Badlands Balconies (6104) |
 | `biomic:origen/bamboo_basin` | SURFACE | SURFACE, MOUNTAIN, WARM | Bamboo Basin (6105) |
 | `biomic:origen/bare_boulderfields` | SURFACE | SURFACE, COLD | Bare Boulderfields (6106) |
-| `biomic:origen/beach` | SURFACE | SURFACE, TEMPERATE | Beach (6150) |
+| `biomic:origen/beach` | SURFACE | SURFACE, TEMPERATE | Temperate Beach (6150) |
 | `biomic:origen/black_forest` | SURFACE | SURFACE, MOUNTAIN, TEMPERATE | Black Forest (6107) |
 | `biomic:origen/canopy_cascades` | SURFACE | SURFACE, MOUNTAIN, WARM | Canopy Cascades (6119) |
 | `biomic:origen/carving_creaks` | SURFACE | SURFACE, WARM | Carving Creaks (6110) |
 | `biomic:origen/cold_steppe` | SURFACE | SURFACE, COLD | Cold Steppe (6151) |
 | `biomic:origen/coral_ocean` | SURFACE | SURFACE, OCEAN, WARM | Coral Ocean (6152) |
-| `biomic:origen/deep_ocean` | SURFACE | SURFACE, OCEAN, TEMPERATE | Deep Ocean (6154) |
-| `biomic:origen/desert` | SURFACE | SURFACE, WARM | Desert (6155) |
+| `biomic:origen/deep_ocean` | SURFACE | SURFACE, OCEAN, TEMPERATE | Temperate Deep Ocean (6154) |
+| `biomic:origen/desert` | SURFACE | SURFACE, WARM | Desert Dunes (6155) |
 | `biomic:origen/desert_spikes_gold` | SURFACE | SURFACE, WARM | Golden Desert Spikes (6156) |
 | `biomic:origen/fern_fissures` | SURFACE | SURFACE, TEMPERATE | Fern Fissures (6185) |
 | `biomic:origen/flowering_forest` | SURFACE | SURFACE, TEMPERATE | Flowering Forest (6158) |
@@ -203,8 +203,8 @@
 | `biomic:origen/mountain_mirrors` | SURFACE | SURFACE, MOUNTAIN, COLD | Mountain Mirrors (6115) |
 | `biomic:origen/mountain_mirrors_river` | SURFACE | SURFACE, COLD | Mountain Mirrors River (6167) |
 | `biomic:origen/murky_marshlands` | SURFACE | SURFACE, TEMPERATE | Murky Marshlands (6123) |
-| `biomic:origen/oasis` | SURFACE | SURFACE, WARM | Oasis (6124) |
-| `biomic:origen/ocean` | SURFACE | SURFACE, OCEAN, TEMPERATE | Ocean (6168) |
+| `biomic:origen/oasis` | SURFACE | SURFACE, WARM | Oasis (Origen) (6124) |
+| `biomic:origen/ocean` | SURFACE | SURFACE, OCEAN, TEMPERATE | Temperate Ocean (6168) |
 | `biomic:origen/overgrown_cliffs` | SURFACE | SURFACE, WARM | Overgrown Cliffs (6169) |
 | `biomic:origen/palm_beach` | SURFACE | SURFACE, WARM | Palm Beach (6170) |
 | `biomic:origen/pillow_plains_inner` | SURFACE | SURFACE, TEMPERATE | Pillow Plains Inner (6125) |
@@ -212,7 +212,7 @@
 | `biomic:origen/pillow_plains_outer` | SURFACE | SURFACE, TEMPERATE | Pillow Plains Outer (6127) |
 | `biomic:origen/plateao_river_inner` | SURFACE | SURFACE, TEMPERATE | Foliage Fortress Inner River (6171) |
 | `biomic:origen/plateao_river_middle` | SURFACE | SURFACE, TEMPERATE | Foliage Fortress Middle River (6172) |
-| `biomic:origen/river` | SURFACE | SURFACE, TEMPERATE | River (6173) |
+| `biomic:origen/river` | SURFACE | SURFACE, TEMPERATE | Temperate River (6173) |
 | `biomic:origen/rocky_refuge` | SURFACE | SURFACE, MOUNTAIN, TEMPERATE | Rocky Refuge (6132) |
 | `biomic:origen/sakura_streams` | SURFACE | SURFACE, MOUNTAIN, TEMPERATE | Sakura Streams (6133) |
 | `biomic:origen/salt_flats` | SURFACE | SURFACE, WARM | Salt Flats (6174) |
@@ -242,17 +242,17 @@
 | `biomic:origen/vistas_river` | SURFACE | SURFACE, TEMPERATE | Vertical Vistas River (6184) |
 | `biomic:origen/watery_wilds` | SURFACE | SURFACE, WARM | Watery Wilds (6142) |
 | `biomic:origen/white_wallows` | SURFACE | SURFACE, MOUNTAIN, TEMPERATE | White Wallows (6147) |
-| `biomic:outback` | SURFACE | DESERT, DRY, FOREST, SURFACE, WARM | Outback (6045) |
+| `biomic:outback` | SURFACE | DESERT, DRY, FOREST, SURFACE, WARM | Outback (RU) (6045) |
 | `biomic:pine_slopes` | SURFACE | SURFACE, MOUNTAIN, FOREST, COLD | Pine Slopes (6014) |
 | `biomic:pine_taiga` | SURFACE | FOREST, SURFACE, TEMPERATE | Pine Taiga (6046) |
 | `biomic:poppy_fields` | SURFACE | COLD, FLORAL, PLAINS, SURFACE | Poppy Fields (6047) |
-| `biomic:prairie` | SURFACE | HUMID, PLAINS, SURFACE, TEMPERATE | Prairie (6048) |
-| `biomic:rainforest` | SURFACE | FOREST, HUMID, JUNGLE, SURFACE, WARM | Rainforest (6049) |
+| `biomic:prairie` | SURFACE | HUMID, PLAINS, SURFACE, TEMPERATE | Prairie (RU) (6048) |
+| `biomic:rainforest` | SURFACE | FOREST, HUMID, JUNGLE, SURFACE, WARM | Rainforest (RU) (6049) |
 | `biomic:redwoods` | SURFACE | SURFACE, FOREST, TEMPERATE, HUMID | Redwoods (6008) |
 | `biomic:rocky_reef` | SURFACE | OCEAN, SURFACE, TEMPERATE | Rocky Reef (6050) |
 | `biomic:saguaro_desert` | SURFACE | DESERT, DRY, SURFACE, WARM | Saguaro Desert (6051) |
 | `biomic:serrated_mountains` | NETHER | NETHER, WARM, DRY | Serrated Mountains (6318) |
-| `biomic:shrubland` | SURFACE | PLAINS, SURFACE, TEMPERATE | Shrubland (6052) |
+| `biomic:shrubland` | SURFACE | PLAINS, SURFACE, TEMPERATE | Shrubland (RU) (6052) |
 | `biomic:silver_birch_forest` | SURFACE | COLD, FOREST, SURFACE | Silver Birch Forest (6053) |
 | `biomic:soul_valley` | NETHER | NETHER, WARM, DRY | Soul Valley (6319) |
 | `biomic:soulblight_forest` | NETHER | NETHER, FOREST, WARM, DRY | Soulblight Forest (6300) |
@@ -262,9 +262,9 @@
 | `biomic:torrid_crags` | NETHER | NETHER, WARM, DRY | Torrid Crags (6320) |
 | `biomic:towering_cliffs` | SURFACE | SURFACE, MOUNTAIN, FOREST, TEMPERATE, HUMID | Towering Cliffs (6007) |
 | `biomic:tropical_river` | SURFACE | HUMID, RIVER, SURFACE, TEMPERATE | Tropical River (6057) |
-| `biomic:tropics` | SURFACE | HUMID, JUNGLE, SURFACE, TEMPERATE | Tropics (6058) |
-| `biomic:tundra` | SURFACE | COLD, SURFACE | Tundra (6059) |
-| `biomic:warped_forest` | NETHER | NETHER, WARM, DRY | Warped Forest (6321) |
+| `biomic:tropics` | SURFACE | HUMID, JUNGLE, SURFACE, TEMPERATE | Tropics (RU) (6058) |
+| `biomic:tundra` | SURFACE | COLD, SURFACE | Tundra (RU) (6059) |
+| `biomic:warped_forest` | NETHER | NETHER, WARM, DRY | Warped Forest (Tartarus) (6321) |
 | `biomic:whistling_woods` | NETHER | NETHER, FOREST, WARM, DRY | Whistling Woods (6301) |
 | `biomic:willow_forest` | SURFACE | FOREST, SURFACE, TEMPERATE | Willow Forest (6060) |
 | `biomic:windswept_maple_forest` | SURFACE | FOREST, SURFACE, TEMPERATE | Windswept Maple Forest (6061) |
