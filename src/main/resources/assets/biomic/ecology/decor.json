@@ -1,0 +1,38 @@
+{
+ "format": 1,
+ "cave": {
+  "mossy_wall": "minecraft:vine:0",
+  "glowshroom": "biomic:ru_decor_blue_bioshroom:0",
+  "stalactite": "",
+  "stalagmite": "",
+  "dry_bones": "",
+  "spider_bones": "minecraft:web:0",
+  "mouth_vine": "minecraft:vine:0",
+  "mouth_fern": "minecraft:tallgrass:2",
+  "mouth_bush": "minecraft:tallgrass:1",
+  "miners_delight": "biomic:ru_decor_cave_hyssop:0",
+  "moss_skin_wall": "minecraft:vine:0"
+ },
+ "marine": {
+  "plants": {
+   "sea_lettuce": "biomic:port_algae:2",
+   "sea_grapes": "biomic:port_algae:2",
+   "eelgrass": "biomic:port_seagrass:0",
+   "kelp_yellow": "",
+   "kelp_green": "",
+   "tangle": "biomic:port_algae:3",
+   "rockweed": "biomic:port_algae:0",
+   "coral_weed": "biomic:port_algae:1",
+   "mozuku": "biomic:port_algae:0",
+   "glow_coral": "",
+   "bamboo_coral": "",
+   "sun_polyps": ""
+  },
+  "lists": {
+   "fresh_warm": ["biomic:port_seagrass:0"],
+   "fresh_cold": ["biomic:port_seagrass:0"],
+   "fresh_temperate": ["biomic:port_seagrass:0"],
+   "corals": []
+  }
+ }
+}

@@ -1,0 +1,9 @@
+{
+  "BiomeHolderImpl.java": "657e2221b11845d87c86e8cf17ad795a19c7b86087d210d5e8690248123b6d25",
+  "api/BiomeHolder.java": "947d251f04a5f4505a28df0c7aaa3d13b497cd93173300d9fb3a2201fd617cd7",
+  "api/stage/type/BiomeMutator.java": "c0f75e654240c1d5e43c03229a173f18b3727cb8348a44768610e839484156ca",
+  "api/stage/type/BiomeExpander.java": "0b8cfae24ba0d6e4ae9fce9a4c3865b62b3a3d6d8907f5067ed0624ee92111a6",
+  "source/BiomeSource.java": "f9c39604ff545274ca21aeb03893375a8cf78d0e7486ddae798b68bde2fad93c",
+  "expand/FractalExpander.java": "421d1c1ce5b85ac50dd379622bc1f4a845c42f6025001befbc082d2b04f53bf7",
+  "mutator/SmoothMutator.java": "4a1dd730b02f5ec3e0b4222a4c2bec1aa252e48add3f4b21301721005a97ede2"
+}

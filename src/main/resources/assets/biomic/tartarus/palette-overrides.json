@@ -1,0 +1,430 @@
+{
+ "about": "Biomic's changes to Tartarus (GPL-3.0), applied when the manifest loads; the imported data stays as upstream. Visible surfaces use smooth patch noise in ordered ramps; each biome is a floor skin over one base rock.",
+ "palettes": {
+  "ANEMIC_GROUND": {
+   "sampler": {
+    "type": "FBM",
+    "octaves": 2,
+    "sampler": {
+     "type": "OPEN_SIMPLEX_2",
+     "frequency": 0.04,
+     "salt": 7101
+    }
+   },
+   "layers": [
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:warped_wart_block",
+       "weight": 4
+      },
+      {
+       "material": "minecraft:warped_nylium",
+       "weight": 6
+      }
+     ]
+    },
+    {
+     "layers": 3,
+     "materials": [
+      {
+       "material": "minecraft:warped_wart_block",
+       "weight": 5
+      },
+      {
+       "material": "minecraft:netherrack",
+       "weight": 5
+      }
+     ]
+    },
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:netherrack",
+       "weight": 1
+      }
+     ]
+    }
+   ]
+  },
+  "FLESH_GROUND": {
+   "sampler": {
+    "type": "FBM",
+    "octaves": 2,
+    "sampler": {
+     "type": "OPEN_SIMPLEX_2",
+     "frequency": 0.04,
+     "salt": 7102
+    }
+   },
+   "layers": [
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:nether_wart_block",
+       "weight": 5
+      },
+      {
+       "material": "minecraft:crimson_nylium",
+       "weight": 5
+      }
+     ]
+    },
+    {
+     "layers": 3,
+     "materials": [
+      {
+       "material": "minecraft:nether_wart_block",
+       "weight": 6
+      },
+      {
+       "material": "minecraft:netherrack",
+       "weight": 4
+      }
+     ]
+    },
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:netherrack",
+       "weight": 1
+      }
+     ]
+    }
+   ]
+  },
+  "CRIMSON_GROUND": {
+   "sampler": {
+    "type": "FBM",
+    "octaves": 2,
+    "sampler": {
+     "type": "OPEN_SIMPLEX_2",
+     "frequency": 0.05,
+     "salt": 7103
+    }
+   },
+   "layers": [
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:netherrack",
+       "weight": 3
+      },
+      {
+       "material": "minecraft:crimson_nylium",
+       "weight": 7
+      }
+     ]
+    },
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:netherrack",
+       "weight": 1
+      }
+     ]
+    }
+   ]
+  },
+  "WARPED_GROUND": {
+   "sampler": {
+    "type": "FBM",
+    "octaves": 2,
+    "sampler": {
+     "type": "OPEN_SIMPLEX_2",
+     "frequency": 0.05,
+     "salt": 7104
+    }
+   },
+   "layers": [
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:netherrack",
+       "weight": 3
+      },
+      {
+       "material": "minecraft:warped_nylium",
+       "weight": 7
+      }
+     ]
+    },
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:netherrack",
+       "weight": 1
+      }
+     ]
+    }
+   ]
+  },
+  "LIFELESS_GROUND": {
+   "sampler": {
+    "type": "FBM",
+    "octaves": 2,
+    "sampler": {
+     "type": "OPEN_SIMPLEX_2",
+     "frequency": 0.03,
+     "salt": 7105
+    }
+   },
+   "layers": [
+    {
+     "layers": 2,
+     "materials": [
+      {
+       "material": "minecraft:blackstone",
+       "weight": 24
+      },
+      {
+       "material": "minecraft:basalt",
+       "weight": 5
+      },
+      {
+       "material": "minecraft:smooth_basalt",
+       "weight": 11
+      }
+     ]
+    },
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:blackstone",
+       "weight": 1
+      }
+     ]
+    }
+   ]
+  },
+  "FLAMING_GROUND": {
+   "sampler": {
+    "type": "FBM",
+    "octaves": 2,
+    "sampler": {
+     "type": "OPEN_SIMPLEX_2",
+     "frequency": 0.03,
+     "salt": 7106
+    }
+   },
+   "layers": [
+    {
+     "layers": 3,
+     "materials": [
+      {
+       "material": "minecraft:netherrack",
+       "weight": 13
+      },
+      {
+       "material": "minecraft:blackstone",
+       "weight": 7
+      }
+     ]
+    },
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:netherrack",
+       "weight": 1
+      }
+     ]
+    }
+   ]
+  },
+  "CRYSTALLINE_GROUND": {
+   "sampler": {
+    "type": "FBM",
+    "octaves": 2,
+    "sampler": {
+     "type": "OPEN_SIMPLEX_2",
+     "frequency": 0.03,
+     "salt": 7108
+    }
+   },
+   "layers": [
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:blackstone",
+       "weight": 27
+      },
+      {
+       "material": "minecraft:amethyst_block",
+       "weight": 3
+      },
+      {
+       "material": "minecraft:budding_amethyst",
+       "weight": 10
+      }
+     ]
+    },
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:blackstone",
+       "weight": 1
+      }
+     ]
+    }
+   ]
+  },
+  "BASALTIC_GROUND": {
+   "sampler": {
+    "type": "FBM",
+    "octaves": 2,
+    "sampler": {
+     "type": "OPEN_SIMPLEX_2",
+     "frequency": 0.05,
+     "salt": 7109
+    }
+   },
+   "layers": [
+    {
+     "layers": 2,
+     "materials": [
+      {
+       "material": "minecraft:blackstone",
+       "weight": 24
+      },
+      {
+       "material": "minecraft:smooth_basalt",
+       "weight": 6
+      },
+      {
+       "material": "minecraft:magma_block",
+       "weight": 10
+      }
+     ]
+    },
+    {
+     "layers": 2,
+     "materials": [
+      {
+       "material": "minecraft:blackstone",
+       "weight": 3
+      },
+      {
+       "material": "minecraft:smooth_basalt",
+       "weight": 2
+      }
+     ]
+    },
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:blackstone",
+       "weight": 1
+      }
+     ]
+    }
+   ]
+  },
+  "WASTING_GROUND": {
+   "sampler": {
+    "type": "FBM",
+    "octaves": 2,
+    "sampler": {
+     "type": "OPEN_SIMPLEX_2",
+     "frequency": 0.05,
+     "salt": 7110
+    }
+   },
+   "layers": [
+    {
+     "layers": 1,
+     "materials": [
+      {
+       "material": "minecraft:netherrack",
+       "weight": 1
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "removed_features": {
+  "BLOODLESS_UNDERGROWTH": [
+   "TENTACLES"
+  ],
+  "BLOODY_REMNANTS": [
+   "TENDONS"
+  ],
+  "LIFELESS_SPIRES": [
+   "MAGMA_CLUSTER_GROUND",
+   "MAGMA_CLUSTER_CEILING"
+  ],
+  "CORRUPTED_WASTES": [
+   "MAGMA_CLUSTER_GROUND",
+   "MAGMA_CLUSTER_CEILING"
+  ]
+ },
+ "structure_edits": {
+  "huge_crimson_fungus": [
+   [
+    "num trunkHeight = 4+randomInt(20);",
+    "num trunkHeight = 10+randomInt(14);"
+   ],
+   [
+    "num sideBranchMinHeight = 3+randomInt(3);",
+    "num sideBranchMinHeight = 7+randomInt(3);"
+   ],
+   [
+    "num sideBranchLeafDensity = 0.5;",
+    "num sideBranchLeafDensity = 0.75;"
+   ],
+   [
+    "num topBranchLeafDensity = 0.5;",
+    "num topBranchLeafDensity = 0.75;"
+   ]
+  ],
+  "huge_warped_fungus": [
+   [
+    "num trunkHeight = 4+randomInt(20);",
+    "num trunkHeight = 10+randomInt(14);"
+   ],
+   [
+    "num sideBranchMinHeight = 3+randomInt(3);",
+    "num sideBranchMinHeight = 7+randomInt(3);"
+   ],
+   [
+    "num sideBranchLeafDensity = 0.5;",
+    "num sideBranchLeafDensity = 0.75;"
+   ],
+   [
+    "num topBranchLeafDensity = 0.5;",
+    "num topBranchLeafDensity = 0.75;"
+   ]
+  ],
+  "fossil_rib_cage_procedural": [
+   [
+    "structure(xDriedGhastOffset, -h, zDriedGhastOffset, \"dried_ghast\", \"NONE\");",
+    ""
+   ]
+  ]
+ },
+ "feature_thresholds": {
+  "FLOATING_CRYSTALS": 0.01,
+  "LAVA_SKEWERS_GROUND": 0.008,
+  "LAVA_SKEWERS_CEILING": 0.008,
+  "HUGE_CRIMSON_FUNGUS": 0.01,
+  "HUGE_WARPED_FUNGUS": 0.01
+ },
+ "removed_structures": {
+  "dried_ghast": [
+   "minecraft:dried_ghast"
+  ]
+ }
+}

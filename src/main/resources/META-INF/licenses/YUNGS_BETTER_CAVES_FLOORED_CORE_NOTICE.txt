@@ -1,0 +1,27 @@
+YungFlooredCavernDensity contains a narrow source-order-preserving port from
+YUNG's Better Caves 2.0.4, commit e71f869808fc139773b75125919a65925a983a77.
+Upstream project copyright belongs to its contributors and is licensed under
+the GNU Lesser General Public License version 3. The exact upstream license is
+cached at run/reference/yungs-better-caves-1.12.2/LICENSE.md during review. The
+complete applicable text ships at
+META-INF/licenses/biomic/LICENSE-LGPL-3.0-YUNGS-BETTER-CAVES.
+
+The relocated SimplexFractal/RigidMulti noise slice originates from FastNoise,
+Copyright (c) 2017 Jordan Peck, and remains available under the MIT License.
+Its full MIT grant and warranty disclaimer are retained in
+YungFastNoiseRigidMulti.java.
+
+The passage adaptation YungPassageDensity additionally preserves the original
+CaveCarver/NoiseGen cubic and simplex branch semantics from that same commit.
+YungFastNoiseCubicRigidMulti retains the FastNoise MIT notice in its source.
+YungOpenSimplex2S relocates the upstream long-seeded OpenSimplex2S wrapper,
+retaining K.jpg's original attribution; it is not substituted by the differently
+seeded Terra implementation. These sources ship under their retained notices
+and the applicable Better Caves LGPL-3.0 license above.
+
+YungWaterRegionSelector ports WaterRegionController and NoiseUtils from the same
+revision. YungFastNoiseSimplex2D retains the original two-dimensional FastNoise
+constants, hashing and float arithmetic, with its full Jordan Peck MIT notice.
+YungCaveLiquidPlan preserves source liquid altitude and null-region semantics;
+its immutable per-cell rock sealing and rigid native +64 frame are explicit
+Biomic adaptations, not a claim of whole upstream cave-generation parity.

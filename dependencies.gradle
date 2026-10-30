@@ -1,0 +1,161 @@
+/*
+ * Add your dependencies here. Supported configurations:
+ *  - api("group:name:version:classifier"): if you use the types from this dependency in the public API of this mod
+ *       Available at runtime and compiletime for mods depending on this mod
+ *  - implementation("g:n:v:c"): if you need this for internal implementation details of the mod, but none of it is visible via the public API
+ *       Available at runtime but not compiletime for mods depending on this mod
+ *  - compileOnly("g:n:v:c"): if the mod you're building doesn't need this dependency during runtime at all, e.g. for optional mods
+ *       Not available at all for mods depending on this mod, only visible at compiletime for this mod
+ *  - compileOnlyApi("g:n:v:c"): like compileOnly, but also visible at compiletime for mods depending on this mod
+ *       Available at compiletime but not runtime for mods depending on this mod
+ *  - runtimeOnlyNonPublishable("g:n:v:c"): if you want to include a mod in this mod's runClient/runServer runs, but not publish it as a dependency
+ *       Not available at all for mods depending on this mod, only visible at runtime for this mod
+ *  - devOnlyNonPublishable("g:n:v:c"): a combination of runtimeOnlyNonPublishable and compileOnly for dependencies present at both compiletime and runtime,
+ *       but not published as Maven dependencies - useful for RFG-deobfuscated dependencies or local testing
+ *  - runtimeOnly("g:n:v:c"): if you don't need this at compile time, but want it to be present at runtime
+ *       Available at runtime for mods depending on this mod
+ *  - annotationProcessor("g:n:v:c"): mostly for java compiler plugins, if you know you need this, use it, otherwise don't worry
+ *  - testCONFIG("g:n:v:c") - replace CONFIG by one of the above (except api), same as above but for the test sources instead of main
+ *
+ *  - shadowImplementation("g:n:v:c"): effectively the same as API, but the dependency is included in your jar under a renamed package name
+ *       Requires you to enable usesShadowedDependencies in gradle.properties
+ *
+ *  - compile("g:n:v:c"): deprecated, replace with "api" (works like the old "compile") or "implementation" (can be more efficient)
+ *
+ * You can exclude transitive dependencies (dependencies of the chosen dependency) by appending { transitive = false } if needed,
+ * but use this sparingly as it can break using your mod as another mod's dependency if you're not careful.
+ *
+ * To depend on obfuscated jars you can use `devOnlyNonPublishable(rfg.deobf("dep:spec:1.2.3"))` to fetch an obfuscated jar from maven,
+ * or `devOnlyNonPublishable(rfg.deobf(project.files("libs/my-mod-jar.jar")))` to use a file.
+ *
+ * Gradle names for some of the configuration can be misleading, compileOnlyApi and runtimeOnly both get published as dependencies in Maven, but compileOnly does not.
+ * The buildscript adds runtimeOnlyNonPublishable to also have a runtime dependency that's not published.
+ *
+ * For more details, see https://docs.gradle.org/8.0.1/userguide/java_library_plugin.html#sec:java_library_configurations_graph
+ */
+// A local scheduler audit substitutes the module, including transitive requests from development QoL mods.
+if (providers.gradleProperty("biomicHodgepodgeAuditJar").isPresent()) {
+    configurations.configureEach {
+        exclude group: "com.github.GTNewHorizons", module: "Hodgepodge"
+    }
+}
+
+dependencies {
+    // Terra's sampler runtime. It is relocated into Biomic and bytecode-downgraded by GTNHGradle.
+    shadowImplementation("com.dfsek:seismic:2.5.7") {
+        exclude group: "org.jetbrains", module: "annotations"
+    }
+    // Terra 6.4.2 used Paralithic 0.7.1 to compile Origen's density expressions. Keeping the same
+    // evaluator avoids subtly changing operator/function semantics while the dependency is relocated.
+    shadowImplementation("com.dfsek:paralithic:0.7.1") {
+        exclude group: "org.jetbrains", module: "annotations"
+    }
+
+    // Development QoL. These are available in runClient/runServer but are not published as Biomic dependencies.
+    def hodgepodgeAuditJar = providers.gradleProperty("biomicHodgepodgeAuditJar").orNull
+    if (hodgepodgeAuditJar != null) {
+        def patchedScheduler = file(hodgepodgeAuditJar)
+        if (!patchedScheduler.isFile()) throw new GradleException("Missing Hodgepodge scheduler audit jar")
+        runtimeOnlyNonPublishable(files(patchedScheduler))
+    } else {
+        runtimeOnlyNonPublishable("com.github.GTNewHorizons:Hodgepodge:2.7.216:dev")
+    }
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.8.158-GTNH:dev")
+    // GTNH block identification/review stack; optional development runtime, never published as hard dependencies.
+    ["waila:1.19.34", "WailaHarvestability:1.3.6-GTNH", "WAILAPlugins:0.7.2", "WAWLA:1.3.3-GTNH"].each {
+        runtimeOnlyNonPublishable("com.github.GTNewHorizons:${it}:dev") {
+            // WAILA's optional CoFH adapter must not enroll another world generator in review saves.
+            exclude group: "curse.maven", module: "cofh-core-69162"
+        }
+    }
+    devOnlyNonPublishable("com.github.GTNewHorizons:Angelica:2.2.30:dev") // Optional, snapshot-aware biome tint bridge.
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:ModularUI2:2.3.92-1.7.10:dev")
+    runtimeOnlyNonPublishable(rfg.deobf("maven.modrinth:bugtorch:1.3.1"))
+    runtimeOnlyNonPublishable(rfg.deobf("curse.maven:catalogue-vintage-1465746:8384975")) // 1.0.8
+    runtimeOnlyNonPublishable("industries.angelic.wawelauth:WawelAuth:996a655-snapshot:dev")
+    runtimeOnlyNonPublishable("industries.angelic.vintageresourcify:VintageResourcify:1.0.6:dev")
+    runtimeOnlyNonPublishable("industries.angelic.vrap:vrap:1.0.2:dev")
+    runtimeOnlyNonPublishable("com.falsepattern:forgelin-mc1.7.10:2.4.3-2.4.10")
+    runtimeOnlyNonPublishable(rfg.deobf("maven.modrinth:euphoria-patches:1.10.5-r5.9.3-forge1.7.10"))
+
+    // Biomic hard dependencies.
+    implementation("industries.angelic.angellib:AngelLib:1.0.0:dev")
+    implementation("ganymedes01.etfuturum:Et-Futurum-Requiem:2.6.62-GTNH:dev")
+    // Optional: when installed, Village Names' generator builds Biomic's planned villages.
+    compileOnly("com.github.GTNewHorizons:VillageNames:4.5.19-GTNH:dev") { transitive = false }
+    // Optional food: when installed, Biomic grows HarvestCraft's and Harvest the Nether's wild plants itself.
+    // tools/run_debloat_review.py --harvest adds both to a review session.
+    compileOnly("com.github.GTNewHorizons:harvestcraft:1.3.13-GTNH:dev") { transitive = false }
+    compileOnly(rfg.deobf("curse.maven:pams-harvest-the-nether-231262:2241397"))
+    implementation("com.falsepattern:endlessids-mc1.7.10:1.7.4:dev")
+    implementation("com.falsepattern:chunkapi-mc1.7.10:0.8.4:dev")
+    implementation("com.github.GTNewHorizons:GTNHLib:0.11.52:dev")
+
+    testImplementation("junit:junit:4.13.2")
+    // Opt-in synthetic native-generator audit. Never installed by runClient/runServer or published.
+    if (providers.gradleProperty("biomicHarvestCraftAudit").isPresent()) {
+        testRuntimeOnly("com.github.GTNewHorizons:harvestcraft:1.3.15-GTNH:dev") { transitive = false }
+    }
+    // Explicit disposable native-biome audit only; not a Biomic distribution dependency.
+    // Existing three-species/berry/orchard pilot only, for an isolated HA512 native run.
+    if (providers.gradleProperty("biomicOptionalFloraAudit").isPresent()) {
+        runtimeOnlyNonPublishable("com.github.GTNewHorizons:Natura:2.8.24:dev") { transitive = false }
+        runtimeOnlyNonPublishable("com.github.GTNewHorizons:Mantle:0.5.4:dev") { transitive = false }
+        def growthcraftPath = providers.gradleProperty("biomicOptionalFloraGrowthcraftJar").orNull
+        if (growthcraftPath == null || !file(growthcraftPath).isFile())
+            throw new GradleException("Optional flora pilot requires its exact Growthcraft2.7.3 artifact")
+        def growthcraftPilot = file(growthcraftPath)
+        def digest = java.security.MessageDigest.getInstance("SHA-256").digest(growthcraftPilot.bytes).encodeHex().toString()
+        if (digest != "6889d4f1ae77a3ae8ed79715dd74def025d3d1406509e1cbd75203b79e5cb777")
+            throw new GradleException("Optional flora Growthcraft artifact differs")
+        runtimeOnlyNonPublishable(files(growthcraftPilot))
+        // Exact private mechanics companion only. Never a public dependency or an orchard assignment.
+        def pamPath=providers.gradleProperty("biomicOptionalFloraOrchardPamJar").orNull
+        if(pamPath!=null) {
+            def pam=file(pamPath)
+            if(!pam.isFile()||java.security.MessageDigest.getInstance("SHA-256").digest(pam.bytes).encodeHex().toString()
+                !="c0c14b86d348c3c23a73b01b1e1ff556a63aef6b77bf444458b3a43789653bcc")
+                throw new GradleException("Private orchard mechanics requires exact HarvestCraft1.3.13-GTNH artifact")
+            runtimeOnlyNonPublishable(files(pam))
+        }
+    }
+    if (providers.gradleProperty("biomicSaltyAudit").isPresent() || providers.gradleProperty("biomicExpansionPreview").isPresent()) {
+        runtimeOnlyNonPublishable(rfg.deobf("maven.modrinth:saltymod-expanded:pz3E7wWr"))
+    }
+    // Shared, opt-in CLIENT/SERVER review profile. No optional jars are published or
+    // silently installed in the ordinary client. Growthcraft uses the pinned local audit artifact.
+    if (providers.gradleProperty("biomicExpansionPreview").isPresent()) {
+        runtimeOnlyNonPublishable("com.github.GTNewHorizons:Natura:2.8.24:dev") { transitive = false }
+        runtimeOnlyNonPublishable("com.github.GTNewHorizons:Mantle:0.5.4:dev") { transitive = false }
+        def growthcraftPreview = file("run/growthcraft-audit-E2fJV1/mods/growthcraft-1.7.10-2.7.3-deobf.jar")
+        if (!growthcraftPreview.isFile()) throw new GradleException("Missing local Growthcraft review artifact: " + growthcraftPreview)
+        def digest = java.security.MessageDigest.getInstance("SHA-256").digest(growthcraftPreview.bytes).encodeHex().toString()
+        if (digest != "6889d4f1ae77a3ae8ed79715dd74def025d3d1406509e1cbd75203b79e5cb777")
+            throw new GradleException("Growthcraft review artifact hash mismatch")
+        runtimeOnlyNonPublishable(files(growthcraftPreview))
+    }
+    if (providers.gradleProperty("biomicNetherliciousAudit").isPresent()) {
+        runtimeOnlyNonPublishable(rfg.deobf("curse.maven:netherlicious-385860:4363437")) // 3.2.8
+    }
+    if (providers.gradleProperty("biomicVillageNamesAudit").isPresent()) {
+        runtimeOnlyNonPublishable("com.github.GTNewHorizons:VillageNames:4.5.19-GTNH:dev") { transitive = false }
+    }
+    if (providers.gradleProperty("biomicBopAudit").isPresent()) {
+        runtimeOnlyNonPublishable(rfg.deobf("curse.maven:biomes-o-plenty-220318:2499612")) // 1.7.10-2.1.0.2308
+    }
+    // Optional local joint height audit, never a published or default runtime dependency.
+    if (providers.gradleProperty("biomicHohenangstAudit").isPresent()) {
+        def heightJar = providers.gradleProperty("biomicHohenangstAuditJar").orNull
+        if (heightJar == null || !file(heightJar).isFile())
+            throw new GradleException("Height audit requires -PbiomicHohenangstAuditJar=<matching deobfuscated companion jar>")
+        runtimeOnlyNonPublishable(files(file(heightJar)))
+    }
+    // Explicit isolated PMP audit only. Never allow a runtime profile to omit its safety companion.
+    if (providers.gradleProperty("biomicPmpAudit").isPresent()) {
+        def pmpFixPath = providers.gradleProperty("biomicPmpFixJar").orNull
+        if (pmpFixPath == null || !file(pmpFixPath).isFile())
+            throw new GradleException("PMP audit requires -PbiomicPmpFixJar=<built plantmegapackfix 1333d4e dev jar>")
+        runtimeOnlyNonPublishable("plantmegapack:plantmegapack:4.33-1.7.10-1492:dev") { transitive = false }
+        runtimeOnlyNonPublishable(files(file(pmpFixPath)))
+    }
+}

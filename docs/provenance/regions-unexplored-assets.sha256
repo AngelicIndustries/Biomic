@@ -1,0 +1,121 @@
+# Regions Unexplored 0.6 block-art imports
+#
+# Source root for `RU:block/<name>.png`:
+# run/reference/regions-unexplored/source/src/common/main/resources/assets/regions_unexplored/textures/block
+# pinned at f5dfe4eea916cb7ccb4990faebc952459dad5f8b.
+# Columns are SHA-256, Biomic destination basename, source, and treatment.
+# Textures identical to Minecraft's (hanging roots, the seagrass item, RU's grass top and clover stem) are not
+# shipped: client.VanillaTextures serves them from the 1.20.4 client jar Asset Director downloads.
+#
+
+14359d8cdea8a11775a386a86039301ae674b34e4578787a378eea28504966f2  aster.png                          RU:block/aster.png                          verbatim
+d3ba895a2136e6a11cd8192cdfdf4ed54ab8f45454d904c840e06c821c3567f1  chalk_grass_side.png               RU:block/chalk_grass_side.png               verbatim
+c102720555140d12cb3b2e313a14985a8b78c1828fdff13f6a6f680a11d654c9  chalk_grass_snow.png               RU:block/chalk_grass_snow.png               verbatim
+38c79382603aafa3469c964d01aa12b3048598b47cc0abbc8a457ad45fbcbb54  cypress_shrub_bottom.png           RU:block/cypress_shrub_bottom.png           verbatim
+16f6e5f658de7b6142c9d92aa9d6b8b72a7e5f38a7163eff83cf4bd87118c98e  cypress_shrub_top.png              RU:block/cypress_shrub_top.png              verbatim
+5aff12e42e12b332f81b4798ee5c436a5738a856b1aff60335b605abb4503c88  daisy.png                          RU:block/daisy.png                          verbatim
+530f5b68af2f670acf262eeeeeb455668addfa8b218953544d9f04d228a3684a  dead_pine_leaves.png               RU:block/dead_pine_leaves.png               verbatim
+7b2364c6ed8089b83eac1068925e039eb211658a77acb0bb74c72f497944e821  dead_pine_shrub_bottom.png         RU:block/dead_pine_shrub_bottom.png         verbatim
+f7153941983010fab193caa09ad7c39cdc50a8eda95d27f5bd45b9496f7a0fb7  dead_pine_shrub_top.png            RU:block/dead_pine_shrub_top.png            verbatim
+3aaa0d986d3ea11930ebd1ed99ee2f738f06a4ee394d24865da3992b4cc22ddf  elephant_ear_leaf.png              RU:block/elephant_ear_leaf.png              verbatim
+b0f6143f6efc32ba161c1c09d781ca92899bff6979d927c02ce7793cd1c63f7c  elephant_ear_plant.png             RU:block/elephant_ear_plant.png             verbatim
+f2312d6311838aac30145383b24ca7b4a29d6f9b8944541ffd235a5c95737e65  eucalyptus_leaves.png              RU:block/eucalyptus_leaves.png              verbatim
+4a2db904f074ffc491a0eeedff4aaa42e57c381208ca8d4104be3f5c5a5b5298  eucalyptus_log.png                 RU:block/eucalyptus_log.png                 verbatim
+c7135589a23f81bd9d11c1de976eca30cc649650d689d00eb59f46354bd3ff98  eucalyptus_log_branch.png          RU:block/eucalyptus_log_branch.png          verbatim
+ad87f0f30b94303af33ac4bea229969773bf6a51922a5a9ddf76d9d6b7b99863  eucalyptus_log_overlay.png         RU:block/eucalyptus_log_overlay.png         verbatim
+0c3c21358046e755e555bb5318534679b86835e5dbe062a7cdf78dae2e4fd850  eucalyptus_log_top.png             RU:block/eucalyptus_log_top.png             verbatim
+9ca8e600df22392be7ef1168057d99ad5ad0e1fa4f144ca9d736c5da98679038  eucalyptus_shrub_bottom.png        RU:block/eucalyptus_shrub_bottom.png        verbatim
+9f37424802bbf38832f622f1262dfbd9d88c44f85041414adff965c5d3d89ddd  eucalyptus_shrub_top.png           RU:block/eucalyptus_shrub_top.png           verbatim
+92169c6ed88d3a5c1e8c562c9933a94cc3e35c5a7fddb0f0abcc978cdd66dcca  fireweed.png                       RU:block/fireweed.png                       verbatim
+b841ab190e4ecf1e3cab31330b172de1a129da63c781ca8af3c7c019df85f0e5  flowering_lily_pad.png             RU:block/flowering_lily_pad.png             verbatim
+0427c0cce1efe5e3562eb5c88deaada91d9bc43290cc8313735f91042c737f17  flowering_lily_pad_bottom.png      RU:block/flowering_lily_pad_bottom.png      verbatim
+f453c5745b9236cadb24cd7192317efc5db232c7d4e42ef081b8361dad611d95  flowering_lily_pad_flower.png      RU:block/flowering_lily_pad_flower.png      verbatim
+20d4bae7a51fc85165f352665a64cde936ad0ed6f946a6ab75aba1c07edc0215  flowering_lily_pad_flower_closed.png RU:block/flowering_lily_pad_flower_closed.png verbatim
+01a831caf0701837bc42ecc42a9bc512f88507991acb9fb5f111c33b491a86f1  flowering_shrub_bottom.png         RU:block/flowering_shrub_bottom.png         verbatim
+0cb7980c0ecdb1f367e5b3fad81bc1308682052b3121ad0722b74805200fc4d9  flowering_shrub_top.png            RU:block/flowering_shrub_top.png            verbatim
+6f221675faa6fc81ca39054d479cd7b769ece566b2df95fc31e660e0b021c37a  giant_lily_pad.png                 RU:block/giant_lily_pad.png                 verbatim
+4bd5771307781a35f3c516361183e5d623d96041067e3c00166fe17fb6232bf3  giant_lily_pad_bottom.png          RU:block/giant_lily_pad_bottom.png          verbatim
+393e52355ba8fb993be3aefdde51670df068af530b1f55ceeee87e1df7729db3  grass_sprouts.png                  RU:block/grass_sprouts.png                  verbatim
+05bf5cabd39625611deae5cc8a162ab0dc3f12bd9d4cb00768fb06a9c1057cfe  green_bioshroom.png                RU:block/green_bioshroom.png                verbatim
+925cc3d92d25668008b05dbac64c04dcd94aed48d16a85fc81aebf0206ae90c9  hyssop.png                         RU:block/hyssop.png                         verbatim
+13cedba28f2ce0012d96c740c25650b05a3e76894f3db8596e724673f4f61385  joshua_beard.png                   RU:block/joshua_beard.png                   verbatim
+3d23a538c5369c9ab5b96567cff84f8dd9f93c2369ca849810f99aee7daca44b  joshua_shrub_bottom.png            RU:block/joshua_shrub_bottom.png            verbatim
+087926390e4526b17be5af02640c2cd4534b990d43e01307ead96c307d42ff75  joshua_shrub_top.png               RU:block/joshua_shrub_top.png               verbatim
+7cbbe9e87bd97c81a898c0a628a110b0835bf004c1480ee99dc483dc856bcfec  lavender_wisteria_shrub_bottom.png RU:block/lavender_wisteria_shrub_bottom.png verbatim
+2b49f53936e95f333e421dd6683f71fe042097023fbbbaa4b8316d1734bed12f  lavender_wisteria_shrub_top.png    RU:block/lavender_wisteria_shrub_top.png    verbatim
+4fcfec1c137f9d6a3d3c42d26809d930ac1735ebef91ba45629af129fa90ed71  lupine_blue.png                    RU:block/lupine_blue.png                    verbatim
+e3eac27b9cf4ec07b6d66a20710fff3d18d2d973343098ced5bd52bc49d1567b  lupine_pink.png                    RU:block/lupine_pink.png                    verbatim
+72db24188e3af361ff5483df79eb56abed4b1ca9e1ba3a30b41d74c2299a2bb3  lupine_purple.png                  RU:block/lupine_purple.png                  verbatim
+94533c05eb468d1e9ad2c4658066b9dcdfda3db5a7b2684ec51d750a69534486  lupine_red.png                     RU:block/lupine_red.png                     verbatim
+125eb45f80a24013fb7d6d2837affb97c98d5602dbed68f88402ba77cdd0b546  lupine_yellow.png                  RU:block/lupine_yellow.png                  verbatim
+d7eb5c878e4eb106dd13f49d1f97c8ea75ac9e4b0a31bd72137f852fbcbbc98d  mallow.png                         RU:block/mallow.png                         verbatim
+f5bc03a68cfdb48715cff6d71a784a8cc8b6385879953a4033dbce3a0bc0e844  palm_beard.png                     RU:block/palm_beard.png                     verbatim
+8cd2e111c693ea2bd5b790d33a7584ed57aac9c073a56364e51b8ccc4c897eff  palm_leaves_side.png               RU:block/palm_leaves_side.png               verbatim
+c180ae97b3814db81b75f54861151b8558ef7dc38d778a4bde2d3527807014c4  palm_leaves_top.png                RU:block/palm_leaves_top.png                verbatim
+577fed74ec0f4243a7c4ec15f522d41c6661ebd9550e565f4d808db398a54858  palm_log.png                       RU:block/palm_log.png                       verbatim
+a154becc041034550674505258faba813961e08a5ebd60361fb44d8709d95831  palm_log_top.png                   RU:block/palm_log_top.png                   verbatim
+0894be79b66d2b53fa7abc48957d38e06bc5a6dbf9b7fbf2832f12b1cde19d25  pine_shrub_bottom.png              RU:block/pine_shrub_bottom.png              verbatim
+02945697d1f3bfae051014402c2d3a8e7b8fdbfe8c666aa02bb659496b14fdd7  pine_shrub_top.png                 RU:block/pine_shrub_top.png                 verbatim
+c9892ab24ebba3058646b9828cde2100635f15b29a6db76a039f6e97cf80cd3a  pine_log_transition.png            RU:block/pine_log_transition.png            verbatim
+818594581bd785ec73c3243d7e4b61cf596019c599309f0a8ea1cbb5cf4f14d7  redwood_shrub_bottom.png           RU:block/redwood_shrub_bottom.png           verbatim
+ebe168d80165e6d4e4429fab2cda196e6c2b38407746c67dfff3933a249d34c6  redwood_shrub_top.png              RU:block/redwood_shrub_top.png              verbatim
+b5e2bb5448891e939de0664bb2249290fb170d3ccc51ec13baf1a1fb572f8166  ru_grass_block_side_overlay.png    RU:block/ru_grass_block_side_overlay.png    verbatim
+5f0a00fbde0a3fd45d5ea5a2027b8738f87e3b1ab8ed6bbc26008ea8a4995a55  salmon_wisteria_shrub_bottom.png   RU:block/salmon_wisteria_shrub_bottom.png   verbatim
+dd89bdb582efa607b2a86ead085455aad057a1ff005febc6f21a6683272fa07f  salmon_wisteria_shrub_top.png      RU:block/salmon_wisteria_shrub_top.png      verbatim
+bc71beed1a8a3f20c6225a318939851b812d1aea9fc34c4ed91a0741f26a2556  salmonberry_bush_stage3.png        RU:block/salmonberry_bush_stage3.png        verbatim
+a23853d80527f0cb363ba21397331b9c3c143293b7cf6acfce3ff515baecb13e  sandy_grass.png                    RU:block/sandy_grass.png                    verbatim
+a2b498363b373a32dc3caff0e5c112564dd2198d77a29b25887fdbb313b7fea1  sky_wisteria_shrub_bottom.png      RU:block/sky_wisteria_shrub_bottom.png      verbatim
+cff7ffd003717e64ad0de77e79c5419f53f942f766cfba8c709eb9911a4e8388  sky_wisteria_shrub_top.png         RU:block/sky_wisteria_shrub_top.png         verbatim
+9e7571e2537e631881865bd4b45abed4694508c3a7f339f8021e3a3f1d908410  small_desert_shrub.png             RU:block/small_desert_shrub.png             verbatim
+95564301c0bd2fd676e0c599d740ade1a296e60e3dabdb1974c6cdb2946c1abe  spanish_moss.png                   RU:block/spanish_moss.png                   verbatim
+8ce3c60eb7546d70be56800cc7965a4b1be9a4d56feef60da210d2336f29ef2c  spanish_moss_plant.png             RU:block/spanish_moss_plant.png             verbatim
+3948a98bbbec5c73338944acb32ce7b728c0d5472176ef1851f8ef19e358904d  stripped_pine_log.png              RU:block/stripped_pine_log.png              verbatim
+19d45f1f109f90aedb674cb47b4c7d176f1f2508870ba0e4285b0cf30b91bb0f  stripped_pine_log_top.png          RU:block/stripped_pine_log_top.png          verbatim
+e52315d2381f3406334a2864f467e1d32962fde64ce93877bb13ba4108ef992f  willow_leaves.png                  RU:block/willow_leaves.png                  verbatim
+6977a0aa3099d4bb1797f012e4f3a0a2da20bc2d2175cd7d676085eb524446b4  willow_log.png                     RU:block/willow_log.png                     verbatim
+a902a8e11bfbd0e3666f37de6de150b8cca5d8ab963690defe96badd2b339275  willow_log_top.png                 RU:block/willow_log_top.png                 verbatim
+616094756e24bc9fb3db3ec0d1e15c08373c0507f885d7dbaac9a057608f8124  willow_shrub_bottom.png            RU:block/willow_shrub_bottom.png            verbatim
+b69ff304532ac02355783c0c93082bfae0c3be1546d4d65477d852f49c0c9fbc  willow_shrub_top.png               RU:block/willow_shrub_top.png               verbatim
+d98ecb29a723219488cecf29b29495a79bc179e4163125e14fe03e34dcba6aac  wisteria_vines_tip.png             RU:block/wisteria_vines_tip.png             verbatim
+2c21c384bd67aadc42d99fc5c2322fe3a9a12654683c2abad212a6182beab8aa  waratah.png                        RU:block/waratah.png                        verbatim
+
+# 1.7 atlas/model adaptations derived from the pinned RU artwork.
+96473ec51b8adffe2ff30bb04afaf165f01a4ba39058c89f05465a0c356c59e3  joshua_leaves_bottom.png           RU:block/joshua_leaves_bottom.png           lossless left 16x16 crop of 32x16 sprite
+5a70d31c47c7405cd04046cbb8a1d33dbff53dfc7122f2be0684001d0a5b3643  joshua_leaves_bottom_right.png     RU:block/joshua_leaves_bottom.png           lossless right 16x16 crop of 32x16 sprite
+1411b2448715d6a51194feb0738355edb0caa5efa9e5a15303213c076d2fd197  joshua_leaves_top.png              RU:block/joshua_leaves_top.png              lossless left 16x16 crop of 32x16 sprite
+f6b9d8740a484e59d6055cc738515977b6ea723b13442431808e1d60826ffc37  joshua_leaves_top_right.png        RU:block/joshua_leaves_top.png              lossless right 16x16 crop of 32x16 sprite
+ad6ac4d33efa1865c173fd5cb61a15c7bdb3d2ddb38dee8667927eee8ff2863f  cypress_branch.png                 RU:block/cypress_branch.png                 nearest-neighbor 32x16 to 16x16
+50d431459191cb71e2c9c0584166b2871d9c7af09d55c21b96b38c811a7b3d2c  pine_branch.png                    RU:block/pine_branch.png                    nearest-neighbor 32x16 to 16x16
+7036fe4e0fe85c8028d345e5d97f90bb1eb8cf757d0a619d7c776437ea624429  redwood_branch.png                 RU:block/redwood_branch.png                 nearest-neighbor 32x16 to 16x16
+84fb1760d9f0a8719a9e400b3f9547a3bcfd9010fcb51373deb4d4239701c18e  wisteria_branch.png                RU:block/wisteria_branch.png                nearest-neighbor 32x16 to 16x16
+71eb9c4a437c63389f51f909a6c7fbae7c39fbbf7c3a9afa8cd5e1435a33115a  eucalyptus_branch.png              RU:block/eucalyptus_branch.png              lossless 32x16 source in top half of transparent 32x32 atlas sprite; renderer remaps V
+05656fd0dcc43939603660c37b67aa3d15719a36ff355fcfe805ab450ab42683  flowering_leaves.png               RU:block/flowering_leaves_flower.png        overlay on tinted legacy oak leaves
+446802cf4e9e2ded982fb055e9b1255253936c243560a08e5a6c5fda9d175ab6  tassel_bottom.png                  RU:block/tassel_bottom{,_flowers}.png       alpha composite
+f749be157ab7096a6187bace46c5296ff4458e765699294df68aaac24916ff25  tassel_top.png                     RU:block/tassel_top{,_flowers}.png          alpha composite
+
+# Mojang artwork used to represent the captured vanilla hanging-roots state.
+
+# Exact RU icicle states used with EFR's equivalent pointed-dripstone renderer.
+23edce16babee8f2b99d4b55578cf2e262a56d8dd685cb27037e835292ea7095  ru_decor/icicle_down_base.png       RU:block/icicle_down_base.png       verbatim
+ff9b77d7d6a49188cd30bba41c4cf2b3412005c32862a4d525f8ef3c7c778b78  ru_decor/icicle_down_frustum.png    RU:block/icicle_down_frustum.png    verbatim
+ce0fa571092fa594a4dc1c85d34d61ee527b2087a3122a6fdf9c0753c9673cf8  ru_decor/icicle_down_middle.png     RU:block/icicle_down_middle.png     verbatim
+b4060d728f0d7f15e5990ce24191bf137b7388b52384ced45c7dd47ce0e906b1  ru_decor/icicle_down_tip.png        RU:block/icicle_down_tip.png        verbatim
+b970015ada92c7484a6bbe4625159587e92a4bb7738453e3fd657e903db7e519  ru_decor/icicle_down_tip_merge.png  RU:block/icicle_down_tip_merge.png  verbatim
+26d0d5b8248cfdd9a0f254b5488579b8adde1335ee21aa057f35fb74aaaf7abe  ru_decor/icicle_up_base.png         RU:block/icicle_up_base.png         verbatim
+08747318325ed7909641323fc1af09da9b6649e0eee07b5f4f92bde53146a94b  ru_decor/icicle_up_frustum.png      RU:block/icicle_up_frustum.png      verbatim
+f90b93cb00ec690d6a2009adf80f5aa83d0c77d90b48cd7b28a46ff673c29c3e  ru_decor/icicle_up_middle.png       RU:block/icicle_up_middle.png       verbatim
+0f193d51943d1ca2e3d2c96ae0638d1ac4e0195c8d16aa9186640a6b547ef7f7  ru_decor/icicle_up_tip.png          RU:block/icicle_up_tip.png          verbatim
+80264dc134487ee50d6b3bb67fc65f115abc1c0b9322b1cb4911b009afb3f2fb  ru_decor/icicle_up_tip_merge.png    RU:block/icicle_up_tip_merge.png    verbatim
+5834700b3dfe0f729407cfdaa7957b44813f7154773b9a973b77a2fd078d33cb  red_sandy_grass.png  RU:block/red_sandy_grass.png  verbatim
+9280f18a6d8ae8ed5cb95a6b7add37760c40a8833c392d2f781737b19c64803e  ru/larch_leaves_cone.png  RU:block/larch_leaves_cone.png  verbatim
+9f88536aa5b0190a75a1f12e2136a824045f2e75f69401cca2ecdf04041c87f7  ru/golden_larch_leaves_cone.png  RU:block/golden_larch_leaves_cone.png  verbatim
+ac9f62b554ada16aa43732f0c73469823ff70751bb2c9efa3955d4660d72bb78  ru/saguaro_cactus_corner.png  RU:block/saguaro_cactus_corner.png  verbatim
+664b70fe76056c23233312bdb858a28d2e821a2a08f420160ab9fba4f7cc7c72  ru/saguaro_cactus_corner_flip.png  RU:block/saguaro_cactus_corner_flip.png  verbatim
+
+# Source model JSONs (destinations relative to assets/biomic, not textures/blocks).
+44653e4363f919d450377d81ebc20cbc48179c45c66f6b2196bb4f45531fde75  ru_reference/models/clover_1.json  RU:models/block/clover_1.json  verbatim
+c5964f1d355e65588e4af8445981627decb19526e823cc1bb70da92fb11f5d0d  ru_reference/models/clover_2.json  RU:models/block/clover_2.json  verbatim
+50b6f47dd75e990299d88fc9bc613040e4b867b250996b1bbd29e96494d390c9  ru_reference/models/clover_3.json  RU:models/block/clover_3.json  verbatim
+64b9af9b396156b430854c67dc4c6efbf16cecc7089c6de98a6f6f6dfcf838fd  ru_reference/models/clover_4.json  RU:models/block/clover_4.json  verbatim
+
+# Vanilla compatibility item art, not RU-authored content.

@@ -1,0 +1,8 @@
+{
+  "generation/math/interpolation/ChunkInterpolator.java": "1ae19aa31d4b7d6ddbf3ae84e125c61868686788d2d33fec363cfc1d43160d94",
+  "generation/math/interpolation/ElevationInterpolator.java": "0d3e36eaa098397bd341071a1a12f240ef1224fd7418693840bfd9fd41dc0f02",
+  "generation/math/interpolation/Interpolator.java": "03f2ba027276e2ae4e6ddce8e183d009df461e205961dbc3b1f2726e4585f039",
+  "generation/math/interpolation/Interpolator3.java": "49c7a810ac58bf5c211282f5b8afb133bc259c6dee99a3b6994803293e570218",
+  "generation/math/interpolation/LazilyEvaluatedInterpolator.java": "e8d58e9a0e9c2b0fbee1780dae212e49f4107f3ca7f260d5e305fd9b11078b6a",
+  "generation/math/samplers/Sampler3D.java": "e29fd7b9a598d8c49fb206c02e14fb451c38a7c18f5e483d704b0dae3e258f0c"
+}

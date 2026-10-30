@@ -1,0 +1,129 @@
+{
+  "parent": "minecraft:block/block",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#top",
+          "uv": [
+            6.0,
+            0.0,
+            12.0,
+            6.0
+          ]
+        },
+        "east": {
+          "texture": "#side",
+          "uv": [
+            0.0,
+            0.0,
+            6.0,
+            16.0
+          ]
+        },
+        "north": {
+          "texture": "#side",
+          "uv": [
+            0.0,
+            0.0,
+            6.0,
+            16.0
+          ]
+        },
+        "south": {
+          "texture": "#side",
+          "uv": [
+            0.0,
+            0.0,
+            6.0,
+            16.0
+          ]
+        },
+        "up": {
+          "cullface": "up",
+          "texture": "#top",
+          "uv": [
+            6.0,
+            0.0,
+            12.0,
+            6.0
+          ]
+        },
+        "west": {
+          "texture": "#side",
+          "uv": [
+            0.0,
+            0.0,
+            6.0,
+            16.0
+          ]
+        }
+      },
+      "from": [
+        5,
+        0,
+        5
+      ],
+      "to": [
+        11,
+        16,
+        11
+      ]
+    },
+    {
+      "faces": {
+        "east": {
+          "forge_data": {
+            "ambient_occlusion": false
+          },
+          "texture": "#leaf",
+          "uv": [
+            8.0,
+            0.0,
+            0.0,
+            16.0
+          ]
+        },
+        "west": {
+          "forge_data": {
+            "ambient_occlusion": false
+          },
+          "texture": "#leaf",
+          "uv": [
+            0.0,
+            0.0,
+            8.0,
+            16.0
+          ]
+        }
+      },
+      "from": [
+        5,
+        5,
+        4
+      ],
+      "rotation": {
+        "angle": 22.5,
+        "axis": "z",
+        "origin": [
+          5,
+          5,
+          4
+        ]
+      },
+      "to": [
+        5,
+        21,
+        12
+      ]
+    }
+  ],
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "leaf": "gardens_of_the_dead:block/whistlecane_leaves0",
+    "particle": "#side",
+    "side": "gardens_of_the_dead:block/whistlecane0",
+    "top": "gardens_of_the_dead:block/whistlecane0"
+  }
+}

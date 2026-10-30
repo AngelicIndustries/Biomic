@@ -1,0 +1,338 @@
+{
+ "format": 1,
+ "features": {
+  "OAK_BUSH_PATCHES": {
+   "type": "clump",
+   "plants": [
+    "biomic:ru_decor_acacia_shrub:0",
+    "biomic:ru_tinted_plants:2"
+   ],
+   "single": false,
+   "extra": 3,
+   "radius": 2
+  },
+  "JUNGLE_BUSHES": {
+   "type": "clump",
+   "plants": [
+    "biomic:ru_decor_jungle_shrub:0",
+    "biomic:ru_shrubs_b:2"
+   ],
+   "single": false,
+   "extra": 2,
+   "radius": 2
+  },
+  "DENSE_SUBTROPICAL_BUSHES": {
+   "type": "clump",
+   "plants": [
+    "biomic:ru_decor_acacia_shrub:0",
+    "biomic:ru_decor_acacia_shrub:0"
+   ],
+   "single": true,
+   "extra": 0,
+   "radius": 0
+  },
+  "MIXED_BUSHES": {
+   "type": "clump",
+   "plants": [
+    "etfuturum:azalea:0",
+    "etfuturum:azalea:0",
+    "etfuturum:azalea:0",
+    "etfuturum:azalea:1",
+    "biomic:ru_decor_oak_shrub:0",
+    "biomic:ru_decor_oak_shrub:0"
+   ],
+   "single": true,
+   "extra": 0,
+   "radius": 0
+  },
+  "OAK_BUSHES": {
+   "type": "clump",
+   "plants": [
+    "biomic:ru_decor_oak_shrub:0"
+   ],
+   "single": true,
+   "extra": 0,
+   "radius": 0
+  },
+  "SPRUCE_BUSHES": {
+   "type": "clump",
+   "plants": [
+    "biomic:ru_decor_spruce_shrub:0"
+   ],
+   "single": true,
+   "extra": 0,
+   "radius": 0
+  },
+  "SPRUCE_BUSH_PATCHES": {
+   "type": "clump",
+   "plants": [
+    "biomic:ru_decor_spruce_shrub:0"
+   ],
+   "single": true,
+   "extra": 0,
+   "radius": 0
+  },
+  "SUBTROPICAL_BUSHES": {
+   "type": "clump",
+   "plants": [
+    "biomic:ru_decor_acacia_shrub:0"
+   ],
+   "single": true,
+   "extra": 0,
+   "radius": 0
+  },
+  "CROSSING_VINES": {
+   "type": "curtain",
+   "vines": [
+    "minecraft:vine:0"
+   ],
+   "min_length": 4,
+   "max_length": 12,
+   "roots": "biomic:hanging_roots:0"
+  },
+  "CROSSING_STONE_VINES": {
+   "type": "curtain",
+   "vines": [
+    "minecraft:vine:0"
+   ],
+   "min_length": 4,
+   "max_length": 12,
+   "roots": "biomic:hanging_roots:0"
+  },
+  "LARGE_LEAF_VINES": {
+   "type": "wall",
+   "vine": "minecraft:vine:0",
+   "accents": [],
+   "accent_share": 0,
+   "near_water": false
+  },
+  "LARGE_LEAF_VINES_RIVER_CAVE": {
+   "type": "wall",
+   "vine": "minecraft:vine:0",
+   "accents": [],
+   "accent_share": 0,
+   "near_water": false
+  },
+  "LARGE_LEAF_VINES_CANYON": {
+   "type": "wall",
+   "vine": "minecraft:vine:0",
+   "accents": [],
+   "accent_share": 0,
+   "near_water": true
+  },
+  "LARGE_LEAF_VINES_UNCOLORED": {
+   "type": "wall",
+   "vine": "minecraft:vine:0",
+   "accents": [],
+   "accent_share": 0,
+   "near_water": false
+  },
+  "LARGE_CEILING_VINES": {
+   "type": "curtain",
+   "vines": [
+    "minecraft:vine:0"
+   ],
+   "min_length": 3,
+   "max_length": 8,
+   "roots": "biomic:hanging_roots:0"
+  },
+  "LARGE_LEAF_VINES_UNDERGROUND": {
+   "type": "moss_skin"
+  },
+  "CROSSING_VINES_CAVES": {
+   "type": "substitute",
+   "state": "minecraft:moss_block"
+  },
+  "LARGE_CEILING_VINES_CAVES": {
+   "type": "cave_ceiling"
+  },
+  "LARGE_LEAF_VINES_CANYON_FROZEN": {
+   "type": "frozen_wall"
+  },
+  "TREE_VINES": {
+   "type": "curtain",
+   "vines": [
+    "minecraft:vine:0",
+    "minecraft:vine:0",
+    "minecraft:vine:0",
+    "minecraft:vine:0",
+    "minecraft:vine:0"
+   ],
+   "min_length": 3,
+   "max_length": 8
+  }
+ },
+ "profiles": {
+  "JUNGLE_BUSHES": {
+   "OASIS": {
+    "type": "clump",
+    "plants": [
+     "biomic:ru_decor_palm_shrub:0",
+     "biomic:ru_shrubs_b:2"
+    ],
+    "single": false,
+    "extra": 2,
+    "radius": 2
+   },
+   "WATERY_WILDS": {
+    "type": "clump",
+    "plants": [
+     "biomic:ru_decor_palm_shrub:0",
+     "biomic:ru_shrubs_b:2"
+    ],
+    "single": false,
+    "extra": 2,
+    "radius": 2
+   }
+  },
+  "CROSSING_VINES": {
+   "LUSH_LOOPS": {
+    "type": "curtain",
+    "vines": [
+     "minecraft:vine:0"
+    ],
+    "min_length": 4,
+    "max_length": 12,
+    "roots": "biomic:hanging_roots:0",
+    "strand": "biomic:ru_imported_kapok_vines:0"
+   },
+   "OVERGROWN_CLIFFS": {
+    "type": "curtain",
+    "vines": [
+     "minecraft:vine:0"
+    ],
+    "min_length": 4,
+    "max_length": 12,
+    "roots": "biomic:hanging_roots:0",
+    "strand": "biomic:ru_imported_kapok_vines:0"
+   },
+   "SAKURA_STREAMS": {
+    "type": "curtain",
+    "vines": [
+     "minecraft:vine:0"
+    ],
+    "min_length": 4,
+    "max_length": 12,
+    "roots": "biomic:hanging_roots:0"
+   },
+   "FOLIAGE_FORTRESS_MIDDLE": {
+    "type": "curtain",
+    "vines": [
+     "minecraft:vine:0"
+    ],
+    "min_length": 4,
+    "max_length": 12,
+    "roots": "biomic:hanging_roots:0"
+   },
+   "STONEGATE_SEAS": {
+    "type": "curtain",
+    "vines": [
+     "minecraft:vine:0"
+    ],
+    "min_length": 4,
+    "max_length": 12,
+    "roots": "biomic:hanging_roots:0"
+   },
+   "ARID_ARBORETUM": {
+    "type": "nothing"
+   }
+  },
+  "CROSSING_STONE_VINES": {
+   "GLOOMY_GORGE": {
+    "type": "curtain",
+    "vines": [
+     "minecraft:vine:0"
+    ],
+    "min_length": 4,
+    "max_length": 12,
+    "roots": "biomic:hanging_roots:0"
+   }
+  },
+  "LARGE_LEAF_VINES": {
+   "LUSH_LOOPS": {
+    "type": "wall",
+    "vine": "minecraft:vine:0",
+    "accents": [],
+    "accent_share": 0,
+    "near_water": false
+   },
+   "OVERGROWN_CLIFFS": {
+    "type": "wall",
+    "vine": "minecraft:vine:0",
+    "accents": [],
+    "accent_share": 0,
+    "near_water": false
+   },
+   "CANOPY_CASCADES": {
+    "type": "wall",
+    "vine": "minecraft:vine:0",
+    "accents": [],
+    "accent_share": 0,
+    "near_water": false
+   },
+   "SAKURA_STREAMS": {
+    "type": "wall",
+    "vine": "minecraft:vine:0",
+    "accents": [],
+    "accent_share": 0,
+    "near_water": false
+   },
+   "ROCKY_REFUGE": {
+    "type": "wall",
+    "vine": "minecraft:vine:0",
+    "accents": [],
+    "accent_share": 0,
+    "near_water": false
+   },
+   "MURKY_MARSHLANDS": {
+    "type": "wall",
+    "vine": "minecraft:vine:0",
+    "accents": [],
+    "accent_share": 0,
+    "near_water": false
+   },
+   "STONEGATE_SEAS": {
+    "type": "wall",
+    "vine": "minecraft:vine:0",
+    "accents": [],
+    "accent_share": 0,
+    "near_water": false
+   }
+  },
+  "LARGE_CEILING_VINES": {
+   "LUSH_LOOPS": {
+    "type": "curtain",
+    "vines": [
+     "minecraft:vine:0"
+    ],
+    "min_length": 3,
+    "max_length": 8,
+    "roots": "biomic:hanging_roots:0",
+    "strand": "biomic:ru_imported_kapok_vines:0"
+   },
+   "OVERGROWN_CLIFFS": {
+    "type": "curtain",
+    "vines": [
+     "minecraft:vine:0"
+    ],
+    "min_length": 3,
+    "max_length": 8,
+    "roots": "biomic:hanging_roots:0",
+    "strand": "biomic:ru_imported_kapok_vines:0"
+   },
+   "FOSSILIZED_FENLANDS": {
+    "type": "curtain",
+    "vines": [
+     "minecraft:vine:0"
+    ],
+    "min_length": 3,
+    "max_length": 8,
+    "roots": "biomic:hanging_roots:0",
+    "strand": "biomic:spanish_moss:0"
+   },
+   "ARID_ARBORETUM": {
+    "type": "nothing"
+   }
+  }
+ }
+}

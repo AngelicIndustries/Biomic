@@ -1,0 +1,32 @@
+Natural geothermal vent behavior is adapted from Alex's Caves by AlexModGuy and contributors,
+revision 4718f4287c65b810aecb211789b45f54d405a94d, under LGPL-3.0-only.
+Source: https://github.com/AlexModGuy/AlexsCaves
+Relevant source files: GeothermalVentBlock.java, ThinGeothermalVentBlock.java,
+GeothermalVentBlockEntity.java, VentSmokeParticle.java, MusselBlock.java and
+PingPongSpongeBlock.java. Existing source notices remain authoritative.
+The LGPL-3.0 text is bundled at META-INF/licenses/biomic/LICENSE-LGPL-3.0-YUNGS-BETTER-CAVES.
+The seven geothermal bubbling audio files are unchanged copies from the same pinned Alex's Caves source.
+
+The vents' twelve big_smoke frames are Minecraft's own particle textures. They are not shipped: the
+client downloads them from Mojang at first launch, in Minecraft 1.20.4's client jar.
+
+Legacy adaptations: client randomDisplayTick discovers a capped/expiring set of loaded emitters;
+one client-world tick drives each emitter, without a server block entity. Modern POOF uses legacy
+explode particles; modern SQUID_INK uses the pinned custom black vent plume. No acid/radon behavior.
+
+Natural mussel random growth/spreading and ping-pong sponge neighbor topology are adapted from that
+same pinned source. Mussel spread deliberately accepts only native level-zero source water or existing
+wet mussels: modern Blocks.WATER also carries flowing levels, which the native water-containing mussel
+cannot preserve without upgrading flowing water to source water. This safety adaptation is NOT flowing-
+water parity. RNG order, original last-face exclusion, squared-distance cap, count and facing rules are
+retained for available eligible cells. Unloaded cells cause no generation or publication. Ordinary block
+behavior uses the world's actual height, not the separate HA512 world-generation lower64 exclusion.
+
+Corrected dry medium/thin vents and dry mussels use hidden non-water native companions with the same
+source model/state metadata. Existing wet registry identities/metadata are unchanged. Old saved wet-
+carrier IDs with dry metadata remain untouched and retain their legacy Material.water physics; no global
+migration or retrogen is performed. Canonical dry source states now resolve to the new dry companions,
+so an old raw dry-water carrier must not be advertised as an exact new-physics roundtrip. Ordinary item
+placement consumes existing level-zero water for wet carriers, otherwise uses dry carriers with valid
+attachment; flowing water/lava are rejected rather than promoted. Hidden companions pick/drop the
+existing visible family item. Growth preserves dry/wet disposition, and dry support loss restores AIR.

@@ -1,0 +1,21 @@
+{
+  "modListVersion": 2,
+  "modList": [{
+    "modid": "${modId}",
+    "name": "${modName}",
+    "description": "A world generator: Origen's terrain with Regions Unexplored, vanilla and Biomes O' Plenty habitats, cave biomes, sky islands and a new Nether.",
+    "version": "${modVersion}",
+    "mcversion": "${minecraftVersion}",
+    "url": "https://github.com/AngelicIndustries/Biomic",
+    "updateUrl": "",
+    "authorList": ["Angelic Industries"],
+    "credits": "Ports from Origen, Regions Unexplored, Aeropelago, Tartarus, Alex's Caves, Gardens of the Dead, YUNG's Better Caves and Ultimate Caves; see THIRD_PARTY_NOTICES.md in the jar",
+    "logoFile": "",
+    "screenshots": [],
+    "parent": "",
+    "requiredMods": ["angellib", "etfuturum", "endlessids", "chunkapi", "gtnhlib"],
+    "dependencies": ["angellib", "etfuturum", "endlessids", "chunkapi", "gtnhlib"],
+    "dependants": [],
+    "useDependencyInformation": false
+  }]
+}

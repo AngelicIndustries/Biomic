@@ -1,0 +1,12 @@
+{
+  "api/BiomeChunk.java": "00151a078146407978f3896e64539ffc001711d4c75d1691df4f9b00488ea094",
+  "api/Pipeline.java": "63c4e911059d9e53b03f638a2ef0010bc0ef134a5a59db82b1796eaab71d8f8c",
+  "api/SeededVector.java": "d0c705480965d13b87f279f3f07b888b772953d08872799d050a2fc64798bbd1",
+  "api/Source.java": "bea9b15c20eb57536df8d4cd6a1c0cd6bf65e9a8dd6a6c58e180a1b305154eca",
+  "api/Stage.java": "c9739fded0c1036a03a6f416132b15bd1bc13a286cab60b0f3745323cdf64582",
+  "api/Expander.java": "81606e8cbd5f9e45bdf3028c0b58b277beca177d0acb4b82623cbb9282030312",
+  "pipeline/PipelineImpl.java": "c38d2eea54c3bfbb9198e2ea5837368d74062e05e488324d96b5219cd5a4474b",
+  "pipeline/BiomeChunkImpl.java": "f3da3c66f2441a338745d5f873c56551ff7cb50b1b5d765df04a8fd0bcd1d380",
+  "stage/expander/FractalExpander.java": "93c0991cf8a5e5070d8215cd3e4c1f4b0d6a20dfb48d7b7dc1cd4310968e8f89",
+  "stage/mutators/SmoothStage.java": "50e656496c0be7650e776a44484b579846dbf33ce5d9d52b52b4677ebf5bdf86"
+}

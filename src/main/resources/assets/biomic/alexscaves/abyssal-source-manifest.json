@@ -1,0 +1,22 @@
+{
+  "project": "Alex's Caves",
+  "revision": "4718f4287c65b810aecb211789b45f54d405a94d",
+  "license": "LGPL-3.0-only",
+  "scope": "Abyssal Chasm intrinsic terrain, ecology and environment-only whalefall/deep-one/rusty templates; no mobs, spawners, vehicles, loot, tablets or progression",
+  "importer": "tools/import_alex_caves_abyssal_assets.py",
+  "transform": "modern-overworld-to-legacy-v1",
+  "physical_layout": "LEGACY_256 authored coordinates; EXTENDED_512 is headroom, not uncompressed generation",
+  "source_geometry": [
+    "src/main/java/com/github/alexmodguy/alexscaves/server/level/structure/OceanTrenchStructure.java",
+    "src/main/java/com/github/alexmodguy/alexscaves/server/level/structure/piece/OceanTrenchStructurePiece.java",
+    "src/main/java/com/github/alexmodguy/alexscaves/server/level/surface/ACSurfaceRules.java"
+  ],
+  "intrinsic_features": [
+    "abyssal_boulder", "black_vent", "tube_worm", "mussel", "ping_pong_sponge",
+    "dusk_anemone", "twilight_anemone", "midnight_anemone"
+  ],
+  "copied_asset_count": 63,
+  "copied_structure_count": 19,
+  "model_authority_count": 66,
+  "hash_authority": "ASSETS and MODEL_AUTHORITIES in the pinned importer; every copied texture and every translated model/blockstate git blob is verified before writing"
+}

@@ -1,0 +1,87 @@
+{
+  "abyssal_vent_bubble": {
+    "category": "block",
+    "sounds": [
+      "biomic:alexscaves/geothermal_vent/geothermal_vent_bubble_0",
+      "biomic:alexscaves/geothermal_vent/geothermal_vent_bubble_1",
+      "biomic:alexscaves/geothermal_vent/geothermal_vent_bubble_2"
+    ]
+  },
+  "abyssal_vent_bubble_underwater": {
+    "category": "block",
+    "sounds": [
+      "biomic:alexscaves/geothermal_vent/geothermal_vent_bubble_underwater_0",
+      "biomic:alexscaves/geothermal_vent/geothermal_vent_bubble_underwater_1",
+      "biomic:alexscaves/geothermal_vent/geothermal_vent_bubble_underwater_2",
+      "biomic:alexscaves/geothermal_vent/geothermal_vent_bubble_underwater_3"
+    ]
+  },
+  "gardens_whistlecane": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "biomic:gardens/whistle1",
+        "volume": 1.0
+      },
+      {
+        "name": "biomic:gardens/whistle2",
+        "volume": 1.0,
+        "weight": 2
+      }
+    ]
+  },
+  "music.gardens.soulblight_forest": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "minecraft:music/game/nether/nether1",
+        "stream": true
+      },
+      {
+        "name": "minecraft:music/game/nether/nether2",
+        "stream": true
+      },
+      {
+        "name": "minecraft:music/game/nether/nether3",
+        "stream": true
+      },
+      {
+        "name": "minecraft:music/game/nether/nether4",
+        "stream": true
+      },
+      {
+        "name": "biomic:gardens/soulblight_forest",
+        "stream": true,
+        "volume": 0.5,
+        "weight": 7
+      }
+    ]
+  },
+  "music.gardens.whistling_woods": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "minecraft:music/game/nether/nether1",
+        "stream": true
+      },
+      {
+        "name": "minecraft:music/game/nether/nether2",
+        "stream": true
+      },
+      {
+        "name": "minecraft:music/game/nether/nether3",
+        "stream": true
+      },
+      {
+        "name": "minecraft:music/game/nether/nether4",
+        "stream": true
+      },
+      {
+        "name": "biomic:gardens/whistling_woods",
+        "stream": true,
+        "volume": 0.5,
+        "weight": 7
+      }
+    ]
+  }
+}

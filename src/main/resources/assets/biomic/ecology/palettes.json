@@ -1,0 +1,1283 @@
+{
+ "format": 1,
+ "classes": {
+  "native": {
+   "plants": [
+    0,
+    0
+   ],
+   "added": 0,
+   "patch": [
+    0,
+    0
+   ],
+   "fill": [
+    0,
+    0
+   ],
+   "rule": "none"
+  },
+  "forest": {
+   "plants": [
+    10,
+    18
+   ],
+   "added": 8,
+   "patch": [
+    5,
+    12
+   ],
+   "fill": [
+    0.25,
+    0.45
+   ],
+   "rule": "none"
+  },
+  "meadow": {
+   "plants": [
+    18,
+    30
+   ],
+   "added": 12,
+   "patch": [
+    8,
+    20
+   ],
+   "fill": [
+    0.3,
+    0.6
+   ],
+   "rule": "none"
+  },
+  "wetland": {
+   "plants": [
+    14,
+    24
+   ],
+   "added": 10,
+   "patch": [
+    4,
+    10
+   ],
+   "fill": [
+    0.3,
+    0.55
+   ],
+   "rule": "near_water"
+  },
+  "tropical": {
+   "plants": [
+    16,
+    26
+   ],
+   "added": 10,
+   "patch": [
+    4,
+    10
+   ],
+   "fill": [
+    0.25,
+    0.45
+   ],
+   "rule": "none"
+  },
+  "dry": {
+   "plants": [
+    6,
+    12
+   ],
+   "added": 5,
+   "patch": [
+    1,
+    3
+   ],
+   "fill": [
+    0.5,
+    0.8
+   ],
+   "rule": "none"
+  },
+  "desert": {
+   "plants": [
+    2,
+    6
+   ],
+   "added": 3,
+   "patch": [
+    1,
+    1
+   ],
+   "fill": [
+    1.0,
+    1.0
+   ],
+   "rule": "spaced"
+  },
+  "cold": {
+   "plants": [
+    4,
+    10
+   ],
+   "added": 4,
+   "patch": [
+    2,
+    5
+   ],
+   "fill": [
+    0.3,
+    0.5
+   ],
+   "rule": "near_stone"
+  },
+  "coast": {
+   "plants": [
+    4,
+    10
+   ],
+   "added": 4,
+   "patch": [
+    2,
+    6
+   ],
+   "fill": [
+    0.3,
+    0.5
+   ],
+   "rule": "above_high_water"
+  }
+ },
+ "habitats": {
+  "minecraft:forest": {
+   "name": "Forest (vanilla)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": [
+    "minecraft:red_mushroom:0"
+   ]
+  },
+  "regions_unexplored:maple_forest": {
+   "name": "Maple Forest (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [
+    "biomic:ru_imported_maple_leaf_litter:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:autumnal_maple_forest": {
+   "name": "Autumnal Maple Forest (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [
+    "biomic:ru_imported_red_maple_leaf_litter:0",
+    "biomic:ru_imported_orange_maple_leaf_litter:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:windswept_maple_forest": {
+   "name": "Windswept Maple Forest (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [
+    "biomic:ru_imported_maple_leaf_litter:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:silver_birch_forest": {
+   "name": "Silver Birch Forest (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [
+    "etfuturum:moss_carpet:0",
+    "biomic:ru_imported_silver_birch_leaf_litter:0"
+   ],
+   "uncommon": [
+    "minecraft:red_mushroom:0"
+   ],
+   "rare": []
+  },
+  "regions_unexplored:old_growth_forest": {
+   "name": "Old Growth Forest (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:alpha_grove": {
+   "name": "Alpha Grove (RU)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:orchard": {
+   "name": "Orchard (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:FLOWERING_FOREST": {
+   "name": "Flowering Forest (Origen)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:ROCKY_REFUGE": {
+   "name": "Rocky Refuge (Origen)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:SINKHOLE_FOREST": {
+   "name": "Forest Sinkhole + Rim, Fern Fissures (Origen, Biomic)",
+   "class": "forest",
+   "signature": [],
+   "common": [
+    "etfuturum:moss_carpet:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:FOLIAGE_FORTRESS": {
+   "name": "Foliage Fortress inner/middle/outer (Origen)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:SCARLET_SANCTUARY": {
+   "name": "Scarlet Sanctuary + River (Origen)",
+   "class": "forest",
+   "signature": [],
+   "common": [
+    "minecraft:tallgrass:2",
+    "biomic:ru_imported_red_maple_leaf_litter:0"
+   ],
+   "uncommon": [
+    "minecraft:brown_mushroom:0"
+   ],
+   "rare": []
+  },
+  "origen:SAKURA_STREAMS": {
+   "name": "Sakura Streams (Origen)",
+   "class": "forest",
+   "signature": [],
+   "common": [
+    "etfuturum:pink_petals:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:wisteria_grove": {
+   "name": "Wisteria Grove (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:magnolia_woodland": {
+   "name": "Magnolia Woodland (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:SECLUDED_VALLEY": {
+   "name": "Secluded Valley + Outer (Origen)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:WHITE_WALLOWS": {
+   "name": "White Wallows (Origen)",
+   "class": "forest",
+   "signature": [],
+   "common": [
+    "etfuturum:azalea:0",
+    "etfuturum:azalea:1"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:CANOPY_CASCADES": {
+   "name": "Canopy Cascades (Origen)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [
+    "biomic:ru_decor_hibiscus:0"
+   ],
+   "rare": []
+  },
+  "minecraft:taiga": {
+   "name": "Taiga (vanilla)",
+   "class": "forest",
+   "signature": [],
+   "common": [
+    "minecraft:tallgrass:2",
+    "etfuturum:moss_carpet:0"
+   ],
+   "uncommon": [
+    "minecraft:brown_mushroom:0"
+   ],
+   "rare": []
+  },
+  "regions_unexplored:pine_taiga": {
+   "name": "Pine Taiga (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:boreal_taiga": {
+   "name": "Boreal Taiga (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [
+    "etfuturum:moss_carpet:0"
+   ],
+   "rare": [
+    "minecraft:red_mushroom:0"
+   ]
+  },
+  "regions_unexplored:old_growth_boreal_taiga": {
+   "name": "Old Growth Boreal Taiga (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:old_growth_golden_boreal_taiga": {
+   "name": "Old Growth Golden Boreal (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": [
+    "minecraft:red_mushroom:0"
+   ]
+  },
+  "regions_unexplored:blackwood_taiga": {
+   "name": "Blackwood Taiga (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [
+    "biomic:ru_decor_blackwood_shrub:0"
+   ],
+   "uncommon": [
+    "etfuturum:moss_carpet:0"
+   ],
+   "rare": []
+  },
+  "regions_unexplored:redwoods": {
+   "name": "Redwoods (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [
+    "etfuturum:moss_carpet:0",
+    "biomic:ru_shrubs_b:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:sparse_redwoods": {
+   "name": "Sparse Redwoods (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:BLACK_FOREST": {
+   "name": "Black Forest (Origen)",
+   "class": "forest",
+   "signature": [],
+   "common": [
+    "etfuturum:moss_carpet:0",
+    "minecraft:tallgrass:2"
+   ],
+   "uncommon": [],
+   "rare": [
+    "minecraft:red_mushroom:0"
+   ]
+  },
+  "origen:TALL_TIMBERLAND": {
+   "name": "Tall Timberland (Origen)",
+   "class": "forest",
+   "signature": [
+    "etfuturum:sweet_berry_bush:3"
+   ],
+   "common": [
+    "etfuturum:moss_carpet:0",
+    "biomic:ru_shrubs_b:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:willow_forest": {
+   "name": "Willow Forest (RU)",
+   "class": "forest",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:GLOOMY_GORGE": {
+   "name": "Gloomy Gorge + River (Origen)",
+   "class": "forest",
+   "signature": [],
+   "common": [
+    "minecraft:tallgrass:2"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:cold_boreal_taiga": {
+   "name": "Cold Boreal Taiga (RU)",
+   "class": "cold",
+   "signature": [],
+   "common": [],
+   "uncommon": [
+    "etfuturum:moss_carpet:0"
+   ],
+   "rare": [
+    "minecraft:brown_mushroom:0"
+   ]
+  },
+  "regions_unexplored:frozen_pine_taiga": {
+   "name": "Frozen Pine Taiga (RU)",
+   "class": "cold",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:tundra": {
+   "name": "Tundra (RU)",
+   "class": "cold",
+   "signature": [],
+   "common": [
+    "etfuturum:moss_carpet:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:spires": {
+   "name": "Spires / Icy Heights (RU)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:SNOWY_MEADOW": {
+   "name": "Snowy Meadow (Origen)",
+   "class": "cold",
+   "signature": [],
+   "common": [
+    "biomic:ru_decor_frozen_grass:0"
+   ],
+   "uncommon": [
+    "biomic:ru_decor_white_snowbelle:0"
+   ],
+   "rare": []
+  },
+  "origen:SNOWY_MOUNTAINS": {
+   "name": "Snowy Mountains (Origen)",
+   "class": "cold",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:SNOWY_SPIRES": {
+   "name": "Snowy Spires (Origen)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:TUNDRA_TRACKS": {
+   "name": "Tundra Tracks (Origen)",
+   "class": "cold",
+   "signature": [],
+   "common": [
+    "biomic:ru_decor_frozen_grass:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:COLD_STEPPE": {
+   "name": "Cold Steppe (Origen)",
+   "class": "cold",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:FROSTY_FINGERS": {
+   "name": "Frosty Fingers (Origen)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:FROZEN_FUNGI": {
+   "name": "Frozen Fungi (Origen)",
+   "class": "cold",
+   "signature": [],
+   "common": [
+    "minecraft:brown_mushroom:0",
+    "minecraft:red_mushroom:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:MOUNTAIN_MIRRORS": {
+   "name": "Mountain Mirrors + River (Origen)",
+   "class": "cold",
+   "signature": [],
+   "common": [
+    "biomic:ru_decor_frozen_grass:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:ALPINE_ASCENDANCY": {
+   "name": "Alpine Ascendancy + River (Origen)",
+   "class": "cold",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:BARE_BOULDERFIELDS": {
+   "name": "Bare Boulderfields (Origen)",
+   "class": "cold",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:ICY_INCISIONS": {
+   "name": "Icy Incisions / Frozen Sinkhole (Origen)",
+   "class": "cold",
+   "signature": [
+    "biomic:icicle:0"
+   ],
+   "common": [
+    "biomic:ru_decor_frozen_grass:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:VERTICAL_VISTAS": {
+   "name": "Vertical Vistas + River (Origen)",
+   "class": "cold",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:pine_slopes": {
+   "name": "Pine Slopes (RU)",
+   "class": "cold",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:highland_fields": {
+   "name": "Highland Fields (RU)",
+   "class": "cold",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:towering_cliffs": {
+   "name": "Towering Cliffs (RU)",
+   "class": "cold",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "minecraft:plains": {
+   "name": "Plains (vanilla)",
+   "class": "meadow",
+   "signature": [],
+   "common": [
+    "minecraft:tallgrass:1"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:clover_plains": {
+   "name": "Clover Plains (RU)",
+   "class": "meadow",
+   "signature": [
+    "biomic:clover:0",
+    "biomic:ru_flowers:1"
+   ],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:grassland": {
+   "name": "Grassland (RU)",
+   "class": "meadow",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:prairie": {
+   "name": "Prairie (RU)",
+   "class": "meadow",
+   "signature": [
+    "biomic:ru_decor_purple_coneflower:0",
+    "biomic:ru_decor_orange_coneflower:0"
+   ],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:flower_fields": {
+   "name": "Flower Fields (RU)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:poppy_fields": {
+   "name": "Poppy Fields (RU)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:shrubland": {
+   "name": "Shrubland (RU)",
+   "class": "meadow",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:PILLOW_PLAINS": {
+   "name": "Pillow Plains inner/middle/outer (Origen)",
+   "class": "meadow",
+   "signature": [],
+   "common": [
+    "etfuturum:cornflower:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:VERDANT_VALLEYS": {
+   "name": "Verdant Valleys (Origen)",
+   "class": "meadow",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "minecraft:savanna": {
+   "name": "Savanna (vanilla)",
+   "class": "dry",
+   "signature": [],
+   "common": [
+    "minecraft:tallgrass:1"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:baobab_savanna": {
+   "name": "Baobab Savanna (RU)",
+   "class": "dry",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:dry_bushland": {
+   "name": "Dry Bushland (RU)",
+   "class": "dry",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:outback": {
+   "name": "Outback (RU)",
+   "class": "desert",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:ashen_woodland": {
+   "name": "Ashen Woodland (RU)",
+   "class": "dry",
+   "signature": [
+    "biomic:ru_flowers:7"
+   ],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:ARID_ARBORETUM": {
+   "name": "Arid Arboretum (Origen)",
+   "class": "dry",
+   "signature": [],
+   "common": [
+    "minecraft:deadbush:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:BADLANDS_BALCONIES": {
+   "name": "Badlands Balconies + River (Origen)",
+   "class": "desert",
+   "signature": [],
+   "common": [
+    "minecraft:deadbush:0",
+    "biomic:ru_tinted_plants:3"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:MESA_MONUMENTS": {
+   "name": "Mesa Monuments (Origen)",
+   "class": "desert",
+   "signature": [],
+   "common": [
+    "minecraft:deadbush:0",
+    "biomic:ru_tinted_plants:3"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:CARVING_CREAKS": {
+   "name": "Carving Creaks (Origen)",
+   "class": "desert",
+   "signature": [],
+   "common": [
+    "minecraft:deadbush:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:DESERT": {
+   "name": "Desert (Origen)",
+   "class": "desert",
+   "signature": [],
+   "common": [
+    "minecraft:deadbush:0",
+    "minecraft:cactus:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:DESERT_SPIKES_GOLD": {
+   "name": "Golden Desert Spikes (Origen)",
+   "class": "desert",
+   "signature": [],
+   "common": [
+    "minecraft:deadbush:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:SANDY_SPLITS": {
+   "name": "Sandy Splits (Origen)",
+   "class": "desert",
+   "signature": [],
+   "common": [
+    "minecraft:cactus:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "minecraft:desert": {
+   "name": "Desert (vanilla)",
+   "class": "desert",
+   "signature": [],
+   "common": [
+    "minecraft:deadbush:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:joshua_desert": {
+   "name": "Joshua Desert (RU)",
+   "class": "desert",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:saguaro_desert": {
+   "name": "Saguaro Desert (RU)",
+   "class": "desert",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:OASIS": {
+   "name": "Oasis (Origen)",
+   "class": "dry",
+   "signature": [],
+   "common": [
+    "minecraft:reeds:0"
+   ],
+   "uncommon": [
+    "biomic:ru_decor_hibiscus:0"
+   ],
+   "rare": []
+  },
+  "origen:SALT_FLATS": {
+   "name": "Salt Flats (Origen)",
+   "class": "desert",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:WATERY_WILDS": {
+   "name": "Watery Wilds (Origen)",
+   "class": "dry",
+   "signature": [],
+   "common": [
+    "minecraft:tallgrass:1"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:rainforest": {
+   "name": "Rainforest (RU)",
+   "class": "tropical",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:sparse_rainforest": {
+   "name": "Sparse Rainforest (RU)",
+   "class": "tropical",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:tropics": {
+   "name": "Tropics (RU)",
+   "class": "tropical",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:eucalyptus_forest": {
+   "name": "Eucalyptus Forest (RU)",
+   "class": "tropical",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:bamboo_forest": {
+   "name": "Bamboo Forest (RU)",
+   "class": "tropical",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:LUSH_LOOPS": {
+   "name": "Lush Loops + River (Origen)",
+   "class": "tropical",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:OVERGROWN_CLIFFS": {
+   "name": "Overgrown Cliffs (Origen)",
+   "class": "tropical",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:SINKHOLE_JUNGLE": {
+   "name": "Jungle Sinkhole (Origen)",
+   "class": "tropical",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:bayou": {
+   "name": "Bayou (RU)",
+   "class": "wetland",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:old_growth_bayou": {
+   "name": "Old Growth Bayou (RU)",
+   "class": "wetland",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:fen": {
+   "name": "Fen (RU)",
+   "class": "wetland",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:marsh": {
+   "name": "Marsh (RU)",
+   "class": "wetland",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:fungal_fen": {
+   "name": "Fungal Fen (RU)",
+   "class": "wetland",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:MURKY_MARSHLANDS": {
+   "name": "Murky Marshlands (Origen)",
+   "class": "wetland",
+   "signature": [],
+   "common": [],
+   "uncommon": [
+    "biomic:ru_decor_duckweed:0"
+   ],
+   "rare": []
+  },
+  "origen:FOSSILIZED_FENLANDS": {
+   "name": "Fossilized Fenlands (Origen)",
+   "class": "wetland",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:MANGROVE_SWAMP": {
+   "name": "Mangrove Swamp (Origen)",
+   "class": "wetland",
+   "signature": [],
+   "common": [
+    "etfuturum:mangrove_propagule:0"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "saltymod:salt_marsh": {
+   "name": "Salt Marsh (Salty)",
+   "class": "wetland",
+   "signature": [
+    "saltymod:marsh_reeds:0",
+    "saltymod:salt_flower_s:0",
+    "saltymod:salt_flower_d:0",
+    "saltymod:salt_flower_d:2",
+    "saltymod:salt_flower_d:4"
+   ],
+   "common": [],
+   "uncommon": [
+    "saltymod:saltworts:5"
+   ],
+   "rare": []
+  },
+  "origen:BEACH": {
+   "name": "Beach (Origen)",
+   "class": "coast",
+   "signature": [],
+   "common": [
+    "biomic:ru_tinted_plants:1"
+   ],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:PALM_BEACH": {
+   "name": "Palm Beach (Origen)",
+   "class": "coast",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": [
+    "biomic:ru_decor_hibiscus:0"
+   ]
+  },
+  "origen:SHALE_BEACH": {
+   "name": "Shale Beach (Origen)",
+   "class": "coast",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:grassy_beach": {
+   "name": "Grassy Beach (RU)",
+   "class": "coast",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:gravel_beach": {
+   "name": "Gravel Beach (RU)",
+   "class": "coast",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:TEMPERATE_SEA_ARCHES": {
+   "name": "Temperate Sea Arches (Origen)",
+   "class": "coast",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:MARINE_MONOLITHS": {
+   "name": "Marine Monoliths (Origen)",
+   "class": "coast",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:STONEGATE_SEAS": {
+   "name": "Stonegate Seas (Origen)",
+   "class": "coast",
+   "signature": [
+    "biomic:big_dripleaf:0"
+   ],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "regions_unexplored:chalk_cliffs": {
+   "name": "Chalk Cliffs (RU)",
+   "class": "coast",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "biomesoplenty:garden": {
+   "name": "Garden (BOP)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "biomesoplenty:lavender_fields": {
+   "name": "Lavender Fields (BOP)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "biomesoplenty:mystic_grove": {
+   "name": "Mystic Grove (BOP)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "biomesoplenty:ominous_woods": {
+   "name": "Ominous Woods (BOP)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "biomesoplenty:sacred_springs": {
+   "name": "Sacred Springs (BOP)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "biomesoplenty:wasteland": {
+   "name": "Wasteland (BOP)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "biomesoplenty:dead_swamp": {
+   "name": "Dead Swamp / Sludgepit / Silkglades (BOP)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "biomesoplenty:volcano": {
+   "name": "Volcano (BOP)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  },
+  "origen:BAMBOO_BASIN": {
+   "name": "Bamboo Basin (Origen)",
+   "class": "native",
+   "signature": [],
+   "common": [],
+   "uncommon": [],
+   "rare": []
+  }
+ },
+ "origen": {
+  "FLOWERING_FOREST": "origen:FLOWERING_FOREST",
+  "ROCKY_REFUGE": "origen:ROCKY_REFUGE",
+  "SINKHOLE_FOREST": "origen:SINKHOLE_FOREST",
+  "SINKHOLE_OUTER": "origen:SINKHOLE_FOREST",
+  "FERN_FISSURES": "origen:SINKHOLE_FOREST",
+  "FOLIAGE_FORTRESS_INNER": "origen:FOLIAGE_FORTRESS",
+  "FOLIAGE_FORTRESS_MIDDLE": "origen:FOLIAGE_FORTRESS",
+  "FOLIAGE_FORTRESS_OUTER": "origen:FOLIAGE_FORTRESS",
+  "SCARLET_SANCTUARY": "origen:SCARLET_SANCTUARY",
+  "SCARLET_SANCTUARY_RIVER": "origen:SCARLET_SANCTUARY",
+  "SAKURA_STREAMS": "origen:SAKURA_STREAMS",
+  "SECLUDED_VALLEY": "origen:SECLUDED_VALLEY",
+  "SECLUDED_VALLEY_OUTER": "origen:SECLUDED_VALLEY",
+  "WHITE_WALLOWS": "origen:WHITE_WALLOWS",
+  "CANOPY_CASCADES": "origen:CANOPY_CASCADES",
+  "BLACK_FOREST": "origen:BLACK_FOREST",
+  "TALL_TIMBERLAND": "origen:TALL_TIMBERLAND",
+  "GLOOMY_GORGE": "origen:GLOOMY_GORGE",
+  "GLOOMY_GORGE_RIVER": "origen:GLOOMY_GORGE",
+  "SNOWY_MEADOW": "origen:SNOWY_MEADOW",
+  "SNOWY_MOUNTAINS": "origen:SNOWY_MOUNTAINS",
+  "SNOWY_SPIRES": "origen:SNOWY_SPIRES",
+  "TUNDRA_TRACKS": "origen:TUNDRA_TRACKS",
+  "COLD_STEPPE": "origen:COLD_STEPPE",
+  "FROSTY_FINGERS": "origen:FROSTY_FINGERS",
+  "FROZEN_FUNGI": "origen:FROZEN_FUNGI",
+  "MOUNTAIN_MIRRORS": "origen:MOUNTAIN_MIRRORS",
+  "MOUNTAIN_MIRRORS_RIVER": "origen:MOUNTAIN_MIRRORS",
+  "ALPINE_ASCENDANCY": "origen:ALPINE_ASCENDANCY",
+  "ALPINE_ASCENDANCY_RIVER": "origen:ALPINE_ASCENDANCY",
+  "BARE_BOULDERFIELDS": "origen:BARE_BOULDERFIELDS",
+  "ICY_INCISIONS": "origen:ICY_INCISIONS",
+  "SINKHOLE_FROZEN": "origen:ICY_INCISIONS",
+  "VERTICAL_VISTAS": "origen:VERTICAL_VISTAS",
+  "VISTAS_RIVER": "origen:VERTICAL_VISTAS",
+  "PILLOW_PLAINS_INNER": "origen:PILLOW_PLAINS",
+  "PILLOW_PLAINS_MIDDLE": "origen:PILLOW_PLAINS",
+  "PILLOW_PLAINS_OUTER": "origen:PILLOW_PLAINS",
+  "PLATEAO_RIVER_INNER": "origen:PILLOW_PLAINS",
+  "PLATEAO_RIVER_MIDDLE": "origen:PILLOW_PLAINS",
+  "VERDANT_VALLEYS": "origen:VERDANT_VALLEYS",
+  "ARID_ARBORETUM": "origen:ARID_ARBORETUM",
+  "BADLANDS_BALCONIES": "origen:BADLANDS_BALCONIES",
+  "BAD_BALCOONIES_RIVER": "origen:BADLANDS_BALCONIES",
+  "MESA_MONUMENTS": "origen:MESA_MONUMENTS",
+  "CARVING_CREAKS": "origen:CARVING_CREAKS",
+  "DESERT": "origen:DESERT",
+  "DESERT_SPIKES_GOLD": "origen:DESERT_SPIKES_GOLD",
+  "SANDY_SPLITS": "origen:SANDY_SPLITS",
+  "OASIS": "origen:OASIS",
+  "SALT_FLATS": "origen:SALT_FLATS",
+  "WATERY_WILDS": "origen:WATERY_WILDS",
+  "LUSH_LOOPS": "origen:LUSH_LOOPS",
+  "LOOPS_RIVER": "origen:LUSH_LOOPS",
+  "OVERGROWN_CLIFFS": "origen:OVERGROWN_CLIFFS",
+  "SINKHOLE_JUNGLE": "origen:SINKHOLE_JUNGLE",
+  "MURKY_MARSHLANDS": "origen:MURKY_MARSHLANDS",
+  "FOSSILIZED_FENLANDS": "origen:FOSSILIZED_FENLANDS",
+  "MANGROVE_SWAMP": "origen:MANGROVE_SWAMP",
+  "BEACH": "origen:BEACH",
+  "PALM_BEACH": "origen:PALM_BEACH",
+  "SHALE_BEACH": "origen:SHALE_BEACH",
+  "TEMPERATE_SEA_ARCHES": "origen:TEMPERATE_SEA_ARCHES",
+  "MARINE_MONOLITHS": "origen:MARINE_MONOLITHS",
+  "STONEGATE_SEAS": "origen:STONEGATE_SEAS",
+  "BAMBOO_BASIN": "origen:BAMBOO_BASIN"
+ },
+ "patches": {
+  "origen:SCARLET_SANCTUARY": [
+   "minecraft:red_flower:0"
+  ],
+  "origen:SAKURA_STREAMS": [
+   "etfuturum:pink_petals:0"
+  ],
+  "origen:CANOPY_CASCADES": [
+   "biomic:ru_decor_hibiscus:0"
+  ],
+  "origen:TALL_TIMBERLAND": [
+   "etfuturum:lily_of_the_valley:0",
+   "biomic:ru_decor_white_trillium:0",
+   "minecraft:double_plant:5"
+  ],
+  "origen:GLOOMY_GORGE": [
+   "etfuturum:lily_of_the_valley:0"
+  ],
+  "origen:ALPINE_ASCENDANCY": [
+   "minecraft:red_flower:8"
+  ],
+  "origen:PILLOW_PLAINS": [
+   "etfuturum:cornflower:0",
+   "minecraft:red_flower:8"
+  ],
+  "origen:FOSSILIZED_FENLANDS": [
+   "etfuturum:lily_of_the_valley:0"
+  ],
+  "origen:MARINE_MONOLITHS": [
+   "minecraft:red_flower:8"
+  ]
+ }
+}

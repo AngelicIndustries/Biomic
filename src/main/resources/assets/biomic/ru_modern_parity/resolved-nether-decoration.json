@@ -1,0 +1,1354 @@
+{
+ "format": "biomic-modern-decoration-nether-supplement-v1",
+ "revision": "f5dfe4eea916cb7ccb4990faebc952459dad5f8b",
+ "minecraft": "1.21.1",
+ "nether_biomes": {
+  "regions_unexplored:blackstone_basin": {
+   "carvers": {
+    "air": "minecraft:nether_cave"
+   },
+   "downfall": 0.0,
+   "effects": {
+    "additions_sound": {
+     "sound": "minecraft:ambient.crimson_forest.additions",
+     "tick_chance": 0.0111
+    },
+    "ambient_sound": "minecraft:ambient.crimson_forest.loop",
+    "fog_color": 395547,
+    "foliage_color": 5463027,
+    "grass_color": 5463027,
+    "mood_sound": {
+     "block_search_extent": 8,
+     "offset": 2.0,
+     "sound": "minecraft:ambient.warped_forest.mood",
+     "tick_delay": 6000
+    },
+    "music": {
+     "max_delay": 24000,
+     "min_delay": 12000,
+     "replace_current_music": false,
+     "sound": "minecraft:music.nether.crimson_forest"
+    },
+    "particle": {
+     "options": {
+      "type": "minecraft:warped_spore"
+     },
+     "probability": 0.02
+    },
+    "sky_color": 395547,
+    "water_color": 5463027,
+    "water_fog_color": 395547
+   },
+   "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+     "regions_unexplored:nether/obsidian_spire",
+     "regions_unexplored:nether/tree/blackstone_basin",
+     "regions_unexplored:nether/patch/cobalt_roots",
+     "regions_unexplored:nether/patch/cobalt_earlight",
+     "regions_unexplored:nether/tall_cobalt_earlight",
+     "regions_unexplored:nether/patch/blackstone_cluster",
+     "regions_unexplored:nether/patch/hanging_earlight"
+    ]
+   ],
+   "has_precipitation": false,
+   "spawn_costs": {},
+   "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+     {
+      "type": "minecraft:strider",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 60
+     }
+    ],
+    "misc": [],
+    "monster": [
+     {
+      "type": "minecraft:zombified_piglin",
+      "maxCount": 4,
+      "minCount": 4,
+      "weight": 25
+     },
+     {
+      "type": "minecraft:wither_skeleton",
+      "maxCount": 4,
+      "minCount": 1,
+      "weight": 20
+     },
+     {
+      "type": "minecraft:enderman",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 1
+     }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+   },
+   "temperature": 2.0
+  },
+  "regions_unexplored:glistering_meadow": {
+   "carvers": {
+    "air": "minecraft:nether_cave"
+   },
+   "downfall": 0.0,
+   "effects": {
+    "additions_sound": {
+     "sound": "minecraft:ambient.crimson_forest.additions",
+     "tick_chance": 0.0111
+    },
+    "ambient_sound": "minecraft:ambient.crimson_forest.loop",
+    "fog_color": 4328552,
+    "foliage_color": 12058781,
+    "grass_color": 12058781,
+    "mood_sound": {
+     "block_search_extent": 8,
+     "offset": 2.0,
+     "sound": "minecraft:ambient.warped_forest.mood",
+     "tick_delay": 6000
+    },
+    "music": {
+     "max_delay": 24000,
+     "min_delay": 12000,
+     "replace_current_music": false,
+     "sound": "minecraft:music.nether.warped_forest"
+    },
+    "particle": {
+     "options": {
+      "type": "minecraft:warped_spore"
+     },
+     "probability": 0.02
+    },
+    "sky_color": 4328552,
+    "water_color": 12058781,
+    "water_fog_color": 12058781
+   },
+   "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+     "regions_unexplored:nether/glistering_meadow_rock",
+     "regions_unexplored:nether/patch/glister_bulb",
+     "regions_unexplored:nether/patch/glistering_sprout",
+     "regions_unexplored:nether/patch/glistering_fern",
+     "regions_unexplored:nether/patch/glistering_bloom",
+     "regions_unexplored:nether/patch/glister_spire",
+     "regions_unexplored:nether/patch/glistering_ivy"
+    ]
+   ],
+   "has_precipitation": false,
+   "spawn_costs": {},
+   "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+     {
+      "type": "minecraft:strider",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 40
+     }
+    ],
+    "misc": [],
+    "monster": [
+     {
+      "type": "minecraft:ghast",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 5
+     },
+     {
+      "type": "minecraft:enderman",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 1
+     },
+     {
+      "type": "minecraft:hoglin",
+      "maxCount": 3,
+      "minCount": 1,
+      "weight": 5
+     }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+   },
+   "temperature": 2.0
+  },
+  "regions_unexplored:infernal_holt": {
+   "carvers": {
+    "air": "minecraft:nether_cave"
+   },
+   "downfall": 0.0,
+   "effects": {
+    "additions_sound": {
+     "sound": "minecraft:ambient.soul_sand_valley.additions",
+     "tick_chance": 0.0111
+    },
+    "ambient_sound": "minecraft:ambient.basalt_deltas.loop",
+    "fog_color": 3479565,
+    "foliage_color": 7295817,
+    "grass_color": 7295817,
+    "mood_sound": {
+     "block_search_extent": 8,
+     "offset": 2.0,
+     "sound": "minecraft:ambient.warped_forest.mood",
+     "tick_delay": 6000
+    },
+    "music": {
+     "max_delay": 24000,
+     "min_delay": 12000,
+     "replace_current_music": false,
+     "sound": "minecraft:music.nether.basalt_deltas"
+    },
+    "particle": {
+     "options": {
+      "type": "minecraft:white_ash"
+     },
+     "probability": 0.03
+    },
+    "sky_color": 3479565,
+    "water_color": 3479565,
+    "water_fog_color": 3479565
+   },
+   "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+     "regions_unexplored:nether/tree/infernal_holt",
+     "regions_unexplored:nether/patch/brimsprout",
+     "regions_unexplored:nether/dorcel",
+     "regions_unexplored:nether/patch/fire_unrestricted",
+     "regions_unexplored:nether/brimwood_shrub"
+    ]
+   ],
+   "has_precipitation": false,
+   "spawn_costs": {},
+   "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+     {
+      "type": "minecraft:strider",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 60
+     }
+    ],
+    "misc": [],
+    "monster": [
+     {
+      "type": "minecraft:zombified_piglin",
+      "maxCount": 4,
+      "minCount": 2,
+      "weight": 1
+     },
+     {
+      "type": "minecraft:hoglin",
+      "maxCount": 4,
+      "minCount": 3,
+      "weight": 9
+     },
+     {
+      "type": "minecraft:piglin",
+      "maxCount": 4,
+      "minCount": 3,
+      "weight": 5
+     }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+   },
+   "temperature": 2.0
+  },
+  "regions_unexplored:mycotoxic_undergrowth": {
+   "carvers": {
+    "air": "minecraft:nether_cave"
+   },
+   "downfall": 0.0,
+   "effects": {
+    "additions_sound": {
+     "sound": "minecraft:ambient.warped_forest.additions",
+     "tick_chance": 0.0111
+    },
+    "ambient_sound": "minecraft:ambient.warped_forest.loop",
+    "fog_color": 10717988,
+    "foliage_color": 10717988,
+    "grass_color": 10717988,
+    "mood_sound": {
+     "block_search_extent": 8,
+     "offset": 2.0,
+     "sound": "minecraft:ambient.warped_forest.mood",
+     "tick_delay": 6000
+    },
+    "music": {
+     "max_delay": 24000,
+     "min_delay": 12000,
+     "replace_current_music": false,
+     "sound": "minecraft:music.nether.warped_forest"
+    },
+    "particle": {
+     "options": {
+      "type": "regions_unexplored:mycotoxic_spore"
+     },
+     "probability": 0.01
+    },
+    "sky_color": 10717988,
+    "water_color": 10717988,
+    "water_fog_color": 10717988
+   },
+   "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+     "regions_unexplored:nether/tree/mycotoxic_undergrowth",
+     "regions_unexplored:nether/patch/mycotoxic_mushrooms",
+     "regions_unexplored:nether/patch/mycotoxic_grass",
+     "regions_unexplored:nether/patch/mycotoxic_daisy",
+     "regions_unexplored:nether/patch/yellow_bioshrooms"
+    ]
+   ],
+   "has_precipitation": false,
+   "spawn_costs": {},
+   "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+     {
+      "type": "minecraft:strider",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 60
+     }
+    ],
+    "misc": [],
+    "monster": [
+     {
+      "type": "minecraft:zombified_piglin",
+      "maxCount": 4,
+      "minCount": 4,
+      "weight": 100
+     },
+     {
+      "type": "minecraft:piglin",
+      "maxCount": 4,
+      "minCount": 3,
+      "weight": 5
+     }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+   },
+   "temperature": 2.0
+  }
+ },
+ "placed_features": {
+  "regions_unexplored:nether/brimwood_shrub": {
+   "feature": "regions_unexplored:nether/brimwood_shrub",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 1
+    },
+    {
+     "type": "minecraft:block_predicate_filter",
+     "predicate": {
+      "type": "minecraft:would_survive",
+      "state": {
+       "Name": "regions_unexplored:brimsprout"
+      }
+     }
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/dorcel": {
+   "feature": "regions_unexplored:nether/dorcel",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 4
+    },
+    {
+     "type": "minecraft:block_predicate_filter",
+     "predicate": {
+      "type": "minecraft:would_survive",
+      "state": {
+       "Name": "regions_unexplored:brimsprout"
+      }
+     }
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/glistering_meadow_rock": {
+   "feature": "regions_unexplored:nether/glistering_meadow_rock",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 1
+    },
+    {
+     "type": "minecraft:rarity_filter",
+     "chance": 4
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/obsidian_spire": {
+   "feature": "regions_unexplored:nether/obsidian_spire",
+   "placement": [
+    {
+     "type": "minecraft:count",
+     "count": 155
+    },
+    {
+     "type": "minecraft:in_square"
+    },
+    {
+     "type": "minecraft:height_range",
+     "height": {
+      "type": "minecraft:uniform",
+      "max_inclusive": {
+       "below_top": 0
+      },
+      "min_inclusive": {
+       "above_bottom": 0
+      }
+     }
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/blackstone_cluster": {
+   "feature": "regions_unexplored:nether/patch/blackstone_cluster",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 4
+    },
+    {
+     "type": "minecraft:block_predicate_filter",
+     "predicate": {
+      "type": "minecraft:matching_blocks",
+      "blocks": "minecraft:blackstone",
+      "offset": [
+       0,
+       -1,
+       0
+      ]
+     }
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/brimsprout": {
+   "feature": "regions_unexplored:nether/patch/brimsprout",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 30
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/cobalt_earlight": {
+   "feature": "regions_unexplored:nether/patch/cobalt_earlight",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 3
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/cobalt_roots": {
+   "feature": "regions_unexplored:nether/patch/cobalt_roots",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 8
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/fire_unrestricted": {
+   "feature": "regions_unexplored:nether/patch/fire_unrestricted",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 4
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/glister_bulb": {
+   "feature": "regions_unexplored:nether/patch/glister_bulb",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 2
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/glister_spire": {
+   "feature": "regions_unexplored:nether/patch/glister_spire",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 3
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/glistering_bloom": {
+   "feature": "regions_unexplored:nether/patch/glistering_bloom",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 7
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/glistering_fern": {
+   "feature": "regions_unexplored:nether/patch/glistering_fern",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 15
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/glistering_ivy": {
+   "feature": "regions_unexplored:nether/patch/glistering_ivy",
+   "placement": [
+    {
+     "type": "minecraft:count",
+     "count": 155
+    },
+    {
+     "type": "minecraft:in_square"
+    },
+    {
+     "type": "minecraft:height_range",
+     "height": {
+      "type": "minecraft:uniform",
+      "max_inclusive": {
+       "below_top": 0
+      },
+      "min_inclusive": {
+       "above_bottom": 0
+      }
+     }
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/glistering_sprout": {
+   "feature": "regions_unexplored:nether/patch/glistering_sprout",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 10
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/hanging_earlight": {
+   "feature": "regions_unexplored:nether/patch/hanging_earlight",
+   "placement": [
+    {
+     "type": "minecraft:count",
+     "count": 225
+    },
+    {
+     "type": "minecraft:in_square"
+    },
+    {
+     "type": "minecraft:height_range",
+     "height": {
+      "type": "minecraft:uniform",
+      "max_inclusive": {
+       "below_top": 0
+      },
+      "min_inclusive": {
+       "above_bottom": 0
+      }
+     }
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/mycotoxic_daisy": {
+   "feature": "regions_unexplored:nether/patch/mycotoxic_daisy",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 3
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/mycotoxic_grass": {
+   "feature": "regions_unexplored:nether/patch/mycotoxic_grass",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 30
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/mycotoxic_mushrooms": {
+   "feature": "regions_unexplored:nether/patch/mycotoxic_mushrooms",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 2
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/patch/yellow_bioshrooms": {
+   "feature": "regions_unexplored:nether/patch/yellow_bioshrooms",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 3
+    },
+    {
+     "type": "minecraft:block_predicate_filter",
+     "predicate": {
+      "type": "minecraft:would_survive",
+      "state": {
+       "Name": "regions_unexplored:mycotoxic_grass"
+      }
+     }
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/tall_cobalt_earlight": {
+   "feature": "regions_unexplored:nether/tall_cobalt_earlight",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 3
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/tree/blackstone_basin": {
+   "feature": "regions_unexplored:nether/tree/blackstone_basin",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 1
+    },
+    {
+     "type": "minecraft:block_predicate_filter",
+     "predicate": {
+      "type": "minecraft:would_survive",
+      "state": {
+       "Name": "regions_unexplored:cobalt_earlight"
+      }
+     }
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/tree/infernal_holt": {
+   "feature": "regions_unexplored:nether/tree/infernal_holt",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 4
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  },
+  "regions_unexplored:nether/tree/mycotoxic_undergrowth": {
+   "feature": "regions_unexplored:nether/tree/mycotoxic_undergrowth",
+   "placement": [
+    {
+     "type": "minecraft:count_on_every_layer",
+     "count": 4
+    },
+    {
+     "type": "minecraft:block_predicate_filter",
+     "predicate": {
+      "type": "minecraft:would_survive",
+      "state": {
+       "Name": "regions_unexplored:mycotoxic_grass"
+      }
+     }
+    },
+    {
+     "type": "minecraft:biome"
+    }
+   ]
+  }
+ },
+ "configured_features": {
+  "regions_unexplored:nether/brimwood_shrub": {
+   "type": "minecraft:simple_block",
+   "config": {
+    "to_place": {
+     "type": "minecraft:simple_state_provider",
+     "state": {
+      "Name": "regions_unexplored:brimwood_shrub",
+      "Properties": {
+       "half": "lower"
+      }
+     }
+    }
+   }
+  },
+  "regions_unexplored:nether/dorcel": {
+   "type": "minecraft:simple_block",
+   "config": {
+    "to_place": {
+     "type": "minecraft:simple_state_provider",
+     "state": {
+      "Name": "regions_unexplored:dorcel"
+     }
+    }
+   }
+  },
+  "regions_unexplored:nether/glistering_meadow_rock": {
+   "type": "regions_unexplored:nether_rock",
+   "config": {}
+  },
+  "regions_unexplored:nether/obsidian_spire": {
+   "type": "regions_unexplored:obsidian_spire",
+   "config": {}
+  },
+  "regions_unexplored:nether/patch/blackstone_cluster": {
+   "type": "minecraft:random_patch",
+   "config": {
+    "feature": {
+     "feature": {
+      "type": "minecraft:simple_block",
+      "config": {
+       "to_place": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+         "Name": "regions_unexplored:blackstone_cluster"
+        }
+       }
+      }
+     },
+     "placement": [
+      {
+       "type": "minecraft:block_predicate_filter",
+       "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+       }
+      }
+     ]
+    },
+    "tries": 16,
+    "xz_spread": 7,
+    "y_spread": 3
+   }
+  },
+  "regions_unexplored:nether/patch/brimsprout": {
+   "type": "minecraft:random_patch",
+   "config": {
+    "feature": {
+     "feature": {
+      "type": "minecraft:simple_block",
+      "config": {
+       "to_place": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+         "Name": "regions_unexplored:brimsprout"
+        }
+       }
+      }
+     },
+     "placement": [
+      {
+       "type": "minecraft:block_predicate_filter",
+       "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+       }
+      }
+     ]
+    },
+    "tries": 32,
+    "xz_spread": 7,
+    "y_spread": 3
+   }
+  },
+  "regions_unexplored:nether/patch/cobalt_earlight": {
+   "type": "minecraft:random_patch",
+   "config": {
+    "feature": {
+     "feature": {
+      "type": "minecraft:simple_block",
+      "config": {
+       "to_place": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+         "Name": "regions_unexplored:cobalt_earlight"
+        }
+       }
+      }
+     },
+     "placement": [
+      {
+       "type": "minecraft:block_predicate_filter",
+       "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+       }
+      }
+     ]
+    },
+    "tries": 6,
+    "xz_spread": 7,
+    "y_spread": 3
+   }
+  },
+  "regions_unexplored:nether/patch/cobalt_roots": {
+   "type": "minecraft:random_patch",
+   "config": {
+    "feature": {
+     "feature": {
+      "type": "minecraft:simple_block",
+      "config": {
+       "to_place": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+         "Name": "regions_unexplored:cobalt_roots"
+        }
+       }
+      }
+     },
+     "placement": [
+      {
+       "type": "minecraft:block_predicate_filter",
+       "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+       }
+      }
+     ]
+    },
+    "tries": 32,
+    "xz_spread": 7,
+    "y_spread": 3
+   }
+  },
+  "regions_unexplored:nether/patch/fire_unrestricted": {
+   "type": "minecraft:random_patch",
+   "config": {
+    "feature": {
+     "feature": {
+      "type": "minecraft:simple_block",
+      "config": {
+       "to_place": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+         "Name": "minecraft:fire",
+         "Properties": {
+          "age": "0",
+          "east": "false",
+          "north": "false",
+          "south": "false",
+          "up": "false",
+          "west": "false"
+         }
+        }
+       }
+      }
+     },
+     "placement": [
+      {
+       "type": "minecraft:block_predicate_filter",
+       "predicate": {
+        "type": "minecraft:all_of",
+        "predicates": [
+         {
+          "type": "minecraft:matching_blocks",
+          "blocks": "minecraft:air"
+         },
+         {
+          "type": "minecraft:would_survive",
+          "state": {
+           "Name": "regions_unexplored:brimsprout"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    },
+    "tries": 12,
+    "xz_spread": 7,
+    "y_spread": 3
+   }
+  },
+  "regions_unexplored:nether/patch/glister_bulb": {
+   "type": "minecraft:simple_block",
+   "config": {
+    "to_place": {
+     "type": "minecraft:simple_state_provider",
+     "state": {
+      "Name": "regions_unexplored:glister_bulb",
+      "Properties": {
+       "half": "lower"
+      }
+     }
+    }
+   }
+  },
+  "regions_unexplored:nether/patch/glister_spire": {
+   "type": "minecraft:random_patch",
+   "config": {
+    "feature": {
+     "feature": {
+      "type": "minecraft:simple_block",
+      "config": {
+       "to_place": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+         "Name": "regions_unexplored:glister_spire",
+         "Properties": {
+          "half": "lower"
+         }
+        }
+       }
+      }
+     },
+     "placement": [
+      {
+       "type": "minecraft:block_predicate_filter",
+       "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+       }
+      }
+     ]
+    },
+    "tries": 16,
+    "xz_spread": 7,
+    "y_spread": 3
+   }
+  },
+  "regions_unexplored:nether/patch/glistering_bloom": {
+   "type": "minecraft:simple_block",
+   "config": {
+    "to_place": {
+     "type": "minecraft:simple_state_provider",
+     "state": {
+      "Name": "regions_unexplored:glistering_bloom"
+     }
+    }
+   }
+  },
+  "regions_unexplored:nether/patch/glistering_fern": {
+   "type": "minecraft:simple_block",
+   "config": {
+    "to_place": {
+     "type": "minecraft:simple_state_provider",
+     "state": {
+      "Name": "regions_unexplored:glistering_fern"
+     }
+    }
+   }
+  },
+  "regions_unexplored:nether/patch/glistering_ivy": {
+   "type": "regions_unexplored:glistering_ivy",
+   "config": {}
+  },
+  "regions_unexplored:nether/patch/glistering_sprout": {
+   "type": "minecraft:random_patch",
+   "config": {
+    "feature": {
+     "feature": {
+      "type": "minecraft:simple_block",
+      "config": {
+       "to_place": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+         "Name": "regions_unexplored:glistering_sprout"
+        }
+       }
+      }
+     },
+     "placement": [
+      {
+       "type": "minecraft:block_predicate_filter",
+       "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+       }
+      }
+     ]
+    },
+    "tries": 32,
+    "xz_spread": 7,
+    "y_spread": 3
+   }
+  },
+  "regions_unexplored:nether/patch/hanging_earlight": {
+   "type": "regions_unexplored:hanging_earlight",
+   "config": {}
+  },
+  "regions_unexplored:nether/patch/mycotoxic_daisy": {
+   "type": "minecraft:random_patch",
+   "config": {
+    "feature": {
+     "feature": {
+      "type": "minecraft:simple_block",
+      "config": {
+       "to_place": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+         "Name": "regions_unexplored:mycotoxic_daisy",
+         "Properties": {
+          "half": "lower"
+         }
+        }
+       }
+      }
+     },
+     "placement": [
+      {
+       "type": "minecraft:block_predicate_filter",
+       "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+       }
+      }
+     ]
+    },
+    "tries": 16,
+    "xz_spread": 7,
+    "y_spread": 3
+   }
+  },
+  "regions_unexplored:nether/patch/mycotoxic_grass": {
+   "type": "minecraft:random_patch",
+   "config": {
+    "feature": {
+     "feature": {
+      "type": "minecraft:simple_block",
+      "config": {
+       "to_place": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+         "Name": "regions_unexplored:mycotoxic_grass"
+        }
+       }
+      }
+     },
+     "placement": [
+      {
+       "type": "minecraft:block_predicate_filter",
+       "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+       }
+      }
+     ]
+    },
+    "tries": 32,
+    "xz_spread": 7,
+    "y_spread": 3
+   }
+  },
+  "regions_unexplored:nether/patch/mycotoxic_mushrooms": {
+   "type": "minecraft:random_patch",
+   "config": {
+    "feature": {
+     "feature": {
+      "type": "minecraft:simple_block",
+      "config": {
+       "to_place": {
+        "type": "regions_unexplored:randomized_ground_cover",
+        "block": "regions_unexplored:mycotoxic_mushrooms"
+       }
+      }
+     },
+     "placement": [
+      {
+       "type": "minecraft:block_predicate_filter",
+       "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+       }
+      }
+     ]
+    },
+    "tries": 32,
+    "xz_spread": 7,
+    "y_spread": 3
+   }
+  },
+  "regions_unexplored:nether/patch/yellow_bioshrooms": {
+   "type": "minecraft:random_patch",
+   "config": {
+    "feature": {
+     "feature": {
+      "type": "minecraft:simple_block",
+      "config": {
+       "to_place": {
+        "type": "minecraft:weighted_state_provider",
+        "entries": [
+         {
+          "data": {
+           "Name": "regions_unexplored:tall_yellow_bioshroom",
+           "Properties": {
+            "half": "lower"
+           }
+          },
+          "weight": 1
+         },
+         {
+          "data": {
+           "Name": "regions_unexplored:yellow_bioshroom",
+           "Properties": {
+            "stage": "0"
+           }
+          },
+          "weight": 10
+         }
+        ]
+       }
+      }
+     },
+     "placement": [
+      {
+       "type": "minecraft:block_predicate_filter",
+       "predicate": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+       }
+      }
+     ]
+    },
+    "tries": 16,
+    "xz_spread": 7,
+    "y_spread": 3
+   }
+  },
+  "regions_unexplored:nether/tall_cobalt_earlight": {
+   "type": "minecraft:simple_block",
+   "config": {
+    "to_place": {
+     "type": "minecraft:simple_state_provider",
+     "state": {
+      "Name": "regions_unexplored:tall_cobalt_earlight",
+      "Properties": {
+       "half": "lower"
+      }
+     }
+    }
+   }
+  },
+  "regions_unexplored:nether/tree/blackstone_basin": {
+   "type": "lithostitched:placed",
+   "config": {
+    "feature": "regions_unexplored:nether/tree/cobalt",
+    "placement": []
+   }
+  },
+  "regions_unexplored:nether/tree/brim_willow": {
+   "type": "regions_unexplored:brim_willow",
+   "config": {}
+  },
+  "regions_unexplored:nether/tree/cobalt": {
+   "type": "regions_unexplored:cobalt_tree",
+   "config": {}
+  },
+  "regions_unexplored:nether/tree/infernal_holt": {
+   "type": "lithostitched:weighted_selector",
+   "config": {
+    "features": [
+     {
+      "feature": "regions_unexplored:nether/tree/brim_willow",
+      "placement": []
+     },
+     {
+      "feature": "regions_unexplored:nether/tree/tall_brim_willow",
+      "placement": []
+     }
+    ]
+   }
+  },
+  "regions_unexplored:nether/tree/mycotoxic_undergrowth": {
+   "type": "lithostitched:weighted_selector",
+   "config": {
+    "features": [
+     {
+      "data": {
+       "feature": "regions_unexplored:nether/tree/yellow_bioshroom_large",
+       "placement": []
+      },
+      "weight": 3
+     },
+     {
+      "feature": "regions_unexplored:nether/tree/yellow_bioshroom_small",
+      "placement": []
+     }
+    ]
+   }
+  },
+  "regions_unexplored:nether/tree/tall_brim_willow": {
+   "type": "regions_unexplored:tall_brim_willow",
+   "config": {}
+  },
+  "regions_unexplored:nether/tree/yellow_bioshroom_large": {
+   "type": "regions_unexplored:giant_yellow_bioshroom",
+   "config": {
+    "cap_provider": {
+     "type": "minecraft:simple_state_provider",
+     "state": {
+      "Name": "regions_unexplored:yellow_bioshroom_block"
+     }
+    },
+    "glow_block_provider": {
+     "type": "minecraft:simple_state_provider",
+     "state": {
+      "Name": "regions_unexplored:glowing_yellow_bioshroom_block"
+     }
+    },
+    "minimum_size": 5,
+    "size_variation": 4,
+    "stem_provider": {
+     "type": "minecraft:simple_state_provider",
+     "state": {
+      "Name": "regions_unexplored:yellow_bioshroom_stem",
+      "Properties": {
+       "axis": "y"
+      }
+     }
+    }
+   }
+  },
+  "regions_unexplored:nether/tree/yellow_bioshroom_small": {
+   "type": "regions_unexplored:small_yellow_bioshroom",
+   "config": {}
+  }
+ },
+ "features_per_step": [
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [
+   "regions_unexplored:nether/tree/mycotoxic_undergrowth",
+   "regions_unexplored:nether/patch/mycotoxic_mushrooms",
+   "regions_unexplored:nether/patch/mycotoxic_grass",
+   "regions_unexplored:nether/patch/mycotoxic_daisy",
+   "regions_unexplored:nether/patch/yellow_bioshrooms",
+   "regions_unexplored:nether/tree/infernal_holt",
+   "regions_unexplored:nether/patch/brimsprout",
+   "regions_unexplored:nether/dorcel",
+   "regions_unexplored:nether/patch/fire_unrestricted",
+   "regions_unexplored:nether/brimwood_shrub",
+   "regions_unexplored:nether/glistering_meadow_rock",
+   "regions_unexplored:nether/patch/glister_bulb",
+   "regions_unexplored:nether/patch/glistering_sprout",
+   "regions_unexplored:nether/patch/glistering_fern",
+   "regions_unexplored:nether/patch/glistering_bloom",
+   "regions_unexplored:nether/patch/glister_spire",
+   "regions_unexplored:nether/patch/glistering_ivy",
+   "regions_unexplored:nether/obsidian_spire",
+   "regions_unexplored:nether/tree/blackstone_basin",
+   "regions_unexplored:nether/patch/cobalt_roots",
+   "regions_unexplored:nether/patch/cobalt_earlight",
+   "regions_unexplored:nether/tall_cobalt_earlight",
+   "regions_unexplored:nether/patch/blackstone_cluster",
+   "regions_unexplored:nether/patch/hanging_earlight"
+  ],
+  [],
+  [],
+  []
+ ]
+}

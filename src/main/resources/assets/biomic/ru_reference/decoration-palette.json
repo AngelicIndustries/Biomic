@@ -1,0 +1,2207 @@
+{
+  "entries": [
+    {
+      "id": "regions_unexplored:acacia_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/acacia_shrub_bottom",
+      "registry_name": "ru_decor_acacia_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/acacia_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:alpha_dandelion",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_alpha_dandelion",
+      "texture": "ru_decor/alpha_dandelion",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:alpha_rose",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_alpha_rose",
+      "texture": "ru_decor/alpha_rose",
+      "tint": "CONSTANT"
+    },
+    {
+      "bottom": "ru_decor/argillite",
+      "id": "regions_unexplored:argillite",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "registry_name": "ru_decor_argillite",
+      "side": "ru_decor/argillite",
+      "tint": "CONSTANT",
+      "top": "ru_decor/argillite"
+    },
+    {
+      "bottom": "ru_decor/argillite",
+      "id": "regions_unexplored:argillite_grass_block",
+      "kind": "surface_grass",
+      "light": 0,
+      "overlay": "ru_decor/ru_grass_block_side_overlay_short",
+      "registry_name": "ru_decor_argillite_grass_block",
+      "side": "ru_decor/argillite_grass_block_side",
+      "snowy": "ru_decor/argillite_grass_snow",
+      "tint": "CONSTANT",
+      "top": "ru_decor/ru_grass_block_top"
+    },
+    {
+      "bottom": "ru_decor/ash",
+      "id": "regions_unexplored:ash",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "registry_name": "ru_decor_ash",
+      "side": "ru_decor/ash",
+      "tint": "CONSTANT",
+      "top": "ru_decor/ash"
+    },
+    {
+      "bottom": "minecraft:basalt_top",
+      "id": "regions_unexplored:ash_vent",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "registry_name": "ru_decor_ash_vent",
+      "side": "ru_decor/ash_vent",
+      "tint": "CONSTANT",
+      "top": "ru_decor/ash_vent_top"
+    },
+    {
+      "id": "regions_unexplored:ashen_dirt",
+      "kind": "solid",
+      "light": 0,
+      "material": "GROUND",
+      "plant_soil": true,
+      "registry_name": "ru_decor_ashen_dirt",
+      "side": "ru_decor/ashen_dirt",
+      "tint": "CONSTANT",
+      "top": "ru_decor/ashen_dirt"
+    },
+    {
+      "id": "regions_unexplored:ashen_grass",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_ashen_grass",
+      "texture": "ru_decor/ashen_grass",
+      "tint": "BIOME_GRASS"
+    },
+    {
+      "id": "regions_unexplored:ashen_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/ashen_shrub_bottom",
+      "registry_name": "ru_decor_ashen_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/ashen_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:baobab_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/baobab_shrub_bottom",
+      "registry_name": "ru_decor_baobab_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/baobab_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:barley",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/barley_bottom",
+      "registry_name": "ru_decor_barley",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/barley_top_1"
+    },
+    {
+      "id": "regions_unexplored:barrel_cactus",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_barrel_cactus",
+      "texture": "ru_decor/barrel_cactus",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:birch_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/birch_shrub_bottom",
+      "registry_name": "ru_decor_birch_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/birch_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:blackstone_cluster",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "registry_name": "ru_decor_blackstone_cluster",
+      "side": "minecraft:blackstone",
+      "tint": "CONSTANT",
+      "top": "minecraft:blackstone"
+    },
+    {
+      "id": "regions_unexplored:blackwood_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/blackwood_shrub_bottom",
+      "registry_name": "ru_decor_blackwood_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/blackwood_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:bladed_grass",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_bladed_grass",
+      "texture": "ru_decor/bladed_grass",
+      "tint": "BIOME_GRASS"
+    },
+    {
+      "id": "regions_unexplored:bladed_tall_grass",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/bladed_tall_grass_bottom",
+      "registry_name": "ru_decor_bladed_tall_grass",
+      "tint": "BIOME_GRASS",
+      "upper": "ru_decor/bladed_tall_grass_top"
+    },
+    {
+      "id": "regions_unexplored:bleeding_heart",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_bleeding_heart",
+      "texture": "ru_decor/bleeding_heart",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:blue_bioshroom",
+      "kind": "plant",
+      "light": 10,
+      "registry_name": "ru_decor_blue_bioshroom",
+      "texture": "ru_decor/blue_bioshroom",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:blue_magnolia_flowers",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_blue_magnolia_flowers",
+      "texture": "ru_decor/blue_magnolia_flowers",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:blue_magnolia_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/blue_magnolia_shrub_bottom",
+      "registry_name": "ru_decor_blue_magnolia_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/blue_magnolia_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:brimsprout",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_brimsprout",
+      "texture": "ru_decor/brimsprout_2",
+      "tint": "CONSTANT"
+    },
+    {
+      "bottom": "minecraft:netherrack",
+      "id": "regions_unexplored:brimsprout_nylium",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "registry_name": "ru_decor_brimsprout_nylium",
+      "side": "ru_decor/brimsprout_nylium_side",
+      "tint": "CONSTANT",
+      "top": "ru_decor/brimsprout_nylium"
+    },
+    {
+      "id": "regions_unexplored:brimwood_leaves",
+      "kind": "leaves",
+      "light": 0,
+      "registry_name": "ru_decor_brimwood_leaves",
+      "texture": "ru_decor/brimwood_leaves",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:brimwood_log",
+      "kind": "log",
+      "light": 0,
+      "registry_name": "ru_decor_brimwood_log",
+      "side": "ru_decor/brimwood_log",
+      "tint": "CONSTANT",
+      "top": "ru_decor/brimwood_log_top"
+    },
+    {
+      "id": "regions_unexplored:brimwood_log_magma",
+      "kind": "log",
+      "light": 15,
+      "registry_name": "ru_decor_brimwood_log_magma",
+      "side": "ru_decor/brimwood_log_magma",
+      "side_transition": "ru_decor/brimwood_log_transition",
+      "tint": "CONSTANT",
+      "top": "ru_decor/brimwood_log_top"
+    },
+    {
+      "id": "regions_unexplored:brimwood_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/brimwood_shrub_bottom",
+      "registry_name": "ru_decor_brimwood_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/brimwood_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:cattail",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/cattail_bottom",
+      "registry_name": "ru_decor_cattail",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/cattail_top"
+    },
+    {
+      "id": "regions_unexplored:cave_hyssop",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_cave_hyssop",
+      "texture": "ru_decor/cave_hyssop",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:cherry_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/cherry_shrub_bottom",
+      "registry_name": "ru_decor_cherry_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/cherry_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:clover",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_clover",
+      "texture": "ru_decor/clover",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:cobalt_earlight",
+      "kind": "plant",
+      "light": 9,
+      "registry_name": "ru_decor_cobalt_earlight",
+      "texture": "ru_decor/cobalt_earlight",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:cobalt_log",
+      "kind": "log",
+      "light": 0,
+      "registry_name": "ru_decor_cobalt_log",
+      "side": "ru_decor/cobalt_log",
+      "tint": "CONSTANT",
+      "top": "ru_decor/cobalt_log_top"
+    },
+    {
+      "bottom": "minecraft:blackstone",
+      "id": "regions_unexplored:cobalt_nylium",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "registry_name": "ru_decor_cobalt_nylium",
+      "side": "ru_decor/cobalt_nylium_side",
+      "tint": "CONSTANT",
+      "top": "ru_decor/cobalt_nylium"
+    },
+    {
+      "bottom": "ru_decor/cobalt_obsidian",
+      "id": "regions_unexplored:cobalt_obsidian",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "registry_name": "ru_decor_cobalt_obsidian",
+      "side": "ru_decor/cobalt_obsidian",
+      "tint": "CONSTANT",
+      "top": "ru_decor/cobalt_obsidian"
+    },
+    {
+      "id": "regions_unexplored:cobalt_roots",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_cobalt_roots",
+      "texture": "ru_decor/cobalt_roots_1",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:cobalt_webbing",
+      "kind": "leaves",
+      "light": 0,
+      "registry_name": "ru_decor_cobalt_webbing",
+      "texture": "ru_decor/cobalt_webbing",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:corpse_flower",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/corpse_flower_bottom",
+      "registry_name": "ru_decor_corpse_flower",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/corpse_flower_top"
+    },
+    {
+      "id": "regions_unexplored:dark_oak_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/dark_oak_shrub_bottom",
+      "registry_name": "ru_decor_dark_oak_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/dark_oak_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:day_lily",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/day_lily_bottom",
+      "registry_name": "ru_decor_day_lily",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/day_lily_top"
+    },
+    {
+      "id": "regions_unexplored:dead_steppe_shrub",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_dead_steppe_shrub",
+      "texture": "ru_decor/dead_steppe_shrub",
+      "tint": "CONSTANT"
+    },
+    {
+      "bottom": "minecraft:deepslate",
+      "id": "regions_unexplored:deepslate_prismoss",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "plant_soil": true,
+      "registry_name": "ru_decor_deepslate_prismoss",
+      "side": "ru_decor/deepslate_prismoss_side",
+      "tint": "CONSTANT",
+      "top": "ru_decor/prismoss_overlay_top"
+    },
+    {
+      "bottom": "minecraft:deepslate",
+      "id": "regions_unexplored:deepslate_viridescent_nylium",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "plant_soil": true,
+      "registry_name": "ru_decor_deepslate_viridescent_nylium",
+      "side": "ru_decor/deepslate_viridescent_nylium_side",
+      "tint": "CONSTANT",
+      "top": "ru_decor/viridescent_nylium"
+    },
+    {
+      "id": "regions_unexplored:dorcel",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_dorcel",
+      "texture": "ru_decor/dorcel",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:dropleaf",
+      "kind": "plant",
+      "light": 14,
+      "registry_name": "ru_decor_dropleaf",
+      "texture": "ru_decor/dropleaf_leaf",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:dropleaf_plant",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_dropleaf_plant",
+      "texture": "ru_decor/dropleaf_leaf_green",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:duckweed",
+      "kind": "flat",
+      "light": 0,
+      "registry_name": "ru_decor_duckweed",
+      "texture": "ru_decor/duckweed",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:duskmelon",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_duskmelon",
+      "texture": "ru_decor/duskmelon_stage0",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:dusktrap",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/dusktrap_bottom_open",
+      "registry_name": "ru_decor_dusktrap",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/dusktrap_top_open"
+    },
+    {
+      "id": "regions_unexplored:felicia_daisy",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_felicia_daisy",
+      "texture": "ru_decor/felicia_daisy",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:frozen_grass",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_frozen_grass",
+      "texture": "ru_decor/frozen_grass",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:glister_bulb",
+      "kind": "double",
+      "light": 13,
+      "lower": "ru_decor/glister_bulb_bottom",
+      "registry_name": "ru_decor_glister_bulb",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/glister_bulb_top"
+    },
+    {
+      "id": "regions_unexplored:glister_spire",
+      "kind": "double",
+      "light": 5,
+      "lower": "ru_decor/glister_spire_bottom",
+      "registry_name": "ru_decor_glister_spire",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/glister_spire_top"
+    },
+    {
+      "id": "regions_unexplored:glistering_bloom",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_glistering_bloom",
+      "texture": "ru_decor/glistering_bloom",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:glistering_fern",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_glistering_fern",
+      "texture": "ru_decor/glistering_fern_leaf",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:glistering_ivy",
+      "kind": "plant",
+      "light": 15,
+      "registry_name": "ru_decor_glistering_ivy",
+      "texture": "ru_decor/glister_bulb_head",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:glistering_ivy_plant",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_glistering_ivy_plant",
+      "texture": "ru_decor/glister_ivy_plant_1",
+      "tint": "CONSTANT"
+    },
+    {
+      "bottom": "minecraft:netherrack",
+      "id": "regions_unexplored:glistering_nylium",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "registry_name": "ru_decor_glistering_nylium",
+      "side": "ru_decor/glistering_nylium_side",
+      "tint": "CONSTANT",
+      "top": "ru_decor/glistering_nylium"
+    },
+    {
+      "id": "regions_unexplored:glistering_sprout",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_glistering_sprout",
+      "texture": "ru_decor/glistering_sprout",
+      "tint": "CONSTANT"
+    },
+    {
+      "bottom": "ru_decor/glistering_nylium",
+      "id": "regions_unexplored:glistering_wart",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "registry_name": "ru_decor_glistering_wart",
+      "side": "ru_decor/glistering_nylium",
+      "tint": "CONSTANT",
+      "top": "ru_decor/glistering_nylium"
+    },
+    {
+      "bottom": "ru_decor/blue_bioshroom_block_glowing",
+      "id": "regions_unexplored:glowing_blue_bioshroom_block",
+      "kind": "solid",
+      "light": 10,
+      "material": "WOOD",
+      "registry_name": "ru_decor_glowing_blue_bioshroom_block",
+      "side": "ru_decor/blue_bioshroom_block_glowing",
+      "tint": "CONSTANT",
+      "top": "ru_decor/blue_bioshroom_block_glowing"
+    },
+    {
+      "bottom": "ru_decor/green_bioshroom_block_glowing",
+      "id": "regions_unexplored:glowing_green_bioshroom_block",
+      "kind": "solid",
+      "light": 10,
+      "material": "WOOD",
+      "registry_name": "ru_decor_glowing_green_bioshroom_block",
+      "side": "ru_decor/green_bioshroom_block_glowing",
+      "tint": "CONSTANT",
+      "top": "ru_decor/green_bioshroom_block_glowing"
+    },
+    {
+      "bottom": "ru_decor/pink_bioshroom_block_glowing",
+      "id": "regions_unexplored:glowing_pink_bioshroom_block",
+      "kind": "solid",
+      "light": 10,
+      "material": "WOOD",
+      "registry_name": "ru_decor_glowing_pink_bioshroom_block",
+      "side": "ru_decor/pink_bioshroom_block_glowing",
+      "tint": "CONSTANT",
+      "top": "ru_decor/pink_bioshroom_block_glowing"
+    },
+    {
+      "bottom": "ru_decor/yellow_bioshroom_block_glowing_bottom",
+      "id": "regions_unexplored:glowing_yellow_bioshroom_block",
+      "kind": "solid",
+      "light": 10,
+      "material": "WOOD",
+      "registry_name": "ru_decor_glowing_yellow_bioshroom_block",
+      "side": "ru_decor/yellow_bioshroom_block_glowing",
+      "tint": "CONSTANT",
+      "top": "ru_decor/yellow_bioshroom_block_top"
+    },
+    {
+      "id": "regions_unexplored:golden_larch_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/golden_larch_shrub_bottom",
+      "registry_name": "ru_decor_golden_larch_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/golden_larch_shrub_top"
+    },
+    {
+      "bottom": "ru_decor/green_bioshroom_block_glowing",
+      "id": "regions_unexplored:green_bioshroom_block",
+      "kind": "solid",
+      "light": 10,
+      "material": "WOOD",
+      "registry_name": "ru_decor_green_bioshroom_block",
+      "side": "ru_decor/green_bioshroom_block",
+      "tint": "CONSTANT",
+      "top": "ru_decor/green_bioshroom_block"
+    },
+    {
+      "bottom": "ru_decor/green_bioshroom_stem_top",
+      "id": "regions_unexplored:green_bioshroom_stem",
+      "kind": "solid",
+      "light": 10,
+      "material": "WOOD",
+      "registry_name": "ru_decor_green_bioshroom_stem",
+      "side": "ru_decor/green_bioshroom_stem",
+      "tint": "CONSTANT",
+      "top": "ru_decor/green_bioshroom_stem_top"
+    },
+    {
+      "id": "regions_unexplored:hanging_earlight",
+      "kind": "plant",
+      "light": 14,
+      "registry_name": "ru_decor_hanging_earlight",
+      "texture": "ru_decor/hanging_earlight_plant",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:hanging_earlight_plant",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_hanging_earlight_plant",
+      "texture": "ru_decor/hanging_earlight_plant",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:hanging_prismarite",
+      "kind": "plant",
+      "light": 10,
+      "registry_name": "ru_decor_hanging_prismarite",
+      "texture": "ru_decor/hanging_prismarite_column",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:hibiscus",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_hibiscus",
+      "texture": "ru_decor/hibiscus",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:hyacinth_bloom",
+      "kind": "solid",
+      "light": 9,
+      "material": "ROCK",
+      "registry_name": "ru_decor_hyacinth_bloom",
+      "side": "ru_decor/hyacinth_base",
+      "tint": "CONSTANT",
+      "top": "ru_decor/hyacinth_base"
+    },
+    {
+      "id": "regions_unexplored:hyacinth_flowers",
+      "kind": "plant",
+      "light": 8,
+      "registry_name": "ru_decor_hyacinth_flowers",
+      "texture": "ru_decor/hyacinth_flowers",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:jungle_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/jungle_shrub_bottom",
+      "registry_name": "ru_decor_jungle_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/jungle_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:kapok_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/kapok_shrub_bottom",
+      "registry_name": "ru_decor_kapok_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/kapok_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:larch_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/larch_shrub_bottom",
+      "registry_name": "ru_decor_larch_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/larch_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:large_prismarite_cluster",
+      "kind": "double",
+      "light": 10,
+      "lower": "ru_decor/large_prismarite_cluster_bottom",
+      "registry_name": "ru_decor_large_prismarite_cluster",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/large_prismarite_cluster_top"
+    },
+    {
+      "id": "regions_unexplored:lavender_wisteria_vines",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_lavender_wisteria_vines",
+      "texture": "ru_decor/wisteria_vines",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:magnolia_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/magnolia_shrub_bottom",
+      "registry_name": "ru_decor_magnolia_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/magnolia_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:mangrove_shrub",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "registry_name": "ru_decor_mangrove_shrub",
+      "side": "ru_decor/mangrove_shrub_bottom",
+      "tint": "CONSTANT",
+      "top": "ru_decor/mangrove_shrub_bottom"
+    },
+    {
+      "id": "regions_unexplored:maple_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/maple_shrub_bottom",
+      "registry_name": "ru_decor_maple_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/maple_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:meadow_sage",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/meadow_sage_bottom",
+      "registry_name": "ru_decor_meadow_sage",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/meadow_sage_top"
+    },
+    {
+      "bottom": "ru_decor/mossy_stone",
+      "id": "regions_unexplored:mossy_stone",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "registry_name": "ru_decor_mossy_stone",
+      "side": "ru_decor/mossy_stone",
+      "tint": "CONSTANT",
+      "top": "ru_decor/mossy_stone"
+    },
+    {
+      "id": "regions_unexplored:mycotoxic_daisy",
+      "kind": "double",
+      "light": 4,
+      "lower": "ru_decor/mycotoxic_daisy_bottom",
+      "registry_name": "ru_decor_mycotoxic_daisy",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/mycotoxic_daisy_top"
+    },
+    {
+      "id": "regions_unexplored:mycotoxic_grass",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_mycotoxic_grass",
+      "texture": "ru_decor/mycotoxic_grass",
+      "tint": "CONSTANT"
+    },
+    {
+      "bottom": "minecraft:netherrack",
+      "id": "regions_unexplored:mycotoxic_moss",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "registry_name": "ru_decor_mycotoxic_moss",
+      "side": "ru_decor/mycotoxic_moss_side",
+      "tint": "CONSTANT",
+      "top": "ru_decor/mycotoxic_moss"
+    },
+    {
+      "id": "regions_unexplored:mycotoxic_mushrooms",
+      "kind": "plant",
+      "light": 6,
+      "registry_name": "ru_decor_mycotoxic_mushrooms",
+      "texture": "ru_decor/mycotoxic_mushrooms",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:oak_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/oak_shrub_bottom",
+      "registry_name": "ru_decor_oak_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/oak_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:orange_coneflower",
+      "kind": "coneflower",
+      "light": 0,
+      "registry_name": "ru_decor_orange_coneflower",
+      "stem": "ru_decor/coneflower_stem",
+      "texture": "ru_decor/orange_coneflower",
+      "tint": "BIOME_GRASS"
+    },
+    {
+      "id": "regions_unexplored:orange_maple_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/orange_maple_shrub_bottom",
+      "registry_name": "ru_decor_orange_maple_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/orange_maple_shrub_top"
+    },
+    {
+      "bottom": "minecraft:bone_block_top",
+      "id": "regions_unexplored:overgrown_bone_block",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "registry_name": "ru_decor_overgrown_bone_block",
+      "side": "ru_decor/overgrown_bone_block_side",
+      "tint": "CONSTANT",
+      "top": "ru_decor/glistering_nylium"
+    },
+    {
+      "id": "regions_unexplored:palm_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/palm_shrub_bottom",
+      "registry_name": "ru_decor_palm_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/palm_shrub_top"
+    },
+    {
+      "bottom": "ru_decor/peat_coarse_dirt",
+      "id": "regions_unexplored:peat_coarse_dirt",
+      "kind": "solid",
+      "light": 0,
+      "material": "GROUND",
+      "plant_soil": true,
+      "registry_name": "ru_decor_peat_coarse_dirt",
+      "side": "ru_decor/peat_coarse_dirt",
+      "tint": "CONSTANT",
+      "top": "ru_decor/peat_coarse_dirt"
+    },
+    {
+      "bottom": "ru_decor/peat_dirt",
+      "id": "regions_unexplored:peat_dirt",
+      "kind": "solid",
+      "light": 0,
+      "material": "GROUND",
+      "plant_soil": true,
+      "registry_name": "ru_decor_peat_dirt",
+      "side": "ru_decor/peat_dirt",
+      "tint": "CONSTANT",
+      "top": "ru_decor/peat_dirt"
+    },
+    {
+      "bottom": "ru_decor/peat_dirt",
+      "id": "regions_unexplored:peat_grass_block",
+      "kind": "surface_grass",
+      "light": 0,
+      "overlay": "ru_decor/ru_grass_block_side_overlay",
+      "registry_name": "ru_decor_peat_grass_block",
+      "side": "ru_decor/peat_grass_block_side",
+      "snowy": "ru_decor/peat_grass_block_snow",
+      "tint": "CONSTANT",
+      "top": "ru_decor/ru_grass_block_top"
+    },
+    {
+      "bottom": "ru_decor/peat_mud",
+      "id": "regions_unexplored:peat_mud",
+      "kind": "solid",
+      "light": 0,
+      "material": "GROUND",
+      "plant_soil": true,
+      "registry_name": "ru_decor_peat_mud",
+      "side": "ru_decor/peat_mud",
+      "tint": "CONSTANT",
+      "top": "ru_decor/peat_mud"
+    },
+    {
+      "id": "regions_unexplored:peat_podzol",
+      "kind": "solid",
+      "light": 0,
+      "material": "GROUND",
+      "plant_soil": true,
+      "registry_name": "ru_decor_peat_podzol",
+      "side": "ru_decor/peat_podzol_side",
+      "tint": "CONSTANT",
+      "top": "ru_decor/peat_podzol_top"
+    },
+    {
+      "id": "regions_unexplored:pink_bioshroom",
+      "kind": "plant",
+      "light": 10,
+      "registry_name": "ru_decor_pink_bioshroom",
+      "texture": "ru_decor/pink_bioshroom",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:pink_magnolia_flowers",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_pink_magnolia_flowers",
+      "texture": "ru_decor/pink_magnolia_flowers",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:pink_magnolia_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/pink_magnolia_shrub_bottom",
+      "registry_name": "ru_decor_pink_magnolia_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/pink_magnolia_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:poppy_bush",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_poppy_bush",
+      "texture": "ru_decor/poppy_bush",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:prismarite_cluster",
+      "kind": "plant",
+      "light": 10,
+      "registry_name": "ru_decor_prismarite_cluster",
+      "texture": "ru_decor/prismarite_cluster",
+      "tint": "CONSTANT"
+    },
+    {
+      "bottom": "minecraft:stone",
+      "id": "regions_unexplored:prismoss",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "plant_soil": true,
+      "registry_name": "ru_decor_prismoss",
+      "side": "ru_decor/viridescent_nylium_side",
+      "tint": "CONSTANT",
+      "top": "ru_decor/prismoss_overlay_top"
+    },
+    {
+      "id": "regions_unexplored:prismoss_sprout",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_prismoss_sprout",
+      "texture": "ru_decor/prismoss_sprout",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:purple_coneflower",
+      "kind": "coneflower",
+      "light": 0,
+      "registry_name": "ru_decor_purple_coneflower",
+      "stem": "ru_decor/coneflower_stem",
+      "texture": "ru_decor/purple_coneflower",
+      "tint": "BIOME_GRASS"
+    },
+    {
+      "id": "regions_unexplored:red_maple_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/red_maple_shrub_bottom",
+      "registry_name": "ru_decor_red_maple_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/red_maple_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:saguaro_cactus",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_saguaro_cactus",
+      "texture": "ru_decor/saguaro_cactus",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:salmon_poppy",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_salmon_poppy",
+      "texture": "ru_decor/salmon_poppy",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:salmon_poppy_bush",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_salmon_poppy_bush",
+      "texture": "ru_decor/poppy_bush_salmon",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:salmon_wisteria_vines",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_salmon_wisteria_vines",
+      "texture": "ru_decor/wisteria_vines",
+      "tint": "CONSTANT"
+    },
+    {
+      "bottom": "ru_decor/silt_coarse_dirt",
+      "id": "regions_unexplored:silt_coarse_dirt",
+      "kind": "solid",
+      "light": 0,
+      "material": "GROUND",
+      "plant_soil": true,
+      "registry_name": "ru_decor_silt_coarse_dirt",
+      "side": "ru_decor/silt_coarse_dirt",
+      "tint": "CONSTANT",
+      "top": "ru_decor/silt_coarse_dirt"
+    },
+    {
+      "bottom": "ru_decor/silt_dirt",
+      "id": "regions_unexplored:silt_dirt",
+      "kind": "solid",
+      "light": 0,
+      "material": "GROUND",
+      "plant_soil": true,
+      "registry_name": "ru_decor_silt_dirt",
+      "side": "ru_decor/silt_dirt",
+      "tint": "CONSTANT",
+      "top": "ru_decor/silt_dirt"
+    },
+    {
+      "bottom": "ru_decor/silt_dirt",
+      "id": "regions_unexplored:silt_grass_block",
+      "kind": "surface_grass",
+      "light": 0,
+      "overlay": "ru_decor/ru_grass_block_side_overlay_medium",
+      "registry_name": "ru_decor_silt_grass_block",
+      "side": "ru_decor/silt_grass_block_side",
+      "snowy": "ru_decor/silt_grass_block_snow",
+      "tint": "CONSTANT",
+      "top": "ru_decor/ru_grass_block_top"
+    },
+    {
+      "bottom": "ru_decor/silt_mud",
+      "id": "regions_unexplored:silt_mud",
+      "kind": "solid",
+      "light": 0,
+      "material": "GROUND",
+      "plant_soil": true,
+      "registry_name": "ru_decor_silt_mud",
+      "side": "ru_decor/silt_mud",
+      "tint": "CONSTANT",
+      "top": "ru_decor/silt_mud"
+    },
+    {
+      "id": "regions_unexplored:silt_podzol",
+      "kind": "solid",
+      "light": 0,
+      "material": "GROUND",
+      "plant_soil": true,
+      "registry_name": "ru_decor_silt_podzol",
+      "side": "ru_decor/silt_podzol_side",
+      "tint": "CONSTANT",
+      "top": "ru_decor/silt_podzol_top"
+    },
+    {
+      "id": "regions_unexplored:silver_birch_log",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_silver_birch_log",
+      "texture": "ru_decor/silver_birch_log",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:silver_birch_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/silver_birch_shrub_bottom",
+      "registry_name": "ru_decor_silver_birch_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/silver_birch_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:sky_wisteria_vines",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_sky_wisteria_vines",
+      "texture": "ru_decor/wisteria_vines",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:socotra_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/socotra_shrub_bottom",
+      "registry_name": "ru_decor_socotra_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/socotra_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:spruce_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/spruce_shrub_bottom",
+      "registry_name": "ru_decor_spruce_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/spruce_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:steppe_grass",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_steppe_grass",
+      "texture": "ru_decor/steppe_grass",
+      "tint": "BIOME_GRASS"
+    },
+    {
+      "bottom": "minecraft:stone",
+      "id": "regions_unexplored:stone_grass_block",
+      "kind": "surface_grass",
+      "light": 0,
+      "overlay": "ru_decor/ru_grass_block_side_overlay_short",
+      "registry_name": "ru_decor_stone_grass_block",
+      "side": "ru_decor/stone_grass_block_side",
+      "snowy": "ru_decor/stone_grass_snow",
+      "tint": "CONSTANT",
+      "top": "ru_decor/ru_grass_block_top"
+    },
+    {
+      "id": "regions_unexplored:tall_blue_bioshroom",
+      "kind": "double",
+      "light": 10,
+      "lower": "ru_decor/tall_blue_bioshroom_bottom",
+      "registry_name": "ru_decor_tall_blue_bioshroom",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/tall_blue_bioshroom_top"
+    },
+    {
+      "id": "regions_unexplored:tall_cobalt_earlight",
+      "kind": "double",
+      "light": 13,
+      "lower": "ru_decor/tall_cobalt_earlight_bottom",
+      "registry_name": "ru_decor_tall_cobalt_earlight",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/tall_cobalt_earlight_top"
+    },
+    {
+      "id": "regions_unexplored:tall_green_bioshroom",
+      "kind": "double",
+      "light": 10,
+      "lower": "ru_decor/tall_green_bioshroom_bottom",
+      "registry_name": "ru_decor_tall_green_bioshroom",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/tall_green_bioshroom_top"
+    },
+    {
+      "id": "regions_unexplored:tall_hyacinth_stock",
+      "kind": "plant",
+      "light": 12,
+      "registry_name": "ru_decor_tall_hyacinth_stock",
+      "texture": "ru_decor/hyacinth_stock_tall_middle",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:tall_pink_bioshroom",
+      "kind": "double",
+      "light": 10,
+      "lower": "ru_decor/tall_pink_bioshroom_bottom",
+      "registry_name": "ru_decor_tall_pink_bioshroom",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/tall_pink_bioshroom_top"
+    },
+    {
+      "id": "regions_unexplored:tall_yellow_bioshroom",
+      "kind": "double",
+      "light": 10,
+      "lower": "ru_decor/tall_yellow_bioshroom_bottom",
+      "registry_name": "ru_decor_tall_yellow_bioshroom",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/tall_yellow_bioshroom_top"
+    },
+    {
+      "id": "regions_unexplored:tsubaki",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_tsubaki",
+      "texture": "ru_decor/tsubaki",
+      "tint": "CONSTANT"
+    },
+    {
+      "bottom": "minecraft:stone",
+      "id": "regions_unexplored:viridescent_nylium",
+      "kind": "solid",
+      "light": 0,
+      "material": "ROCK",
+      "plant_soil": true,
+      "registry_name": "ru_decor_viridescent_nylium",
+      "side": "ru_decor/viridescent_nylium_side",
+      "tint": "CONSTANT",
+      "top": "ru_decor/viridescent_nylium"
+    },
+    {
+      "id": "regions_unexplored:white_magnolia_flowers",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_white_magnolia_flowers",
+      "texture": "ru_decor/white_magnolia_flowers",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:white_magnolia_shrub",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/white_magnolia_shrub_bottom",
+      "registry_name": "ru_decor_white_magnolia_shrub",
+      "tint": "CONSTANT",
+      "upper": "ru_decor/white_magnolia_shrub_top"
+    },
+    {
+      "id": "regions_unexplored:white_snowbelle",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_white_snowbelle",
+      "texture": "ru_decor/white_snowbelle",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:white_trillium",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_white_trillium",
+      "texture": "ru_decor/trillium_white",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:wilting_trillium",
+      "kind": "plant",
+      "light": 0,
+      "registry_name": "ru_decor_wilting_trillium",
+      "texture": "ru_decor/wilting_trillium",
+      "tint": "CONSTANT"
+    },
+    {
+      "id": "regions_unexplored:windswept_grass",
+      "kind": "double",
+      "light": 0,
+      "lower": "ru_decor/windswept_grass_bottom",
+      "registry_name": "ru_decor_windswept_grass",
+      "tint": "BIOME_GRASS",
+      "upper": "ru_decor/windswept_grass_top"
+    },
+    {
+      "id": "regions_unexplored:yellow_bioshroom",
+      "kind": "plant",
+      "light": 10,
+      "registry_name": "ru_decor_yellow_bioshroom",
+      "texture": "ru_decor/yellow_bioshroom",
+      "tint": "CONSTANT"
+    },
+    {
+      "bottom": "ru_decor/yellow_bioshroom_block_top",
+      "id": "regions_unexplored:yellow_bioshroom_block",
+      "kind": "solid",
+      "light": 10,
+      "material": "WOOD",
+      "registry_name": "ru_decor_yellow_bioshroom_block",
+      "side": "ru_decor/yellow_bioshroom_block",
+      "tint": "CONSTANT",
+      "top": "ru_decor/yellow_bioshroom_block_top"
+    },
+    {
+      "bottom": "ru_decor/yellow_bioshroom_stem_top",
+      "id": "regions_unexplored:yellow_bioshroom_stem",
+      "kind": "solid",
+      "light": 10,
+      "material": "WOOD",
+      "registry_name": "ru_decor_yellow_bioshroom_stem",
+      "side": "ru_decor/yellow_bioshroom_stem",
+      "tint": "CONSTANT",
+      "top": "ru_decor/yellow_bioshroom_stem_top"
+    }
+  ],
+  "files": [
+    {
+      "path": "src/main/resources/assets/biomic/ru_reference/models/coneflower_1.json",
+      "sha256": "744bf89740f8a59fc9dfea78805ef53df8b33f451350555859fd5288276c5be6"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/ru_reference/models/coneflower_2.json",
+      "sha256": "47a43e89f5e82ba6f3cd59a41e584372798d34d2ff64cf98dacc0cc2b1d5a3e7"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/ru_reference/models/coneflower_3.json",
+      "sha256": "056621e8faecf5e6ff90dd3507f9c0edeb165fab8b320d325738394e5b2c283c"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/ru_reference/models/coneflower_4.json",
+      "sha256": "786ba461dd2f297f6e834fcc8fa26ea008e5231e5f3d07a4c86e8f1742f28393"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/acacia_shrub_bottom.png",
+      "sha256": "52c9cf68b5cf92a777f95a46e393de473c2d136c7f0bc7fc325768fc9b64a813"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/acacia_shrub_top.png",
+      "sha256": "e955d51879afdb109c7380e05aa15e966e5457b7a186987f588ce32cb5a3b89e"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/alpha_dandelion.png",
+      "sha256": "e6fe821778b483a80e93f1923fdbd441f0e3728336d60fc886356546a8bdcf8a"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/alpha_grass_block_top.png",
+      "sha256": "480990c139a136b718e38ef2da4b2dfa2310df35f3cf0cbb1c46cae10a5be286"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/alpha_grass_side.png",
+      "sha256": "3d019b9ffac58c7a878d0bbdce8b98dac5c1afd4967e4de39126523d20c77cdc"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/alpha_grass_side_snow.png",
+      "sha256": "964a1f6a23928724eae750cf0472acb25b416f9654666849cc3e2f9d2b33932e"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/alpha_rose.png",
+      "sha256": "7224b867f4ef45c386337c12f70605d22f1f971ec0c6550d3c7a5132bab62485"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/argillite.png",
+      "sha256": "d6a1718d40478706196b432bd5397abefc2f48003ae56d33f2fa5558f8d719c0"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/argillite_grass_block_side.png",
+      "sha256": "56721aef132e8b754b9feed25c364be13f8c1ac34773fdfa0bcb467c06e477e3"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/argillite_grass_snow.png",
+      "sha256": "97cfa78e1ba31d21fd2b9e7e68bd358b7c4eb04007da7e6f6f06cd415e601c31"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/ash.png",
+      "sha256": "9bc6c7fe5ef72c161f08bc27ccb2a9e2f02f761058e13691d0c225c6452d57a9"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/ash_vent.png",
+      "sha256": "1719c0dccc3241df6ea374068a5e7b73b592d16fdde7435acf78ef41866386b3"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/ash_vent_top.png",
+      "sha256": "7149b8d3cd5c83ce88290a9ef1c85c15526c93162a08ed225de02f222dcc8d0c"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/ashen_dirt.png",
+      "sha256": "627818e9356c0ad583d1f846e158ced2db524aa19996d53e41279b5e332dc935"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/ashen_dirt_smouldering.png",
+      "sha256": "1b9c39313c4a47a4651b856e63420b47789fb15ab14548bd480be6c6b498ff53"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/ashen_dirt_smouldering.png.mcmeta",
+      "sha256": "03b69d12c4fe1c034f94ef32e5dd92e9217dd2de03994a071b0462a4ca5ff2df"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/ashen_grass.png",
+      "sha256": "733142a9b2c0a3aa83c0e3ce23119a6cfb37fce8aad713c137ca11b9cf472a33"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/ashen_shrub_bottom.png",
+      "sha256": "e9ca778b5e470d94bbbd375bca2b4f17bf756f990e6241eab7bd5a9d90fc853b"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/ashen_shrub_top.png",
+      "sha256": "bbca2a37b31a541efec36580cea9dc172e43b08fcb2e7d91c2bdbb73331c1f22"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/baobab_shrub_bottom.png",
+      "sha256": "d1d5b399a0ce6664f1d27c6e1e9af1f84c433c6c9b1ad045cba364dae31d33b2"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/baobab_shrub_top.png",
+      "sha256": "f24fdd61793dd6de1c1176af8c1ded0d62dc21b0d9cdcd69da45ca9a87e60b69"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/barley_bottom.png",
+      "sha256": "09ffd2af91af0c7f766c434ac36c4d9163ac402bb9b5812f1d0017b889a7db30"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/barley_top_1.png",
+      "sha256": "1aa6f12389e694066e9c1a4a7a795f142d431d7e23875d96cbd13c10154ed709"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/barrel_cactus.png",
+      "sha256": "2de6dd67fd0ab94ca548229a3eaeaa876fb6d7afff8f640f41cd13123d989696"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/birch_shrub_bottom.png",
+      "sha256": "d3a2146d8941f0c3b141c7920d6e542e1a1dc10f06923602012de907cf926323"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/birch_shrub_top.png",
+      "sha256": "cea9810e3d70908a780a0c9c4cdc91a90b95281e773495233017889491c4b6ba"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/blackwood_shrub_bottom.png",
+      "sha256": "c936a0cfc04816ec37f14da5cc0fb8d956d3b35c150e12818adbc91fd9a69f32"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/blackwood_shrub_top.png",
+      "sha256": "6364b86cb45068524654a40b5c88a86bdb5a7e514047096e41aa4af1ec50b16e"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/bladed_grass.png",
+      "sha256": "df1cd7f84cc93acf4f063e6b2acba833ef0c80aeaedbb2d08d3e0ae2008ba883"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/bladed_tall_grass_bottom.png",
+      "sha256": "230ab4079547907d54c6b11eb5e57415d318953d1fd4d00bdc358033184f00c3"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/bladed_tall_grass_top.png",
+      "sha256": "55a3c6d7b4a7dd0dd0c6fa5683d078d647575f105b762c26bffd0047f4c4dcea"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/bleeding_heart.png",
+      "sha256": "29914bb9e9f71948753fc000d5ddf417ccc5a372e0e6ceeafe2b851bbbcebc6e"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/blue_bioshroom.png",
+      "sha256": "4c0e1a01f6531470be2e781ad1e298e0dcb601c7e82c61503469f4d54911b31f"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/blue_bioshroom_block_glowing.png",
+      "sha256": "4ca656c139b26ddcd0afa7466d0a77d3df804570c37fcfe35d61d9d23afd03a5"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/blue_magnolia_flowers.png",
+      "sha256": "1e3f17a6efc779ba2aa4b579d750b09d3511d7d789a26c5b7c8f46d630dde4f3"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/blue_magnolia_shrub_bottom.png",
+      "sha256": "b0b858ea3c3f53b3a6f72d30a352d3de2f2bc169ee1fa5478c180feb3d710c7b"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/blue_magnolia_shrub_top.png",
+      "sha256": "a78d1372f3d5f3e79ea04b65586483777fe0164c88adbe497a4d15ef646989ff"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/brimsprout_2.png",
+      "sha256": "fab090c076f91b95a8ee83d49eda60f9bdffe37800df23db035458d0aa0532f5"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/brimsprout_nylium.png",
+      "sha256": "ac1eade94bc75423030b9cc24553c374272b3b03f240d264869425548635162a"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/brimsprout_nylium_side.png",
+      "sha256": "39e3f573405376e5460697d6184660ab9a480f903c0a5b660689855c2aa5640c"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/brimwood_leaves.png",
+      "sha256": "3c8380ce1e3c0124956c0d776288964597155d38d6ee772a51529190a5fae423"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/brimwood_log.png",
+      "sha256": "eb98f26c7468c6458190bea5f5cf74dbb8301a09fa3e2093587363291a6b3f62"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/brimwood_log_magma.png",
+      "sha256": "f9c1daf6ef9dacf4a7872fe69b7ebdbf6df006fea5771456a4f5a783ef179869"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/brimwood_log_magma.png.mcmeta",
+      "sha256": "e9b8025fde1b09b0a4d2a38427b04f98f28a593045be6d177eb2b29164c872b0"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/brimwood_log_top.png",
+      "sha256": "f83c21b93feab71a9a780713aa38d167be27215f49bfd07419158c200a9bdc0b"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/brimwood_log_transition.png",
+      "sha256": "ec694e213f2d7d110c02117695b55c54ba08f84418cd701b509886b4fad0a671"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/brimwood_log_transition.png.mcmeta",
+      "sha256": "eff55807164fe4f0db2f60ab8a75f03b75489abb0a3c89598e84a65db429ddb3"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/brimwood_shrub_bottom.png",
+      "sha256": "7a278e73bdb6b163667bf3e9f275802435fcaf4e26125539352570adb8c91d7f"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/brimwood_shrub_top.png",
+      "sha256": "8a0410b0f28ea7b9c091715774fde742b3e72d85bde69e339c564712e897146f"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/cattail_bottom.png",
+      "sha256": "8c1d1ad31d80b130dc05689ba5ec9af1af467a18eaa75e779dc188190e6562da"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/cattail_top.png",
+      "sha256": "363e9bcc3083a39663e60f0e5504e60c5683f8357149b3eef6305e570c0d2f6b"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/cave_hyssop.png",
+      "sha256": "711dbd8f21f85d0310981fb183c57b099bfb9552fbf2eb7b3d6a1969103e9b84"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/cherry_shrub_bottom.png",
+      "sha256": "4d615d28a7a3041268bf490288547cd9abcccd32f8b297dbccd729bb66bcd2ec"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/cherry_shrub_top.png",
+      "sha256": "b2103d9ea7b191555b8750b3b006e24720d20c43bf696be97f90227b639fb754"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/clover.png",
+      "sha256": "0aa22ff5a02008658c833981dcc9f3bde38a01180309ac185750c5d060e344bd"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/clover_stem.png",
+      "sha256": "86622b67af968e48c78539b8d9d958123890af17c5a03f28348015d6f10b42f5"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/cobalt_earlight.png",
+      "sha256": "83cbdc17c3637e500289c0498376f60166ef9c7446c0f73829b760a14ad45dc7"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/cobalt_log.png",
+      "sha256": "a6700679167b73d86c91b5c53ffaabb3bf579ad2500fe6f9392317a8262cf9fa"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/cobalt_log_top.png",
+      "sha256": "d7e991a235e560103f3a4e2d728d1d3188a4be1350944ce05fcab0f2569ac7ff"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/cobalt_nylium.png",
+      "sha256": "41b22e50e0fba2f4b920457549a3806b5540d33bd12dd06c78d01c3e3d0c4630"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/cobalt_nylium_side.png",
+      "sha256": "2ed7780e5e625f793ee171e94ba473f1175d2b93f8da4baf92f7050d1908219c"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/cobalt_obsidian.png",
+      "sha256": "e8879490d2454a45b1896dc56e66cd880eebfbfd3a59876b6c496915de78c5ff"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/cobalt_roots_1.png",
+      "sha256": "6dd49f93672285cb5a8e09d97a5ce70e7026112afd07f84f6846a059810d2ecb"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/cobalt_webbing.png",
+      "sha256": "a3dcf6213c9fb6ace927eb3e3bd382d11cdc0e1c5cbe23d1ec19a5f841225f22"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/coneflower_stem.png",
+      "sha256": "a4fb05305afa080da22d81e068e80128d4c8f050ac467044cffe17aa40296ce7"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/corpse_flower_bottom.png",
+      "sha256": "c5325cb3569fe6529673a3fb2bd48e4088e316bbf34d81d4f73cbd809f605aab"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/corpse_flower_top.png",
+      "sha256": "ae8bf8c8ca69327003b35936a03b9c5ed92bd153f1085775840812a5b7cde952"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/dark_oak_shrub_bottom.png",
+      "sha256": "ba8006ad95e31bc125cf16c8840a7bd566e747040ff982f51296aa7176628dd4"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/dark_oak_shrub_top.png",
+      "sha256": "1fbc2615355e1bc18de36179a4f6a0e6f179ef214eeef57135901993c43658c6"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/day_lily_bottom.png",
+      "sha256": "eac244316443ef3b77973f5b426730dd7b486499df9845b1393b75b501dce132"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/day_lily_top.png",
+      "sha256": "5d83a13899ecbd9347dfa57076c08321bd82881f4935ddf2e1fdfe94aeeed35f"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/dead_steppe_shrub.png",
+      "sha256": "1a6882372781c1cf32a75dd4f15383b830d279c4e308e86fa23de7ac6526933e"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/deepslate_prismoss_side.png",
+      "sha256": "0c84284ed2df4cc8c9c02ab293c09b1a581ea584571d2171c2ee592f0a786e2a"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/deepslate_viridescent_nylium_side.png",
+      "sha256": "7c5384d8a949f11810e7978e182e51f221309ce7c64f4b3d7d02f40877e92157"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/dorcel.png",
+      "sha256": "0fd09356955253007515935e9ba42b56ea3c2f65dfb61451fe5a806a2085449c"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/dropleaf_leaf.png",
+      "sha256": "3104e6a4ffd17301edff896170abb98367ee1d4f5f15b135f744aca60791238b"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/dropleaf_leaf_green.png",
+      "sha256": "4fd2db7515d9b682ac7bd29c1aab411cd36c1eaaf8f58bb0a7c26273364b4013"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/duckweed.png",
+      "sha256": "85944b4abf8c1e4533752ae3ac15fd9cc56bd1cb31407118494e9822c9dbb9cb"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/duskmelon_stage0.png",
+      "sha256": "5ce9653075d999ffef520d54c2d955aa55b038b971aec68a7cb6c05cd3ceda77"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/dusktrap_bottom_open.png",
+      "sha256": "fa94bb45248418281b9669de03f048706116812c5772ab1c1fa6ecb1d02267b5"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/dusktrap_top_open.png",
+      "sha256": "67a3ba6d2523a0baed53768864bc4b30baea82dea9a0d64717143fc84bd492a8"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/felicia_daisy.png",
+      "sha256": "6a56eacecf4700227f5fc90c547955429f9dbae86ba2114578f8ab42bfefe57c"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/frozen_grass.png",
+      "sha256": "340627c5dfe57d0eb5c2bda4427b7adaf76526a23d1ac045f2bfcb6c0cb9bc70"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/glister_bulb_bottom.png",
+      "sha256": "d2b9ca09b2bc7fb806524e4267b10008fb0c6d5031ec156b9702ef12179be9d3"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/glister_bulb_head.png",
+      "sha256": "e047089f558e0cc5e6e95d0c8ae503a5e36ca942f3970ca1585744de9514a2b3"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/glister_bulb_top.png",
+      "sha256": "b8848ca5fb5011c435eee10e74e468ddfe443e6a743c8c9fadde2f1dab140db8"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/glister_ivy_plant_1.png",
+      "sha256": "32e6644858492b4c51ad1142aa92379981f283d5d70106159f3d4b9196d8eb87"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/glister_spire_bottom.png",
+      "sha256": "a3e2e6b43e1d19e0f1e7041a82008c730bd0d1ab20f14d6db6c18d7883fc2c95"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/glister_spire_top.png",
+      "sha256": "b9d01740e95753913fc683e9da9d65bf952260a0c1684f7c4d32d953e9488052"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/glistering_bloom.png",
+      "sha256": "5244cf99949779324d82b2d0a3a8363f3aaa7097a84f994d2243a86b9f21304e"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/glistering_fern_leaf.png",
+      "sha256": "73b302fcb26fef61446ed122e8229500cf9ae2bff26dfc2b39797b9e1e19ad6d"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/glistering_nylium.png",
+      "sha256": "ce6405f4043221e75e1f0a913a4d2171f00d282393cac58e30471eaf5a9b085d"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/glistering_nylium_side.png",
+      "sha256": "6fb300f4bf2a4e73913afd2c1027bc6150871364df5e67a3bcc5d6ac01bc4346"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/glistering_sprout.png",
+      "sha256": "bf1fb6128c0d4124b4a5e9900dc6dcb52c8bb81eac5a3f4d8c5dbe2cbd340ad8"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/golden_larch_shrub_bottom.png",
+      "sha256": "c1823fe465c1721fe0fd4079dd6188ab64d6d14a7d8b63850f0c4a03b1b4e29c"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/golden_larch_shrub_top.png",
+      "sha256": "24f4d7fe64f7d4ceb21cf9f0cf1d879e8ff132627372d95710f7ba5f0e2bc460"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/green_bioshroom_block.png",
+      "sha256": "cb65a5a4c5701de2c7048ed4ad5852ce07110c3f0f530bbe73f927570807cb20"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/green_bioshroom_block_glowing.png",
+      "sha256": "093dd62f7649ca9d821e96b871522a478fc1e7b09f6e865e81adcf4552cc7510"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/green_bioshroom_stem.png",
+      "sha256": "b65ccf8433bc6e694c01a4e4ab6f33acb04907d923cc95813a12c58981f29fab"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/green_bioshroom_stem_top.png",
+      "sha256": "3a099b81de5aa142e7b44ad3ee715d86d7522abe466fe9996c0e7899ab52eaee"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/hanging_earlight_plant.png",
+      "sha256": "414944e49041bc056f5feea0837cd28cef25a454a66630d84e649278995b59a9"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/hanging_prismarite_column.png",
+      "sha256": "ce9517da5bf245b1adabda7d523cc14bf34a15eb603f513142d099c02592cceb"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/hibiscus.png",
+      "sha256": "4cc79876d8a971b774491326e9fa3f571eaa6258609ccb6f15a553a866c603dc"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/hyacinth_base.png",
+      "sha256": "c40797b7bfe0934c74ea72ef9bbe3da9a58f0146dfe6ff7821867d9e0f0eb2db"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/hyacinth_flowers.png",
+      "sha256": "cd0ee65c58d7d29306e0608bb54ab03737bd6523f1e25f84bf5a6f728c10d22a"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/hyacinth_stock_tall_middle.png",
+      "sha256": "3cbba997845448e62404bb2f2261ad3306160365218dd17c4b41986671438cf9"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/icicle_down_base.png",
+      "sha256": "23edce16babee8f2b99d4b55578cf2e262a56d8dd685cb27037e835292ea7095"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/icicle_down_frustum.png",
+      "sha256": "ff9b77d7d6a49188cd30bba41c4cf2b3412005c32862a4d525f8ef3c7c778b78"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/icicle_down_middle.png",
+      "sha256": "ce0fa571092fa594a4dc1c85d34d61ee527b2087a3122a6fdf9c0753c9673cf8"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/icicle_down_tip.png",
+      "sha256": "b4060d728f0d7f15e5990ce24191bf137b7388b52384ced45c7dd47ce0e906b1"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/icicle_down_tip_merge.png",
+      "sha256": "b970015ada92c7484a6bbe4625159587e92a4bb7738453e3fd657e903db7e519"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/icicle_up_base.png",
+      "sha256": "26d0d5b8248cfdd9a0f254b5488579b8adde1335ee21aa057f35fb74aaaf7abe"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/icicle_up_frustum.png",
+      "sha256": "08747318325ed7909641323fc1af09da9b6649e0eee07b5f4f92bde53146a94b"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/icicle_up_middle.png",
+      "sha256": "f90b93cb00ec690d6a2009adf80f5aa83d0c77d90b48cd7b28a46ff673c29c3e"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/icicle_up_tip.png",
+      "sha256": "0f193d51943d1ca2e3d2c96ae0638d1ac4e0195c8d16aa9186640a6b547ef7f7"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/icicle_up_tip_merge.png",
+      "sha256": "80264dc134487ee50d6b3bb67fc65f115abc1c0b9322b1cb4911b009afb3f2fb"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/jungle_shrub_bottom.png",
+      "sha256": "803c91c7d6763e27af716823a1716ddba1d56f377dd441b82d3970c4d20388a0"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/jungle_shrub_top.png",
+      "sha256": "b2839d9a0e709369731a80902207576341bf03f5e6effc49323b760219ef2cb4"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/kapok_shrub_bottom.png",
+      "sha256": "e8f3f99d7bf2718a6f9fdc947ac50a63e0f02ce2664e787ffd9f678ccae40bec"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/kapok_shrub_top.png",
+      "sha256": "cfdeb26ba67c64820a131f667444bd8cb0d72b09be7f4bbc3506ac695da394df"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/larch_shrub_bottom.png",
+      "sha256": "3119b87efdc835af3ad532e5c7b097567357b76691fefe7af7cf6a9f7c4bf6ef"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/larch_shrub_top.png",
+      "sha256": "8b126e3935211ea8c7ff2280935d3bccc9372a24bb781b9b0644960202087cb8"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/large_prismarite_cluster_bottom.png",
+      "sha256": "7807d22527e5b5c16ad7d0d46025a3721f8f1488922db3a8a5f84785413c108e"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/large_prismarite_cluster_top.png",
+      "sha256": "2a716f469bfa649717aca540658adb298b2dcdad06d6ebdcaac012f8cb958720"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/magnolia_shrub_bottom.png",
+      "sha256": "97301aefc5619eff72e55b173c7abc561b7fe18e75af2c81d2837059c6e22456"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/magnolia_shrub_top.png",
+      "sha256": "028736f8c8c7f4891b4f56b20840328105a864e7d53a67fdaa34604397f1479b"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/mangrove_shrub_bottom.png",
+      "sha256": "62e7a6005ccd15308ad6c66a5bd77ba53e4768b201796fe216b015cfa4435b4d"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/maple_shrub_bottom.png",
+      "sha256": "6086fac96d18b71509d738b510c8477aea4d03001b138a69fe50bcf6c36c456f"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/maple_shrub_top.png",
+      "sha256": "33615be02c5d65874e890f064874757f719743abc26036b0af87d444739fe012"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/meadow_sage_bottom.png",
+      "sha256": "1176cd6f31eb4e601c60a15cdd66bafed9c87899de37f95fe7ef3c614e7be6b8"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/meadow_sage_top.png",
+      "sha256": "9a206559abd8778dbbad3b71827491947f508cbb706c9dcb2ccf525c4e1dd511"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/mossy_stone.png",
+      "sha256": "984508a44a92f02cce254cd58d45905cae8e625c647d4a5b32f9ab6ae82ee2e8"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/mycotoxic_daisy_bottom.png",
+      "sha256": "2b784b4f40f685893eb5f21deb978b74e0656ccec0be52512224352cd61111b6"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/mycotoxic_daisy_top.png",
+      "sha256": "edcb334718d2deda6337b9950f1a5d7f588790db450a6e9ccbcf96932f7bd4f9"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/mycotoxic_grass.png",
+      "sha256": "75109304ebf50f39f0999037f45da81980750377f7ec4d78de41a818edbc2eb7"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/mycotoxic_moss.png",
+      "sha256": "3426c865c93b2253f271bf3d796854e26c1578608975e9734b5867f124891523"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/mycotoxic_moss_side.png",
+      "sha256": "bd7640ea984896596fb2fcdd5db113c4ae3ea05e6fcf66c0e87664671536adf4"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/mycotoxic_mushrooms.png",
+      "sha256": "b4c727931ed256673d7a73f1b204f875e2245139668e21e1ad3948052f116761"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/oak_shrub_bottom.png",
+      "sha256": "ab4d427256854389055b5110787d648e5460ee26bc47960a376e246acba51a06"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/oak_shrub_top.png",
+      "sha256": "864d3faaa73e04517b63a6f7c091578b96ea7fe0ea6b52eb94325b2c698c2cba"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/orange_coneflower.png",
+      "sha256": "1c04c7390d71a82e907ad9aae4e66b2074718e8e8aac3ffce492000d7a100149"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/orange_maple_shrub_bottom.png",
+      "sha256": "ac8c7433f78691c000bb6973cf99b70aa70bb6a697d3516b3892c7fa69fc46c3"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/orange_maple_shrub_top.png",
+      "sha256": "87d98eaad1cab0e618e2ca394cb1112e46da8396affb6d2dfdc71620ad672b12"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/overgrown_bone_block_side.png",
+      "sha256": "6eab2e8a139c32aa9dfe0ba16a51277601a84f97fd614c60f0147b0371705b48"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/palm_shrub_bottom.png",
+      "sha256": "615870f1fb8e3dcd10e2a3c22dd9b614331ef57d1c64df449dd905520d3e8c69"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/palm_shrub_top.png",
+      "sha256": "e9b92ddb3ac6025df358a280a1ee9ad0bfc8e7f741d48244b1d71786761fda37"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/peat_coarse_dirt.png",
+      "sha256": "aa6f65c58a73ff5a9bf823f11cb631bcbe8e3542b1b306a585e1d151aa9ab4d8"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/peat_dirt.png",
+      "sha256": "f80fb5313ae2e1c70cba86be28bd713eb588c65a102e82c1c3ecd891da0b2d56"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/peat_grass_block_side.png",
+      "sha256": "39eeb5d93c1358099e2f0b16ba0d7f17ca864a0323dfff6b287e849eb01303ac"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/peat_grass_block_snow.png",
+      "sha256": "e0442f6b80ba7960e48031ccff80467d034040700605ff934a24bed97c645ca3"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/peat_mud.png",
+      "sha256": "c5b82ccf8130814b76489c5089670d41f67a440c9f9966ab3731b4100895002c"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/peat_podzol_side.png",
+      "sha256": "3effbaf7753834e022b2c93922f9b70e3c546c5bf82add3216d90a055efeaf3f"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/peat_podzol_top.png",
+      "sha256": "d24431340adbcaecbafeaeb9207134e892cd2e73ed7109edc29b37f077485b74"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/pink_bioshroom.png",
+      "sha256": "0556d6bc363dc2dcfc31f2b6a79e91fc1f522d2e0c63b61f8aece832e7abd8fe"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/pink_bioshroom_block_glowing.png",
+      "sha256": "c55cc5eb82ee81c0d544c32c9bfa1af440824450d44329348d2ac8bdf3b0cb7d"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/pink_magnolia_flowers.png",
+      "sha256": "c752073866f8de76202fd1c8e39ee92fb2354fd8b87dc407a2b9190aaaa93af7"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/pink_magnolia_shrub_bottom.png",
+      "sha256": "95efd14c0aa6faeb8506c6230f1eeac222cf1743abeaa25ffdefe50680d301d6"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/pink_magnolia_shrub_top.png",
+      "sha256": "b1a0e37c442bdf5cc4924a4234fb9bed346902dc21ee1a6d4b66bac94b66e02d"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/poppy_bush.png",
+      "sha256": "6a495563e06404dad6463cf84c30f115f691e8154ed4da4a559082bf1a53141d"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/poppy_bush_salmon.png",
+      "sha256": "be17383d76ab34f21316c6ffef22e28deff956d8ee66409351cb93cc22c09c53"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/prismarite_cluster.png",
+      "sha256": "962a9f6352374eb9cb7f6b31646c6aefabd1fd95cb413b0fb2fac01566a6a014"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/prismoss_overlay_top.png",
+      "sha256": "1452e437084c7d188bcf045e0fbcf6848c12f21e1592d906367c19ca6c5ba8ca"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/prismoss_sprout.png",
+      "sha256": "393e52355ba8fb993be3aefdde51670df068af530b1f55ceeee87e1df7729db3"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/purple_coneflower.png",
+      "sha256": "36184af015d06cc3eca57d79977e5f12f7e29dfab7ca6b26e8a42a7b01062bb6"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/red_maple_shrub_bottom.png",
+      "sha256": "cf726b5c78dc3c759ca65909fca0e65fc6c9d3001ebd8c5c175ce2975ba74c46"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/red_maple_shrub_top.png",
+      "sha256": "a6afeec3fec7cfcc34a12ea9ddbac53bc92127d6518b57b25b737f4cb7b2e9a5"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/ru_grass_block_side_overlay.png",
+      "sha256": "b5e2bb5448891e939de0664bb2249290fb170d3ccc51ec13baf1a1fb572f8166"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/ru_grass_block_side_overlay_medium.png",
+      "sha256": "6eb68261dc062931379af27e616ab83140d80f2ffa25478a6a7a026a432b8d51"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/ru_grass_block_side_overlay_short.png",
+      "sha256": "43d98318407d9d122b83468cf183d18722e548c2144f9c2ffe2021b5c3e770e0"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/ru_grass_block_top.png",
+      "sha256": "e67c1dc27740ceb9e7aa85965fc9c1bb4b64bb71f4b1e88a30497e082962ac1e"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/saguaro_cactus.png",
+      "sha256": "70ce3f567a3d2d5049db1efb79996aec41534cdb5310b3db971b073f42b7b82b"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/salmon_poppy.png",
+      "sha256": "7d98c64a7116a2d98377988c48bae3c6af0379b8389068df418da40a1c300f8b"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/silt_coarse_dirt.png",
+      "sha256": "343a5aa35d66e96d102f65db7a6c4ce57b44831c0b77c02a940e5a581d54f285"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/silt_dirt.png",
+      "sha256": "7f861afa2c53ab72f41a85526037e8c649008bbeb96acbb4aed0c04f055cc79a"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/silt_grass_block_side.png",
+      "sha256": "44ed324a5d545488ad794777e6c61ca69be17c5216f5cc916b603167ed7a86f4"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/silt_grass_block_snow.png",
+      "sha256": "585a2bad401701736c74db8dedd77579facf3b6d047ea4b44a85c322353ce47d"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/silt_mud.png",
+      "sha256": "6e02001576bca2da0c5ca80bc9b42296526583ed1afdef19d61d087bccb66066"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/silt_podzol_side.png",
+      "sha256": "b911f6809e4bb8392237ac1fc14111e67d005533d2bf0f755f140605bde45cdf"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/silt_podzol_top.png",
+      "sha256": "f50df6250b4ce3c6cd0375d47bdf327f8b7c04600129b6ca1d293726eb304186"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/silver_birch_log.png",
+      "sha256": "fb72c20375480a71018aa2f55a2048c537c07355829acca0275684554724fb73"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/silver_birch_shrub_bottom.png",
+      "sha256": "598de658ac5f3a95ac8a4abc7006f99b3a6895e2f7dfc8c4a2005833f2918aef"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/silver_birch_shrub_top.png",
+      "sha256": "3b9082bac02aa0f26c88519d7b6f29d90edcf701568d785e305891045d8f530a"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/socotra_shrub_bottom.png",
+      "sha256": "e3358d40afec29a47cf501f888f418a674c1636c95ba505c520b3076693bc5fe"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/socotra_shrub_top.png",
+      "sha256": "0c91d40b8cccca65c90a2c48105e437be3e7a69e285492d8f66bb729d80eeafa"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/spruce_shrub_bottom.png",
+      "sha256": "a33778e79a25e24867a97d49b0a5f95169c1cb606390e71a23928c43ed9d6b56"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/spruce_shrub_top.png",
+      "sha256": "e4e6ef2e6c52b883acbcc03c0fb29675f803ff06c805badc4bca04defb6c2c43"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/steppe_grass.png",
+      "sha256": "6caff7bbb932fc7cb211479bb6d667f699ff2da0094b29d20fb70e8b0c4caff0"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/stone_grass_block_side.png",
+      "sha256": "5a591322f0626ec6e8ed5b102da7eac576e1f0f189cc064abca2ae315207ae52"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/stone_grass_snow.png",
+      "sha256": "d5374ddfd68035f92635636919c4f0961bac9fe77f40c649900fc8ca21bbf604"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tall_blue_bioshroom_bottom.png",
+      "sha256": "648c1fd4fcc5a5751984fdd6c6d6076f10ca7e98ddb7bc04b4a2dffa8900e4ea"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tall_blue_bioshroom_top.png",
+      "sha256": "02078ea3e239224b19dcecba68a58a5d8877e1a321c9785ce86c0bb620796839"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tall_cobalt_earlight_bottom.png",
+      "sha256": "ee0d3b3ff3721de50a95df197f41ee412e1633589e32b8a1623ce275eafc4469"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tall_cobalt_earlight_top.png",
+      "sha256": "4752a766b7762a59bffc32f4e32e132f529ba6e54afb9b3111d054e7a4e39104"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tall_green_bioshroom_bottom.png",
+      "sha256": "f0ba5950e237265bb2761d142d3052c5b325ec941334b896ab7d2adcea7b7095"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tall_green_bioshroom_top.png",
+      "sha256": "ee0cf8ddfa09eac924a841408bb6cf86337a6b6f4805e99485ec8e154c4c0005"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tall_pink_bioshroom_bottom.png",
+      "sha256": "744fe4adb9721cb9a17a383c8f1cea196525112719daaa6e197710b665b8669d"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tall_pink_bioshroom_top.png",
+      "sha256": "5602ed011305346951de8430f2bc971f21c4afbd2abac44be4c936e3c245eebb"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tall_yellow_bioshroom_bottom.png",
+      "sha256": "87bafdd869594bc22ba71841af08179316b1144a5ba7663c0570ef98dc250e81"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tall_yellow_bioshroom_top.png",
+      "sha256": "7822a5760d2254b7bc15e28ba27b97e2957555c8a37c18a9e1cd135c18cba13e"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tassel_bottom.png",
+      "sha256": "9b9d6fc20d7cd703643d882b43756f5c46cf3bd99d054205964f4e28d575147a"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tassel_bottom_flowers.png",
+      "sha256": "ae70a6962bb0351a204afbc56fa11f5e95306d86a9545d35b4bc99b7d686baa1"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tassel_top.png",
+      "sha256": "30e6f6e9222ba96392a0bc23359f77513312a7a5a9ccf7430c84fb69fbe213ab"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tassel_top_flowers.png",
+      "sha256": "f141147c935183a7b0c43a3e0036961691ae3c78c24d4e84642245752db2f2ac"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/trillium_white.png",
+      "sha256": "ae123ae2f9311a3725ec2738034e20a8efe2fe039eca5086f56943c80e05d675"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/tsubaki.png",
+      "sha256": "2c8fd4542c6cb9a19351725bf7141ee8127d7ebe422c27666cef60896de80b4f"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/viridescent_nylium.png",
+      "sha256": "528dbf941237895a018e6ab0df17994ffadfac1356ebe27189543bf857ef2ec5"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/viridescent_nylium_side.png",
+      "sha256": "caa2ced1a71a86315702af2fc2f0ac70f69e4d31c39bcd5ae82c84bf63401fdb"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/white_magnolia_flowers.png",
+      "sha256": "1482f3185c0cd245bc0ae19cc0f31ccb9e309076427307adc15f99aabcdd6558"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/white_magnolia_shrub_bottom.png",
+      "sha256": "7dad38c675a6cbea46a37cf817d69e28a397ccf8e8a1286f288a17cb7f370456"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/white_magnolia_shrub_top.png",
+      "sha256": "3c42ead59b6fbbeab080c73dfaed9e3465f040fdd78697d745bc0b08c7df81e0"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/white_snowbelle.png",
+      "sha256": "d746f858ead3aad0bb75df204f7ef39dba171f3fe985dd51ffdc048f5d53e18c"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/wilting_trillium.png",
+      "sha256": "285b8dea83f74f6b19100700380dd04e609127c5450107be7d6d1bd3f1db2220"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/windswept_grass_bottom.png",
+      "sha256": "6f2c3b2fe55430c67d3cb12b63ad4faa804866704f2ee6ce29a7de6d9fc7a5c6"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/windswept_grass_top.png",
+      "sha256": "1cb19da944a2b1f8a396938eeb88245f9116fe222dd9dceac7543fbdaf913f1b"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/wisteria_vines.png",
+      "sha256": "e9e79ebd2f2ac054dc6b21abe9bd0901d46ae2bab9f4fc1f8be898ccae3d64ae"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/yellow_bioshroom.png",
+      "sha256": "65ad3e0b26ec147ae4a7ce71ead1f2054c7ee666ec2577780dcecc64700c4468"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/yellow_bioshroom_block.png",
+      "sha256": "8c2f22dc4c87302346b9c8fb5823129291a3294171a7b932319d1a623a87b573"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/yellow_bioshroom_block_glowing.png",
+      "sha256": "5084349daed61193a6ac55ec033286dbbc36b1c6bacb6282609034630734c287"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/yellow_bioshroom_block_glowing_bottom.png",
+      "sha256": "2cb9aa9c10323af46166ae12b38fa551f78dd74bc838e4fefa71965847306af1"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/yellow_bioshroom_block_top.png",
+      "sha256": "ffcbeb8576200feff207ef018d1517e6e772e61c5f38cd7648a3baee28a5952e"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/yellow_bioshroom_stem.png",
+      "sha256": "efa7c255d27f6e91e0a3901088ec79eeb5cb662618d30ceb9158a4a453fec191"
+    },
+    {
+      "path": "src/main/resources/assets/biomic/textures/blocks/ru_decor/yellow_bioshroom_stem_top.png",
+      "sha256": "a3ed6531fe8410025e73dea25c2eb9b9a16af96e30a9281155b8c8852ecd61b0"
+    }
+  ],
+  "format": "biomic-ru-decoration-palette-v1",
+  "source_revision": "f5dfe4eea916cb7ccb4990faebc952459dad5f8b"
+}

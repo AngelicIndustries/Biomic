@@ -1,0 +1,20 @@
+{
+  "alexs_caves_revision": "4718f4287c65b810aecb211789b45f54d405a94d",
+  "behavior_license": "LGPL-3.0-only",
+  "source_behavior": {
+    "VentSmokeParticle.java": "b50b81d3a4aa859d649e084ae68492c81950b6cdf12279cc4310d5d4980a4cf1",
+    "GeothermalVentBlockEntity.java": "64336171ba471f4d7fd1b92915315dd4d732ceca48844c7fe3e4bb0802fe9b56"
+  },
+  "sound_source_prefix": "src/main/resources/assets/alexscaves/sounds/block/geothermal_vent/",
+  "sound_target_prefix": "assets/biomic/sounds/alexscaves/geothermal_vent/",
+  "sounds": {
+    "geothermal_vent_bubble_0.ogg": "2619b37ac7dd0136990498f4ea84d7bfd2cd8eac41761cf264a0d419216927ca",
+    "geothermal_vent_bubble_1.ogg": "144119acda0caf33b849ace2cfc16f57295d21b10482d1180482b84e8b59d35a",
+    "geothermal_vent_bubble_2.ogg": "b2f97b584b0fde0c4115d37c2322e2594199a839f3f38ee940b76649df9657c2",
+    "geothermal_vent_bubble_underwater_0.ogg": "c67c2bb38f63d821bf66bdada295e7b22e1c1b29177a388a0fc5740633c363bc",
+    "geothermal_vent_bubble_underwater_1.ogg": "399fac835e62d7f353db5fe8d1fca3cff823d498abe85daf46ee9b47bb1c873b",
+    "geothermal_vent_bubble_underwater_2.ogg": "2c3d33d46b7b8dd5e308a2f92c296e876a33087452f1d0bf98a575344522fc50",
+    "geothermal_vent_bubble_underwater_3.ogg": "899e5716ead4f61c34f8792f0c0a288884e5085adbf5e71fdb5cac2ab1dea1b3"
+  },
+  "sprites_note": "The vents' twelve big_smoke frames are Minecraft 1.20.4's, downloaded at first launch (client.VanillaTextures), not shipped."
+}

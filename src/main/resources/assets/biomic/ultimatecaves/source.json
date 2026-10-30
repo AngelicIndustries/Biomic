@@ -1,0 +1,16 @@
+{
+  "project": "https://github.com/kotmatross28729/UltimateCavesMod",
+  "revision": "d687b27a9f0a950d72a97aed691470fe8bd08684",
+  "scope": "pure noise kernels only; no generator events, ore/ravine/biome mixins",
+  "files": {
+    "src/main/java/mods/tesseract/ucm/util/FastNoise.java": "08c563fde797eb53716fce04585028d448812c4bc88864b31d0beb582d9fbef2",
+    "src/main/java/mods/tesseract/ucm/util/WorleyUtil.java": "7c5ca12494ea72dd5e75c1f95fc64e68d32c2a00d01ed3710efe6c2ba891ffd2",
+    "src/main/java/mods/tesseract/ucm/util/MathHelper.java": "c97caf0ef0649431325d2428b38a1cb0df6a11ef7dcd6d79648d35789a9534b4",
+    "src/main/java/mods/tesseract/ucm/util/Pair.java": "eddd256c7d804a722d507dfd7784e0b2d36a2363c6787426f272b6684595308c",
+    "src/main/java/mods/tesseract/ucm/noise/DoublePerlinNoiseSampler.java": "a8baf3024bdc592cbb4168de76da451fcad32297c4e05fe5d290495dbdf40b37",
+    "src/main/java/mods/tesseract/ucm/noise/OctavePerlinNoiseSampler.java": "e7c661850c682887b478fee06732710e2644406b87a7c9509e79da1b1d122695",
+    "src/main/java/mods/tesseract/ucm/noise/PerlinNoiseSampler.java": "4f21528a198d0349a6df3dc7072583a284bac75d276e084a4f7546c7dc213a9e",
+    "src/main/java/mods/tesseract/ucm/noise/SimplexNoiseSampler.java": "b2d6038494f732da7c6c79d9bb5f03e5f51186e5570de91782acc1b6fbb7c402",
+    "src/main/java/mods/tesseract/ucm/world/GREG/NoiseCaveGenerator.java": "b96ac8c8c00db56f16db4641c8c455ca48ec8ee432a15da1a326fee58f401bdf"
+  }
+}
