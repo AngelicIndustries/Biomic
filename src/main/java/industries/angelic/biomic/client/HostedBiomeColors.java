@@ -6,6 +6,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 import industries.angelic.biomic.api.BiomeColorAccess;
 import industries.angelic.biomic.api.BiomicBiomeApi;
+import industries.angelic.biomic.world.WorldTypeBiomicBlend;
 
 /** Uses Y-aware biome snapshots where available, with unchanged 2D fallback for other worlds/renderers. */
 public final class HostedBiomeColors {
@@ -22,7 +23,7 @@ public final class HostedBiomeColors {
     }
 
     static boolean enabledType(String type) {
-        return "biomic_blend".equals(type);
+        return WorldTypeBiomicBlend.ID.equals(type);
     }
 
     public static BiomeGenBase biome(IBlockAccess access, int x, int y, int z) {

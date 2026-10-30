@@ -130,7 +130,7 @@ tasks.named<RunMinecraftTask>("runServer25").configure {
                 generate-structures=true
                 level-name=world
                 level-seed=42
-                level-type=biomic_blend
+                level-type=biomic
                 max-players=1
                 online-mode=false
                 server-ip=127.0.0.1

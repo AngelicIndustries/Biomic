@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Start a fresh biomic_blend server plus a visible client with the newest debloat dev jar.
+"""Start a fresh biomic server plus a visible client with the newest debloat dev jar.
 
 Usage: tools/run-debloat-review.sh [--mods pack|standalone] [--height 512|256] [--seed N]
        [--jar path/to/biomic-dev.jar] [--profile]

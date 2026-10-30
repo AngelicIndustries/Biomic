@@ -128,7 +128,7 @@ Salt Marsh is independent and remains enabled. Origen-only generation is untouch
 
 - `BopBiomeSelection` is the explicit allowlist. Native availability is intersected
   with it; absent mods and native-disabled profiles are never enabled by the filter.
-- `expansion.bopFullCatalogue=false` is the default for **new `biomic_blend` saves**.
+- `expansion.bopFullCatalogue=false` is the default for **new `biomic` saves**.
   Set it to `true` before creating an exhaustive audit world to restore all available
   supported Overworld profiles. All six available Nether profiles remain selected
   in either mode. `bopHabitats` and `bopNetherHabitats` remain independent master gates.

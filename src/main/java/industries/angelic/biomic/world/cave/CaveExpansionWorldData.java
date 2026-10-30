@@ -6,6 +6,7 @@ import net.minecraft.world.WorldSavedData;
 import net.minecraft.world.storage.MapStorage;
 
 import industries.angelic.biomic.config.ExpansionConfig;
+import industries.angelic.biomic.world.WorldTypeBiomicBlend;
 
 /** Loaded only by normal world initialization; old worlds never opt themselves into a new carver. */
 public final class CaveExpansionWorldData extends WorldSavedData {
@@ -19,7 +20,7 @@ public final class CaveExpansionWorldData extends WorldSavedData {
     }
 
     public static void initialize(World world, boolean newWorld) {
-        if (world.isRemote || !"biomic_blend".equals(
+        if (world.isRemote || !WorldTypeBiomicBlend.ID.equals(
             world.getWorldInfo()
                 .getTerrainType()
                 .getWorldTypeName()))

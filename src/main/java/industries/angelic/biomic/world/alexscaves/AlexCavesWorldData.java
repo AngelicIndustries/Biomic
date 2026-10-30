@@ -6,6 +6,7 @@ import net.minecraft.world.WorldSavedData;
 import net.minecraft.world.storage.MapStorage;
 
 import industries.angelic.biomic.config.ExpansionConfig;
+import industries.angelic.biomic.world.WorldTypeBiomicBlend;
 
 /** Separate save manifest: absence in an old save always means disabled, and saved provider revisions never upgrade. */
 public final class AlexCavesWorldData extends WorldSavedData {
@@ -40,7 +41,7 @@ public final class AlexCavesWorldData extends WorldSavedData {
 
     /** Dedicated Tartarus uses the Blend Overworld profile, never its independent Nether profile. */
     static boolean supportsProfile(String type, int dimension) {
-        return dimension == 0 && "biomic_blend".equals(type);
+        return dimension == 0 && WorldTypeBiomicBlend.ID.equals(type);
     }
 
     public static AlexCavesSettings peek(World world) {

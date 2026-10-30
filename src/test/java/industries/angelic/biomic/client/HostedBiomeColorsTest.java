@@ -39,7 +39,7 @@ public class HostedBiomeColorsTest {
 
     @Test
     public void fullHeightHostedPresetsUseTheSavedYIdentity() {
-        Assert.assertTrue(HostedBiomeColors.enabledType("biomic_blend"));
+        Assert.assertTrue(HostedBiomeColors.enabledType("biomic"));
         for (String type : new String[] { null, "default", "biomic_origen", "biomic_og_tall", "biomic_tartarus" })
             Assert.assertFalse(String.valueOf(type), HostedBiomeColors.enabledType(type));
     }

@@ -109,7 +109,7 @@ tile.biomic.ru_flowers.name=Regions Unexplored Flowers
 tile.biomic.ru_tinted_plants.name=Regions Unexplored Ground Plants
 tile.biomic.ru_shrubs_a.name=Regions Unexplored Shrub
 tile.biomic.ru_shrubs_b.name=Regions Unexplored Shrub
-generator.biomic_blend=Biomic
+generator.biomic=Biomic
 
 ## Metadata-preserving RU plant items
 tile.biomic.plant.red_sandy_grass.name=Red Sandy Grass

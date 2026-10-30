@@ -20,6 +20,7 @@ import industries.angelic.biomic.config.DebugConfig;
 import industries.angelic.biomic.storage.BiomeVolume;
 import industries.angelic.biomic.storage.BiomeVolumeManager;
 import industries.angelic.biomic.world.BiomicVolumeChunkManager;
+import industries.angelic.biomic.world.WorldTypeBiomicBlend;
 import industries.angelic.biomic.world.modern.ModernBiomeCompatibility;
 
 /** Position-aware biome lookup surface for JAS and other downstream integrations. */
@@ -183,7 +184,7 @@ public final class BiomicBiomeApi {
     static boolean usesSavedVerticalVolume(boolean markedManager, int dimension, String worldType) {
         // Eligibility only: worlds without a saved volume still fall back to their native surface biome.
         // The HA demo's explicitly saved Nether opt-in uses the same native chunk manager as legacy composition.
-        return markedManager || dimension == -1 && "biomic_blend".equals(worldType);
+        return markedManager || dimension == -1 && WorldTypeBiomicBlend.ID.equals(worldType);
     }
 
     static LookupResult resolve(BiomeGenBase surface, BiomeVolume volume, int localBlockX, int blockY,

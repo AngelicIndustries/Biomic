@@ -10,7 +10,7 @@ import industries.angelic.biomic.Biomic;
 /** Biomic's world type: Origen terrain with hosted habitats, caves and sky islands, 256 or 512 high. */
 public final class WorldTypeBiomicBlend extends WorldType {
 
-    public static final String ID = "biomic_blend";
+    public static final String ID = "biomic";
     public static final WorldTypeBiomicBlend INSTANCE = new WorldTypeBiomicBlend();
 
     private WorldTypeBiomicBlend() {

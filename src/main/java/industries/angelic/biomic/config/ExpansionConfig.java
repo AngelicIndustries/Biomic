@@ -9,7 +9,7 @@ public final class ExpansionConfig {
 
     private ExpansionConfig() {}
 
-    @Config.Comment("NEW biomic_blend worlds only: protected UltimateCaves Worley tunnels joined to existing caves. "
+    @Config.Comment("NEW Biomic worlds only: protected UltimateCaves Worley tunnels joined to existing caves. "
         + "Saved worlds retain their pinned setting. Origen-only and older worlds remain unchanged.")
     @Config.DefaultBoolean(true)
     @Config.RequiresMcRestart
@@ -42,38 +42,38 @@ public final class ExpansionConfig {
     @Config.RequiresMcRestart
     public static int skyIslandBiomeVariety = 100;
 
-    @Config.Comment("NEW expanded biomic_blend worlds: EFR native glow lichen and humid-cave vines on new bare "
+    @Config.Comment("NEW expanded Biomic worlds: EFR native glow lichen and humid-cave vines on new bare "
         + "passages. Preserves RU cave ownership, Origen-only worlds and existing saves. No duplicate ore pass.")
     @Config.DefaultBoolean(true)
     @Config.RequiresMcRestart
     public static boolean efrCaveEcology = true;
 
-    @Config.Comment("NEW biomic_blend worlds only: Alex's Caves' Abyssal Chasm (its Ocean Trench and waterlogged ecology) in deep "
+    @Config.Comment("NEW Biomic worlds only: Alex's Caves' Abyssal Chasm (its Ocean Trench and waterlogged ecology) in deep "
         + "oceans, generated chunk by chunk at both heights. Natural terrain/ecology only: no rusty metal, built ruins, whale bones "
         + "or whale falls. Saved worlds retain their pinned choice.")
     @Config.DefaultBoolean(true)
     @Config.RequiresMcRestart
     public static boolean abyssalChasm = true;
 
-    @Config.Comment("NEW biomic_blend worlds: the Nether is Jaddot's Tartarus terrain pack (12 biomes, 256 blocks tall), "
+    @Config.Comment("NEW Biomic worlds: the Nether is Jaddot's Tartarus terrain pack (12 biomes, 256 blocks tall), "
         + "generated chunk by chunk. Saved worlds keep the Nether they were created with.")
     @Config.DefaultBoolean(true)
     @Config.RequiresMcRestart
     public static boolean tartarusNether = true;
 
-    @Config.Comment("NEW biomic_blend saves only: use installed SaltyMod Expanded 2.0.8 native marsh soil/plants "
+    @Config.Comment("NEW Biomic saves only: use installed SaltyMod Expanded 2.0.8 native marsh soil/plants "
         + "in a share of Origen wetland provinces. Existing saves keep their pinned providers. Soft dependency.")
     @Config.DefaultBoolean(true)
     @Config.RequiresMcRestart
     public static boolean saltyMarsh = true;
 
-    @Config.Comment("NEW biomic_blend saves only: audited native BOP 2.1.0.2308 habitat profiles "
+    @Config.Comment("NEW Biomic saves only: audited native BOP 2.1.0.2308 habitat profiles "
         + "on compatible Origen landforms and sky islands. Requires separately installed BOP; pins enabled profiles per save.")
     @Config.DefaultBoolean(true)
     @Config.RequiresMcRestart
     public static boolean bopHabitats = true;
 
-    @Config.Comment("NEW biomic_blend saves only: false keeps the curated 11 Overworld BOP habitats "
+    @Config.Comment("NEW Biomic saves only: false keeps the curated 11 Overworld BOP habitats "
         + "that complement RU/Origen. All 6 available Nether habitats remain selected in either mode. "
         + "True restores all available audited Overworld BOP profiles for full-catalogue reviews. "
         + "Does not enable native-disabled biomes, change BOP reference worlds, or alter existing saved selections.")
