@@ -10,6 +10,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;
+import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import industries.angelic.biomic.bootstrap.EfrContentContract;
 import industries.angelic.biomic.compat.efr.VanillaArtwork;
 import industries.angelic.biomic.config.DebugConfig;
@@ -92,6 +93,11 @@ public class Biomic {
         WorldgenBenchmark.runIfRequested();
         industries.angelic.biomic.browser.BrowserServer.probeIfRequested();
         industries.angelic.biomic.browser.BrowserServer.dumpCatalogueIfRequested();
+    }
+
+    @Mod.EventHandler
+    public void serverStopping(FMLServerStoppingEvent event) {
+        WorldgenBenchmark.reportOnStopIfRequested();
     }
 
     public static boolean isDebugMode() {

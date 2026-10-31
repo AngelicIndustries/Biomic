@@ -6,7 +6,7 @@
   standalone  Biomic, Et Futurum Requiem and their libraries only, Biomic on its default config (the dev stack keeps
               the template's, WawelAuth needs one); --height 256 also drops Hohen Angst
 
-Usage: tools/bench/profile_bench.py --profile pack|standalone --out DIR [--height 512|256] [--order grid|shuffled]
+Usage: tools/bench/profile_bench.py --profile pack|standalone --out DIR [--height 512|256] [--order grid|shuffled|dh]
        [--windows standard|order|"CX,CZ;CX,CZ"] [--radius 12] [--jar JAR] [--aac JAR] [--hohenangst JAR] [--archaicfix] [--port 25712] [--cpus 8-13]
        [--jvm -Dname=value ...]
 
@@ -44,7 +44,7 @@ def main():
     parser.add_argument('--profile', choices=['pack', 'standalone'], required=True)
     parser.add_argument('--out', required=True)
     parser.add_argument('--height', choices=['512', '256'], default='512')
-    parser.add_argument('--order', choices=['grid', 'shuffled'], default='grid')
+    parser.add_argument('--order', choices=['grid', 'shuffled', 'dh'], default='grid')
     parser.add_argument('--windows', default='standard')
     parser.add_argument('--radius', type=int, default=12)
     parser.add_argument('--jar', default=None)

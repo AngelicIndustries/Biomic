@@ -29,7 +29,8 @@ public final class WorldgenBenchmark {
     private static final int DIMENSION = Integer.getInteger("biomic.worldgenBenchmarkDimension", 0);
     /**
      * Load order inside a window: "grid" (x columns, z ascending; the default) or "shuffled" (a fixed shuffle, so
-     * chunks populate with their neighbourhoods in other states, as a moving player loads them).
+     * chunks populate with their neighbourhoods in other states, as a moving player loads them) or "dh" (Distant
+     * Horizons' generation tasks, see generateDistantHorizonsWindow).
      */
     private static final String ORDER = System.getProperty("biomic.worldgenBenchmarkOrder", "grid");
 
@@ -68,7 +69,8 @@ public final class WorldgenBenchmark {
             long workerCpu = workerCpuNanos(threads) - workerCpuStart;
             long chunks = Math.max(1, world.theChunkProviderServer.getLoadedChunkCount() - chunksBefore);
 
-            List<String> details = provider.getPerformanceReport();
+            List<String> details = new java.util.ArrayList<>(provider.getPerformanceReport());
+            details.add(0, requestReport());
             StringBuilder report = new StringBuilder("PASS\n");
             report.append("seed=")
                 .append(WORLD_SEED)
@@ -113,6 +115,20 @@ public final class WorldgenBenchmark {
         }
     }
 
+    /**
+     * With -Dbiomic.performanceReportOnStop=true, logs each Biomic dimension's generation report when the server
+     * stops: the benchmark's numbers for a live server, such as one Distant Horizons pre-generates.
+     */
+    public static void reportOnStopIfRequested() {
+        if (!Boolean.getBoolean("biomic.performanceReportOnStop")) return;
+        for (WorldServer world : MinecraftServer.getServer().worldServers) {
+            if (!(world.theChunkProviderServer.currentChunkProvider instanceof BenchmarkedChunkProvider provider))
+                continue;
+            for (String line : provider.getPerformanceReport())
+                Biomic.LOG.info("Performance (dimension {}): {}", world.provider.dimensionId, line);
+        }
+    }
+
     /** CPU time of Biomic's own worker threads ("Biomic ..." pool names). */
     private static long workerCpuNanos(java.lang.management.ThreadMXBean threads) {
         long total = 0;
@@ -132,10 +148,64 @@ public final class WorldgenBenchmark {
                 chunks.add(new int[] { chunkX, chunkZ });
             }
         }
+        if ("dh".equals(ORDER)) {
+            generateDistantHorizonsWindow(world, centerX, centerZ);
+            return;
+        }
         if ("shuffled".equals(ORDER))
             java.util.Collections.shuffle(chunks, new java.util.Random(centerX * 31L + centerZ));
         else if (!"grid".equals(ORDER)) throw new IllegalArgumentException("Unknown benchmark load order " + ORDER);
-        for (int[] chunk : chunks) world.theChunkProviderServer.loadChunk(chunk[0], chunk[1]);
+        for (int[] chunk : chunks) {
+            long started = System.nanoTime();
+            world.theChunkProviderServer.loadChunk(chunk[0], chunk[1]);
+            REQUESTS.add(System.nanoTime() - started);
+        }
+    }
+
+    /**
+     * Distant Horizons' internal-server generation: 4-by-4 chunk events, each chunk requested as one server task
+     * that loads its eight neighbours first (dx outer, dz inner) and then the chunk itself.
+     */
+    private static void generateDistantHorizonsWindow(WorldServer world, int centerX, int centerZ) {
+        int from = -RADIUS_CHUNKS - Math.floorMod(-RADIUS_CHUNKS, 4);
+        for (int eventX = centerX + from; eventX <= centerX + RADIUS_CHUNKS; eventX += 4)
+            for (int eventZ = centerZ + from; eventZ <= centerZ + RADIUS_CHUNKS; eventZ += 4)
+                for (int chunkX = eventX; chunkX < eventX + 4; chunkX++)
+                    for (int chunkZ = eventZ; chunkZ < eventZ + 4; chunkZ++) {
+                        long started = System.nanoTime();
+                        for (int dx = -1; dx <= 1; dx++) for (int dz = -1; dz <= 1; dz++) {
+                            if ((dx != 0 || dz != 0)
+                                && !world.theChunkProviderServer.chunkExists(chunkX + dx, chunkZ + dz))
+                                world.theChunkProviderServer.loadChunk(chunkX + dx, chunkZ + dz);
+                        }
+                        world.theChunkProviderServer.loadChunk(chunkX, chunkZ);
+                        REQUESTS.add(System.nanoTime() - started);
+                    }
+    }
+
+    /** Wall time of each top-level request: one chunk, or one Distant Horizons task. */
+    private static final List<Long> REQUESTS = new java.util.ArrayList<>();
+
+    private static String requestReport() {
+        if (REQUESTS.isEmpty()) return "Requests: none";
+        List<Long> sorted = new java.util.ArrayList<>(REQUESTS);
+        java.util.Collections.sort(sorted);
+        long over500 = sorted.stream()
+            .filter(nanos -> nanos > 500_000_000L)
+            .count();
+        long over1000 = sorted.stream()
+            .filter(nanos -> nanos > 1_000_000_000L)
+            .count();
+        return String.format(
+            java.util.Locale.ROOT,
+            "Requests (%s order): %d, slowest %.0f ms, p99 %.0f ms, p95 %.0f ms, %d over 500 ms, %d over 1 s",
+            ORDER,
+            sorted.size(),
+            sorted.get(sorted.size() - 1) / 1e6,
+            sorted.get((int) Math.floor((sorted.size() - 1) * 0.99)) / 1e6,
+            sorted.get((int) Math.floor((sorted.size() - 1) * 0.95)) / 1e6,
+            over500,
+            over1000);
     }
 
     private static String requiredProperty(String name) {
