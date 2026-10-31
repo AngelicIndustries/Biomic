@@ -145,7 +145,9 @@ final class HostedMarshTerrain {
             // A floating island or high authored landform above the marsh vetoes this column.
             if (old < 50 || old > 96 || (origins[start + old] & TerrainDensitySampler.FLOATING_ORIGIN) != 0) continue;
             int target = floor(cx * 16 + x, cz * 16 + z, old);
-            if (target == old) continue;
+            // An unchanged bed under the sea line still takes the marsh's water: left dry, it held air beside its
+            // neighbours' water, which Origen's water containment then walled in with stone.
+            if (target == old && old >= SEA) continue;
             boolean safe = true;
             for (int y = Math.min(old, target) - 3; y <= Math.max(old, SEA); y++)
                 if (cells[start + y] == BiomicTerrainSampler.LAVA || cells[start + y] == BiomicTerrainSampler.BEDROCK
@@ -180,7 +182,8 @@ final class HostedMarshTerrain {
             if (oldSource < 50 || oldSource > 96 || (origins[oldIndex] & TerrainDensitySampler.FLOATING_ORIGIN) != 0)
                 continue;
             int targetSource = floor(cx * 16 + x, cz * 16 + z, oldSource);
-            if (targetSource == oldSource) continue;
+            // As in the legacy layout: an unchanged bed under the sea line still takes the marsh's water.
+            if (targetSource == oldSource && oldSource >= sea) continue;
             boolean safe = true;
             for (int sourceY = Math.min(oldSource, targetSource) - 3; sourceY <= Math.max(oldSource, sea); sourceY++) {
                 int y = projection.toPhysicalBlockY(sourceY)

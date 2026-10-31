@@ -8,6 +8,7 @@ import industries.angelic.biomic.world.WorldgenContext;
 import industries.angelic.biomic.world.modern.ModernBiomeCompatibility;
 import industries.angelic.biomic.world.terrain.BiomicTerrainSampler;
 import industries.angelic.biomic.world.terrain.FloatingIslandDensitySampler;
+import industries.angelic.biomic.world.terrain.MarshGround;
 import industries.angelic.biomic.world.terrain.ShiftedGroundHeights;
 import industries.angelic.biomic.world.terrain.ShiftedSkyIslands;
 
@@ -196,7 +197,8 @@ public interface StructureTerrain {
      * halos) on the server thread stalled a tick by a quarter second.
      */
     static StructureTerrain shifted512(WorldgenContext context, VerticalBiomeSampler biomes, ShiftedSkyIslands sky) {
-        ShiftedGroundHeights ground = new ShiftedGroundHeights(context);
+        // The ground as the marsh leaves it: villages planned on Origen's stood on pillars of earth above a marsh.
+        MarshGround ground = new MarshGround(context, new ShiftedGroundHeights(context));
         return new StructureTerrain() {
 
             @Override
