@@ -61,6 +61,13 @@ public final class ExpansionConfig {
     @Config.RequiresMcRestart
     public static boolean tartarusNether = true;
 
+    @Config.Comment("The Nether Update's mobs in the Tartarus Nether: Netherlicious' piglins, hoglins, zoglins, striders "
+        + "and zombified piglins. Off, Tartarus leaves them out and keeps vanilla's zombie pigmen. Netherlicious' own "
+        + "spawn settings still decide its biomes.")
+    @Config.DefaultBoolean(false)
+    @Config.RequiresWorldRestart
+    public static boolean modernNetherMobs = false;
+
     @Config.Comment("NEW Biomic saves only: use installed SaltyMod Expanded 2.0.8 native marsh soil/plants "
         + "in a share of Origen wetland provinces. Existing saves keep their pinned providers. Soft dependency.")
     @Config.DefaultBoolean(true)

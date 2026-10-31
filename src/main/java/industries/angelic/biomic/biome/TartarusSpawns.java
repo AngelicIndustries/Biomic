@@ -8,12 +8,15 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 
+import industries.angelic.biomic.config.ExpansionConfig;
+
 /**
  * Each Tartarus biome spawns the modern Nether mobs of the vanilla biome it borrows its ambience from. Mods add their
  * mobs to every NETHER-tagged biome alike; this re-weights the modern roles per biome and drops the ones that do not
  * belong there. Mobs without a vanilla role (Natura's imps, Netherlicious' embers and zoglins) stay as their mods
  * registered them, and each mob keeps the category its mod chose. Skeletons are left out: in a 1.7.10 Nether most of
- * them become wither skeletons, which belong to fortresses. Idempotent; run after every mod has registered spawns.
+ * them become wither skeletons, which belong to fortresses. With {@link ExpansionConfig#modernNetherMobs} off, the
+ * Nether Update's mobs are dropped and not added back. Idempotent; run after every mod has registered spawns.
  */
 public final class TartarusSpawns {
 
@@ -54,6 +57,18 @@ public final class TartarusSpawns {
     }
 
     private record Weight(int weight, int min, int max) {}
+
+    /** The Nether Update's mobs, all Netherlicious', which {@link ExpansionConfig#modernNetherMobs} leaves out. */
+    private static final java.util.Set<String> MODERN_MOBS = java.util.Set.of(
+        "DelirusCrux.Netherlicious.Common.Entities.Passive.EntityPiglin",
+        "DelirusCrux.Netherlicious.Common.Entities.Passive.EntityHoglin",
+        "DelirusCrux.Netherlicious.Common.Entities.Passive.EntityStrider",
+        "DelirusCrux.Netherlicious.Common.Entities.Monster.EntityZoglin",
+        "DelirusCrux.Netherlicious.Common.Entities.Monster.EntityZombiePiglin");
+
+    private static boolean left(String entityClass) {
+        return !ExpansionConfig.modernNetherMobs && MODERN_MOBS.contains(entityClass);
+    }
 
     /**
      * 1.20 spawn settings per vanilla biome. Netherlicious registers piglins and hoglins as creatures, where they
@@ -114,6 +129,7 @@ public final class TartarusSpawns {
                 @SuppressWarnings("unchecked")
                 List<SpawnListEntry> entries = biome.getSpawnableList(type);
                 entries.removeIf(entry -> {
+                    if (left(entry.entityClass.getName())) return true;
                     Role role = Role.of(entry.entityClass);
                     return role != null && !profile.containsKey(role);
                 });
@@ -131,7 +147,8 @@ public final class TartarusSpawns {
                     entry.maxGroupCount = weight.max;
                 }
                 for (var role : profile.entrySet()) {
-                    if (role.getKey().category != type || present.contains(role.getKey())) continue;
+                    if (role.getKey().category != type || present.contains(role.getKey())
+                        || left(role.getKey().classes.get(0))) continue;
                     if (absentElsewhere(biome, role.getKey(), type) && role.getKey()
                         .primary() != null) {
                         Weight weight = role.getValue();
