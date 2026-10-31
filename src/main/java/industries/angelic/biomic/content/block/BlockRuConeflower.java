@@ -9,7 +9,7 @@ import industries.angelic.biomic.Biomic;
 import industries.angelic.biomic.client.BiomicRenderIds;
 
 /** RU's low multipart flowerbed, not a crossed-sprite flower. Metadata stores amount and facing. */
-public final class BlockRuConeflower extends BlockRuPlant {
+public final class BlockRuConeflower extends BlockRuPlant implements StemIconBlock {
 
     private final String stemTexture;
     private IIcon stemIcon;

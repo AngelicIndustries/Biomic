@@ -13,7 +13,6 @@ import net.minecraftforge.event.entity.player.FillBucketEvent;
 import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import ganymedes01.etfuturum.tileentities.TileEntityGlowLichen;
-import industries.angelic.biomic.content.BiomicBlocks;
 
 /** Source-water drain/fill keeps every original EFR face and full tile payload; no lava/water side overwrite. */
 public final class SkylandsWetGlowLichenBucket {
@@ -43,7 +42,7 @@ public final class SkylandsWetGlowLichenBucket {
         if (!world.blockExists(x, y, z)) return;
         Item item = event.current.getItem();
         Block block = world.getBlock(x, y, z);
-        boolean wet = block == BiomicBlocks.SKYLANDS_WET_GLOW_LICHEN,
+        boolean wet = block == industries.angelic.biomic.content.efr.EfrBackedBlocks.wetGlowLichen(),
             dry = block == ganymedes01.etfuturum.ModBlocks.GLOW_LICHEN.get();
         var tile = world.getTileEntity(x, y, z);
         int mask = tile != null && tile.getClass() == TileEntityGlowLichen.class
@@ -55,7 +54,8 @@ public final class SkylandsWetGlowLichenBucket {
         if (action == Action.NONE && filled && hit.sideHit >= 0 && hit.sideHit < 6) {
             var side = ForgeDirection.getOrientation(hit.sideHit);
             int dx = x + side.offsetX, dy = y + side.offsetY, dz = z + side.offsetZ;
-            if (world.blockExists(dx, dy, dz) && world.getBlock(dx, dy, dz) == BiomicBlocks.SKYLANDS_WET_GLOW_LICHEN) {
+            if (world.blockExists(dx, dy, dz) && world.getBlock(dx, dy, dz)
+                == industries.angelic.biomic.content.efr.EfrBackedBlocks.wetGlowLichen()) {
                 event.setCanceled(true);
                 return;
             }
@@ -68,7 +68,7 @@ public final class SkylandsWetGlowLichenBucket {
         if (!world.canMineBlock(event.entityPlayer, x, y, z)
             || !event.entityPlayer.canPlayerEdit(x, y, z, hit.sideHit, event.current)) return;
         Block replacement = action == Action.DRAIN ? BlockSkylandsWetGlowLichen.dryLichen()
-            : BiomicBlocks.SKYLANDS_WET_GLOW_LICHEN;
+            : industries.angelic.biomic.content.efr.EfrBackedBlocks.wetGlowLichen();
         if (!transition(world, x, y, z, block, replacement)) return;
         event.result = new ItemStack(action == Action.DRAIN ? Items.water_bucket : Items.bucket);
         event.setCanceled(false);

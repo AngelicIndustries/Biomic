@@ -8,7 +8,7 @@
 
 Usage: tools/bench/profile_bench.py --profile pack|standalone --out DIR [--height 512|256] [--order grid|shuffled|dh]
        [--windows standard|order|"CX,CZ;CX,CZ"] [--radius 12] [--jar JAR] [--aac JAR] [--hohenangst JAR] [--archaicfix] [--port 25712] [--cpus 8-13]
-       [--jvm -Dname=value ...]
+       [--jvm -Dname=value ...] [--palette FILE]
 
 The benchmark always generates its default window (chunk 256,-256) besides the listed centres: "standard" is 17
 windows, "order" (the determinism check's) 4. DIR gets server/world, server.log, result.txt and manifest.json (the
@@ -55,6 +55,7 @@ def main():
     parser.add_argument('--cpus', default='8-13')
     parser.add_argument('--timeout', type=int, default=3600)
     parser.add_argument('--jvm', action='append', default=[], help='an extra JVM argument (repeatable)')
+    parser.add_argument('--palette', default=None, help="a block palette to use as the server's config/biomic-palette.json")
     args = parser.parse_args()
     if args.profile == 'pack' and args.height != '512':
         sys.exit('the pack profile is 512 high (Hohen Angst is part of the pack)')
@@ -74,6 +75,8 @@ def main():
     shutil.copytree(os.path.join(TEMPLATE, 'server', 'config'), os.path.join(server, 'config'))
     if args.profile == 'standalone':
         review.drop_biomic_configs(os.path.join(server, 'config'))
+    if args.palette:
+        shutil.copy2(os.path.abspath(args.palette), os.path.join(server, 'config', 'biomic-palette.json'))
 
     launch = json.load(open(os.path.join(TEMPLATE, 'launch.json')))
     command = review.retarget(launch['server'], launch['old_session'], out, jar)

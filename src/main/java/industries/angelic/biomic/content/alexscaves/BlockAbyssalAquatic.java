@@ -204,7 +204,7 @@ public class BlockAbyssalAquatic extends Block {
             return AbyssalMusselGrowth.spongeSupport(
                 below == this,
                 below.isSideSolid(world, x, y - 1, z, ForgeDirection.UP),
-                below == ganymedes01.etfuturum.ModBlocks.MAGMA.get());
+                below == industries.angelic.biomic.world.palette.BlockPalette.block("minecraft:magma_block", null));
         }
         return y > 0 && world.getBlock(x, y - 1, z)
             .isSideSolid(world, x, y - 1, z, ForgeDirection.UP);

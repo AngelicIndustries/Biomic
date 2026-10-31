@@ -1,0 +1,535 @@
+{
+  "_about": "Biomic's default block palette: for each id Biomic generates, the blocks it tries in order (the first installed one is used). \"mod:block:meta\"; \"auto\" metadata is computed from the block state. Override entries in config/biomic-palette.json, not here.",
+  "blocks": {
+    "minecraft:soul_soil": "etfuturum:soul_soil",
+    "minecraft:nether_gold_ore": "etfuturum:nether_gold_ore",
+    "minecraft:ancient_debris": "etfuturum:ancient_debris",
+    "minecraft:crying_obsidian": "etfuturum:crying_obsidian",
+    "minecraft:red_nether_bricks": "etfuturum:red_netherbrick",
+    "minecraft:crimson_nylium": "etfuturum:nylium",
+    "minecraft:warped_nylium": "etfuturum:nylium:1",
+    "minecraft:crimson_fungus": "etfuturum:nether_fungus",
+    "minecraft:warped_fungus": "etfuturum:nether_fungus:1",
+    "minecraft:crimson_roots": "etfuturum:nether_roots",
+    "minecraft:warped_roots": "etfuturum:nether_roots:1",
+    "minecraft:nether_sprouts": "etfuturum:nether_sprouts",
+    "minecraft:nether_wart_block": "etfuturum:nether_wart",
+    "minecraft:warped_wart_block": "etfuturum:nether_wart:1",
+    "minecraft:crimson_stem": "etfuturum:crimson_stem:auto",
+    "minecraft:crimson_hyphae": "etfuturum:crimson_stem:auto",
+    "minecraft:warped_stem": "etfuturum:warped_stem:auto",
+    "minecraft:warped_hyphae": "etfuturum:warped_stem:auto",
+    "minecraft:weeping_vines": "etfuturum:weeping_vines:auto",
+    "minecraft:weeping_vines_plant": "etfuturum:weeping_vines:auto",
+    "minecraft:twisting_vines": "etfuturum:twisting_vines:auto",
+    "minecraft:twisting_vines_plant": "etfuturum:twisting_vines:auto",
+    "minecraft:frosted_ice": "etfuturum:frosted_ice:auto",
+    "minecraft:mossy_cobblestone_slab": [
+      "etfuturum:stone_slab:auto",
+      "minecraft:stone_slab:3"
+    ],
+    "minecraft:andesite": [
+      "etfuturum:stone:5",
+      "minecraft:stone:5"
+    ],
+    "minecraft:diorite": [
+      "etfuturum:stone:3",
+      "minecraft:stone:3"
+    ],
+    "minecraft:granite": [
+      "etfuturum:stone:1",
+      "minecraft:stone:1"
+    ],
+    "minecraft:coarse_dirt": [
+      "etfuturum:coarse_dirt",
+      "minecraft:dirt"
+    ],
+    "minecraft:wet_sponge": "etfuturum:sponge:auto",
+    "minecraft:weathered_copper": "etfuturum:copper_block:2",
+    "minecraft:oxidized_copper": "etfuturum:copper_block:3",
+    "minecraft:weathered_cut_copper": "etfuturum:copper_block:6",
+    "minecraft:oxidized_cut_copper": "etfuturum:copper_block:7",
+    "minecraft:weathered_cut_copper_slab": "etfuturum:cut_copper_slab:auto",
+    "minecraft:oxidized_cut_copper_slab": "etfuturum:cut_copper_slab:auto",
+    "minecraft:weathered_cut_copper_stairs": "etfuturum:weathered_cut_copper_stairs:auto",
+    "minecraft:waxed_weathered_cut_copper_stairs": "etfuturum:waxed_weathered_cut_copper_stairs:auto",
+    "minecraft:waxed_oxidized_cut_copper_stairs": "etfuturum:waxed_oxidized_cut_copper_stairs:auto",
+    "minecraft:red_sandstone": [
+      "etfuturum:red_sandstone",
+      "minecraft:sandstone"
+    ],
+    "minecraft:smooth_sandstone": [
+      "etfuturum:smooth_sandstone",
+      "minecraft:sandstone"
+    ],
+    "minecraft:smooth_red_sandstone": [
+      "etfuturum:smooth_red_sandstone",
+      "minecraft:sandstone"
+    ],
+    "minecraft:smooth_stone": [
+      "etfuturum:smooth_stone",
+      "minecraft:double_stone_slab"
+    ],
+    "minecraft:blue_ice": [
+      "etfuturum:blue_ice",
+      "minecraft:packed_ice"
+    ],
+    "minecraft:bone_block": [
+      "etfuturum:bone:auto",
+      "minecraft:quartz_block:auto"
+    ],
+    "minecraft:beetroots": [
+      "etfuturum:beetroots:auto",
+      "minecraft:wheat:auto"
+    ],
+    "minecraft:shroomlight": [
+      "etfuturum:shroomlight",
+      "minecraft:glowstone"
+    ],
+    "minecraft:cornflower": [
+      "etfuturum:cornflower",
+      "minecraft:red_flower:8"
+    ],
+    "minecraft:lily_of_the_valley": [
+      "etfuturum:lily_of_the_valley",
+      "minecraft:red_flower:8"
+    ],
+    "minecraft:cherry_sapling": [
+      "etfuturum:sapling:1",
+      "minecraft:sapling:2"
+    ],
+    "minecraft:spruce_fence": [
+      "etfuturum:fence_spruce",
+      "minecraft:fence"
+    ],
+    "minecraft:dark_oak_fence": [
+      "etfuturum:fence_dark_oak",
+      "minecraft:fence"
+    ],
+    "minecraft:stone_stairs": [
+      "etfuturum:stone_stairs:auto",
+      "minecraft:stone_stairs:auto"
+    ],
+    "minecraft:andesite_stairs": [
+      "etfuturum:andesite_stairs:auto",
+      "minecraft:stone_stairs:auto"
+    ],
+    "minecraft:diorite_stairs": [
+      "etfuturum:diorite_stairs:auto",
+      "minecraft:stone_stairs:auto"
+    ],
+    "minecraft:granite_stairs": [
+      "etfuturum:granite_stairs:auto",
+      "minecraft:stone_stairs:auto"
+    ],
+    "minecraft:red_sandstone_stairs": [
+      "etfuturum:red_sandstone_stairs:auto",
+      "minecraft:sandstone_stairs:auto"
+    ],
+    "minecraft:basalt": [
+      "etfuturum:basalt",
+      "minecraft:stone"
+    ],
+    "minecraft:polished_basalt": [
+      "etfuturum:basalt:1",
+      "minecraft:stone:1"
+    ],
+    "minecraft:smooth_basalt": [
+      "etfuturum:smooth_basalt",
+      "minecraft:stone"
+    ],
+    "minecraft:calcite": [
+      "etfuturum:calcite",
+      "minecraft:stone"
+    ],
+    "minecraft:tuff": [
+      "etfuturum:tuff",
+      "minecraft:stone"
+    ],
+    "minecraft:blackstone": [
+      "etfuturum:blackstone",
+      "minecraft:stone"
+    ],
+    "minecraft:deepslate": [
+      "etfuturum:deepslate",
+      "minecraft:stone"
+    ],
+    "minecraft:cobbled_deepslate": [
+      "etfuturum:cobbled_deepslate",
+      "minecraft:cobblestone"
+    ],
+    "minecraft:polished_deepslate": [
+      "etfuturum:polished_deepslate",
+      "minecraft:stonebrick"
+    ],
+    "minecraft:deepslate_bricks": [
+      "etfuturum:deepslate_bricks",
+      "minecraft:stonebrick"
+    ],
+    "minecraft:cracked_deepslate_bricks": [
+      "etfuturum:deepslate_bricks:1",
+      "minecraft:stonebrick:1"
+    ],
+    "minecraft:deepslate_tiles": [
+      "etfuturum:deepslate_bricks:2",
+      "minecraft:stonebrick:2"
+    ],
+    "minecraft:cracked_deepslate_tiles": [
+      "etfuturum:deepslate_bricks:3",
+      "minecraft:stonebrick:3"
+    ],
+    "minecraft:chiseled_deepslate": [
+      "etfuturum:deepslate_bricks:4",
+      "minecraft:stonebrick:4"
+    ],
+    "minecraft:deepslate_tile_stairs": [
+      "etfuturum:deepslate_tile_stairs:auto",
+      "minecraft:stone_stairs:auto"
+    ],
+    "minecraft:cobbled_deepslate_wall": [
+      "etfuturum:deepslate_wall",
+      "minecraft:cobblestone_wall"
+    ],
+    "minecraft:polished_deepslate_wall": [
+      "etfuturum:deepslate_wall:1",
+      "minecraft:cobblestone_wall:1"
+    ],
+    "minecraft:deepslate_tile_wall": [
+      "etfuturum:deepslate_wall:3",
+      "minecraft:cobblestone_wall:3"
+    ],
+    "minecraft:deepslate_coal_ore": [
+      "etfuturum:deepslate_coal_ore",
+      "minecraft:coal_ore"
+    ],
+    "minecraft:deepslate_iron_ore": [
+      "etfuturum:deepslate_iron_ore",
+      "minecraft:iron_ore"
+    ],
+    "minecraft:deepslate_gold_ore": [
+      "etfuturum:deepslate_gold_ore",
+      "minecraft:gold_ore"
+    ],
+    "minecraft:deepslate_redstone_ore": [
+      "etfuturum:deepslate_redstone_ore",
+      "minecraft:redstone_ore"
+    ],
+    "minecraft:deepslate_lapis_ore": [
+      "etfuturum:deepslate_lapis_ore",
+      "minecraft:lapis_ore"
+    ],
+    "minecraft:deepslate_diamond_ore": [
+      "etfuturum:deepslate_diamond_ore",
+      "minecraft:diamond_ore"
+    ],
+    "minecraft:deepslate_emerald_ore": [
+      "etfuturum:deepslate_emerald_ore",
+      "minecraft:emerald_ore"
+    ],
+    "minecraft:deepslate_copper_ore": [
+      "etfuturum:deepslate_copper_ore",
+      "minecraft:iron_ore"
+    ],
+    "minecraft:copper_ore": [
+      "etfuturum:copper_ore",
+      "minecraft:iron_ore"
+    ],
+    "minecraft:raw_copper_block": [
+      "etfuturum:raw_ore_block",
+      "minecraft:iron_block"
+    ],
+    "minecraft:raw_iron_block": [
+      "etfuturum:raw_ore_block:1",
+      "minecraft:iron_block:1"
+    ],
+    "minecraft:dripstone_block": [
+      "etfuturum:dripstone_block",
+      "minecraft:stone"
+    ],
+    "minecraft:pointed_dripstone": [
+      "etfuturum:pointed_dripstone:auto",
+      "minecraft:stone:auto"
+    ],
+    "minecraft:magma_block": [
+      "etfuturum:magma",
+      "minecraft:netherrack"
+    ],
+    "minecraft:mud": [
+      "etfuturum:mud",
+      "minecraft:dirt"
+    ],
+    "minecraft:packed_mud": [
+      "etfuturum:packed_mud",
+      "minecraft:hardened_clay"
+    ],
+    "minecraft:moss_block": [
+      "etfuturum:moss_block",
+      "minecraft:mossy_cobblestone"
+    ],
+    "minecraft:moss_carpet": [
+      "etfuturum:moss_carpet",
+      "minecraft:carpet:13"
+    ],
+    "minecraft:azalea": [
+      "etfuturum:azalea",
+      "minecraft:sapling"
+    ],
+    "minecraft:flowering_azalea": [
+      "etfuturum:azalea:1",
+      "minecraft:sapling:1"
+    ],
+    "minecraft:azalea_leaves": [
+      "etfuturum:azalea_leaves:auto",
+      "minecraft:leaves:auto"
+    ],
+    "minecraft:flowering_azalea_leaves": [
+      "etfuturum:azalea_leaves:auto",
+      "minecraft:leaves:auto"
+    ],
+    "minecraft:mangrove_roots": [
+      "etfuturum:mangrove_roots",
+      "minecraft:log"
+    ],
+    "minecraft:muddy_mangrove_roots": [
+      "etfuturum:muddy_mangrove_roots",
+      "minecraft:dirt"
+    ],
+    "minecraft:mangrove_log": [
+      "etfuturum:mangrove_log:auto",
+      "minecraft:log:auto"
+    ],
+    "minecraft:mangrove_wood": [
+      "etfuturum:mangrove_log:auto",
+      "minecraft:log:auto"
+    ],
+    "minecraft:cherry_log": [
+      "etfuturum:cherry_log:auto",
+      "minecraft:log:auto"
+    ],
+    "minecraft:cherry_wood": [
+      "etfuturum:cherry_log:auto",
+      "minecraft:log:auto"
+    ],
+    "minecraft:stripped_cherry_wood": [
+      "etfuturum:cherry_log:auto",
+      "minecraft:log:auto"
+    ],
+    "minecraft:stripped_oak_wood": [
+      "etfuturum:wood_stripped:auto",
+      "minecraft:log:auto"
+    ],
+    "minecraft:mangrove_leaves": [
+      "etfuturum:leaves:auto",
+      "minecraft:leaves:auto"
+    ],
+    "minecraft:cherry_leaves": [
+      "etfuturum:leaves:auto",
+      "minecraft:leaves:auto"
+    ],
+    "minecraft:bamboo": [
+      "etfuturum:bamboo:auto",
+      "minecraft:reeds:auto"
+    ],
+    "minecraft:cave_vines": [
+      "etfuturum:cave_vine:auto",
+      "minecraft:vine:auto"
+    ],
+    "minecraft:cave_vines_plant": [
+      "etfuturum:cave_vine_plant:auto",
+      "minecraft:vine:auto"
+    ],
+    "minecraft:glow_lichen": [
+      "etfuturum:glow_lichen",
+      "minecraft:vine"
+    ],
+    "minecraft:pink_petals": [
+      "etfuturum:pink_petals:auto",
+      "minecraft:red_flower:auto"
+    ],
+    "minecraft:sweet_berry_bush": [
+      "etfuturum:sweet_berry_bush:auto",
+      "minecraft:deadbush:auto"
+    ],
+    "minecraft:amethyst_block": [
+      "etfuturum:amethyst_block",
+      "minecraft:quartz_block"
+    ],
+    "minecraft:budding_amethyst": [
+      "etfuturum:budding_amethyst",
+      "minecraft:quartz_block"
+    ],
+    "minecraft:chain": [
+      "etfuturum:chain",
+      "minecraft:iron_bars"
+    ],
+    "minecraft:bee_nest": [
+      "etfuturum:bee_nest:auto",
+      "minecraft:log:auto"
+    ],
+    "minecraft:sculk": [
+      "etfuturum:sculk",
+      "minecraft:obsidian"
+    ],
+    "minecraft:sculk_catalyst": [
+      "etfuturum:sculk_catalyst",
+      "minecraft:obsidian"
+    ],
+    "minecraft:mangrove_propagule": [
+      "etfuturum:sapling",
+      "minecraft:sapling"
+    ],
+    "minecraft:stone_slab": "etfuturum:stone_slab:auto",
+    "minecraft:stone_slab[type=double]": "etfuturum:double_stone_slab:auto",
+    "minecraft:small_amethyst_bud": [
+      "etfuturum:amethyst_cluster_1:auto",
+      "minecraft:glass:auto"
+    ],
+    "minecraft:medium_amethyst_bud": [
+      "etfuturum:amethyst_cluster_1:auto",
+      "minecraft:glass:auto"
+    ],
+    "minecraft:large_amethyst_bud": [
+      "etfuturum:amethyst_cluster_2:auto",
+      "minecraft:glass:auto"
+    ],
+    "minecraft:amethyst_cluster": [
+      "etfuturum:amethyst_cluster_2:auto",
+      "minecraft:glass:auto"
+    ],
+    "minecraft:prismarine": "etfuturum:prismarine_block",
+    "minecraft:prismarine_bricks": "etfuturum:prismarine_block:1",
+    "minecraft:dark_prismarine": "etfuturum:prismarine_block:2",
+    "minecraft:sea_lantern": "etfuturum:sea_lantern",
+    "minecraft:dark_prismarine_stairs": "etfuturum:prismarine_stairs_dark:auto",
+    "minecraft:white_concrete": [
+      "etfuturum:concrete",
+      "minecraft:stained_hardened_clay"
+    ],
+    "minecraft:orange_concrete": [
+      "etfuturum:concrete:1",
+      "minecraft:stained_hardened_clay:1"
+    ],
+    "minecraft:magenta_concrete": [
+      "etfuturum:concrete:2",
+      "minecraft:stained_hardened_clay:2"
+    ],
+    "minecraft:light_blue_concrete": [
+      "etfuturum:concrete:3",
+      "minecraft:stained_hardened_clay:3"
+    ],
+    "minecraft:yellow_concrete": [
+      "etfuturum:concrete:4",
+      "minecraft:stained_hardened_clay:4"
+    ],
+    "minecraft:lime_concrete": [
+      "etfuturum:concrete:5",
+      "minecraft:stained_hardened_clay:5"
+    ],
+    "minecraft:pink_concrete": [
+      "etfuturum:concrete:6",
+      "minecraft:stained_hardened_clay:6"
+    ],
+    "minecraft:gray_concrete": [
+      "etfuturum:concrete:7",
+      "minecraft:stained_hardened_clay:7"
+    ],
+    "minecraft:light_gray_concrete": [
+      "etfuturum:concrete:8",
+      "minecraft:stained_hardened_clay:8"
+    ],
+    "minecraft:cyan_concrete": [
+      "etfuturum:concrete:9",
+      "minecraft:stained_hardened_clay:9"
+    ],
+    "minecraft:purple_concrete": [
+      "etfuturum:concrete:10",
+      "minecraft:stained_hardened_clay:10"
+    ],
+    "minecraft:blue_concrete": [
+      "etfuturum:concrete:11",
+      "minecraft:stained_hardened_clay:11"
+    ],
+    "minecraft:brown_concrete": [
+      "etfuturum:concrete:12",
+      "minecraft:stained_hardened_clay:12"
+    ],
+    "minecraft:green_concrete": [
+      "etfuturum:concrete:13",
+      "minecraft:stained_hardened_clay:13"
+    ],
+    "minecraft:red_concrete": [
+      "etfuturum:concrete:14",
+      "minecraft:stained_hardened_clay:14"
+    ],
+    "minecraft:black_concrete": [
+      "etfuturum:concrete:15",
+      "minecraft:stained_hardened_clay:15"
+    ],
+    "minecraft:white_concrete_powder": [
+      "etfuturum:concrete_powder",
+      "minecraft:sand"
+    ],
+    "minecraft:orange_concrete_powder": [
+      "etfuturum:concrete_powder:1",
+      "minecraft:sand:1"
+    ],
+    "minecraft:magenta_concrete_powder": [
+      "etfuturum:concrete_powder:2",
+      "minecraft:sand:2"
+    ],
+    "minecraft:light_blue_concrete_powder": [
+      "etfuturum:concrete_powder:3",
+      "minecraft:sand:3"
+    ],
+    "minecraft:yellow_concrete_powder": [
+      "etfuturum:concrete_powder:4",
+      "minecraft:sand:4"
+    ],
+    "minecraft:lime_concrete_powder": [
+      "etfuturum:concrete_powder:5",
+      "minecraft:sand:5"
+    ],
+    "minecraft:pink_concrete_powder": [
+      "etfuturum:concrete_powder:6",
+      "minecraft:sand:6"
+    ],
+    "minecraft:gray_concrete_powder": [
+      "etfuturum:concrete_powder:7",
+      "minecraft:sand:7"
+    ],
+    "minecraft:light_gray_concrete_powder": [
+      "etfuturum:concrete_powder:8",
+      "minecraft:sand:8"
+    ],
+    "minecraft:cyan_concrete_powder": [
+      "etfuturum:concrete_powder:9",
+      "minecraft:sand:9"
+    ],
+    "minecraft:purple_concrete_powder": [
+      "etfuturum:concrete_powder:10",
+      "minecraft:sand:10"
+    ],
+    "minecraft:blue_concrete_powder": [
+      "etfuturum:concrete_powder:11",
+      "minecraft:sand:11"
+    ],
+    "minecraft:brown_concrete_powder": [
+      "etfuturum:concrete_powder:12",
+      "minecraft:sand:12"
+    ],
+    "minecraft:green_concrete_powder": [
+      "etfuturum:concrete_powder:13",
+      "minecraft:sand:13"
+    ],
+    "minecraft:red_concrete_powder": [
+      "etfuturum:concrete_powder:14",
+      "minecraft:sand:14"
+    ],
+    "minecraft:black_concrete_powder": [
+      "etfuturum:concrete_powder:15",
+      "minecraft:sand:15"
+    ],
+    "regions_unexplored:clover": "biomic:clover:auto",
+    "regions_unexplored:icicle": "biomic:icicle:auto"
+  }
+}

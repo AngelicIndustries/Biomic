@@ -345,15 +345,19 @@ final class MarineLayer {
                     0);
             }
             case ESTUARY -> {
-                Block mud = Block.getBlockFromName("etfuturum:mud");
-                if (soft && mud != null && mud != Blocks.air && disk(x, z, 0x6d7564L, 24, 0.55D, 3, 6)) set(
-                    world,
-                    x,
-                    floor,
-                    z,
-                    c.temperature >= 0.8F && disk(x, z, 0x7069616eL, 12, 0.4D, 1, 3) ? PortBlocks.PIANGUAS_MUD : mud,
-                    0);
-                else if (soft && sprinkle(x, z, 0x636c616dL, 0.005D))
+                // Et Futurum Requiem's mud by default; the block palette decides.
+                Block mud = industries.angelic.biomic.world.palette.BlockPalette.block("minecraft:mud", Blocks.dirt);
+                if (soft && mud != Blocks.air && disk(x, z, 0x6d7564L, 24, 0.55D, 3, 6)) {
+                    boolean pianguas = c.temperature >= 0.8F && disk(x, z, 0x7069616eL, 12, 0.4D, 1, 3);
+                    set(
+                        world,
+                        x,
+                        floor,
+                        z,
+                        pianguas ? PortBlocks.PIANGUAS_MUD : mud,
+                        pianguas ? 0
+                            : industries.angelic.biomic.world.palette.BlockPalette.metadata("minecraft:mud", 0));
+                } else if (soft && sprinkle(x, z, 0x636c616dL, 0.005D))
                     port(world, PortBlocks.SEA_SHELL, PortBlocks.CLAM, x, y, z);
                 else if (c.depth <= 6 && patch(x, z, 0x6f797374L, 20, 0.4D, 1, 3, 0.5D))
                     port(world, PortBlocks.SEA_SHELL, PortBlocks.OYSTER, x, y, z);

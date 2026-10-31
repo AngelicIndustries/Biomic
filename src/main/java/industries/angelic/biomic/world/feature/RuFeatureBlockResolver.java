@@ -12,7 +12,6 @@ import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
 import net.minecraft.init.Blocks;
 
-import ganymedes01.etfuturum.ModBlocks;
 import industries.angelic.biomic.content.BiomicBlocks;
 import industries.angelic.biomic.content.RuImportedTreeBlocks;
 import industries.angelic.biomic.content.block.BlockRuBranch;
@@ -113,8 +112,12 @@ final class RuFeatureBlockResolver {
         String name = state.name;
         if ("minecraft:dirt".equals(name)) return ground(Blocks.dirt, 0);
         if ("minecraft:podzol".equals(name)) return ground(Blocks.dirt, 2);
-        if ("minecraft:moss_block".equals(name)) return ground(ModBlocks.MOSS_BLOCK.get(), 0);
-        if ("minecraft:moss_carpet".equals(name)) return plant(ModBlocks.MOSS_CARPET.get(), 0);
+        if ("minecraft:moss_block".equals(name)) return ground(
+            industries.angelic.biomic.world.palette.BlockPalette.block(name, Blocks.mossy_cobblestone),
+            industries.angelic.biomic.world.palette.BlockPalette.metadata(name, 0));
+        if ("minecraft:moss_carpet".equals(name)) return plant(
+            industries.angelic.biomic.world.palette.BlockPalette.block(name, Blocks.carpet),
+            industries.angelic.biomic.world.palette.BlockPalette.metadata(name, 0));
         if ("minecraft:hanging_roots".equals(name)) return plant(BiomicBlocks.HANGING_ROOTS, 0);
         if ("minecraft:oak_log".equals(name)) return log(Blocks.log, axisMetadata(state, transform));
         if ("minecraft:spruce_log".equals(name)) return log(Blocks.log, 1 | axisMetadata(state, transform));
@@ -129,13 +132,16 @@ final class RuFeatureBlockResolver {
         if ("minecraft:acacia_leaves".equals(name)) return leaves(Blocks.leaves2, 4);
         if ("minecraft:dark_oak_leaves".equals(name)) return leaves(Blocks.leaves2, 5);
         if ("minecraft:bee_nest".equals(name)) {
-            Block beeNest = ModBlocks.BEE_NEST.get();
-            return log(beeNest == null ? Blocks.log : beeNest, horizontalFacingMetadata(state, transform));
+            return log(
+                industries.angelic.biomic.world.palette.BlockPalette.block(name, Blocks.log),
+                industries.angelic.biomic.world.palette.BlockPalette
+                    .metadata(name, horizontalFacingMetadata(state, transform)));
         }
         if ("minecraft:brown_mushroom".equals(name)) return plant(Blocks.brown_mushroom, 0);
         if ("minecraft:shroomlight".equals(name)) {
-            Block shroomlight = ModBlocks.SHROOMLIGHT.get();
-            return log(shroomlight == null ? Blocks.glowstone : shroomlight, 0);
+            return log(
+                industries.angelic.biomic.world.palette.BlockPalette.block(name, Blocks.glowstone),
+                industries.angelic.biomic.world.palette.BlockPalette.metadata(name, 0));
         }
         if ("minecraft:snow".equals(name)) return plant(Blocks.snow_layer, snowMetadata(state));
         if ("regions_unexplored:flowering_leaves".equals(name)) {

@@ -44,8 +44,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import ganymedes01.etfuturum.entities.EntityBee;
-import ganymedes01.etfuturum.tileentities.TileEntityGlowLichen;
 import industries.angelic.biomic.biome.origen.OrigenBiomeProfile;
 import industries.angelic.biomic.content.BiomicAquaticBlocks;
 import industries.angelic.biomic.internal.terra.noise.NoiseSampler;
@@ -3715,8 +3713,9 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
 
     private static void spawnEntityNow(World world, int x, int y, int z, String id) {
         Entity entity;
-        if ("minecraft:bee".equals(id)) entity = new EntityBee(world);
+        if ("minecraft:bee".equals(id)) entity = industries.angelic.biomic.compat.efr.EfrTiles.bee(world);
         else return;
+        if (entity == null) return;
         entity.setPosition(x + 0.5D, y, z + 0.5D);
         world.spawnEntityInWorld(entity);
     }
@@ -3951,7 +3950,8 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
                 chunk.addTileEntity(createdTile);
             }
         }
-        if (createdTile instanceof TileEntityGlowLichen lichen) configureGlowLichen(lichen, resolved);
+        if (industries.angelic.biomic.compat.efr.EfrTiles.isGlowLichen(createdTile))
+            configureGlowLichen(createdTile, resolved);
         if (spawnerEntity != null) configureSpawner(createdTile, spawnerEntity);
         if (chestNbt != null) configureChest(createdTile, chestNbt, x, y, z);
         // Direct generation writes bypass Block.updateShape. A later kelp/short-grass/rock
@@ -4038,7 +4038,8 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
     }
 
     private static void configureChest(TileEntity tile, NBTTagCompound payload, int x, int y, int z) {
-        if (tile instanceof ganymedes01.etfuturum.tileentities.TileEntityBeeHive hive) {
+        if (industries.angelic.biomic.compat.efr.EfrTiles.isBeeHive(tile)) {
+            TileEntity hive = tile;
             hive.readFromNBT(validatedChestCopy(BEE_NEST, payload, x, y, z));
             hive.setWorldObj(tile.getWorldObj());
             hive.xCoord = x;
@@ -4104,8 +4105,7 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
         return sectionCreated || previousOpacity != replacementOpacity || previousLight != replacementLight;
     }
 
-    private static void configureGlowLichen(TileEntityGlowLichen lichen,
-        OrigenBlockStateResolver.ResolvedBlock resolved) {
+    private static void configureGlowLichen(TileEntity lichen, OrigenBlockStateResolver.ResolvedBlock resolved) {
         int faces = 0;
         if (Boolean.parseBoolean(
             resolved.properties()
@@ -4230,14 +4230,20 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
                     // A hanging icicle of one or two blocks (EFR pointed-dripstone metadata: 1 frustum, 0 tip).
                     boolean two = (hash >>> 8 & 1) == 0
                         && blockAt(x, authoredY - 1, z).block() == net.minecraft.init.Blocks.air;
-                    FloraPlants.Plant icicle = FloraPlants.resolve("biomic:icicle:0");
-                    if (icicle == null) return false;
+                    // Biomic's icicle by default; the block palette decides.
+                    net.minecraft.block.Block icicle = industries.angelic.biomic.world.palette.BlockPalette
+                        .block("regions_unexplored:icicle", net.minecraft.init.Blocks.air);
+                    if (icicle == net.minecraft.init.Blocks.air) return false;
                     placeResolvedBlock(
                         world,
                         x,
                         z,
                         authoredY,
-                        resolve(paletteState(icicle.block, two ? 1 : 0)),
+                        resolve(
+                            paletteState(
+                                icicle,
+                                industries.angelic.biomic.world.palette.BlockPalette
+                                    .metadata("regions_unexplored:icicle", two ? 1 : 0))),
                         false,
                         false);
                     if (two) placeResolvedBlock(
@@ -4245,7 +4251,11 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
                         x,
                         z,
                         authoredY - 1,
-                        resolve(paletteState(icicle.block, 0)),
+                        resolve(
+                            paletteState(
+                                icicle,
+                                industries.angelic.biomic.world.palette.BlockPalette
+                                    .metadata("regions_unexplored:icicle", 0))),
                         false,
                         false);
                     return true;

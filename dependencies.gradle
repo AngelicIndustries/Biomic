@@ -80,7 +80,9 @@ dependencies {
 
     // Biomic hard dependencies.
     implementation("industries.angelic.angellib:AngelLib:1.0.0:dev")
-    implementation("ganymedes01.etfuturum:Et-Futurum-Requiem:2.6.62-GTNH:dev")
+    // Optional at runtime: the default block palette uses its blocks; a palette naming none of them runs without it.
+    devOnlyNonPublishable("ganymedes01.etfuturum:Et-Futurum-Requiem:2.6.62-GTNH:dev")
+    testImplementation("ganymedes01.etfuturum:Et-Futurum-Requiem:2.6.62-GTNH:dev")
     // Optional: when installed, Village Names' generator builds Biomic's planned villages.
     compileOnly("com.github.GTNewHorizons:VillageNames:4.5.19-GTNH:dev") { transitive = false }
     // Optional food: when installed, Biomic grows HarvestCraft's and Harvest the Nether's wild plants itself.

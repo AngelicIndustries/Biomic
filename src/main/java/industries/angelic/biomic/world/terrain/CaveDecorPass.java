@@ -16,7 +16,6 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import ganymedes01.etfuturum.tileentities.TileEntityCaveVines;
 import industries.angelic.biomic.Biomic;
 import industries.angelic.biomic.compat.biome.NativeBlockCatalogue;
 import industries.angelic.biomic.compat.flora.NativeFeatureCapture;
@@ -220,7 +219,7 @@ public final class CaveDecorPass {
             case DRIPSTONE -> {
                 if (hanging && above == BiomicTerrainSampler.DRIPSTONE_BLOCK && roll < 0.3D) pointed(
                     c,
-                    "etfuturum:pointed_dripstone",
+                    "minecraft:pointed_dripstone",
                     cell.x,
                     cell.y,
                     cell.z,
@@ -230,7 +229,7 @@ public final class CaveDecorPass {
                     && c.floorBudget > 0) {
                         if (stub(
                             c,
-                            "etfuturum:pointed_dripstone",
+                            "minecraft:pointed_dripstone",
                             cell.x,
                             cell.y,
                             cell.z,
@@ -242,8 +241,13 @@ public final class CaveDecorPass {
             }
             case FROZEN -> {
                 if (hanging && roll < 0.12D) {
-                    if (pointed(c, "biomic:icicle", cell.x, cell.y, cell.z, 1 + (int) Math.floorMod(h >>> 20, 3L))
-                        && unit(h >>> 30) < 0.5D) frozenStub(c, cell);
+                    if (pointed(
+                        c,
+                        "regions_unexplored:icicle",
+                        cell.x,
+                        cell.y,
+                        cell.z,
+                        1 + (int) Math.floorMod(h >>> 20, 3L)) && unit(h >>> 30) < 0.5D) frozenStub(c, cell);
                 }
             }
             case DRY -> {
@@ -284,15 +288,16 @@ public final class CaveDecorPass {
             if (c.physical.block(cell.x, y - 1, cell.z)
                 .getMaterial()
                 .isSolid()) {
-                stub(c, "biomic:icicle", cell.x, y, cell.z, 1);
+                stub(c, "regions_unexplored:icicle", cell.x, y, cell.z, 1);
                 return;
             }
         }
     }
 
     /** A column pointing up from the floor at (x,y,z): EFR pointed-dripstone metadata, 5 + thickness. */
-    private boolean stub(Chunk3 c, String name, int x, int y, int z, int length) {
-        Block block = Block.getBlockFromName(name);
+    /** A standing spike of the given length; {@code id} is the block palette's (icicle or pointed dripstone). */
+    private boolean stub(Chunk3 c, String id, int x, int y, int z, int length) {
+        Block block = industries.angelic.biomic.world.palette.BlockPalette.block(id, Blocks.air);
         if (block == null || block == Blocks.air || x >> 4 != c.cx || z >> 4 != c.cz) return false;
         int n = 0;
         while (n < length && y + n < height - 1 && c.physical.block(x, y + n, z) == Blocks.air) n++;
@@ -300,7 +305,13 @@ public final class CaveDecorPass {
         for (int i = 0; i < n; i++) {
             int fromTip = n - 1 - i;
             int thickness = fromTip == 0 ? 0 : fromTip == 1 ? 1 : fromTip == n - 1 ? 3 : 2;
-            c.world.setBlock(x, y + i, z, block, 5 + thickness, 2);
+            c.world.setBlock(
+                x,
+                y + i,
+                z,
+                block,
+                industries.angelic.biomic.world.palette.BlockPalette.metadata(id, 5 + thickness),
+                2);
         }
         c.budget -= n;
         return true;
@@ -514,19 +525,19 @@ public final class CaveDecorPass {
 
     /** A hanging icicle of the given length from the ceiling above (EFR pointed-dripstone geometry, 0..4 down). */
     private boolean icicle(Chunk3 c, int x, int y, int z, int length) {
-        return pointed(c, "biomic:icicle", x, y, z, length);
+        return pointed(c, "regions_unexplored:icicle", x, y, z, length);
     }
 
     /**
      * A pointed column: length > 0 hangs down from the ceiling above (x,y,z), length -1 is a one-block floor stub.
      * Metadata: thickness 0 tip, 1 frustum, 2 middle, 3 base; plus 5 when pointing up.
      */
-    private boolean pointed(Chunk3 c, String name, int x, int y, int z, int length) {
-        Block block = Block.getBlockFromName(name);
+    private boolean pointed(Chunk3 c, String id, int x, int y, int z, int length) {
+        Block block = industries.angelic.biomic.world.palette.BlockPalette.block(id, Blocks.air);
         if (block == null || block == Blocks.air || x >> 4 != c.cx || z >> 4 != c.cz) return false;
         if (length < 0) {
             if (c.physical.block(x, y, z) != Blocks.air || c.budget <= 0) return false;
-            c.world.setBlock(x, y, z, block, 5, 2);
+            c.world.setBlock(x, y, z, block, industries.angelic.biomic.world.palette.BlockPalette.metadata(id, 5), 2);
             c.budget--;
             return true;
         }
@@ -536,7 +547,13 @@ public final class CaveDecorPass {
         for (int i = 0; i < n; i++) {
             int fromTip = n - 1 - i;
             int thickness = fromTip == 0 ? 0 : fromTip == 1 ? 1 : fromTip == n - 1 ? 3 : 2;
-            c.world.setBlock(x, y - i, z, block, thickness, 2);
+            c.world.setBlock(
+                x,
+                y - i,
+                z,
+                block,
+                industries.angelic.biomic.world.palette.BlockPalette.metadata(id, thickness),
+                2);
         }
         c.budget -= n;
         return true;
@@ -556,7 +573,7 @@ public final class CaveDecorPass {
         }
         // EFR's tile picks its maximum length from an unseeded Random: fix it from the seed instead.
         TileEntity tip = c.world.getTileEntity(cell.x, cell.y - n + 1, cell.z);
-        if (tip instanceof TileEntityCaveVines) {
+        if (industries.angelic.biomic.compat.efr.EfrTiles.isCaveVines(tip)) {
             NBTTagCompound nbt = new NBTTagCompound();
             tip.writeToNBT(nbt);
             nbt.setInteger("MaxLength", 2 + (int) Math.floorMod(hash >>> 40, 26L));

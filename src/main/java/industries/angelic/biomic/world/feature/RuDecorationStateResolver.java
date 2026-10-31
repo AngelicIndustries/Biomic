@@ -85,10 +85,13 @@ public final class RuDecorationStateResolver {
                 case "west" -> 3;
                 default -> 0;
             };
+            // Biomic's clover (built on Et Futurum Requiem's pink petals) by default; the block palette decides.
+            int metadata = industries.angelic.biomic.content.RuDecorationPaletteMetadata
+                .leafLitterMetadata(integer(state, "flower_amount", 1), facing);
             return new Resolved(
-                BiomicBlocks.CLOVER,
-                industries.angelic.biomic.content.RuDecorationPaletteMetadata
-                    .leafLitterMetadata(integer(state, "flower_amount", 1), facing));
+                industries.angelic.biomic.world.palette.BlockPalette
+                    .block("regions_unexplored:clover", net.minecraft.init.Blocks.air),
+                industries.angelic.biomic.world.palette.BlockPalette.metadata("regions_unexplored:clover", metadata));
         }
         // Hosted RU features read settled Origen terrain too. Its native backports (for example
         // all-face mushroom flesh) already have a strict mapping; do not mistake them for RU assets.
@@ -108,7 +111,10 @@ public final class RuDecorationStateResolver {
                 default -> 0;
             };
             int metadata = thickness + ("up".equals(state.properties.get("vertical_direction")) ? 5 : 0);
-            return new Resolved(BiomicBlocks.ICICLE, metadata);
+            return new Resolved(
+                industries.angelic.biomic.world.palette.BlockPalette
+                    .block("regions_unexplored:icicle", net.minecraft.init.Blocks.air),
+                industries.angelic.biomic.world.palette.BlockPalette.metadata("regions_unexplored:icicle", metadata));
         }
         if ("regions_unexplored:chalk".equals(name)) {
             return new Resolved(BiomicBlocks.CHALK, 0);

@@ -6,8 +6,6 @@ import java.util.Map;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 
-import ganymedes01.etfuturum.ModBlocks;
-
 /** Exact allowlist between source Forlorn states and legacy blocks; never performs registry lookup. */
 public final class ForlornStateCodec {
 
@@ -28,7 +26,9 @@ public final class ForlornStateCodec {
         return switch (parsed.id) {
             case "minecraft:air", "minecraft:cave_air" -> state(Blocks.air, 0);
             case "minecraft:brown_mushroom" -> state(Blocks.brown_mushroom, 0);
-            case "minecraft:packed_mud" -> state(packedMud(), 0);
+            case "minecraft:packed_mud" -> state(
+                packedMud(),
+                industries.angelic.biomic.world.palette.BlockPalette.metadata("minecraft:packed_mud", 0));
             case "alexscaves:guanostone" -> own(parsed, ForlornContentBlocks.GUANOSTONE, 0);
             case "alexscaves:coprolith" -> own(parsed, ForlornContentBlocks.COPROLITH, 0);
             case "alexscaves:coprolith_coal_ore" -> own(parsed, ForlornContentBlocks.COPROLITH_COAL_ORE, 0);
@@ -96,8 +96,7 @@ public final class ForlornStateCodec {
     }
 
     private static Block packedMud() {
-        Block block = ModBlocks.PACKED_MUD.get();
-        return block == null ? Blocks.hardened_clay : block;
+        return industries.angelic.biomic.world.palette.BlockPalette.block("minecraft:packed_mud", Blocks.hardened_clay);
     }
 
     private static State own(Parsed parsed, Block block, int metadata) {

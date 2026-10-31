@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ganymedes01.etfuturum.ModBlocks;
 import industries.angelic.biomic.Biomic;
 import industries.angelic.biomic.client.BiomicRenderIds;
 
@@ -71,9 +70,11 @@ public final class BlockHangingMangrovePropagule extends Block {
 
     @Override
     public boolean canBlockStay(World world, int x, int y, int z) {
-        Block leaves = ModBlocks.LEAVES.get();
-        return leaves != null && world.getBlock(x, y + 1, z) == leaves
-            && (world.getBlockMetadata(x, y + 1, z) & 3) == 0;
+        // Under mangrove leaves, whatever the block palette makes them (Et Futurum Requiem's by default).
+        return industries.angelic.biomic.world.palette.BlockPalette
+            .places("minecraft:mangrove_leaves", world.getBlock(x, y + 1, z))
+            && (world.getBlockMetadata(x, y + 1, z) & 3)
+                == (industries.angelic.biomic.world.palette.BlockPalette.metadata("minecraft:mangrove_leaves", 0) & 3);
     }
 
     @Override
@@ -94,8 +95,10 @@ public final class BlockHangingMangrovePropagule extends Block {
 
     @Override
     public Item getItemDropped(int metadata, Random random, int fortune) {
-        Block sapling = ModBlocks.SAPLING.get();
-        return sapling == null ? Item.getItemFromBlock(this) : Item.getItemFromBlock(sapling);
+        Block sapling = industries.angelic.biomic.world.palette.BlockPalette
+            .block("minecraft:mangrove_propagule", null);
+        return sapling == null || sapling == net.minecraft.init.Blocks.air ? Item.getItemFromBlock(this)
+            : Item.getItemFromBlock(sapling);
     }
 
     @Override

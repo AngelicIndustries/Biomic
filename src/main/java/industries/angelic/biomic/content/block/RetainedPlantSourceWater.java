@@ -7,7 +7,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import industries.angelic.biomic.content.BiomicBlocks;
 import industries.angelic.biomic.content.BiomicDripleafBlocks;
 import industries.angelic.biomic.content.BiomicWetSculkBlocks;
 
@@ -28,9 +27,11 @@ public final class RetainedPlantSourceWater {
         if (block instanceof BlockWetSculkVein vein)
             return BiomicWetSculkBlocks.wet(block) && vein.faceMask(metadata) != 0;
         if (block instanceof BlockSkylandsWetMangroveRoots)
-            return metadata == 0 && block == BiomicBlocks.SKYLANDS_WET_MANGROVE_ROOTS;
+            return metadata == 0 && block == industries.angelic.biomic.content.efr.EfrBackedBlocks.wetMangroveRoots()
+                && block != null;
         return block instanceof BlockSkylandsWetGlowLichen && metadata == 0
-            && block == BiomicBlocks.SKYLANDS_WET_GLOW_LICHEN;
+            && block == industries.angelic.biomic.content.efr.EfrBackedBlocks.wetGlowLichen()
+            && block != null;
     }
 
     public static boolean contains(IBlockAccess world, int x, int y, int z) {

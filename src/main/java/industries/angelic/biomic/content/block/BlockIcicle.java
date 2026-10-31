@@ -10,7 +10,7 @@ import ganymedes01.etfuturum.blocks.BlockPointedDripstone;
 import industries.angelic.biomic.Biomic;
 
 /** Regions Unexplored icicle using EFR's ten-state pointed-dripstone geometry and metadata. */
-public final class BlockIcicle extends BlockPointedDripstone {
+public final class BlockIcicle extends BlockPointedDripstone implements PointedRock {
 
     public BlockIcicle() {
         setBlockName(Biomic.MODID + ".icicle");

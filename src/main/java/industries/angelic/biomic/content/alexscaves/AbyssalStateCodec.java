@@ -6,8 +6,6 @@ import java.util.Map;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 
-import ganymedes01.etfuturum.ModBlocks;
-
 /**
  * Exact allowlist for the Abyssal Chasm's generated states; unknown properties and other content fail closed. The ruin
  * and bone states are in the unused package's {@code AbyssalRuinStateCodec}.
@@ -39,10 +37,10 @@ public final class AbyssalStateCodec {
             case "minecraft:water" -> Blocks.water;
             case "minecraft:lava" -> Blocks.lava;
             case "minecraft:stone" -> Blocks.stone;
-            case "minecraft:bone_block" -> bone();
-            case "minecraft:deepslate" -> deepslate();
-            case "minecraft:tuff" -> tuff();
-            case "minecraft:magma_block" -> magma();
+            case "minecraft:bone_block" -> Blocks.quartz_block;
+            case "minecraft:deepslate" -> Blocks.stone;
+            case "minecraft:tuff" -> Blocks.stone;
+            case "minecraft:magma_block" -> Blocks.netherrack;
             case "alexscaves:abyssmarine" -> AbyssalContentBlocks.ABYSSMARINE;
             case "alexscaves:muck" -> AbyssalContentBlocks.MUCK;
             case "alexscaves:geothermal_vent" -> AbyssalContentBlocks.VENT;
@@ -58,7 +56,11 @@ public final class AbyssalStateCodec {
             case "alexscaves:mussel" -> AbyssalContentBlocks.mussel(musselCount(parsed), (metadata & 8) == 0);
             default -> null;
         };
-        return block == null ? null : new State(block, metadata);
+        if (block == null) return null;
+        // Blocks of the shared vocabulary (deepslate, tuff, magma, bone) are the block palette's.
+        industries.angelic.biomic.world.palette.BlockPalette.Choice choice = industries.angelic.biomic.world.palette.BlockPalette
+            .choice(parsed.id);
+        return choice == null ? new State(block, metadata) : new State(choice.block(), choice.metadata(metadata));
     }
 
     public static String encode(Block block, int metadata) {
@@ -251,7 +253,7 @@ public final class AbyssalStateCodec {
         return switch (target) {
             case ANVIL -> Blocks.anvil;
             case IRON_DOOR -> Blocks.iron_door;
-            case IRON_TRAPDOOR -> ModBlocks.IRON_TRAPDOOR.get();
+            case IRON_TRAPDOOR -> industries.angelic.biomic.compat.efr.EfrBlock.IRON_TRAPDOOR.get();
             case LADDER -> Blocks.ladder;
             // Legacy names are deceptive: piston_head is the static, tile-free BlockPistonExtension;
             // piston_extension is the transient BlockPistonMoving tile-entity carrier.
@@ -261,32 +263,12 @@ public final class AbyssalStateCodec {
             case REDSTONE_LAMP -> Blocks.redstone_lamp;
             case REDSTONE_WIRE -> Blocks.redstone_wire;
             case POWERED_REPEATER -> Blocks.powered_repeater;
-            case SMITHING_TABLE -> ModBlocks.SMITHING_TABLE.get();
-            case SPRUCE_TRAPDOOR -> ModBlocks.TRAPDOOR_SPRUCE.get();
+            case SMITHING_TABLE -> industries.angelic.biomic.compat.efr.EfrBlock.SMITHING_TABLE.get();
+            case SPRUCE_TRAPDOOR -> industries.angelic.biomic.compat.efr.EfrBlock.TRAPDOOR_SPRUCE.get();
             case STICKY_PISTON -> Blocks.sticky_piston;
             case STONE_BUTTON -> Blocks.stone_button;
             case LIGHTNING_ROD, WET_IRON_TRAPDOOR, CEILING_BUTTON, WET_CHAIN, WET_WEATHERED_SLAB, WET_OXIDIZED_SLAB, WET_WEATHERED_STAIR, WET_WEATHERED_INNER_STAIR, WET_WAXED_WEATHERED_STAIR, WET_WAXED_WEATHERED_INNER_STAIR, WET_WAXED_OXIDIZED_STAIR, WET_WAXED_OXIDIZED_INNER_STAIR -> null;
         };
-    }
-
-    private static Block deepslate() {
-        Block block = ModBlocks.DEEPSLATE.get();
-        return block == null ? Blocks.stone : block;
-    }
-
-    private static Block tuff() {
-        Block block = ModBlocks.TUFF.get();
-        return block == null ? Blocks.stone : block;
-    }
-
-    private static Block magma() {
-        Block block = ModBlocks.MAGMA.get();
-        return block == null ? Blocks.netherrack : block;
-    }
-
-    private static Block bone() {
-        Block block = ModBlocks.BONE.get();
-        return block == null ? Blocks.quartz_block : block;
     }
 
     private record Parsed(String id, Map<String, String> properties) {

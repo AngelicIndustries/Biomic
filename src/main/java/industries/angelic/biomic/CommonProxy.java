@@ -24,6 +24,9 @@ public class CommonProxy {
 
     public void preInit() {
         BiomicConfigManager.initialize();
+        industries.angelic.biomic.world.palette.BlockPalette.load(
+            cpw.mods.fml.common.Loader.instance()
+                .getConfigDir());
         BootstrapValidator.validate();
         BiomicBlocks.register();
         industries.angelic.biomic.content.alexscaves.AbyssalContentBlocks.register();
@@ -52,6 +55,9 @@ public class CommonProxy {
     }
 
     public void postInit() {
+        // Every mod registered its blocks by now: the palette picks its blocks (or stops the game naming the missing).
+        industries.angelic.biomic.compat.efr.EfrBlock.bindAll();
+        industries.angelic.biomic.world.palette.BlockPalette.resolveAll();
         industries.angelic.biomic.compat.biome.NativeBiomeCatalogue.discoverInstalled();
         industries.angelic.biomic.compat.biome.NativeBlockCatalogue.discoverInstalled();
     }

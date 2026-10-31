@@ -67,9 +67,9 @@ public class BlockRuSolid extends Block {
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int metadata) {
-        if (side == 0)
-            return bottomTexture.equals("minecraft:deepslate") ? ganymedes01.etfuturum.ModBlocks.DEEPSLATE.get()
-                .getIcon(0, 0) : bottomIcon;
+        if (side == 0) return bottomTexture.equals("minecraft:deepslate")
+            ? industries.angelic.biomic.world.palette.PaletteIcons.icon("minecraft:deepslate", 0)
+            : bottomIcon;
         return side == 1 ? topIcon : sideIcon;
     }
 

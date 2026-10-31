@@ -13,7 +13,8 @@ releasable on its own; Village Names' style choice stays in Biomic.
 
 ## The two mods
 
-**Biomic** requires AngelLib and Et Futurum Requiem, plus its libraries (EndlessIDs, ChunkAPI, GTNHLib, UniMixins).
+**Biomic** requires AngelLib, plus its libraries (EndlessIDs, ChunkAPI, GTNHLib, UniMixins). Et Futurum Requiem is
+optional since 2026-10-31: its blocks are the default block palette's ([block-palette.md](block-palette.md)).
 Hohen Angst (512-high worlds) and Angelica (rendering) stay optional. With nothing else installed it must look
 finished.
 

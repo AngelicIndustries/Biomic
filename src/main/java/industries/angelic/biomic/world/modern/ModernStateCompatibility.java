@@ -86,11 +86,13 @@ public final class ModernStateCompatibility {
             }
             return imported;
         }
-        if (block == BiomicBlocks.CLOVER) return industries.angelic.biomic.content.RuDecorationPaletteMetadata
-            .leafLitterState("regions_unexplored:clover", metadata);
+        if (block == industries.angelic.biomic.content.efr.EfrBackedBlocks.clover() && block != null)
+            return industries.angelic.biomic.content.RuDecorationPaletteMetadata
+                .leafLitterState("regions_unexplored:clover", metadata);
         if (block == BiomicBlocks.CHALK) return "regions_unexplored:chalk";
         if (block == BiomicBlocks.CHALK_GRASS) return "regions_unexplored:chalk_grass_block";
-        if (block == BiomicBlocks.ICICLE) return icicleState(metadata);
+        if (block == industries.angelic.biomic.content.efr.EfrBackedBlocks.icicle() && block != null)
+            return icicleState(metadata);
         if (block == BiomicBlocks.WISTERIA_LOG) return "regions_unexplored:wisteria_log";
         if (block == BiomicBlocks.WISTERIA_BRANCH) return "regions_unexplored:wisteria_branch";
         if (block == BiomicBlocks.WISTERIA_LEAVES) {

@@ -9,7 +9,7 @@ public final class ModernBlockSemantics {
 
     /** A pointed rock's material is solid, but its top is not a snow/flower support face. */
     public static boolean legacyFullFace(net.minecraft.block.Block block) {
-        if (block instanceof industries.angelic.biomic.content.block.BlockIcicle) return false;
+        if (block instanceof industries.angelic.biomic.content.block.PointedRock) return false;
         if (block instanceof industries.angelic.biomic.content.block.BlockRuCaveModel cave) return cave.isOpaqueCube();
         return block instanceof BlockLeaves || block.getMaterial()
             .isSolid();

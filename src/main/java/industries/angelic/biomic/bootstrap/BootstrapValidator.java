@@ -29,7 +29,6 @@ public final class BootstrapValidator {
 
     private static final List<DependencyRequirement> REQUIRED_DEPENDENCIES = Arrays.asList(
         new DependencyRequirement("angellib", Biomic.ANGELLIB_MIN_VERSION),
-        new DependencyRequirement("etfuturum", Biomic.EFR_MIN_VERSION),
         new DependencyRequirement("endlessids", Biomic.ENDLESS_IDS_MIN_VERSION),
         new DependencyRequirement("chunkapi", Biomic.CHUNK_API_MIN_VERSION),
         new DependencyRequirement("gtnhlib", Biomic.GTNH_LIB_MIN_VERSION));
@@ -37,52 +36,85 @@ public final class BootstrapValidator {
     private BootstrapValidator() {}
 
     public static void validate() {
-        validateDependencies(loadedVersions());
+        Map<String, String> versions = loadedVersions();
+        validateDependencies(versions);
         validateEndlessIdsBiomeStorage();
-        validateEfrLushCaveContent(
-            ModBlocks.MOSS_BLOCK.isEnabled() && ModBlocks.MOSS_CARPET.isEnabled() && ModBlocks.AZALEA.isEnabled(),
-            ModBlocks.CAVE_VINE.isEnabled() && ModBlocks.CAVE_VINE_PLANT.isEnabled());
-        validateEfrTerrestrialDetailContent(
-            ModBlocks.BEETROOTS.isEnabled(),
-            ModBlocks.CORNFLOWER.isEnabled(),
-            ModBlocks.LILY_OF_THE_VALLEY.isEnabled(),
-            ModBlocks.SMOOTH_STONE.isEnabled(),
-            ModBlocks.STONE_SLAB.isEnabled());
-        validateEfrMangroveContent(
-            ConfigExperiments.enableMangroveBlocks && ModBlocks.MANGROVE_LOG.isEnabled()
-                && ModBlocks.MANGROVE_ROOTS.isEnabled()
-                && ModBlocks.MUDDY_MANGROVE_ROOTS.isEnabled()
-                && ModBlocks.LEAVES.isEnabled()
-                && ModBlocks.SAPLING.isEnabled());
-        validateEfrDripstoneContent(
-            ConfigExperiments.enableDripstone && ModBlocks.DRIPSTONE_BLOCK.isEnabled()
-                && ModBlocks.POINTED_DRIPSTONE.isEnabled());
-        validateEfrCopperContent(ModBlocks.COPPER_ORE.isEnabled());
-        validateEfrShroomlightContent(
-            ModBlocks.SHROOMLIGHT.isEnabled(),
-            net.minecraft.block.Block.getIdFromBlock(ModBlocks.SHROOMLIGHT.get()) > 0);
-        validateEfrSculkContent(
-            ConfigExperiments.enableSculk,
-            exactRegistered(ModBlocks.SCULK),
-            exactRegistered(ModBlocks.SCULK_CATALYST));
-        validateEfrVolcanicContent(ModBlocks.BASALT.isEnabled(), ModBlocks.MAGMA.isEnabled());
-        validateEfrLateUndergroundContent(
-            ModBlocks.DEEPSLATE.isEnabled(),
-            ModBlocks.TUFF.isEnabled(),
-            ModBlocks.STONE.isEnabled(),
-            ModBlocks.DEEPSLATE_COAL_ORE.isEnabled() && ModBlocks.DEEPSLATE_IRON_ORE.isEnabled()
-                && ModBlocks.DEEPSLATE_GOLD_ORE.isEnabled()
-                && ModBlocks.DEEPSLATE_REDSTONE_ORE.isEnabled()
-                && ModBlocks.DEEPSLATE_LAPIS_ORE.isEnabled()
-                && ModBlocks.DEEPSLATE_DIAMOND_ORE.isEnabled(),
-            ConfigWorld.deepslateReplacesStones);
+        // Et Futurum Requiem is optional (the block palette names what it needs); installed, it keeps the content
+        // Biomic's defaults use (EfrContentContract switches that on).
+        if (versions.containsKey("etfuturum")) Efr.validate();
         Biomic.LOG.info(
             "Validated {} hard dependencies and EndlessIDs {}-bit surface-biome storage",
             REQUIRED_DEPENDENCIES.size(),
             ExtendedConstants.bitsPerBiome);
     }
 
+    /** Et Futurum Requiem's content, checked only with it installed: only this class names EFR's. */
+    private static final class Efr {
+
+        static void validate() {
+            validateEfrLushCaveContent(
+                ModBlocks.MOSS_BLOCK.isEnabled() && ModBlocks.MOSS_CARPET.isEnabled() && ModBlocks.AZALEA.isEnabled(),
+                ModBlocks.CAVE_VINE.isEnabled() && ModBlocks.CAVE_VINE_PLANT.isEnabled());
+            validateEfrTerrestrialDetailContent(
+                ModBlocks.BEETROOTS.isEnabled(),
+                ModBlocks.CORNFLOWER.isEnabled(),
+                ModBlocks.LILY_OF_THE_VALLEY.isEnabled(),
+                ModBlocks.SMOOTH_STONE.isEnabled(),
+                ModBlocks.STONE_SLAB.isEnabled());
+            validateEfrMangroveContent(
+                ConfigExperiments.enableMangroveBlocks && ModBlocks.MANGROVE_LOG.isEnabled()
+                    && ModBlocks.MANGROVE_ROOTS.isEnabled()
+                    && ModBlocks.MUDDY_MANGROVE_ROOTS.isEnabled()
+                    && ModBlocks.LEAVES.isEnabled()
+                    && ModBlocks.SAPLING.isEnabled());
+            validateEfrDripstoneContent(
+                ConfigExperiments.enableDripstone && ModBlocks.DRIPSTONE_BLOCK.isEnabled()
+                    && ModBlocks.POINTED_DRIPSTONE.isEnabled());
+            validateEfrCopperContent(ModBlocks.COPPER_ORE.isEnabled());
+            validateEfrShroomlightContent(
+                ModBlocks.SHROOMLIGHT.isEnabled(),
+                net.minecraft.block.Block.getIdFromBlock(ModBlocks.SHROOMLIGHT.get()) > 0);
+            validateEfrSculkContent(
+                ConfigExperiments.enableSculk,
+                exactRegistered(ModBlocks.SCULK),
+                exactRegistered(ModBlocks.SCULK_CATALYST));
+            validateEfrVolcanicContent(ModBlocks.BASALT.isEnabled(), ModBlocks.MAGMA.isEnabled());
+            validateEfrLateUndergroundContent(
+                ModBlocks.DEEPSLATE.isEnabled(),
+                ModBlocks.TUFF.isEnabled(),
+                ModBlocks.STONE.isEnabled(),
+                ModBlocks.DEEPSLATE_COAL_ORE.isEnabled() && ModBlocks.DEEPSLATE_IRON_ORE.isEnabled()
+                    && ModBlocks.DEEPSLATE_GOLD_ORE.isEnabled()
+                    && ModBlocks.DEEPSLATE_REDSTONE_ORE.isEnabled()
+                    && ModBlocks.DEEPSLATE_LAPIS_ORE.isEnabled()
+                    && ModBlocks.DEEPSLATE_DIAMOND_ORE.isEnabled(),
+                ConfigWorld.deepslateReplacesStones);
+        }
+
+        private static boolean exactRegistered(ModBlocks entry) {
+            if (!entry.isEnabled()) return false;
+            Block block = entry.get();
+            if (block == null) return false;
+            Object name = Block.blockRegistry.getNameForObject(block);
+            return name != null && Block.blockRegistry.getObject(name) == block;
+        }
+    }
+
+    /** Mods Biomic works without, which must be recent enough when installed. */
+    private static final List<DependencyRequirement> OPTIONAL_DEPENDENCIES = Arrays
+        .asList(new DependencyRequirement("etfuturum", Biomic.EFR_MIN_VERSION));
+
     static void validateDependencies(Map<String, String> installedVersions) {
+        for (DependencyRequirement requirement : OPTIONAL_DEPENDENCIES) {
+            String installedVersion = installedVersions.get(requirement.modId);
+            if (installedVersion != null && !requirement.accepts(installedVersion)) fail(
+                "mod '" + requirement.modId
+                    + "' is version "
+                    + installedVersion
+                    + "; Biomic requires "
+                    + requirement.minimumVersion
+                    + " or newer, or none at all with a block palette that names none of its blocks");
+        }
         for (DependencyRequirement requirement : REQUIRED_DEPENDENCIES) {
             String installedVersion = installedVersions.get(requirement.modId);
             if (installedVersion == null) {
@@ -116,14 +148,6 @@ public final class BootstrapValidator {
                 "EFR shroomlight is disabled or unregistered; Biomic requires enableWarpedBlocks=true in "
                     + "config/etfuturum/experiments.cfg before EFR registers its blocks");
         }
-    }
-
-    private static boolean exactRegistered(ModBlocks entry) {
-        if (!entry.isEnabled()) return false;
-        Block block = entry.get();
-        if (block == null) return false;
-        Object name = Block.blockRegistry.getNameForObject(block);
-        return name != null && Block.blockRegistry.getObject(name) == block;
     }
 
     static void validateEfrSculkContent(boolean enabled, boolean sculkRegistered, boolean catalystRegistered) {

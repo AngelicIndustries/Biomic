@@ -34,11 +34,10 @@ public class Biomic {
     public static final String ENDLESS_IDS_MIN_VERSION = "1.7.4";
     public static final String CHUNK_API_MIN_VERSION = "0.8.4";
     public static final String GTNH_LIB_MIN_VERSION = "0.11.39";
-    public static final String DEPENDENCIES = "required-after:angellib@[" + ANGELLIB_MIN_VERSION
-        + ",);"
-        + "required-after:etfuturum@["
-        + EFR_MIN_VERSION
-        + ",);"
+    public static final String DEPENDENCIES = "required-after:angellib@[" + ANGELLIB_MIN_VERSION + ",);"
+    // Et Futurum Requiem is optional: Biomic's default block palette uses it; a palette naming none of its blocks
+    // runs without it (BlockPalette). When present it loads first and must be this recent (BootstrapValidator).
+        + "after:etfuturum;"
         + "required-after:endlessids@["
         + ENDLESS_IDS_MIN_VERSION
         + ",);"
@@ -58,7 +57,7 @@ public class Biomic {
 
     @Mod.EventHandler
     public void construct(FMLConstructionEvent event) {
-        EfrContentContract.enforce();
+        if (cpw.mods.fml.common.Loader.isModLoaded("etfuturum")) EfrContentContract.enforce();
         if (event.getSide()
             .isClient()) VanillaArtwork.request();
     }

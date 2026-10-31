@@ -6,8 +6,6 @@ import java.util.Map;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 
-import ganymedes01.etfuturum.ModBlocks;
-
 /** Exact, closed transport vocabulary for the Primordial environment; no registry fallback. */
 public final class PrimordialStateCodec {
 
@@ -60,7 +58,11 @@ public final class PrimordialStateCodec {
             case "alexscaves:tree_star" -> PrimordialContentBlocks.TREE_STAR;
             default -> null;
         };
-        return block == null ? null : new State(block, meta);
+        if (block == null) return null;
+        // Blocks of the shared vocabulary (smooth basalt, packed mud, moss) are the block palette's.
+        industries.angelic.biomic.world.palette.BlockPalette.Choice choice = industries.angelic.biomic.world.palette.BlockPalette
+            .choice(p.id);
+        return choice == null ? new State(block, meta) : new State(choice.block(), choice.metadata(meta));
     }
 
     public static String encode(Block block, int meta) {
@@ -271,19 +273,18 @@ public final class PrimordialStateCodec {
         };
     }
 
+    // Et Futurum Requiem's blocks by default; the block palette decides (BlockPalette).
     private static Block packedMud() {
-        Block b = ModBlocks.PACKED_MUD.get();
-        return b == null ? Blocks.hardened_clay : b;
+        return industries.angelic.biomic.world.palette.BlockPalette.block("minecraft:packed_mud", Blocks.hardened_clay);
     }
 
     private static Block moss() {
-        Block b = ModBlocks.MOSS_BLOCK.get();
-        return b == null ? Blocks.mossy_cobblestone : b;
+        return industries.angelic.biomic.world.palette.BlockPalette
+            .block("minecraft:moss_block", Blocks.mossy_cobblestone);
     }
 
     private static Block smoothBasalt() {
-        Block b = ModBlocks.SMOOTH_BASALT.get();
-        return b == null ? Blocks.stone : b;
+        return industries.angelic.biomic.world.palette.BlockPalette.block("minecraft:smooth_basalt", Blocks.stone);
     }
 
     private record Parsed(String id, Map<String, String> properties) {

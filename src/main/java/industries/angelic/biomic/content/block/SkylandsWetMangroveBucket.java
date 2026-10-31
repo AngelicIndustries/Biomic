@@ -10,7 +10,6 @@ import net.minecraftforge.event.entity.player.FillBucketEvent;
 
 import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import industries.angelic.biomic.content.BiomicBlocks;
 
 /** Handles only the exact wet/dry root target, before vanilla's destructive source pickup. */
 public final class SkylandsWetMangroveBucket {
@@ -48,7 +47,7 @@ public final class SkylandsWetMangroveBucket {
         if (!world.blockExists(x, y, z)) return;
         Item item = event.current.getItem();
         Block block = world.getBlock(x, y, z);
-        boolean wet = block == BiomicBlocks.SKYLANDS_WET_MANGROVE_ROOTS;
+        boolean wet = block == industries.angelic.biomic.content.efr.EfrBackedBlocks.wetMangroveRoots();
         boolean dry = block == ganymedes01.etfuturum.ModBlocks.MANGROVE_ROOTS.get();
         Action action = action(item, wet, dry, world.getBlockMetadata(x, y, z));
         boolean filled = item == Items.water_bucket || item == Items.lava_bucket;
@@ -56,8 +55,8 @@ public final class SkylandsWetMangroveBucket {
         if (action == Action.NONE && filled && hit.sideHit >= 0 && hit.sideHit < 6) {
             var side = ForgeDirection.getOrientation(hit.sideHit);
             int dx = x + side.offsetX, dy = y + side.offsetY, dz = z + side.offsetZ;
-            if (world.blockExists(dx, dy, dz)
-                && world.getBlock(dx, dy, dz) == BiomicBlocks.SKYLANDS_WET_MANGROVE_ROOTS) {
+            if (world.blockExists(dx, dy, dz) && world.getBlock(dx, dy, dz)
+                == industries.angelic.biomic.content.efr.EfrBackedBlocks.wetMangroveRoots()) {
                 event.setCanceled(true);
                 return;
             }
@@ -73,7 +72,7 @@ public final class SkylandsWetMangroveBucket {
         if (world.isRemote) return;
         BlockSkylandsWetMangroveRoots.dryRoots(); // Both transitions require the exact installed dry counterpart.
         Block replacement = action == Action.DRAIN ? BlockSkylandsWetMangroveRoots.dryRoots()
-            : BiomicBlocks.SKYLANDS_WET_MANGROVE_ROOTS;
+            : industries.angelic.biomic.content.efr.EfrBackedBlocks.wetMangroveRoots();
         if (!world.setBlock(x, y, z, replacement, 0, 3)) return;
         event.result = new ItemStack(action == Action.DRAIN ? Items.water_bucket : Items.bucket);
         event.setCanceled(false);

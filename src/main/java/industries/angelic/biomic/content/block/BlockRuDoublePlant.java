@@ -16,7 +16,6 @@ import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ganymedes01.etfuturum.ModBlocks;
 import industries.angelic.biomic.Biomic;
 import industries.angelic.biomic.client.BiomicRenderIds;
 import industries.angelic.biomic.content.BiomicBlocks;
@@ -69,8 +68,8 @@ public class BlockRuDoublePlant extends BlockDoublePlant {
         return ground == Blocks.grass || ground == Blocks.dirt
             || ground == Blocks.sand
             || ground == BiomicBlocks.CHALK_GRASS
-            || ground == ModBlocks.MUD.get()
-            || ground == ModBlocks.MOSS_BLOCK.get()
+            || industries.angelic.biomic.world.palette.BlockPalette.places("minecraft:mud", ground)
+            || industries.angelic.biomic.world.palette.BlockPalette.places("minecraft:moss_block", ground)
             || ground.getMaterial()
                 .isSolid();
     }

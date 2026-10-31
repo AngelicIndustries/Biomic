@@ -198,10 +198,8 @@ public final class BiomicScatteredFeatures {
     private WorldGenerator geode() {
         if (!geodeResolved) {
             geodeResolved = true;
-            var outer = ganymedes01.etfuturum.configuration.configs.ConfigWorld.amethystOuterBlock;
-            var middle = ganymedes01.etfuturum.configuration.configs.ConfigWorld.amethystMiddleBlock;
-            geode = outer == null || middle == null ? null
-                : new ganymedes01.etfuturum.world.generate.feature.WorldGenGeode(outer, middle);
+            // Et Futurum Requiem's generator, with its configured shells: island geodes need EFR.
+            geode = industries.angelic.biomic.compat.efr.EfrGeodes.create();
         }
         return geode;
     }

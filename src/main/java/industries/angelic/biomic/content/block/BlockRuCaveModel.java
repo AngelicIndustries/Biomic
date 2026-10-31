@@ -30,26 +30,33 @@ public final class BlockRuCaveModel extends Block {
     private final Map<String, IIcon> icons = new HashMap<>();
 
     /**
-     * Each block's own sound in Regions Unexplored (RUBlocks), through Et Futurum's modern sound types: its plants
-     * sound
-     * like plants (brimsprout like sculk, ivy and earlights like weeping vines), only prismarite like amethyst.
+     * Each block's own sound in Regions Unexplored (RUBlocks), through Et Futurum's modern sound types (vanilla ones
+     * without it): its plants sound like plants (brimsprout like sculk, ivy and earlights like weeping vines), only
+     * prismarite like amethyst.
      */
     private static SoundType sound(String name, boolean solid) {
         return switch (name) {
-            case "prismarite_cluster" -> ganymedes01.etfuturum.client.sound.ModSounds.soundAmethystCluster;
-            case "large_prismarite_cluster", "hanging_prismarite" -> ganymedes01.etfuturum.client.sound.ModSounds.soundAmethystBlock;
-            case "blackstone_cluster" -> ganymedes01.etfuturum.client.sound.ModSounds.soundNetherrack;
-            case "deepslate_prismoss" -> ganymedes01.etfuturum.client.sound.ModSounds.soundDeepslate;
+            case "prismarite_cluster" -> industries.angelic.biomic.compat.efr.EfrSounds
+                .of("amethyst_cluster", soundTypeGlass);
+            case "large_prismarite_cluster", "hanging_prismarite" -> industries.angelic.biomic.compat.efr.EfrSounds
+                .of("amethyst_block", soundTypeGlass);
+            case "blackstone_cluster" -> industries.angelic.biomic.compat.efr.EfrSounds
+                .of("netherrack", soundTypeStone);
+            case "deepslate_prismoss" -> industries.angelic.biomic.compat.efr.EfrSounds.of("deepslate", soundTypeStone);
             case "prismoss" -> soundTypeStone;
             case "prismoss_sprout" -> soundTypeGrass;
-            case "brimsprout" -> ganymedes01.etfuturum.client.sound.ModSounds.soundSculk;
-            case "glister_bulb" -> ganymedes01.etfuturum.client.sound.ModSounds.soundCropWarts;
-            case "glister_spire" -> ganymedes01.etfuturum.client.sound.ModSounds.soundNetherSprouts;
-            case "glistering_fern" -> ganymedes01.etfuturum.client.sound.ModSounds.soundNylium;
-            case "mycotoxic_mushrooms" -> ganymedes01.etfuturum.client.sound.ModSounds.soundShroomlight;
-            case "hyacinth_bloom", "tall_hyacinth_stock" -> ganymedes01.etfuturum.client.sound.ModSounds.soundWetGrass;
-            case "hyacinth_flowers", "blue_magnolia_flowers", "pink_magnolia_flowers", "white_magnolia_flowers" -> ganymedes01.etfuturum.client.sound.ModSounds.soundVines;
-            case "dropleaf", "dropleaf_plant", "glistering_ivy", "glistering_ivy_plant", "hanging_earlight", "hanging_earlight_plant" -> ganymedes01.etfuturum.client.sound.ModSounds.soundWeepingVines;
+            case "brimsprout" -> industries.angelic.biomic.compat.efr.EfrSounds.of("sculk", soundTypeCloth);
+            case "glister_bulb" -> industries.angelic.biomic.compat.efr.EfrSounds.of("crop_warts", soundTypeGrass);
+            case "glister_spire" -> industries.angelic.biomic.compat.efr.EfrSounds.of("nether_sprouts", soundTypeGrass);
+            case "glistering_fern" -> industries.angelic.biomic.compat.efr.EfrSounds.of("nylium", soundTypeStone);
+            case "mycotoxic_mushrooms" -> industries.angelic.biomic.compat.efr.EfrSounds
+                .of("shroomlight", soundTypeWood);
+            case "hyacinth_bloom", "tall_hyacinth_stock" -> industries.angelic.biomic.compat.efr.EfrSounds
+                .of("wet_grass", soundTypeGrass);
+            case "hyacinth_flowers", "blue_magnolia_flowers", "pink_magnolia_flowers", "white_magnolia_flowers" -> industries.angelic.biomic.compat.efr.EfrSounds
+                .of("vines", soundTypeGrass);
+            case "dropleaf", "dropleaf_plant", "glistering_ivy", "glistering_ivy_plant", "hanging_earlight", "hanging_earlight_plant" -> industries.angelic.biomic.compat.efr.EfrSounds
+                .of("weeping_vines", soundTypeGrass);
             default -> solid ? soundTypeStone : soundTypeGrass;
         };
     }
@@ -161,7 +168,9 @@ public final class BlockRuCaveModel extends Block {
         int offset = family != null || name.equals("hanging_prismarite") ? 1 : -1;
         Block support = world.getBlock(x, y + offset, z);
         if (name.equals("tall_hyacinth_stock") && support == this) return true;
-        if (name.equals("hyacinth_bloom") && support == ganymedes01.etfuturum.ModBlocks.MAGMA.get()) return false;
+        if (name.equals("hyacinth_bloom")
+            && support == industries.angelic.biomic.world.palette.BlockPalette.block("minecraft:magma_block", null))
+            return false;
         if (family != null && support instanceof BlockRuCaveModel other
             && family.equals(RuCaveModelData.hangingFamily(other.name))) return true;
         if (industries.angelic.biomic.world.modern.ModernGroundCoverSupport.isNetherPlant("regions_unexplored:" + name))
@@ -264,10 +273,10 @@ public final class BlockRuCaveModel extends Block {
     @SideOnly(Side.CLIENT)
     public IIcon modelIcon(String texture) {
         if (texture.equals("minecraft:block/stone")) return Blocks.stone.getIcon(1, 0);
-        if (texture.equals("minecraft:block/deepslate")) return ganymedes01.etfuturum.ModBlocks.DEEPSLATE.get()
-            .getIcon(1, 0);
-        if (texture.equals("minecraft:block/blackstone")) return ganymedes01.etfuturum.ModBlocks.BLACKSTONE.get()
-            .getIcon(1, 0);
+        if (texture.equals("minecraft:block/deepslate"))
+            return industries.angelic.biomic.world.palette.PaletteIcons.icon("minecraft:deepslate", 1);
+        if (texture.equals("minecraft:block/blackstone"))
+            return industries.angelic.biomic.world.palette.PaletteIcons.icon("minecraft:blackstone", 1);
         IIcon icon = icons.get(texture);
         if (icon == null) throw new IllegalArgumentException("Missing cave texture " + texture);
         return icon;

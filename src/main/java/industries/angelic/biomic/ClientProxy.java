@@ -23,6 +23,21 @@ import industries.angelic.biomic.client.render.SculkRenderer;
 
 public class ClientProxy extends CommonProxy {
 
+    /** Loaded only with Et Futurum Requiem installed: its renderers' subclasses. */
+    private static final class EfrRenderers {
+
+        static void register() {
+            BiomicRenderIds.WET_MANGROVE_ROOTS = RenderingRegistry.getNextAvailableRenderId();
+            RenderingRegistry.registerBlockHandler(
+                new industries.angelic.biomic.client.render.SkylandsWetMangroveRootsRenderer(
+                    BiomicRenderIds.WET_MANGROVE_ROOTS));
+            BiomicRenderIds.WET_GLOW_LICHEN = RenderingRegistry.getNextAvailableRenderId();
+            RenderingRegistry.registerBlockHandler(
+                new industries.angelic.biomic.client.render.SkylandsWetGlowLichenRenderer(
+                    BiomicRenderIds.WET_GLOW_LICHEN));
+        }
+    }
+
     @Override
     public void preInit() {
         super.preInit();
@@ -37,13 +52,8 @@ public class ClientProxy extends CommonProxy {
         BiomicRenderIds.LUSH_PLANTS = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(new LushPlantRenderer(BiomicRenderIds.LUSH_PLANTS));
         BiomicRenderIds.AQUATIC_PLANTS = RenderingRegistry.getNextAvailableRenderId();
-        BiomicRenderIds.WET_MANGROVE_ROOTS = RenderingRegistry.getNextAvailableRenderId();
-        RenderingRegistry.registerBlockHandler(
-            new industries.angelic.biomic.client.render.SkylandsWetMangroveRootsRenderer(
-                BiomicRenderIds.WET_MANGROVE_ROOTS));
-        BiomicRenderIds.WET_GLOW_LICHEN = RenderingRegistry.getNextAvailableRenderId();
-        RenderingRegistry.registerBlockHandler(
-            new industries.angelic.biomic.client.render.SkylandsWetGlowLichenRenderer(BiomicRenderIds.WET_GLOW_LICHEN));
+        // The Skylands' wet blocks are drawn by Et Futurum Requiem's renderers (EfrBackedBlocks): only with EFR.
+        if (cpw.mods.fml.common.Loader.isModLoaded("etfuturum")) EfrRenderers.register();
         BiomicRenderIds.FROZEN_GRASS = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(
             new industries.angelic.biomic.client.render.FrozenGrassRenderer(BiomicRenderIds.FROZEN_GRASS));

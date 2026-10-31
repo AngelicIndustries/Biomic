@@ -277,6 +277,8 @@ public final class Mixins extends AngelMixins {
 
     public static List<String> getLateMixinsForLoader(Set<String> loadedMods) {
         List<String> selected = INSTANCE.getLateMixins(loadedMods);
+        // Glow berries' held light is Angelica's interface on Et Futurum Requiem's item: it needs both.
+        if (!loadedMods.contains("etfuturum")) selected.removeIf(name -> name.endsWith(".MixinGlowBerriesLight"));
         if (loadedMods.contains("BiomesOPlenty")) {
             var mod = cpw.mods.fml.common.Loader.instance()
                 .getIndexedModList()

@@ -158,6 +158,22 @@ final class FloraPlants {
     private static Plant lookup(String id) {
         String[] parts = id.split(":");
         if (parts.length < 2) return missing(id, "malformed id");
+        if (!parts[0].equals("plantmegapack")) {
+            // A block of the default palette named directly (etfuturum:moss_carpet): the block palette decides, so
+            // its fallback stands in when the named block is not installed.
+            int named = parts.length > 2 ? Integer.parseInt(parts[2]) : 0;
+            String paletted = named < 0 || named > 15 ? null
+                : industries.angelic.biomic.world.palette.BlockPalette.defaultIdFor(parts[0] + ":" + parts[1], named);
+            if (paletted != null) {
+                var choice = industries.angelic.biomic.world.palette.BlockPalette.choice(paletted);
+                if (choice == null || choice.block() == Blocks.air)
+                    return missing(id, "the block palette places nothing");
+                int metadata = choice.metadata(named);
+                if (choice.block()
+                    .hasTileEntity(metadata)) return missing(id, "tile entity plants need their own adapter");
+                return new Plant(id, choice.block(), metadata, false, false);
+            }
+        }
         Block block = Block.getBlockFromName(parts[0] + ":" + parts[1]);
         if (block == null || block == Blocks.air) return missing(id, "block not installed");
         if (parts[0].equals("plantmegapack")) {

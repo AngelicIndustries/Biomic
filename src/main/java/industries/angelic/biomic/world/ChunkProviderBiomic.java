@@ -16,7 +16,6 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 
-import ganymedes01.etfuturum.ModBlocks;
 import industries.angelic.biomic.Biomic;
 import industries.angelic.biomic.api.BiomicBiomeApi;
 import industries.angelic.biomic.biome.VerticalBiomeSampler;
@@ -42,7 +41,9 @@ import industries.angelic.biomic.world.terrain.OrigenFeatureRuntime;
 public final class ChunkProviderBiomic
     implements IChunkProvider, BenchmarkedChunkProvider, JournaledPopulation, TerrainPrefetching, BiomeLocating {
 
-    private static final byte[] TERRAIN_METADATA_LOOKUP = createTerrainMetadataLookup();
+    /** Each terrain material's block and its metadata, the block palette applied (terrainBlocks, terrainMetadata). */
+    private static volatile Block[] terrainBlocks;
+    private static volatile byte[] terrainMetadata;
 
     private final World world;
     private final WorldgenContext context;
@@ -83,7 +84,7 @@ public final class ChunkProviderBiomic
         // composed pack world (including Origen + floating islands with RU still disabled).
         this.structurePassEnabled = !context.getConfig()
             .isStrictOrigenBaseline();
-        this.terrainBlockLookup = createTerrainBlockLookup();
+        this.terrainBlockLookup = terrainBlocks();
         MacroTerrainSampler macroTerrainSampler = world.getWorldChunkManager() instanceof WorldChunkManagerBiomic
             ? ((WorldChunkManagerBiomic) world.getWorldChunkManager()).getMacroTerrainSampler()
             : new MacroTerrainSampler(context);
@@ -534,7 +535,7 @@ public final class ChunkProviderBiomic
 
     /** Resolves the compact pure-terrain buffer for both chunk construction and non-generating feature reads. */
     public static Block[] resolveBlocks(byte[] materials) {
-        Block[] lookup = createTerrainBlockLookup();
+        Block[] lookup = terrainBlocks();
         Block[] blocks = new Block[materials.length];
         for (int index = 0; index < materials.length; index++) {
             int material = materials[index] & 0xFF;
@@ -550,7 +551,7 @@ public final class ChunkProviderBiomic
         for (int index = 0; index < materials.length; index++) {
             int material = materials[index] & 0xFF;
             validateTerrainMaterial(material);
-            byte value = TERRAIN_METADATA_LOOKUP[material];
+            byte value = terrainMetadata()[material];
             if (value != 0) metadata[index] = value;
         }
         return metadata;
@@ -564,7 +565,7 @@ public final class ChunkProviderBiomic
             validateTerrainMaterial(material);
             if (material == BiomicTerrainSampler.AIR) continue;
             blocks[index] = blockLookup[material];
-            byte value = TERRAIN_METADATA_LOOKUP[material];
+            byte value = terrainMetadata()[material];
             if (value != 0) metadata[index] = value;
         }
         return new ResolvedTerrain(blocks, metadata);
@@ -572,25 +573,6 @@ public final class ChunkProviderBiomic
 
     private static Block[] createTerrainBlockLookup() {
         Block[] lookup = new Block[BiomicTerrainSampler.MAX_MATERIAL + 1];
-        Block moss = ModBlocks.MOSS_BLOCK.get();
-        Block magma = ModBlocks.MAGMA.get();
-        Block basalt = ModBlocks.BASALT.get();
-        Block tuff = ModBlocks.TUFF.get();
-        Block bountifulStone = ModBlocks.STONE.get();
-        Block blackstone = ModBlocks.BLACKSTONE.get();
-        Block blueIce = ModBlocks.BLUE_ICE.get();
-        Block calcite = ModBlocks.CALCITE.get();
-        Block deepslate = ModBlocks.DEEPSLATE.get();
-        Block dripstone = ModBlocks.DRIPSTONE_BLOCK.get();
-        Block redSandstone = ModBlocks.RED_SANDSTONE.get();
-        Block smoothBasalt = ModBlocks.SMOOTH_BASALT.get();
-        Block smoothSandstone = ModBlocks.SMOOTH_SANDSTONE.get();
-        Block concrete = ModBlocks.CONCRETE.get();
-        Block concretePowder = ModBlocks.CONCRETE_POWDER.get();
-        Block mud = ModBlocks.MUD.get();
-        Block coarseDirt = ModBlocks.COARSE_DIRT.get();
-        Block packedMud = ModBlocks.PACKED_MUD.get();
-
         lookup[BiomicTerrainSampler.BEDROCK] = Blocks.bedrock;
         lookup[BiomicTerrainSampler.STONE] = Blocks.stone;
         lookup[BiomicTerrainSampler.DIRT] = Blocks.dirt;
@@ -598,42 +580,42 @@ public final class ChunkProviderBiomic
         lookup[BiomicTerrainSampler.WATER] = Blocks.water;
         lookup[BiomicTerrainSampler.SAND] = Blocks.sand;
         lookup[BiomicTerrainSampler.GRAVEL] = Blocks.gravel;
-        lookup[BiomicTerrainSampler.MOSS] = moss == null ? Blocks.mossy_cobblestone : moss;
+        lookup[BiomicTerrainSampler.MOSS] = Blocks.mossy_cobblestone;
         lookup[BiomicTerrainSampler.TERRACOTTA] = Blocks.hardened_clay;
-        lookup[BiomicTerrainSampler.BASALT] = basalt == null ? Blocks.stone : basalt;
-        lookup[BiomicTerrainSampler.MAGMA] = magma == null ? Blocks.stone : magma;
+        lookup[BiomicTerrainSampler.BASALT] = Blocks.stone;
+        lookup[BiomicTerrainSampler.MAGMA] = Blocks.stone;
         lookup[BiomicTerrainSampler.SNOW] = Blocks.snow;
         lookup[BiomicTerrainSampler.MYCELIUM] = Blocks.mycelium;
         lookup[BiomicTerrainSampler.ICE] = Blocks.ice;
         lookup[BiomicTerrainSampler.PACKED_ICE] = Blocks.packed_ice;
         lookup[BiomicTerrainSampler.CHALK] = BiomicBlocks.CHALK;
-        lookup[BiomicTerrainSampler.TUFF] = tuff == null ? Blocks.stone : tuff;
+        lookup[BiomicTerrainSampler.TUFF] = Blocks.stone;
         lookup[BiomicTerrainSampler.PODZOL] = Blocks.dirt;
-        lookup[BiomicTerrainSampler.MUD] = mud == null ? Blocks.dirt : mud;
+        lookup[BiomicTerrainSampler.MUD] = Blocks.dirt;
         lookup[BiomicTerrainSampler.RED_TERRACOTTA] = Blocks.stained_hardened_clay;
         lookup[BiomicTerrainSampler.ORANGE_TERRACOTTA] = Blocks.stained_hardened_clay;
         lookup[BiomicTerrainSampler.BROWN_TERRACOTTA] = Blocks.stained_hardened_clay;
-        lookup[BiomicTerrainSampler.COARSE_DIRT] = coarseDirt == null ? Blocks.dirt : coarseDirt;
-        lookup[BiomicTerrainSampler.PACKED_MUD] = packedMud == null ? Blocks.hardened_clay : packedMud;
-        lookup[BiomicTerrainSampler.RED_CONCRETE] = concrete == null ? Blocks.stained_hardened_clay : concrete;
-        lookup[BiomicTerrainSampler.BROWN_CONCRETE] = concrete == null ? Blocks.stained_hardened_clay : concrete;
+        lookup[BiomicTerrainSampler.COARSE_DIRT] = Blocks.dirt;
+        lookup[BiomicTerrainSampler.PACKED_MUD] = Blocks.hardened_clay;
+        lookup[BiomicTerrainSampler.RED_CONCRETE] = Blocks.stained_hardened_clay;
+        lookup[BiomicTerrainSampler.BROWN_CONCRETE] = Blocks.stained_hardened_clay;
         lookup[BiomicTerrainSampler.LIGHT_GRAY_TERRACOTTA] = Blocks.stained_hardened_clay;
         lookup[BiomicTerrainSampler.PINK_TERRACOTTA] = Blocks.stained_hardened_clay;
-        lookup[BiomicTerrainSampler.GRANITE] = bountifulStone == null ? Blocks.stone : bountifulStone;
+        lookup[BiomicTerrainSampler.GRANITE] = Blocks.stone;
         lookup[BiomicTerrainSampler.SANDSTONE] = Blocks.sandstone;
-        lookup[BiomicTerrainSampler.ANDESITE] = bountifulStone == null ? Blocks.stone : bountifulStone;
-        lookup[BiomicTerrainSampler.BLACKSTONE] = blackstone == null ? Blocks.cobblestone : blackstone;
-        lookup[BiomicTerrainSampler.BLUE_ICE] = blueIce == null ? Blocks.packed_ice : blueIce;
+        lookup[BiomicTerrainSampler.ANDESITE] = Blocks.stone;
+        lookup[BiomicTerrainSampler.BLACKSTONE] = Blocks.cobblestone;
+        lookup[BiomicTerrainSampler.BLUE_ICE] = Blocks.packed_ice;
         lookup[BiomicTerrainSampler.BLUE_TERRACOTTA] = Blocks.stained_hardened_clay;
-        lookup[BiomicTerrainSampler.CALCITE] = calcite == null ? Blocks.quartz_block : calcite;
+        lookup[BiomicTerrainSampler.CALCITE] = Blocks.quartz_block;
         lookup[BiomicTerrainSampler.CLAY] = Blocks.clay;
         lookup[BiomicTerrainSampler.CYAN_TERRACOTTA] = Blocks.stained_hardened_clay;
         lookup[BiomicTerrainSampler.DEAD_BRAIN_CORAL] = BiomicBlocks.CORAL_BLOCK;
         lookup[BiomicTerrainSampler.DEAD_BUBBLE_CORAL] = BiomicBlocks.CORAL_BLOCK;
         lookup[BiomicTerrainSampler.DEAD_HORN_CORAL] = BiomicBlocks.CORAL_BLOCK;
-        lookup[BiomicTerrainSampler.DEEPSLATE] = deepslate == null ? Blocks.stone : deepslate;
-        lookup[BiomicTerrainSampler.DIORITE] = bountifulStone == null ? Blocks.stone : bountifulStone;
-        lookup[BiomicTerrainSampler.DRIPSTONE_BLOCK] = dripstone == null ? Blocks.stone : dripstone;
+        lookup[BiomicTerrainSampler.DEEPSLATE] = Blocks.stone;
+        lookup[BiomicTerrainSampler.DIORITE] = Blocks.stone;
+        lookup[BiomicTerrainSampler.DRIPSTONE_BLOCK] = Blocks.stone;
         lookup[BiomicTerrainSampler.FARMLAND_MOIST] = Blocks.farmland;
         lookup[BiomicTerrainSampler.LAVA] = Blocks.lava;
         lookup[BiomicTerrainSampler.LIGHT_BLUE_TERRACOTTA] = Blocks.stained_hardened_clay;
@@ -642,14 +624,13 @@ public final class ChunkProviderBiomic
         lookup[BiomicTerrainSampler.OBSIDIAN] = Blocks.obsidian;
         lookup[BiomicTerrainSampler.POWDER_SNOW] = BiomicBlocks.POWDER_SNOW;
         lookup[BiomicTerrainSampler.RED_SAND] = Blocks.sand;
-        lookup[BiomicTerrainSampler.RED_SANDSTONE] = redSandstone == null ? Blocks.sandstone : redSandstone;
+        lookup[BiomicTerrainSampler.RED_SANDSTONE] = Blocks.sandstone;
         lookup[BiomicTerrainSampler.ROOTED_DIRT] = BiomicBlocks.ROOTED_DIRT;
-        lookup[BiomicTerrainSampler.SMOOTH_BASALT] = smoothBasalt == null ? (basalt == null ? Blocks.stone : basalt)
-            : smoothBasalt;
-        lookup[BiomicTerrainSampler.SMOOTH_SANDSTONE] = smoothSandstone == null ? Blocks.sandstone : smoothSandstone;
-        lookup[BiomicTerrainSampler.WHITE_CONCRETE_POWDER] = concretePowder == null ? Blocks.sand : concretePowder;
+        lookup[BiomicTerrainSampler.SMOOTH_BASALT] = Blocks.stone;
+        lookup[BiomicTerrainSampler.SMOOTH_SANDSTONE] = Blocks.sandstone;
+        lookup[BiomicTerrainSampler.WHITE_CONCRETE_POWDER] = Blocks.sand;
         lookup[BiomicTerrainSampler.WHITE_TERRACOTTA] = Blocks.stained_hardened_clay;
-        lookup[BiomicTerrainSampler.YELLOW_CONCRETE] = concrete == null ? Blocks.stained_hardened_clay : concrete;
+        lookup[BiomicTerrainSampler.YELLOW_CONCRETE] = Blocks.stained_hardened_clay;
         lookup[BiomicTerrainSampler.YELLOW_TERRACOTTA] = Blocks.stained_hardened_clay;
         lookup[BiomicTerrainSampler.COBBLESTONE] = Blocks.cobblestone;
         lookup[BiomicTerrainSampler.CHALK_GRASS] = BiomicBlocks.CHALK_GRASS;
@@ -668,13 +649,11 @@ public final class ChunkProviderBiomic
             Blocks.mycelium);
         lookup[BiomicTerrainSampler.DEEPSLATE_VIRIDESCENT_NYLIUM] = imported(
             "regions_unexplored:deepslate_viridescent_nylium",
-            deepslate == null ? Blocks.stone : deepslate);
-        lookup[BiomicTerrainSampler.PRISMOSS] = imported(
-            "regions_unexplored:prismoss",
-            moss == null ? Blocks.mossy_cobblestone : moss);
+            Blocks.stone);
+        lookup[BiomicTerrainSampler.PRISMOSS] = imported("regions_unexplored:prismoss", Blocks.mossy_cobblestone);
         lookup[BiomicTerrainSampler.DEEPSLATE_PRISMOSS] = imported(
             "regions_unexplored:deepslate_prismoss",
-            deepslate == null ? Blocks.stone : deepslate);
+            Blocks.stone);
         lookup[BiomicTerrainSampler.BRIMSPROUT_NYLIUM] = imported(
             "regions_unexplored:brimsprout_nylium",
             Blocks.netherrack);
@@ -683,12 +662,8 @@ public final class ChunkProviderBiomic
             "regions_unexplored:glistering_nylium",
             Blocks.netherrack);
         lookup[BiomicTerrainSampler.MYCOTOXIC_MOSS] = imported("regions_unexplored:mycotoxic_moss", Blocks.netherrack);
-        lookup[BiomicTerrainSampler.PEAT_MUD] = imported(
-            "regions_unexplored:peat_mud",
-            mud == null ? Blocks.dirt : mud);
-        lookup[BiomicTerrainSampler.SILT_MUD] = imported(
-            "regions_unexplored:silt_mud",
-            mud == null ? Blocks.dirt : mud);
+        lookup[BiomicTerrainSampler.PEAT_MUD] = imported("regions_unexplored:peat_mud", Blocks.dirt);
+        lookup[BiomicTerrainSampler.SILT_MUD] = imported("regions_unexplored:silt_mud", Blocks.dirt);
         lookup[BiomicTerrainSampler.PEAT_PODZOL] = imported("regions_unexplored:peat_podzol", Blocks.dirt);
         lookup[BiomicTerrainSampler.SILT_PODZOL] = imported("regions_unexplored:silt_podzol", Blocks.dirt);
         lookup[BiomicTerrainSampler.FORLORN_GUANOSTONE] = industries.angelic.biomic.content.alexscaves.ForlornContentBlocks.GUANOSTONE;
@@ -698,15 +673,63 @@ public final class ChunkProviderBiomic
         lookup[BiomicTerrainSampler.PRIMORDIAL_MAGMA] = industries.angelic.biomic.content.alexscaves.PrimordialContentBlocks.PRIMAL_MAGMA;
         lookup[BiomicTerrainSampler.PRIMORDIAL_MAGMA_ACTIVE] = industries.angelic.biomic.content.alexscaves.PrimordialContentBlocks.PRIMAL_MAGMA;
         lookup[BiomicTerrainSampler.PRIMORDIAL_VOLCANIC_CORE] = industries.angelic.biomic.content.alexscaves.PrimordialContentBlocks.VOLCANIC_CORE;
-        lookup[BiomicTerrainSampler.PRIMORDIAL_MOSS_CARPET] = ganymedes01.etfuturum.ModBlocks.MOSS_CARPET.get() == null
-            ? Blocks.carpet
-            : ganymedes01.etfuturum.ModBlocks.MOSS_CARPET.get();
-        lookup[BiomicTerrainSampler.PRIMORDIAL_MOSS_BLOCK] = ganymedes01.etfuturum.ModBlocks.MOSS_BLOCK.get() == null
-            ? Blocks.mossy_cobblestone
-            : ganymedes01.etfuturum.ModBlocks.MOSS_BLOCK.get();
+        lookup[BiomicTerrainSampler.PRIMORDIAL_MOSS_CARPET] = Blocks.carpet;
+        lookup[BiomicTerrainSampler.PRIMORDIAL_MOSS_BLOCK] = Blocks.mossy_cobblestone;
         lookup[BiomicTerrainSampler.ABYSSMARINE] = industries.angelic.biomic.content.alexscaves.AbyssalContentBlocks.ABYSSMARINE;
         lookup[BiomicTerrainSampler.ABYSSAL_MUCK] = industries.angelic.biomic.content.alexscaves.AbyssalContentBlocks.MUCK;
         return lookup;
+    }
+
+    /**
+     * The material tables with the block palette applied: a material named by an id the palette has an entry for (Et
+     * Futurum Requiem's blocks by default, any the user's file sets) takes the palette's block, its metadata kept where
+     * the entry's is "auto". The two halves are built apart: the metadata needs no block constructed.
+     */
+    private static Block[] terrainBlocks() {
+        Block[] current = terrainBlocks;
+        if (current != null) return current;
+        synchronized (ChunkProviderBiomic.class) {
+            if (terrainBlocks == null) {
+                Block[] blocks = createTerrainBlockLookup();
+                for (int material = 0; material <= BiomicTerrainSampler.MAX_MATERIAL; material++) {
+                    if (material == BiomicTerrainSampler.AIR || blocks[material] == null) continue;
+                    var choice = paletteChoice(material);
+                    if (choice != null) blocks[material] = choice.block();
+                }
+                terrainBlocks = blocks;
+            }
+            return terrainBlocks;
+        }
+    }
+
+    private static byte[] terrainMetadata() {
+        byte[] current = terrainMetadata;
+        if (current != null) return current;
+        synchronized (ChunkProviderBiomic.class) {
+            if (terrainMetadata == null) {
+                byte[] metadata = createTerrainMetadataLookup();
+                for (int material = 0; material <= BiomicTerrainSampler.MAX_MATERIAL; material++) {
+                    if (material == BiomicTerrainSampler.AIR) continue;
+                    var choice = paletteChoice(material);
+                    if (choice != null) metadata[material] = (byte) choice.metadata(metadata[material]);
+                }
+                terrainMetadata = metadata;
+            }
+            return terrainMetadata;
+        }
+    }
+
+    /** The palette's choice for the id a terrain material is named by, or null (Biomic's own block stays). */
+    private static industries.angelic.biomic.world.palette.BlockPalette.Choice paletteChoice(int material) {
+        String state;
+        try {
+            state = industries.angelic.biomic.world.terrain.TerrainMaterialStates.state((byte) material);
+        } catch (IllegalArgumentException unnamed) {
+            return null;
+        }
+        int bracket = state.indexOf('[');
+        return industries.angelic.biomic.world.palette.BlockPalette
+            .choice(bracket < 0 ? state : state.substring(0, bracket));
     }
 
     private static Block imported(String modernId, Block fallback) {
@@ -743,7 +766,7 @@ public final class ChunkProviderBiomic
     }
 
     private static void validateTerrainMaterial(int material) {
-        if (material >= TERRAIN_METADATA_LOOKUP.length) {
+        if (material > BiomicTerrainSampler.MAX_MATERIAL) {
             throw new IllegalStateException("Unknown Biomic terrain material " + material);
         }
     }

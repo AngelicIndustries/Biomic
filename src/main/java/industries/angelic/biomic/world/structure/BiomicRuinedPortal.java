@@ -74,8 +74,14 @@ public final class BiomicRuinedPortal extends StructureComponent {
 
     @Override
     public boolean addComponentParts(World world, Random random, StructureBoundingBox box) {
-        Block crying = Block.getBlockFromName("etfuturum:crying_obsidian");
-        Block magma = Block.getBlockFromName("etfuturum:magma");
+        // Et Futurum Requiem's by default; the block palette decides.
+        Block crying = industries.angelic.biomic.world.palette.BlockPalette
+            .block("minecraft:crying_obsidian", Blocks.obsidian);
+        int cryingMetadata = industries.angelic.biomic.world.palette.BlockPalette
+            .metadata("minecraft:crying_obsidian", 0);
+        Block magma = industries.angelic.biomic.world.palette.BlockPalette
+            .block("minecraft:magma_block", Blocks.netherrack);
+        int magmaMetadata = industries.angelic.biomic.world.palette.BlockPalette.metadata("minecraft:magma_block", 0);
         // The splash: the ground's top turns to netherrack, thinning out from the centre. It follows the ground
         // column by column (laid at the portal's own height it stood as a platform where the ground fell away).
         for (int x = 0; x < SIZE; x++) for (int z = 0; z < SIZE; z++) {
@@ -84,10 +90,11 @@ public final class BiomicRuinedPortal extends StructureComponent {
             if (d > 4.5 || r > 1.05 - d / 4.5) continue;
             int ground = ground(world, x, z, box);
             if (ground == NO_GROUND) continue;
+            boolean magmaHere = r < 0.08;
             placeBlockAtCurrentPosition(
                 world,
-                magma != null && r < 0.08 ? magma : Blocks.netherrack,
-                0,
+                magmaHere ? magma : Blocks.netherrack,
+                magmaHere ? magmaMetadata : 0,
                 x,
                 ground,
                 z,
@@ -103,8 +110,15 @@ public final class BiomicRuinedPortal extends StructureComponent {
             }
             double r = roll(x, y, 4, 2);
             if (y > 0 && r < 0.06 + y * 0.03) continue;
-            Block frame = crying != null && r > 0.86 ? crying : Blocks.obsidian;
-            placeBlockAtCurrentPosition(world, frame, 0, x, y, 4, box);
+            boolean cryingHere = r > 0.86;
+            placeBlockAtCurrentPosition(
+                world,
+                cryingHere ? crying : Blocks.obsidian,
+                cryingHere ? cryingMetadata : 0,
+                x,
+                y,
+                4,
+                box);
             if (y == 0) func_151554_b(world, Blocks.netherrack, 0, x, -1, 4, box);
         }
         // Fallen pieces lie beside it on the ground, now and then a gold block among them.

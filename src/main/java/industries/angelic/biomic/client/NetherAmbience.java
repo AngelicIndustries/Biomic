@@ -28,7 +28,6 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ganymedes01.etfuturum.lib.Reference;
 import industries.angelic.biomic.Biomic;
 import industries.angelic.biomic.biome.BiomicBiomes;
 import industries.angelic.biomic.biome.TartarusBiomes;
@@ -453,9 +452,9 @@ public final class NetherAmbience {
     private static ResourceLocation[] locations(String prefix, String suffix) {
         Effects[] sets = Effects.values();
         ResourceLocation[] sounds = new ResourceLocation[sets.length];
-        // Et Futurum's AssetDirector namespace for the modern sounds it downloads.
+        // Et Futurum's Asset Director namespace for the modern sounds it downloads: silent without it.
         for (int i = 0; i < sets.length; i++)
-            sounds[i] = new ResourceLocation(Reference.MCAssetVer, prefix + sets[i].key() + suffix);
+            sounds[i] = new ResourceLocation("minecraft_1.21.10", prefix + sets[i].key() + suffix);
         return sounds;
     }
 

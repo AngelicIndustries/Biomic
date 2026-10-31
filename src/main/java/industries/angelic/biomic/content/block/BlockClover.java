@@ -12,7 +12,7 @@ import industries.angelic.biomic.content.BiomicBlocks;
  * <p>
  * The low two metadata bits store one through four patches; the high two bits store rotation.
  */
-public final class BlockClover extends BlockPinkPetals {
+public final class BlockClover extends BlockPinkPetals implements StemIconBlock {
 
     private net.minecraft.util.IIcon stemIcon;
 

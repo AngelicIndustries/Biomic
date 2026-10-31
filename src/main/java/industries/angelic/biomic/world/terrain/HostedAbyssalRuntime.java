@@ -324,9 +324,11 @@ public final class HostedAbyssalRuntime {
                     if (block == net.minecraft.init.Blocks.air) return AbyssalFeaturePlanner.HostCell.REPLACEABLE;
                     if (block == Blocks.bedrock || block == Blocks.lava)
                         return AbyssalFeaturePlanner.HostCell.UNMOVEABLE;
-                    if (block == ganymedes01.etfuturum.ModBlocks.TUFF.get()) return AbyssalFeaturePlanner.HostCell.TUFF;
+                    if (block == industries.angelic.biomic.world.palette.BlockPalette.block("minecraft:tuff", null))
+                        return AbyssalFeaturePlanner.HostCell.TUFF;
                     if (block == AbyssalContentBlocks.ABYSSMARINE || block == Blocks.stone
-                        || block == ganymedes01.etfuturum.ModBlocks.DEEPSLATE.get())
+                        || block
+                            == industries.angelic.biomic.world.palette.BlockPalette.block("minecraft:deepslate", null))
                         return AbyssalFeaturePlanner.HostCell.SOLID_SUPPORT;
                     return AbyssalFeaturePlanner.HostCell.PROTECTED;
                 }

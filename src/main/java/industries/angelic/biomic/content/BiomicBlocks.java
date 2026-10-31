@@ -10,12 +10,10 @@ import industries.angelic.biomic.content.block.BlockAquaticPlant;
 import industries.angelic.biomic.content.block.BlockBigDripleaf;
 import industries.angelic.biomic.content.block.BlockChalk;
 import industries.angelic.biomic.content.block.BlockChalkGrass;
-import industries.angelic.biomic.content.block.BlockClover;
 import industries.angelic.biomic.content.block.BlockCoral;
 import industries.angelic.biomic.content.block.BlockEucalyptusBranch;
 import industries.angelic.biomic.content.block.BlockEucalyptusLog;
 import industries.angelic.biomic.content.block.BlockHangingMangrovePropagule;
-import industries.angelic.biomic.content.block.BlockIcicle;
 import industries.angelic.biomic.content.block.BlockJoshuaBeard;
 import industries.angelic.biomic.content.block.BlockJoshuaLeaves;
 import industries.angelic.biomic.content.block.BlockMushroomFlesh;
@@ -46,11 +44,12 @@ public final class BiomicBlocks {
 
         @Override
         public Item getTabIconItem() {
-            return Item.getItemFromBlock(CLOVER);
+            // Clover is Et Futurum Requiem based (EfrBackedBlocks); chalk grass stands in without it.
+            net.minecraft.block.Block clover = industries.angelic.biomic.content.efr.EfrBackedBlocks.clover();
+            return Item.getItemFromBlock(clover != null ? clover : CHALK_GRASS);
         }
     };
 
-    public static final BlockClover CLOVER = new BlockClover();
     public static final BlockChalk CHALK = new BlockChalk();
     public static final BlockChalkGrass CHALK_GRASS = new BlockChalkGrass();
     public static final BlockBigDripleaf BIG_DRIPLEAF = creative(BiomicDripleafBlocks.BIG_DRIPLEAF);
@@ -64,8 +63,6 @@ public final class BiomicBlocks {
     public static final BlockAquaticPlant CORAL_PLANT = creative(BiomicAquaticBlocks.CORAL_PLANT);
     public static final BlockAquaticPlant CORAL_FAN = creative(BiomicAquaticBlocks.CORAL_FAN);
     public static final BlockCoral CORAL_BLOCK = creative(BiomicAquaticBlocks.CORAL_BLOCK);
-    public static final industries.angelic.biomic.content.block.BlockSkylandsWetMangroveRoots SKYLANDS_WET_MANGROVE_ROOTS = new industries.angelic.biomic.content.block.BlockSkylandsWetMangroveRoots();
-    public static final industries.angelic.biomic.content.block.BlockSkylandsWetGlowLichen SKYLANDS_WET_GLOW_LICHEN = new industries.angelic.biomic.content.block.BlockSkylandsWetGlowLichen();
     public static final BlockSculkFlora SCULK_SENSOR = creative(BiomicSculkBlocks.SCULK_SENSOR);
     public static final BlockSculkFlora SCULK_SHRIEKER = creative(BiomicSculkBlocks.SCULK_SHRIEKER);
     public static final BlockSculkVein SCULK_VEIN = creative(BiomicSculkBlocks.SCULK_VEIN);
@@ -75,7 +72,6 @@ public final class BiomicBlocks {
     public static final BlockPowderSnow POWDER_SNOW = creative(BiomicFrozenBlocks.POWDER_SNOW);
     public static final BlockOchreFroglight OCHRE_FROGLIGHT = creative(BiomicExpansionBlocks.OCHRE_FROGLIGHT);
     public static final BlockRootedDirt ROOTED_DIRT = creative(BiomicGroundBlocks.ROOTED_DIRT);
-    public static final BlockIcicle ICICLE = creative(new BlockIcicle());
     public static final BlockMushroomFlesh MUSHROOM_FLESH = creative(BiomicMushroomBlocks.MUSHROOM_FLESH);
     public static final BlockRuLog WISTERIA_LOG = new BlockRuLog("wisteria");
     public static final BlockRuBranch WISTERIA_BRANCH = new BlockRuBranch("wisteria");
@@ -179,7 +175,7 @@ public final class BiomicBlocks {
 
     private BiomicBlocks() {}
 
-    private static <T extends net.minecraft.block.Block> T creative(T block) {
+    public static <T extends net.minecraft.block.Block> T creative(T block) {
         block.setCreativeTab(CREATIVE_TAB);
         return block;
     }
@@ -188,7 +184,7 @@ public final class BiomicBlocks {
         if (registered) {
             return;
         }
-        GameRegistry.registerBlock(CLOVER, "clover");
+        industries.angelic.biomic.content.efr.EfrBackedBlocks.registerClover();
         GameRegistry.registerBlock(CHALK, "chalk");
         GameRegistry.registerBlock(CHALK_GRASS, "chalk_grass");
         GameRegistry.registerBlock(BIG_DRIPLEAF, "big_dripleaf");
@@ -216,18 +212,7 @@ public final class BiomicBlocks {
         GameRegistry.registerBlock(CORAL_PLANT, ItemBlockAquaticVariant.class, "coral_plant");
         GameRegistry.registerBlock(CORAL_FAN, ItemBlockAquaticVariant.class, "coral_fan");
         GameRegistry.registerBlock(CORAL_BLOCK, ItemBlockAquaticVariant.class, "coral_block");
-        GameRegistry.registerBlock(
-            SKYLANDS_WET_MANGROVE_ROOTS,
-            industries.angelic.biomic.content.item.ItemBlockSkylandsWetMangroveRoots.class,
-            "skylands_wet_mangrove_roots");
-        net.minecraftforge.common.MinecraftForge.EVENT_BUS
-            .register(new industries.angelic.biomic.content.block.SkylandsWetMangroveBucket());
-        GameRegistry.registerBlock(
-            SKYLANDS_WET_GLOW_LICHEN,
-            industries.angelic.biomic.content.item.ItemBlockSkylandsWetGlowLichen.class,
-            "skylands_wet_glow_lichen");
-        net.minecraftforge.common.MinecraftForge.EVENT_BUS
-            .register(new industries.angelic.biomic.content.block.SkylandsWetGlowLichenBucket());
+        industries.angelic.biomic.content.efr.EfrBackedBlocks.registerSkylandsWet();
         GameRegistry.registerBlock(SCULK_SENSOR, "sculk_sensor");
         GameRegistry.registerBlock(SCULK_SHRIEKER, "sculk_shrieker");
         GameRegistry.registerBlock(SCULK_VEIN, "sculk_vein");
@@ -270,7 +255,7 @@ public final class BiomicBlocks {
         net.minecraftforge.common.MinecraftForge.EVENT_BUS
             .register(new industries.angelic.biomic.content.block.CoralWallFanBucket());
         GameRegistry.registerBlock(ROOTED_DIRT, "rooted_dirt");
-        GameRegistry.registerBlock(ICICLE, "icicle");
+        industries.angelic.biomic.content.efr.EfrBackedBlocks.registerIcicle();
         GameRegistry.registerBlock(MUSHROOM_FLESH, "mushroom_flesh");
         GameRegistry.registerBlock(WISTERIA_LOG, "wisteria_log");
         GameRegistry.registerBlock(WISTERIA_BRANCH, "wisteria_branch");

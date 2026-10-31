@@ -20,8 +20,8 @@ public final class BlockRuAshVent extends BlockRuSolid {
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int metadata) {
-        return side == 0 ? ganymedes01.etfuturum.ModBlocks.BASALT.get()
-            .getIcon(0, 0) : super.getIcon(side, metadata);
+        return side == 0 ? industries.angelic.biomic.world.palette.PaletteIcons.icon("minecraft:basalt", 0)
+            : super.getIcon(side, metadata);
     }
 
     @Override

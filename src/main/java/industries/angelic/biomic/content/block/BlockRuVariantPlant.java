@@ -16,7 +16,6 @@ import net.minecraft.world.IBlockAccess;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ganymedes01.etfuturum.ModBlocks;
 import industries.angelic.biomic.Biomic;
 import industries.angelic.biomic.content.BiomicBlocks;
 
@@ -45,8 +44,8 @@ public final class BlockRuVariantPlant extends BlockBush {
     protected boolean canPlaceBlockOn(Block ground) {
         return ground == Blocks.grass || ground == Blocks.dirt
             || ground == Blocks.sand
-            || ground == ModBlocks.MUD.get()
-            || ground == ModBlocks.MOSS_BLOCK.get();
+            || industries.angelic.biomic.world.palette.BlockPalette.places("minecraft:mud", ground)
+            || industries.angelic.biomic.world.palette.BlockPalette.places("minecraft:moss_block", ground);
     }
 
     @Override

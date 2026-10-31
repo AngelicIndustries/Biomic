@@ -20,13 +20,18 @@ Native integration with [Biomes O' Plenty](https://github.com/Glitchfiend/Biomes
 ## Requirements
 
 - [AngelLib](https://github.com/AngelicIndustries/AngelLib) 1.0.0 [![curse](images/icons/curse.png)](https://www.curseforge.com/minecraft/mc-mods/angellib) [![modrinth](images/icons/modrinth.png)](https://modrinth.com/mod/angellib) [![67](images/icons/67.png)](https://67minecraft.com/mod/angellib) [![git](images/icons/git.png)](https://github.com/AngelicIndustries/AngelLib/releases)
-- [Et Futurum Requiem](https://github.com/GTNewHorizons/Et-Futurum-Requiem) 2.6.54-GTNH [![git](images/icons/git.png)](https://github.com/GTNewHorizons/Et-Futurum-Requiem/releases) (GTNH's builds; CurseForge and Modrinth have only older ones)
 - [EndlessIDs](https://github.com/GTMEGA/EndlessIDs) 1.7.4 [![curse](images/icons/curse.png)](https://www.curseforge.com/minecraft/mc-mods/endlessids) [![modrinth](images/icons/modrinth.png)](https://modrinth.com/mod/endlessids) [![git](images/icons/git.png)](https://github.com/GTMEGA/EndlessIDs/releases)
 - [ChunkAPI](https://github.com/LegacyModdingMC/ChunkAPI) 0.8.4 [![curse](images/icons/curse.png)](https://www.curseforge.com/minecraft/mc-mods/chunkapi) [![modrinth](images/icons/modrinth.png)](https://modrinth.com/mod/chunkapi) [![git](images/icons/git.png)](https://github.com/LegacyModdingMC/ChunkAPI/releases)
 - [GTNHLib](https://github.com/GTNewHorizons/GTNHLib) 0.11.39 [![curse](images/icons/curse.png)](https://www.curseforge.com/minecraft/mc-mods/gtnhlib) [![modrinth](images/icons/modrinth.png)](https://modrinth.com/mod/gtnhlib) [![git](images/icons/git.png)](https://github.com/GTNewHorizons/GTNHLib/releases)
 - [UniMixins](https://github.com/LegacyModdingMC/UniMixins) [![curse](images/icons/curse.png)](https://www.curseforge.com/minecraft/mc-mods/unimixins) [![modrinth](images/icons/modrinth.png)](https://modrinth.com/mod/unimixins/versions) [![git](images/icons/git.png)](https://github.com/LegacyModdingMC/UniMixins/releases)
 
-On its first launch the client downloads modern Minecraft assets, through Et Futurum Requiem.
+Optional, and used by default: [Et Futurum Requiem](https://github.com/GTNewHorizons/Et-Futurum-Requiem) 2.6.54-GTNH
+[![git](images/icons/git.png)](https://github.com/GTNewHorizons/Et-Futurum-Requiem/releases) (GTNH's builds; CurseForge
+and Modrinth have only older ones). Biomic's default block palette places its modern blocks (deepslate, tuff, moss,
+crimson nylium...), and through it the client downloads modern Minecraft textures and sounds on its first launch.
+Every block Biomic generates can be replaced in `config/biomic-palette.json`; map every Et Futurum Requiem block
+elsewhere (`config/biomic-palette-vanilla.json` does, with 1.7.10 blocks) and Biomic runs without it. See
+[docs/block-palette.md](docs/block-palette.md).
 
 Recommended: [Hohen Angst](https://github.com/AngelicIndustries/Hohenangst) for 512-high worlds, with
 [ArchaicFix](https://github.com/embeddedt/ArchaicFix) for its lighting engine.

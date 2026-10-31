@@ -9,7 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 
-import ganymedes01.etfuturum.ModBlocks;
+import industries.angelic.biomic.compat.efr.EfrBlock;
 import industries.angelic.biomic.content.BiomicAquaticBlocks;
 import industries.angelic.biomic.content.BiomicBlocks;
 import industries.angelic.biomic.content.BiomicDripleafBlocks;
@@ -86,63 +86,51 @@ public final class OrigenBlockStateResolver {
                 axisBits(parsed),
                 id,
                 parsed);
-            // EFR intentionally represents soul fire with vanilla fire plus a soul-soil/sand support block.
-            // The application boundary must check the support; block+metadata alone cannot encode this type.
-            case "minecraft:soul_fire" -> {
-                if (!(Blocks.fire instanceof ganymedes01.etfuturum.ducks.ISoulFireInfo))
-                    throw new IllegalStateException("Soul fire requires EFR's soul-fire mixins");
-                yield block(Blocks.fire, 0, id, parsed);
-            }
+            // Soul fire is vanilla fire on a soul soil or soul sand support: with EFR it burns blue, without it as
+            // fire.
+            case "minecraft:soul_fire" -> block(Blocks.fire, 0, id, parsed);
             case "minecraft:redstone_block" -> block(Blocks.redstone_block, 0, id, parsed);
             case "minecraft:nether_quartz_ore" -> block(Blocks.quartz_ore, 0, id, parsed);
-            case "minecraft:soul_soil" -> requiredEfr(ModBlocks.SOUL_SOIL, 0, id, parsed);
-            case "minecraft:nether_gold_ore" -> requiredEfr(ModBlocks.NETHER_GOLD_ORE, 0, id, parsed);
-            case "minecraft:ancient_debris" -> requiredEfr(ModBlocks.ANCIENT_DEBRIS, 0, id, parsed);
-            case "minecraft:crying_obsidian" -> requiredEfr(ModBlocks.CRYING_OBSIDIAN, 0, id, parsed);
-            case "minecraft:red_nether_bricks" -> requiredEfr(ModBlocks.RED_NETHERBRICK, 0, id, parsed);
-            case "minecraft:crimson_nylium", "minecraft:warped_nylium" -> requiredEfr(
-                ModBlocks.NYLIUM,
+            case "minecraft:soul_soil" -> paletted(id, 0, parsed);
+            case "minecraft:nether_gold_ore" -> paletted(id, 0, parsed);
+            case "minecraft:ancient_debris" -> paletted(id, 0, parsed);
+            case "minecraft:crying_obsidian" -> paletted(id, 0, parsed);
+            case "minecraft:red_nether_bricks" -> paletted(id, 0, parsed);
+            case "minecraft:crimson_nylium", "minecraft:warped_nylium" -> paletted(
+                id,
                 id.equals("minecraft:warped_nylium") ? 1 : 0,
-                id,
                 parsed);
-            case "minecraft:crimson_fungus", "minecraft:warped_fungus" -> requiredEfr(
-                ModBlocks.NETHER_FUNGUS,
+            case "minecraft:crimson_fungus", "minecraft:warped_fungus" -> paletted(
+                id,
                 id.equals("minecraft:warped_fungus") ? 1 : 0,
-                id,
                 parsed);
-            case "minecraft:crimson_roots", "minecraft:warped_roots" -> requiredEfr(
-                ModBlocks.NETHER_ROOTS,
+            case "minecraft:crimson_roots", "minecraft:warped_roots" -> paletted(
+                id,
                 id.equals("minecraft:warped_roots") ? 1 : 0,
-                id,
                 parsed);
-            case "minecraft:nether_sprouts" -> requiredEfr(ModBlocks.NETHER_SPROUTS, 0, id, parsed);
-            case "minecraft:nether_wart_block", "minecraft:warped_wart_block" -> requiredEfr(
-                ModBlocks.NETHER_WART,
+            case "minecraft:nether_sprouts" -> paletted(id, 0, parsed);
+            case "minecraft:nether_wart_block", "minecraft:warped_wart_block" -> paletted(
+                id,
                 id.equals("minecraft:warped_wart_block") ? 1 : 0,
-                id,
                 parsed);
-            case "minecraft:crimson_stem", "minecraft:crimson_hyphae" -> requiredEfr(
-                ModBlocks.CRIMSON_STEM,
-                (id.endsWith("hyphae") ? 1 : 0) | axisBits(parsed),
+            case "minecraft:crimson_stem", "minecraft:crimson_hyphae" -> paletted(
                 id,
+                (id.endsWith("hyphae") ? 1 : 0) | axisBits(parsed),
                 parsed);
-            case "minecraft:warped_stem", "minecraft:warped_hyphae" -> requiredEfr(
-                ModBlocks.WARPED_STEM,
-                (id.endsWith("hyphae") ? 1 : 0) | axisBits(parsed),
+            case "minecraft:warped_stem", "minecraft:warped_hyphae" -> paletted(
                 id,
+                (id.endsWith("hyphae") ? 1 : 0) | axisBits(parsed),
                 parsed);
             // Explicit body/head metadata leaves EFR's existing contextual metadata 0/1 untouched.
-            case "minecraft:weeping_vines", "minecraft:weeping_vines_plant" -> requiredEfr(
-                ModBlocks.WEEPING_VINES,
-                industries.angelic.biomic.compat.efr.ExplicitNetherVines.encode(id.endsWith("_plant"), age(parsed)),
+            case "minecraft:weeping_vines", "minecraft:weeping_vines_plant" -> paletted(
                 id,
-                parsed);
-            case "minecraft:twisting_vines", "minecraft:twisting_vines_plant" -> requiredEfr(
-                ModBlocks.TWISTING_VINES,
                 industries.angelic.biomic.compat.efr.ExplicitNetherVines.encode(id.endsWith("_plant"), age(parsed)),
-                id,
                 parsed);
-            case "minecraft:frosted_ice" -> requiredEfr(ModBlocks.FROSTED_ICE, Math.min(3, age(parsed)), id, parsed);
+            case "minecraft:twisting_vines", "minecraft:twisting_vines_plant" -> paletted(
+                id,
+                industries.angelic.biomic.compat.efr.ExplicitNetherVines.encode(id.endsWith("_plant"), age(parsed)),
+                parsed);
+            case "minecraft:frosted_ice" -> paletted(id, Math.min(3, age(parsed)), parsed);
             case "minecraft:cobblestone" -> block(Blocks.cobblestone, 0, id, parsed);
             case "minecraft:cobblestone_slab" -> block(
                 "double".equals(parsed.properties.get("type")) ? Blocks.double_stone_slab : Blocks.stone_slab,
@@ -154,25 +142,19 @@ public final class OrigenBlockStateResolver {
                 slabMetadata(5, parsed),
                 id,
                 parsed);
-            case "minecraft:stone_slab" -> requiredEfr(
-                "double".equals(parsed.properties.get("type")) ? ModBlocks.DOUBLE_STONE_SLAB : ModBlocks.STONE_SLAB,
+            case "minecraft:stone_slab" -> paletted(
+                "double".equals(parsed.properties.get("type")) ? "minecraft:stone_slab[type=double]" : id,
                 slabMetadata(0, parsed),
                 id,
                 parsed);
             case "minecraft:mossy_cobblestone" -> block(Blocks.mossy_cobblestone, 0, id, parsed);
-            case "minecraft:mossy_cobblestone_slab" -> efr(
-                ModBlocks.STONE_SLAB,
-                slabMetadata(1, parsed),
-                id,
-                parsed,
-                Blocks.stone_slab,
-                3);
+            case "minecraft:mossy_cobblestone_slab" -> paletted(id, slabMetadata(1, parsed), parsed);
             case "minecraft:stone_bricks" -> block(Blocks.stonebrick, 0, id, parsed);
             case "minecraft:infested_stone" -> block(Blocks.monster_egg, 0, id, parsed);
             case "minecraft:infested_deepslate" -> block(Blocks.monster_egg, 0, id, parsed, true);
-            case "minecraft:andesite" -> efr(ModBlocks.STONE, 5, id, parsed, Blocks.stone);
-            case "minecraft:diorite" -> efr(ModBlocks.STONE, 3, id, parsed, Blocks.stone);
-            case "minecraft:granite" -> efr(ModBlocks.STONE, 1, id, parsed, Blocks.stone);
+            case "minecraft:andesite" -> paletted(id, 5, parsed);
+            case "minecraft:diorite" -> paletted(id, 3, parsed);
+            case "minecraft:granite" -> paletted(id, 1, parsed);
             case "minecraft:dirt" -> {
                 // Native BOP's grassless legacy dirt is not EFR's separate modern coarse-dirt block.
                 String legacy = parsed.properties.get("legacy_meta");
@@ -185,55 +167,36 @@ public final class OrigenBlockStateResolver {
             case "minecraft:grass", "minecraft:short_grass" -> block(Blocks.tallgrass, 1, id, parsed);
             case "minecraft:fern" -> block(Blocks.tallgrass, 2, id, parsed);
             case "minecraft:podzol" -> block(Blocks.dirt, 2, id, parsed);
-            case "minecraft:coarse_dirt" -> efr(ModBlocks.COARSE_DIRT, 0, id, parsed, Blocks.dirt);
+            case "minecraft:coarse_dirt" -> paletted(id, 0, parsed);
             case "minecraft:mycelium" -> block(Blocks.mycelium, 0, id, parsed);
             case "minecraft:sponge" -> block(Blocks.sponge, spongeMetadata(id), id, parsed);
-            case "minecraft:wet_sponge" -> requiredEfr(ModBlocks.SPONGE, spongeMetadata(id), id, parsed);
+            case "minecraft:wet_sponge" -> paletted(id, spongeMetadata(id), parsed);
             case "minecraft:prismarine", "minecraft:prismarine_bricks", "minecraft:dark_prismarine", "minecraft:sea_lantern" -> abyssalArchitecture(
                 id,
                 parsed);
             case "minecraft:dark_prismarine_stairs" -> abyssalArchitecture(id, parsed);
-            case "minecraft:weathered_copper" -> requiredEfr(ModBlocks.COPPER_BLOCK, 2, id, parsed);
-            case "minecraft:oxidized_copper" -> requiredEfr(ModBlocks.COPPER_BLOCK, 3, id, parsed);
-            case "minecraft:weathered_cut_copper" -> requiredEfr(ModBlocks.COPPER_BLOCK, 6, id, parsed);
-            case "minecraft:oxidized_cut_copper" -> requiredEfr(ModBlocks.COPPER_BLOCK, 7, id, parsed);
-            case "minecraft:weathered_cut_copper_slab" -> requiredEfr(
-                ModBlocks.CUT_COPPER_SLAB,
+            case "minecraft:weathered_copper" -> paletted(id, 2, parsed);
+            case "minecraft:oxidized_copper" -> paletted(id, 3, parsed);
+            case "minecraft:weathered_cut_copper" -> paletted(id, 6, parsed);
+            case "minecraft:oxidized_cut_copper" -> paletted(id, 7, parsed);
+            case "minecraft:weathered_cut_copper_slab" -> paletted(
+                id,
                 2 | ("top".equals(parsed.properties.get("type")) ? 8 : 0),
-                id,
                 parsed);
-            case "minecraft:oxidized_cut_copper_slab" -> requiredEfr(
-                ModBlocks.CUT_COPPER_SLAB,
+            case "minecraft:oxidized_cut_copper_slab" -> paletted(
+                id,
                 3 | ("top".equals(parsed.properties.get("type")) ? 8 : 0),
-                id,
                 parsed);
-            case "minecraft:weathered_cut_copper_stairs" -> requiredEfr(
-                ModBlocks.WEATHERED_CUT_COPPER_STAIRS,
-                stairMetadata(parsed),
-                id,
-                parsed);
-            case "minecraft:waxed_weathered_cut_copper_stairs" -> requiredEfr(
-                ModBlocks.WAXED_WEATHERED_CUT_COPPER_STAIRS,
-                stairMetadata(parsed),
-                id,
-                parsed);
-            case "minecraft:waxed_oxidized_cut_copper_stairs" -> requiredEfr(
-                ModBlocks.WAXED_OXIDIZED_CUT_COPPER_STAIRS,
-                stairMetadata(parsed),
-                id,
-                parsed);
+            case "minecraft:weathered_cut_copper_stairs" -> paletted(id, stairMetadata(parsed), parsed);
+            case "minecraft:waxed_weathered_cut_copper_stairs" -> paletted(id, stairMetadata(parsed), parsed);
+            case "minecraft:waxed_oxidized_cut_copper_stairs" -> paletted(id, stairMetadata(parsed), parsed);
             case "minecraft:sand" -> block(Blocks.sand, 0, id, parsed);
             case "minecraft:red_sand" -> block(Blocks.sand, 1, id, parsed);
             case "minecraft:sandstone" -> block(Blocks.sandstone, 0, id, parsed);
-            case "minecraft:red_sandstone" -> efr(ModBlocks.RED_SANDSTONE, 0, id, parsed, Blocks.sandstone);
-            case "minecraft:smooth_sandstone" -> efr(ModBlocks.SMOOTH_SANDSTONE, 0, id, parsed, Blocks.sandstone);
-            case "minecraft:smooth_red_sandstone" -> efr(
-                ModBlocks.SMOOTH_RED_SANDSTONE,
-                0,
-                id,
-                parsed,
-                Blocks.sandstone);
-            case "minecraft:smooth_stone" -> efr(ModBlocks.SMOOTH_STONE, 0, id, parsed, Blocks.double_stone_slab);
+            case "minecraft:red_sandstone" -> paletted(id, 0, parsed);
+            case "minecraft:smooth_sandstone" -> paletted(id, 0, parsed);
+            case "minecraft:smooth_red_sandstone" -> paletted(id, 0, parsed);
+            case "minecraft:smooth_stone" -> paletted(id, 0, parsed);
             case "minecraft:gravel" -> block(Blocks.gravel, 0, id, parsed);
             case "minecraft:clay" -> block(Blocks.clay, 0, id, parsed);
             case "minecraft:terracotta" -> block(Blocks.hardened_clay, 0, id, parsed);
@@ -267,12 +230,12 @@ public final class OrigenBlockStateResolver {
                 !"minecraft:oak_button".equals(id));
             case "minecraft:ice" -> block(Blocks.ice, 0, id, parsed);
             case "minecraft:packed_ice" -> block(Blocks.packed_ice, 0, id, parsed);
-            case "minecraft:blue_ice" -> efr(ModBlocks.BLUE_ICE, 0, id, parsed, Blocks.packed_ice);
+            case "minecraft:blue_ice" -> paletted(id, 0, parsed);
             case "minecraft:snow" -> block(Blocks.snow_layer, snowMetadata(parsed), id, parsed);
             case "minecraft:snow_block" -> block(Blocks.snow, 0, id, parsed);
             case "minecraft:powder_snow" -> block(BiomicFrozenBlocks.POWDER_SNOW, 0, id, parsed);
             case "minecraft:obsidian" -> block(Blocks.obsidian, 0, id, parsed);
-            case "minecraft:bone_block" -> efr(ModBlocks.BONE, axisBits(parsed), id, parsed, Blocks.quartz_block);
+            case "minecraft:bone_block" -> paletted(id, axisBits(parsed), parsed);
             case "minecraft:coal_ore" -> block(Blocks.coal_ore, 0, id, parsed);
             case "minecraft:iron_ore" -> block(Blocks.iron_ore, 0, id, parsed);
             case "minecraft:gold_ore" -> block(Blocks.gold_ore, 0, id, parsed);
@@ -290,7 +253,7 @@ public final class OrigenBlockStateResolver {
             case "minecraft:wheat" -> block(Blocks.wheat, age(parsed), id, parsed);
             case "minecraft:carrots" -> block(Blocks.carrots, age(parsed), id, parsed);
             case "minecraft:potatoes" -> block(Blocks.potatoes, age(parsed), id, parsed);
-            case "minecraft:beetroots" -> efr(ModBlocks.BEETROOTS, Math.min(3, age(parsed)), id, parsed, Blocks.wheat);
+            case "minecraft:beetroots" -> paletted(id, Math.min(3, age(parsed)), parsed);
             case "minecraft:farmland" -> block(Blocks.farmland, integer(parsed, "moisture", 0), id, parsed);
             case "minecraft:dead_bush", "minecraft:deadbush" -> block(Blocks.deadbush, 0, id, parsed);
             case "minecraft:brown_mushroom" -> block(Blocks.brown_mushroom, 0, id, parsed);
@@ -306,7 +269,7 @@ public final class OrigenBlockStateResolver {
                 id,
                 parsed);
             case "minecraft:mushroom_stem" -> block(Blocks.brown_mushroom_block, 10, id, parsed);
-            case "minecraft:shroomlight" -> efr(ModBlocks.SHROOMLIGHT, 0, id, parsed, Blocks.glowstone);
+            case "minecraft:shroomlight" -> paletted(id, 0, parsed);
             case "biomic:mushroom_flesh" -> block(BiomicMushroomBlocks.MUSHROOM_FLESH, 0, id, parsed);
             case "minecraft:dandelion" -> block(Blocks.yellow_flower, 0, id, parsed);
             case "minecraft:poppy" -> block(Blocks.red_flower, 0, id, parsed);
@@ -318,14 +281,8 @@ public final class OrigenBlockStateResolver {
             case "minecraft:white_tulip" -> block(Blocks.red_flower, 6, id, parsed);
             case "minecraft:pink_tulip" -> block(Blocks.red_flower, 7, id, parsed);
             case "minecraft:oxeye_daisy" -> block(Blocks.red_flower, 8, id, parsed);
-            case "minecraft:cornflower" -> efr(ModBlocks.CORNFLOWER, 0, id, parsed, Blocks.red_flower, 8);
-            case "minecraft:lily_of_the_valley" -> efr(
-                ModBlocks.LILY_OF_THE_VALLEY,
-                0,
-                id,
-                parsed,
-                Blocks.red_flower,
-                8);
+            case "minecraft:cornflower" -> paletted(id, 0, parsed);
+            case "minecraft:lily_of_the_valley" -> paletted(id, 0, parsed);
             case "minecraft:sunflower" -> doublePlant(0, id, parsed);
             case "minecraft:lilac" -> doublePlant(1, id, parsed);
             case "minecraft:tall_grass" -> doublePlant(2, id, parsed);
@@ -341,7 +298,7 @@ public final class OrigenBlockStateResolver {
             case "minecraft:jungle_sapling" -> block(Blocks.sapling, 3, id, parsed);
             case "minecraft:acacia_sapling" -> block(Blocks.sapling, 4, id, parsed);
             case "minecraft:dark_oak_sapling" -> block(Blocks.sapling, 5, id, parsed);
-            case "minecraft:cherry_sapling" -> efr(ModBlocks.SAPLING, 1, id, parsed, Blocks.sapling, 2);
+            case "minecraft:cherry_sapling" -> paletted(id, 1, parsed);
             case "minecraft:oak_log", "minecraft:oak_wood" -> oldLog(0, id.endsWith("_wood"), id, parsed);
             case "minecraft:spruce_log", "minecraft:spruce_wood" -> oldLog(1, id.endsWith("_wood"), id, parsed);
             case "minecraft:birch_log", "minecraft:birch_wood" -> oldLog(2, id.endsWith("_wood"), id, parsed);
@@ -361,23 +318,23 @@ public final class OrigenBlockStateResolver {
             case "minecraft:acacia_planks" -> block(Blocks.planks, 4, id, parsed);
             case "minecraft:dark_oak_planks" -> block(Blocks.planks, 5, id, parsed);
             case "minecraft:oak_fence" -> block(Blocks.fence, 0, id, parsed);
-            case "minecraft:spruce_fence" -> efr(ModBlocks.FENCE_SPRUCE, 0, id, parsed, Blocks.fence);
-            case "minecraft:dark_oak_fence" -> efr(ModBlocks.FENCE_DARK_OAK, 0, id, parsed, Blocks.fence);
-            case "minecraft:stone_stairs" -> stairs(ModBlocks.STONE_STAIRS, Blocks.stone_stairs, id, parsed);
-            case "minecraft:andesite_stairs" -> stairs(ModBlocks.ANDESITE_STAIRS, Blocks.stone_stairs, id, parsed);
-            case "minecraft:diorite_stairs" -> stairs(ModBlocks.DIORITE_STAIRS, Blocks.stone_stairs, id, parsed);
-            case "minecraft:granite_stairs" -> stairs(ModBlocks.GRANITE_STAIRS, Blocks.stone_stairs, id, parsed);
+            case "minecraft:spruce_fence" -> paletted(id, 0, parsed);
+            case "minecraft:dark_oak_fence" -> paletted(id, 0, parsed);
+            case "minecraft:stone_stairs" -> paletted(id, stairMetadata(parsed), parsed);
+            case "minecraft:andesite_stairs" -> paletted(id, stairMetadata(parsed), parsed);
+            case "minecraft:diorite_stairs" -> paletted(id, stairMetadata(parsed), parsed);
+            case "minecraft:granite_stairs" -> paletted(id, stairMetadata(parsed), parsed);
             case "minecraft:sandstone_stairs" -> block(Blocks.sandstone_stairs, stairMetadata(parsed), id, parsed);
-            case "minecraft:red_sandstone_stairs" -> stairs(
-                ModBlocks.RED_SANDSTONE_STAIRS,
-                Blocks.sandstone_stairs,
-                id,
-                parsed);
+            case "minecraft:red_sandstone_stairs" -> paletted(id, stairMetadata(parsed), parsed);
             default -> resolveModern(id, parsed);
         };
         if (resolved == null) {
             throw new IllegalArgumentException("No 1.7/EFR mapping for Origen block state " + state);
         }
+        // The user's palette may replace an id Biomic maps itself (minecraft:stone): metadata "auto" keeps the state's.
+        industries.angelic.biomic.world.palette.BlockPalette.Choice user = industries.angelic.biomic.world.palette.BlockPalette
+            .builtinOverride(id);
+        if (user != null) return block(user.block(), user.metadata(resolved.metadata()), id, parsed);
         return resolved;
     }
 
@@ -396,12 +353,7 @@ public final class OrigenBlockStateResolver {
 
     private static ResolvedBlock abyssalArchitecture(String id, ParsedState parsed) {
         LegacyPaletteKey key = abyssalArchitectureKey(id);
-        ModBlocks holder = switch (key.holder) {
-            case "SEA_LANTERN" -> ModBlocks.SEA_LANTERN;
-            case "PRISMARINE_STAIRS_DARK" -> ModBlocks.PRISMARINE_STAIRS_DARK;
-            default -> ModBlocks.PRISMARINE_BLOCK;
-        };
-        return requiredEfr(holder, key.metadata < 0 ? stairMetadata(parsed) : key.metadata, id, parsed);
+        return paletted(id, key.metadata < 0 ? stairMetadata(parsed) : key.metadata, parsed);
     }
 
     public String canonicalId(Block block, int metadata) {
@@ -546,118 +498,120 @@ public final class OrigenBlockStateResolver {
         if (block == BiomicFrozenBlocks.POWDER_SNOW) return "minecraft:powder_snow";
         if (block == BiomicExpansionBlocks.OCHRE_FROGLIGHT) return "minecraft:ochre_froglight";
         if (block == BiomicMushroomBlocks.MUSHROOM_FLESH) return "biomic:mushroom_flesh";
-        // Resolve Biomic-owned blocks before touching ModBlocks. Besides avoiding needless work in production, this
-        // keeps local block identity usable by tooling that runs outside an initialized FML launch.
-        if (block == ModBlocks.COARSE_DIRT.get()) return "minecraft:coarse_dirt";
-        if (block == ModBlocks.SPONGE.get()) return metadata == 1 ? "minecraft:wet_sponge" : "minecraft:sponge";
-        if (block == ModBlocks.SOUL_SOIL.get()) return "minecraft:soul_soil";
-        if (block == ModBlocks.NETHER_GOLD_ORE.get()) return "minecraft:nether_gold_ore";
-        if (block == ModBlocks.ANCIENT_DEBRIS.get()) return "minecraft:ancient_debris";
-        if (block == ModBlocks.CRYING_OBSIDIAN.get()) return "minecraft:crying_obsidian";
-        if (block == ModBlocks.RED_NETHERBRICK.get() && metadata == 0) return "minecraft:red_nether_bricks";
-        if (block == ModBlocks.FROSTED_ICE.get()) return "minecraft:frosted_ice";
-        if (block == ModBlocks.NYLIUM.get())
+        // A block the user's palette maps an id onto reads as that id, unless a rule above already named it (a vanilla
+        // block stays itself). Then Et Futurum Requiem's blocks, by registry name: absent without it.
+        String overridden = industries.angelic.biomic.world.palette.BlockPalette.overriddenId(block, metadata);
+        if (overridden != null) return overridden;
+        if (block == EfrBlock.COARSE_DIRT.get()) return "minecraft:coarse_dirt";
+        if (block == EfrBlock.SPONGE.get()) return metadata == 1 ? "minecraft:wet_sponge" : "minecraft:sponge";
+        if (block == EfrBlock.SOUL_SOIL.get()) return "minecraft:soul_soil";
+        if (block == EfrBlock.NETHER_GOLD_ORE.get()) return "minecraft:nether_gold_ore";
+        if (block == EfrBlock.ANCIENT_DEBRIS.get()) return "minecraft:ancient_debris";
+        if (block == EfrBlock.CRYING_OBSIDIAN.get()) return "minecraft:crying_obsidian";
+        if (block == EfrBlock.RED_NETHERBRICK.get() && metadata == 0) return "minecraft:red_nether_bricks";
+        if (block == EfrBlock.FROSTED_ICE.get()) return "minecraft:frosted_ice";
+        if (block == EfrBlock.NYLIUM.get())
             return (metadata & 1) == 0 ? "minecraft:crimson_nylium" : "minecraft:warped_nylium";
-        if (block == ModBlocks.NETHER_FUNGUS.get())
+        if (block == EfrBlock.NETHER_FUNGUS.get())
             return (metadata & 1) == 0 ? "minecraft:crimson_fungus" : "minecraft:warped_fungus";
-        if (block == ModBlocks.NETHER_ROOTS.get())
+        if (block == EfrBlock.NETHER_ROOTS.get())
             return (metadata & 1) == 0 ? "minecraft:crimson_roots" : "minecraft:warped_roots";
-        if (block == ModBlocks.NETHER_WART.get())
+        if (block == EfrBlock.NETHER_WART.get())
             return (metadata & 1) == 0 ? "minecraft:nether_wart_block" : "minecraft:warped_wart_block";
-        if (block == ModBlocks.NETHER_SPROUTS.get()) return "minecraft:nether_sprouts";
-        if (block == ModBlocks.CRIMSON_STEM.get()) return "minecraft:" + ((metadata & 2) != 0 ? "stripped_" : "")
+        if (block == EfrBlock.NETHER_SPROUTS.get()) return "minecraft:nether_sprouts";
+        if (block == EfrBlock.CRIMSON_STEM.get()) return "minecraft:" + ((metadata & 2) != 0 ? "stripped_" : "")
             + ((metadata & 1) == 0 ? "crimson_stem" : "crimson_hyphae");
-        if (block == ModBlocks.WARPED_STEM.get()) return "minecraft:" + ((metadata & 2) != 0 ? "stripped_" : "")
+        if (block == EfrBlock.WARPED_STEM.get()) return "minecraft:" + ((metadata & 2) != 0 ? "stripped_" : "")
             + ((metadata & 1) == 0 ? "warped_stem" : "warped_hyphae");
         // No body/tip assertion without context: EFR stores both in one block. Use canonicalId(world, ...) instead.
-        if (block == ModBlocks.WEEPING_VINES.get())
+        if (block == EfrBlock.WEEPING_VINES.get())
             return metadata == 2 ? "minecraft:weeping_vines_plant" : "minecraft:weeping_vines";
-        if (block == ModBlocks.TWISTING_VINES.get())
+        if (block == EfrBlock.TWISTING_VINES.get())
             return metadata == 2 ? "minecraft:twisting_vines_plant" : "minecraft:twisting_vines";
-        if (block == ModBlocks.STONE.get()) return switch (metadata) {
+        if (block == EfrBlock.STONE.get()) return switch (metadata) {
             case 1, 2 -> "minecraft:granite";
             case 3, 4 -> "minecraft:diorite";
             case 5, 6 -> "minecraft:andesite";
             default -> "minecraft:stone";
         };
-        if (block == ModBlocks.MOSS_BLOCK.get()) return "minecraft:moss_block";
-        if (block == ModBlocks.MUD.get()) return "minecraft:mud";
-        if (block == ModBlocks.PACKED_MUD.get()) return "minecraft:packed_mud";
-        if (block == ModBlocks.DRIPSTONE_BLOCK.get()) return "minecraft:dripstone_block";
-        if (block == ModBlocks.BONE.get()) return "minecraft:bone_block";
-        if (block == ModBlocks.DEEPSLATE.get()) return "minecraft:deepslate";
-        if (block == ModBlocks.TUFF.get()) return "minecraft:tuff";
-        if (block == ModBlocks.CALCITE.get()) return "minecraft:calcite";
-        if (block == ModBlocks.BASALT.get()) return "minecraft:basalt";
-        if (block == ModBlocks.SMOOTH_BASALT.get()) return "minecraft:smooth_basalt";
-        if (block == ModBlocks.BLUE_ICE.get()) return "minecraft:blue_ice";
-        if (block == ModBlocks.BLACKSTONE.get()) return "minecraft:blackstone";
-        if (block == ModBlocks.COBBLED_DEEPSLATE.get()) return "minecraft:cobbled_deepslate";
-        if (block == ModBlocks.POLISHED_DEEPSLATE.get()) return "minecraft:polished_deepslate";
-        if (block == ModBlocks.DEEPSLATE_BRICKS.get()) return switch (metadata & 7) {
+        if (block == EfrBlock.MOSS_BLOCK.get()) return "minecraft:moss_block";
+        if (block == EfrBlock.MUD.get()) return "minecraft:mud";
+        if (block == EfrBlock.PACKED_MUD.get()) return "minecraft:packed_mud";
+        if (block == EfrBlock.DRIPSTONE_BLOCK.get()) return "minecraft:dripstone_block";
+        if (block == EfrBlock.BONE.get()) return "minecraft:bone_block";
+        if (block == EfrBlock.DEEPSLATE.get()) return "minecraft:deepslate";
+        if (block == EfrBlock.TUFF.get()) return "minecraft:tuff";
+        if (block == EfrBlock.CALCITE.get()) return "minecraft:calcite";
+        if (block == EfrBlock.BASALT.get()) return "minecraft:basalt";
+        if (block == EfrBlock.SMOOTH_BASALT.get()) return "minecraft:smooth_basalt";
+        if (block == EfrBlock.BLUE_ICE.get()) return "minecraft:blue_ice";
+        if (block == EfrBlock.BLACKSTONE.get()) return "minecraft:blackstone";
+        if (block == EfrBlock.COBBLED_DEEPSLATE.get()) return "minecraft:cobbled_deepslate";
+        if (block == EfrBlock.POLISHED_DEEPSLATE.get()) return "minecraft:polished_deepslate";
+        if (block == EfrBlock.DEEPSLATE_BRICKS.get()) return switch (metadata & 7) {
             case 1 -> "minecraft:cracked_deepslate_bricks";
             case 2 -> "minecraft:deepslate_tiles";
             case 3 -> "minecraft:cracked_deepslate_tiles";
             case 4 -> "minecraft:chiseled_deepslate";
             default -> "minecraft:deepslate_bricks";
         };
-        if (block == ModBlocks.COPPER_ORE.get()) return "minecraft:copper_ore";
-        if (block == ModBlocks.DEEPSLATE_COAL_ORE.get()) return "minecraft:deepslate_coal_ore";
-        if (block == ModBlocks.DEEPSLATE_IRON_ORE.get()) return "minecraft:deepslate_iron_ore";
-        if (block == ModBlocks.DEEPSLATE_GOLD_ORE.get()) return "minecraft:deepslate_gold_ore";
-        if (block == ModBlocks.DEEPSLATE_REDSTONE_ORE.get()) return "minecraft:deepslate_redstone_ore";
-        if (block == ModBlocks.DEEPSLATE_LAPIS_ORE.get()) return "minecraft:deepslate_lapis_ore";
-        if (block == ModBlocks.DEEPSLATE_DIAMOND_ORE.get()) return "minecraft:deepslate_diamond_ore";
-        if (block == ModBlocks.DEEPSLATE_EMERALD_ORE.get()) return "minecraft:deepslate_emerald_ore";
-        if (block == ModBlocks.DEEPSLATE_COPPER_ORE.get()) return "minecraft:deepslate_copper_ore";
-        if (block == ModBlocks.RAW_ORE_BLOCK.get()) {
+        if (block == EfrBlock.COPPER_ORE.get()) return "minecraft:copper_ore";
+        if (block == EfrBlock.DEEPSLATE_COAL_ORE.get()) return "minecraft:deepslate_coal_ore";
+        if (block == EfrBlock.DEEPSLATE_IRON_ORE.get()) return "minecraft:deepslate_iron_ore";
+        if (block == EfrBlock.DEEPSLATE_GOLD_ORE.get()) return "minecraft:deepslate_gold_ore";
+        if (block == EfrBlock.DEEPSLATE_REDSTONE_ORE.get()) return "minecraft:deepslate_redstone_ore";
+        if (block == EfrBlock.DEEPSLATE_LAPIS_ORE.get()) return "minecraft:deepslate_lapis_ore";
+        if (block == EfrBlock.DEEPSLATE_DIAMOND_ORE.get()) return "minecraft:deepslate_diamond_ore";
+        if (block == EfrBlock.DEEPSLATE_EMERALD_ORE.get()) return "minecraft:deepslate_emerald_ore";
+        if (block == EfrBlock.DEEPSLATE_COPPER_ORE.get()) return "minecraft:deepslate_copper_ore";
+        if (block == EfrBlock.RAW_ORE_BLOCK.get()) {
             return metadata == 0 ? "minecraft:raw_copper_block" : "minecraft:raw_iron_block";
         }
-        if (block == ModBlocks.AMETHYST_BLOCK.get()) return "minecraft:amethyst_block";
-        if (block == ModBlocks.BUDDING_AMETHYST.get()) return "minecraft:budding_amethyst";
-        if (block == ModBlocks.AMETHYST_CLUSTER_1.get()) {
+        if (block == EfrBlock.AMETHYST_BLOCK.get()) return "minecraft:amethyst_block";
+        if (block == EfrBlock.BUDDING_AMETHYST.get()) return "minecraft:budding_amethyst";
+        if (block == EfrBlock.AMETHYST_CLUSTER_1.get()) {
             return amethystId(1, metadata);
         }
-        if (block == ModBlocks.AMETHYST_CLUSTER_2.get()) return amethystId(2, metadata);
-        if (block == ModBlocks.POINTED_DRIPSTONE.get()) return "minecraft:pointed_dripstone";
-        if (block == ModBlocks.MAGMA.get()) return "minecraft:magma_block";
-        if (block == ModBlocks.BEETROOTS.get()) return "minecraft:beetroots";
-        if (block == ModBlocks.CORNFLOWER.get()) return "minecraft:cornflower";
-        if (block == ModBlocks.LILY_OF_THE_VALLEY.get()) return "minecraft:lily_of_the_valley";
-        if (block == ModBlocks.SMOOTH_STONE.get()) return "minecraft:smooth_stone";
-        if (block == ModBlocks.SMOOTH_SANDSTONE.get()) return "minecraft:smooth_sandstone";
-        if (block == ModBlocks.RED_SANDSTONE.get()) return "minecraft:red_sandstone";
-        if (block == ModBlocks.SMOOTH_RED_SANDSTONE.get()) return "minecraft:smooth_red_sandstone";
-        if (block == ModBlocks.STONE_SLAB.get() && (metadata & 7) == 1) return "minecraft:mossy_cobblestone_slab";
-        if ((block == ModBlocks.STONE_SLAB.get() || block == ModBlocks.DOUBLE_STONE_SLAB.get()) && (metadata & 7) == 0)
+        if (block == EfrBlock.AMETHYST_CLUSTER_2.get()) return amethystId(2, metadata);
+        if (block == EfrBlock.POINTED_DRIPSTONE.get()) return "minecraft:pointed_dripstone";
+        if (block == EfrBlock.MAGMA.get()) return "minecraft:magma_block";
+        if (block == EfrBlock.BEETROOTS.get()) return "minecraft:beetroots";
+        if (block == EfrBlock.CORNFLOWER.get()) return "minecraft:cornflower";
+        if (block == EfrBlock.LILY_OF_THE_VALLEY.get()) return "minecraft:lily_of_the_valley";
+        if (block == EfrBlock.SMOOTH_STONE.get()) return "minecraft:smooth_stone";
+        if (block == EfrBlock.SMOOTH_SANDSTONE.get()) return "minecraft:smooth_sandstone";
+        if (block == EfrBlock.RED_SANDSTONE.get()) return "minecraft:red_sandstone";
+        if (block == EfrBlock.SMOOTH_RED_SANDSTONE.get()) return "minecraft:smooth_red_sandstone";
+        if (block == EfrBlock.STONE_SLAB.get() && (metadata & 7) == 1) return "minecraft:mossy_cobblestone_slab";
+        if ((block == EfrBlock.STONE_SLAB.get() || block == EfrBlock.DOUBLE_STONE_SLAB.get()) && (metadata & 7) == 0)
             return "minecraft:stone_slab";
-        if (block == ModBlocks.MOSS_CARPET.get()) return "minecraft:moss_carpet";
-        if (block == ModBlocks.MANGROVE_ROOTS.get()) return "minecraft:mangrove_roots";
-        if (block == ModBlocks.MUDDY_MANGROVE_ROOTS.get()) return "minecraft:muddy_mangrove_roots";
-        if (block == ModBlocks.AZALEA.get())
+        if (block == EfrBlock.MOSS_CARPET.get()) return "minecraft:moss_carpet";
+        if (block == EfrBlock.MANGROVE_ROOTS.get()) return "minecraft:mangrove_roots";
+        if (block == EfrBlock.MUDDY_MANGROVE_ROOTS.get()) return "minecraft:muddy_mangrove_roots";
+        if (block == EfrBlock.AZALEA.get())
             return metadata % 2 == 1 ? "minecraft:flowering_azalea" : "minecraft:azalea";
-        if (block == ModBlocks.AZALEA_LEAVES.get())
+        if (block == EfrBlock.AZALEA_LEAVES.get())
             return metadata % 2 == 1 ? "minecraft:flowering_azalea_leaves" : "minecraft:azalea_leaves";
-        if (block == ModBlocks.LEAVES.get())
+        if (block == EfrBlock.LEAVES.get())
             return metadata % 4 == 1 ? "minecraft:cherry_leaves" : "minecraft:mangrove_leaves";
-        if (block == ModBlocks.CHERRY_LOG.get())
+        if (block == EfrBlock.CHERRY_LOG.get())
             return (metadata & 3) == 1 ? "minecraft:cherry_wood" : "minecraft:cherry_log";
-        if (block == ModBlocks.MANGROVE_LOG.get())
+        if (block == EfrBlock.MANGROVE_LOG.get())
             return (metadata & 3) == 1 ? "minecraft:mangrove_wood" : "minecraft:mangrove_log";
-        if (block == ModBlocks.SCULK.get()) return "minecraft:sculk";
-        if (block == ModBlocks.SCULK_CATALYST.get()) return "minecraft:sculk_catalyst";
-        if (block == ModBlocks.SHROOMLIGHT.get()) return "minecraft:shroomlight";
-        if (block == ModBlocks.PINK_PETALS.get()) return "minecraft:pink_petals";
-        if (block == ModBlocks.SWEET_BERRY_BUSH.get()) return "minecraft:sweet_berry_bush";
-        if (block == ModBlocks.BAMBOO.get()) return "minecraft:bamboo";
-        if (block == ModBlocks.CHAIN.get()) return "minecraft:chain";
-        if (block == ModBlocks.BEE_NEST.get()) return "minecraft:bee_nest";
-        if (block == ModBlocks.CONCRETE.get()) return "minecraft:" + colorName(metadata) + "_concrete";
-        if (block == ModBlocks.CONCRETE_POWDER.get()) return "minecraft:" + colorName(metadata) + "_concrete_powder";
-        if (block == ModBlocks.GLOW_LICHEN.get()) return "minecraft:glow_lichen";
-        if (block == ModBlocks.CAVE_VINE.get()) return "minecraft:cave_vines";
-        if (block == ModBlocks.CAVE_VINE_PLANT.get()) return "minecraft:cave_vines_plant";
-        if (block == ModBlocks.SAPLING.get())
+        if (block == EfrBlock.SCULK.get()) return "minecraft:sculk";
+        if (block == EfrBlock.SCULK_CATALYST.get()) return "minecraft:sculk_catalyst";
+        if (block == EfrBlock.SHROOMLIGHT.get()) return "minecraft:shroomlight";
+        if (block == EfrBlock.PINK_PETALS.get()) return "minecraft:pink_petals";
+        if (block == EfrBlock.SWEET_BERRY_BUSH.get()) return "minecraft:sweet_berry_bush";
+        if (block == EfrBlock.BAMBOO.get()) return "minecraft:bamboo";
+        if (block == EfrBlock.CHAIN.get()) return "minecraft:chain";
+        if (block == EfrBlock.BEE_NEST.get()) return "minecraft:bee_nest";
+        if (block == EfrBlock.CONCRETE.get()) return "minecraft:" + colorName(metadata) + "_concrete";
+        if (block == EfrBlock.CONCRETE_POWDER.get()) return "minecraft:" + colorName(metadata) + "_concrete_powder";
+        if (block == EfrBlock.GLOW_LICHEN.get()) return "minecraft:glow_lichen";
+        if (block == EfrBlock.CAVE_VINE.get()) return "minecraft:cave_vines";
+        if (block == EfrBlock.CAVE_VINE_PLANT.get()) return "minecraft:cave_vines_plant";
+        if (block == EfrBlock.SAPLING.get())
             return (metadata & 7) == 0 ? "minecraft:mangrove_propagule" : "minecraft:cherry_sapling";
         Object registered = Block.blockRegistry.getNameForObject(block);
         return registered == null ? "minecraft:air" : canonicalExternalId(registered.toString());
@@ -706,182 +660,83 @@ public final class OrigenBlockStateResolver {
             return block(Blocks.stained_hardened_clay, color(id, "_terracotta"), id, parsed);
         }
         if (id.endsWith("_concrete")) {
-            return efr(ModBlocks.CONCRETE, color(id, "_concrete"), id, parsed, Blocks.stained_hardened_clay);
+            return paletted(id, color(id, "_concrete"), parsed);
         }
         if (id.endsWith("_concrete_powder")) {
-            return efr(ModBlocks.CONCRETE_POWDER, color(id, "_concrete_powder"), id, parsed, Blocks.sand);
+            return paletted(id, color(id, "_concrete_powder"), parsed);
         }
         return switch (id) {
-            case "minecraft:basalt", "minecraft:polished_basalt" -> efr(
-                ModBlocks.BASALT,
+            case "minecraft:basalt", "minecraft:polished_basalt" -> paletted(
+                id,
                 id.contains("polished") ? 1 : 0,
-                id,
-                parsed,
-                Blocks.stone);
-            case "minecraft:smooth_basalt" -> efr(ModBlocks.SMOOTH_BASALT, 0, id, parsed, Blocks.stone);
-            case "minecraft:calcite" -> efr(ModBlocks.CALCITE, 0, id, parsed, Blocks.stone);
-            case "minecraft:tuff" -> efr(ModBlocks.TUFF, 0, id, parsed, Blocks.stone);
-            case "minecraft:blackstone" -> efr(ModBlocks.BLACKSTONE, 0, id, parsed, Blocks.stone);
-            case "minecraft:deepslate" -> efr(ModBlocks.DEEPSLATE, 0, id, parsed, Blocks.stone);
-            case "minecraft:cobbled_deepslate" -> efr(ModBlocks.COBBLED_DEEPSLATE, 0, id, parsed, Blocks.cobblestone);
-            case "minecraft:polished_deepslate" -> efr(ModBlocks.POLISHED_DEEPSLATE, 0, id, parsed, Blocks.stonebrick);
-            case "minecraft:deepslate_bricks" -> efr(ModBlocks.DEEPSLATE_BRICKS, 0, id, parsed, Blocks.stonebrick);
-            case "minecraft:cracked_deepslate_bricks" -> efr(
-                ModBlocks.DEEPSLATE_BRICKS,
-                1,
-                id,
-                parsed,
-                Blocks.stonebrick);
-            case "minecraft:deepslate_tiles" -> efr(ModBlocks.DEEPSLATE_BRICKS, 2, id, parsed, Blocks.stonebrick);
-            case "minecraft:cracked_deepslate_tiles" -> efr(
-                ModBlocks.DEEPSLATE_BRICKS,
-                3,
-                id,
-                parsed,
-                Blocks.stonebrick);
-            case "minecraft:chiseled_deepslate" -> efr(ModBlocks.DEEPSLATE_BRICKS, 4, id, parsed, Blocks.stonebrick);
-            case "minecraft:deepslate_tile_stairs" -> stairs(
-                ModBlocks.DEEPSLATE_TILE_STAIRS,
-                Blocks.stone_stairs,
-                id,
                 parsed);
-            case "minecraft:cobbled_deepslate_wall" -> efr(
-                ModBlocks.DEEPSLATE_WALL,
-                0,
+            case "minecraft:smooth_basalt" -> paletted(id, 0, parsed);
+            case "minecraft:calcite" -> paletted(id, 0, parsed);
+            case "minecraft:tuff" -> paletted(id, 0, parsed);
+            case "minecraft:blackstone" -> paletted(id, 0, parsed);
+            case "minecraft:deepslate" -> paletted(id, 0, parsed);
+            case "minecraft:cobbled_deepslate" -> paletted(id, 0, parsed);
+            case "minecraft:polished_deepslate" -> paletted(id, 0, parsed);
+            case "minecraft:deepslate_bricks" -> paletted(id, 0, parsed);
+            case "minecraft:cracked_deepslate_bricks" -> paletted(id, 1, parsed);
+            case "minecraft:deepslate_tiles" -> paletted(id, 2, parsed);
+            case "minecraft:cracked_deepslate_tiles" -> paletted(id, 3, parsed);
+            case "minecraft:chiseled_deepslate" -> paletted(id, 4, parsed);
+            case "minecraft:deepslate_tile_stairs" -> paletted(id, stairMetadata(parsed), parsed);
+            case "minecraft:cobbled_deepslate_wall" -> paletted(id, 0, parsed);
+            case "minecraft:polished_deepslate_wall" -> paletted(id, 1, parsed);
+            case "minecraft:deepslate_tile_wall" -> paletted(id, 3, parsed);
+            case "minecraft:deepslate_coal_ore" -> paletted(id, 0, parsed);
+            case "minecraft:deepslate_iron_ore" -> paletted(id, 0, parsed);
+            case "minecraft:deepslate_gold_ore" -> paletted(id, 0, parsed);
+            case "minecraft:deepslate_redstone_ore" -> paletted(id, 0, parsed);
+            case "minecraft:deepslate_lapis_ore" -> paletted(id, 0, parsed);
+            case "minecraft:deepslate_diamond_ore" -> paletted(id, 0, parsed);
+            case "minecraft:deepslate_emerald_ore" -> paletted(id, 0, parsed);
+            case "minecraft:deepslate_copper_ore" -> paletted(id, 0, parsed);
+            case "minecraft:copper_ore" -> paletted(id, 0, parsed);
+            case "minecraft:raw_copper_block" -> paletted(id, 0, parsed);
+            case "minecraft:raw_iron_block" -> paletted(id, 1, parsed);
+            case "minecraft:dripstone_block" -> paletted(id, 0, parsed);
+            case "minecraft:pointed_dripstone" -> paletted(id, dripstoneMetadata(parsed), parsed);
+            case "minecraft:magma_block" -> paletted(id, 0, parsed);
+            case "minecraft:mud" -> paletted(id, 0, parsed);
+            case "minecraft:packed_mud" -> paletted(id, 0, parsed);
+            case "minecraft:moss_block" -> paletted(id, 0, parsed);
+            case "minecraft:moss_carpet" -> paletted(id, 0, parsed);
+            case "minecraft:azalea" -> paletted(id, 0, parsed);
+            case "minecraft:flowering_azalea" -> paletted(id, 1, parsed);
+            case "minecraft:azalea_leaves" -> paletted(id, leafMetadata(0, parsed), parsed);
+            case "minecraft:flowering_azalea_leaves" -> paletted(id, leafMetadata(1, parsed), parsed);
+            case "minecraft:mangrove_roots" -> paletted(id, 0, parsed);
+            case "minecraft:muddy_mangrove_roots" -> paletted(id, 0, parsed);
+            case "minecraft:mangrove_log", "minecraft:mangrove_wood" -> paletted(
                 id,
-                parsed,
-                Blocks.cobblestone_wall);
-            case "minecraft:polished_deepslate_wall" -> efr(
-                ModBlocks.DEEPSLATE_WALL,
-                1,
-                id,
-                parsed,
-                Blocks.cobblestone_wall);
-            case "minecraft:deepslate_tile_wall" -> efr(
-                ModBlocks.DEEPSLATE_WALL,
-                3,
-                id,
-                parsed,
-                Blocks.cobblestone_wall);
-            case "minecraft:deepslate_coal_ore" -> efr(ModBlocks.DEEPSLATE_COAL_ORE, 0, id, parsed, Blocks.coal_ore);
-            case "minecraft:deepslate_iron_ore" -> efr(ModBlocks.DEEPSLATE_IRON_ORE, 0, id, parsed, Blocks.iron_ore);
-            case "minecraft:deepslate_gold_ore" -> efr(ModBlocks.DEEPSLATE_GOLD_ORE, 0, id, parsed, Blocks.gold_ore);
-            case "minecraft:deepslate_redstone_ore" -> efr(
-                ModBlocks.DEEPSLATE_REDSTONE_ORE,
-                0,
-                id,
-                parsed,
-                Blocks.redstone_ore);
-            case "minecraft:deepslate_lapis_ore" -> efr(ModBlocks.DEEPSLATE_LAPIS_ORE, 0, id, parsed, Blocks.lapis_ore);
-            case "minecraft:deepslate_diamond_ore" -> efr(
-                ModBlocks.DEEPSLATE_DIAMOND_ORE,
-                0,
-                id,
-                parsed,
-                Blocks.diamond_ore);
-            case "minecraft:deepslate_emerald_ore" -> efr(
-                ModBlocks.DEEPSLATE_EMERALD_ORE,
-                0,
-                id,
-                parsed,
-                Blocks.emerald_ore);
-            case "minecraft:deepslate_copper_ore" -> efr(
-                ModBlocks.DEEPSLATE_COPPER_ORE,
-                0,
-                id,
-                parsed,
-                Blocks.iron_ore);
-            case "minecraft:copper_ore" -> efr(ModBlocks.COPPER_ORE, 0, id, parsed, Blocks.iron_ore);
-            case "minecraft:raw_copper_block" -> efr(ModBlocks.RAW_ORE_BLOCK, 0, id, parsed, Blocks.iron_block);
-            case "minecraft:raw_iron_block" -> efr(ModBlocks.RAW_ORE_BLOCK, 1, id, parsed, Blocks.iron_block);
-            case "minecraft:dripstone_block" -> efr(ModBlocks.DRIPSTONE_BLOCK, 0, id, parsed, Blocks.stone);
-            case "minecraft:pointed_dripstone" -> efr(
-                ModBlocks.POINTED_DRIPSTONE,
-                dripstoneMetadata(parsed),
-                id,
-                parsed,
-                Blocks.stone);
-            case "minecraft:magma_block" -> efr(ModBlocks.MAGMA, 0, id, parsed, Blocks.netherrack);
-            case "minecraft:mud" -> efr(ModBlocks.MUD, 0, id, parsed, Blocks.dirt);
-            case "minecraft:packed_mud" -> efr(ModBlocks.PACKED_MUD, 0, id, parsed, Blocks.hardened_clay);
-            case "minecraft:moss_block" -> efr(ModBlocks.MOSS_BLOCK, 0, id, parsed, Blocks.mossy_cobblestone);
-            case "minecraft:moss_carpet" -> efr(ModBlocks.MOSS_CARPET, 0, id, parsed, Blocks.carpet);
-            case "minecraft:azalea" -> efr(ModBlocks.AZALEA, 0, id, parsed, Blocks.sapling);
-            case "minecraft:flowering_azalea" -> efr(ModBlocks.AZALEA, 1, id, parsed, Blocks.sapling);
-            case "minecraft:azalea_leaves" -> efr(
-                ModBlocks.AZALEA_LEAVES,
-                leafMetadata(0, parsed),
-                id,
-                parsed,
-                Blocks.leaves);
-            case "minecraft:flowering_azalea_leaves" -> efr(
-                ModBlocks.AZALEA_LEAVES,
-                leafMetadata(1, parsed),
-                id,
-                parsed,
-                Blocks.leaves);
-            case "minecraft:mangrove_roots" -> efr(ModBlocks.MANGROVE_ROOTS, 0, id, parsed, Blocks.log);
-            case "minecraft:muddy_mangrove_roots" -> efr(ModBlocks.MUDDY_MANGROVE_ROOTS, 0, id, parsed, Blocks.dirt);
-            case "minecraft:mangrove_log", "minecraft:mangrove_wood" -> modernLog(
-                ModBlocks.MANGROVE_LOG,
-                id.endsWith("_wood") ? 1 : 0,
-                id,
+                (id.endsWith("_wood") ? 1 : 0) | axisBits(parsed),
                 parsed);
-            case "minecraft:cherry_log", "minecraft:cherry_wood" -> modernLog(
-                ModBlocks.CHERRY_LOG,
-                id.endsWith("_wood") ? 1 : 0,
+            case "minecraft:cherry_log", "minecraft:cherry_wood" -> paletted(
                 id,
+                (id.endsWith("_wood") ? 1 : 0) | axisBits(parsed),
                 parsed);
-            case "minecraft:stripped_cherry_wood" -> modernLog(ModBlocks.CHERRY_LOG, 3, id, parsed);
-            case "minecraft:stripped_oak_wood" -> efr(
-                ModBlocks.WOOD_STRIPPED,
-                axisBits(parsed),
-                id,
-                parsed,
-                Blocks.log);
-            case "minecraft:mangrove_leaves" -> efr(
-                ModBlocks.LEAVES,
-                leafMetadata(0, parsed),
-                id,
-                parsed,
-                Blocks.leaves);
-            case "minecraft:cherry_leaves" -> efr(ModBlocks.LEAVES, leafMetadata(1, parsed), id, parsed, Blocks.leaves);
-            case "minecraft:bamboo" -> efr(ModBlocks.BAMBOO, bambooMetadata(parsed), id, parsed, Blocks.reeds);
-            case "minecraft:cave_vines" -> efr(ModBlocks.CAVE_VINE, berries(parsed), id, parsed, Blocks.vine);
-            case "minecraft:cave_vines_plant" -> efr(
-                ModBlocks.CAVE_VINE_PLANT,
-                berries(parsed),
-                id,
-                parsed,
-                Blocks.vine);
-            case "minecraft:glow_lichen" -> efr(ModBlocks.GLOW_LICHEN, 0, id, parsed, Blocks.vine);
-            case "minecraft:pink_petals" -> efr(
-                ModBlocks.PINK_PETALS,
-                petalMetadata(parsed),
-                id,
-                parsed,
-                Blocks.red_flower);
-            case "minecraft:sweet_berry_bush" -> efr(
-                ModBlocks.SWEET_BERRY_BUSH,
-                age(parsed),
-                id,
-                parsed,
-                Blocks.deadbush);
-            case "minecraft:amethyst_block" -> efr(ModBlocks.AMETHYST_BLOCK, 0, id, parsed, Blocks.quartz_block);
-            case "minecraft:budding_amethyst" -> efr(ModBlocks.BUDDING_AMETHYST, 0, id, parsed, Blocks.quartz_block);
+            case "minecraft:stripped_cherry_wood" -> paletted(id, (3) | axisBits(parsed), parsed);
+            case "minecraft:stripped_oak_wood" -> paletted(id, axisBits(parsed), parsed);
+            case "minecraft:mangrove_leaves" -> paletted(id, leafMetadata(0, parsed), parsed);
+            case "minecraft:cherry_leaves" -> paletted(id, leafMetadata(1, parsed), parsed);
+            case "minecraft:bamboo" -> paletted(id, bambooMetadata(parsed), parsed);
+            case "minecraft:cave_vines" -> paletted(id, berries(parsed), parsed);
+            case "minecraft:cave_vines_plant" -> paletted(id, berries(parsed), parsed);
+            case "minecraft:glow_lichen" -> paletted(id, 0, parsed);
+            case "minecraft:pink_petals" -> paletted(id, petalMetadata(parsed), parsed);
+            case "minecraft:sweet_berry_bush" -> paletted(id, age(parsed), parsed);
+            case "minecraft:amethyst_block" -> paletted(id, 0, parsed);
+            case "minecraft:budding_amethyst" -> paletted(id, 0, parsed);
             case "minecraft:small_amethyst_bud", "minecraft:medium_amethyst_bud", "minecraft:large_amethyst_bud", "minecraft:amethyst_cluster" -> {
-                var mapping = amethystMapping(parsed);
-                yield efr(
-                    mapping.family() == 1 ? ModBlocks.AMETHYST_CLUSTER_1 : ModBlocks.AMETHYST_CLUSTER_2,
-                    mapping.metadata(),
-                    id,
-                    parsed,
-                    Blocks.glass);
+                yield paletted(id, amethystMapping(parsed).metadata(), parsed);
             }
-            case "minecraft:chain" -> efr(ModBlocks.CHAIN, 0, id, parsed, Blocks.iron_bars);
-            case "minecraft:bee_nest" -> efr(ModBlocks.BEE_NEST, horizontalFacing(parsed), id, parsed, Blocks.log);
-            case "minecraft:sculk" -> efr(ModBlocks.SCULK, 0, id, parsed, Blocks.obsidian);
-            case "minecraft:sculk_catalyst" -> efr(ModBlocks.SCULK_CATALYST, 0, id, parsed, Blocks.obsidian);
+            case "minecraft:chain" -> paletted(id, 0, parsed);
+            case "minecraft:bee_nest" -> paletted(id, horizontalFacing(parsed), parsed);
+            case "minecraft:sculk" -> paletted(id, 0, parsed);
+            case "minecraft:sculk_catalyst" -> paletted(id, 0, parsed);
             case "minecraft:sculk_sensor" -> block(BiomicSculkBlocks.SCULK_SENSOR, 0, id, parsed);
             case "minecraft:sculk_shrieker" -> block(BiomicSculkBlocks.SCULK_SHRIEKER, 0, id, parsed);
             case "minecraft:sculk_vein" -> block(
@@ -946,48 +801,25 @@ public final class OrigenBlockStateResolver {
                         Math.min(4, integer(parsed, "age", 0)),
                         id,
                         parsed)
-                    : efr(ModBlocks.SAPLING, 0, id, parsed, Blocks.sapling);
+                    : paletted(id, 0, parsed);
             default -> null;
         };
     }
 
-    private static ResolvedBlock requiredEfr(ModBlocks source, int metadata, String id, ParsedState parsed) {
-        if (!installedEfr(source)) throw new IllegalStateException(
-            "Required EFR content disabled or unregistered: " + source.name() + " for " + id);
-        return block(source.get(), metadata, id, parsed);
+    /**
+     * The palette's block for an id (BlockPalette): Et Futurum Requiem's by default, falling back as the palette lists;
+     * {@code computed} is the metadata the state gives for the default block, used where the entry's metadata is
+     * "auto".
+     */
+    private static ResolvedBlock paletted(String id, int computed, ParsedState parsed) {
+        return paletted(id, computed, id, parsed);
     }
 
-    private static ResolvedBlock efr(ModBlocks source, int metadata, String id, ParsedState parsed, Block fallback) {
-        boolean installed = installedEfr(source);
-        Block block = installed ? source.get() : fallback;
-        return block(block, metadata, id, parsed, !installed);
-    }
-
-    private static ResolvedBlock efr(ModBlocks source, int metadata, String id, ParsedState parsed, Block fallback,
-        int fallbackMetadata) {
-        boolean installed = installedEfr(source);
-        Block block = installed ? source.get() : fallback;
-        return block(block, installed ? metadata : fallbackMetadata, id, parsed, !installed);
-    }
-
-    private static boolean installedEfr(ModBlocks source) {
-        return installedEfr(source.isEnabled(), source.get());
-    }
-
-    static boolean installedEfr(boolean enabled, Block block) {
-        return installedEfr(enabled, block, candidate -> {
-            Object name = Block.blockRegistry.getNameForObject(candidate);
-            return name != null && Block.blockRegistry.getObject(name) == candidate;
-        });
-    }
-
-    static boolean installedEfr(boolean enabled, Block block,
-        java.util.function.Predicate<Block> exactRegistryIdentity) {
-        return enabled && block != null && exactRegistryIdentity.test(block);
-    }
-
-    private static ResolvedBlock stairs(ModBlocks source, Block fallback, String id, ParsedState parsed) {
-        return efr(source, stairMetadata(parsed), id, parsed, fallback);
+    private static ResolvedBlock paletted(String key, int computed, String id, ParsedState parsed) {
+        industries.angelic.biomic.world.palette.BlockPalette.Choice choice = industries.angelic.biomic.world.palette.BlockPalette
+            .choice(key);
+        if (choice == null) throw new IllegalStateException("Biomic's block palette has no entry for " + key);
+        return block(choice.block(), choice.metadata(computed), id, parsed, choice.substitute());
     }
 
     private static ResolvedBlock oldLog(int species, boolean wood, String id, ParsedState parsed) {
@@ -996,10 +828,6 @@ public final class OrigenBlockStateResolver {
 
     private static ResolvedBlock newLog(int species, boolean wood, String id, ParsedState parsed) {
         return block(Blocks.log2, species | (wood ? 12 : axisBits(parsed)), id, parsed);
-    }
-
-    private static ResolvedBlock modernLog(ModBlocks source, int subtype, String id, ParsedState parsed) {
-        return efr(source, subtype | axisBits(parsed), id, parsed, Blocks.log);
     }
 
     private static ResolvedBlock oldLeaves(Block leaves, int species, String id, ParsedState parsed) {

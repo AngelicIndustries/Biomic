@@ -17,7 +17,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ganymedes01.etfuturum.ModBlocks;
 import industries.angelic.biomic.client.BiomicRenderIds;
 
 /** Distinct persisted source-water root cell; never aliases or mutates EFR's dry roots. */
@@ -34,10 +33,8 @@ public final class BlockSkylandsWetMangroveRoots extends Block implements Waterl
     }
 
     public static Block dryRoots() {
-        Block block = ModBlocks.MANGROVE_ROOTS.get();
-        if (!ModBlocks.MANGROVE_ROOTS.isEnabled() || block == null
-            || Block.blockRegistry.getObject("etfuturum:mangrove_roots") != block)
-            throw new IllegalStateException("Installed enabled EFR mangrove roots required");
+        Block block = industries.angelic.biomic.compat.efr.EfrBlock.MANGROVE_ROOTS.get();
+        if (block == null) throw new IllegalStateException("Installed enabled EFR mangrove roots required");
         return block;
     }
 
@@ -120,7 +117,7 @@ public final class BlockSkylandsWetMangroveRoots extends Block implements Waterl
     }
 
     private void scheduleSource(World world, int x, int y, int z) {
-        if (!world.isRemote && this == industries.angelic.biomic.content.BiomicBlocks.SKYLANDS_WET_MANGROVE_ROOTS
+        if (!world.isRemote && this == industries.angelic.biomic.content.efr.EfrBackedBlocks.wetMangroveRoots()
             && world.getBlock(x, y, z) == this
             && world.getBlockMetadata(x, y, z) == 0)
             world.scheduleBlockUpdate(x, y, z, this, Blocks.flowing_water.tickRate(world));
@@ -128,7 +125,7 @@ public final class BlockSkylandsWetMangroveRoots extends Block implements Waterl
 
     @Override
     public void updateTick(World world, int x, int y, int z, Random random) {
-        if (!world.isRemote && this == industries.angelic.biomic.content.BiomicBlocks.SKYLANDS_WET_MANGROVE_ROOTS
+        if (!world.isRemote && this == industries.angelic.biomic.content.efr.EfrBackedBlocks.wetMangroveRoots()
             && world.getBlock(x, y, z) == this
             && world.getBlockMetadata(x, y, z) == 0) RetainedPlantSourceWater.tick(world, x, y, z, random);
     }

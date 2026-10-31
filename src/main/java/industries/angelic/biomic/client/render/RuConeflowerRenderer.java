@@ -24,7 +24,6 @@ import com.google.gson.JsonParser;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import industries.angelic.biomic.client.render.LegacyBlockModelRenderer.Axis;
 import industries.angelic.biomic.client.render.LegacyBlockModelRenderer.Face;
-import industries.angelic.biomic.content.block.BlockRuConeflower;
 
 /** Exact pinned RU coneflower_1..4 models, precompiled once for all sixteen multipart variants. */
 public final class RuConeflowerRenderer implements ISimpleBlockRenderingHandler {
@@ -69,11 +68,10 @@ public final class RuConeflowerRenderer implements ISimpleBlockRenderingHandler 
     }
 
     private static void render(Tessellator tess, Block block, int metadata, int tint, double x, double y, double z) {
-        boolean clover = block instanceof industries.angelic.biomic.content.block.BlockClover;
+        boolean clover = block == industries.angelic.biomic.content.efr.EfrBackedBlocks.clover();
         for (Quad quad : (clover ? CLOVER_MODELS : MODELS)[metadata & 15]) {
             IIcon icon = !quad.stem ? block.getIcon(1, metadata)
-                : clover ? ((industries.angelic.biomic.content.block.BlockClover) block).getStemIcon()
-                    : ((BlockRuConeflower) block).getStemIcon();
+                : ((industries.angelic.biomic.content.block.StemIconBlock) block).getStemIcon();
             int color = quad.tinted ? tint : 0xFFFFFF;
             tess.setColorOpaque_F(
                 ((color >> 16) & 255) / 255.0F * quad.shade,
