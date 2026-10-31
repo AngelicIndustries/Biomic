@@ -14,6 +14,8 @@ import industries.angelic.biomic.world.WorldgenContext;
 final class HostedMarshTerrain {
 
     private static final int SEA = 63, GRID = 16, SHORE = 64;
+    /** Blocks of dirt bed laid over a cave opening that lies too deep for the marsh to lower the ground to. */
+    private static final int SEAL_DEPTH = 4;
     private final long seed;
     /**
      * The sea's top water block in this layout's source frame: 63 in the compressed 256 frame, Origen's 62 in the
@@ -100,15 +102,33 @@ final class HostedMarshTerrain {
 
     int floor(int x, int z, int old) {
         if (old < 50 || old > 96 || !habitat.test(x, z)) return old;
+        return (int) Math.round(lerp(old, level(x, z), reach(x, z)));
+    }
+
+    /** How fully the marsh flattens a column: 0 on its shore, 1 well inside it. */
+    private double reach(int x, int z) {
         int gx = Math.floorDiv(x, GRID), gz = Math.floorDiv(z, GRID);
         double fx = Math.floorMod(x, GRID) / (double) GRID, fz = Math.floorMod(z, GRID) / (double) GRID;
-        double w = lerp(
+        return lerp(
             lerp(weight(gx, gz), weight(gx + 1, gz), fx),
             lerp(weight(gx, gz + 1), weight(gx + 1, gz + 1), fx),
             fz);
-        // Broad dry hummocks and one-/two-block pools rather than Origen's tall wetland relief.
-        double target = sea + 2.0 * ValueNoise2D.fractal(seed ^ 0x73616c74666c6174L, x, z, 42, 3, .5);
-        return (int) Math.round(lerp(old, target, w));
+    }
+
+    /** The marsh's own ground: broad dry hummocks and one-/two-block pools rather than Origen's tall wetland relief. */
+    private double level(int x, int z) {
+        return sea + 2.0 * ValueNoise2D.fractal(seed ^ 0x73616c74666c6174L, x, z, 42, 3, .5);
+    }
+
+    /**
+     * Where a marsh column's ground lies too deep to lower (a cave opening), the level of the bed that seals it under
+     * the marsh, or MIN_VALUE where the marsh does not reach the column. Left open, the marsh's lake ended against a
+     * dry hole and Origen's water containment capped the edge with stone.
+     */
+    private int sealLevel(int x, int z) {
+        if (!habitat.test(x, z)) return Integer.MIN_VALUE;
+        double reach = reach(x, z);
+        return reach <= 0 ? Integer.MIN_VALUE : (int) Math.round(lerp(sea, level(x, z), reach));
     }
 
     private synchronized double weight(int gx, int gz) {
@@ -143,7 +163,20 @@ final class HostedMarshTerrain {
                 && (cells[start + old] == BiomicTerrainSampler.AIR || cells[start + old] == BiomicTerrainSampler.WATER))
                 old--;
             // A floating island or high authored landform above the marsh vetoes this column.
-            if (old < 50 || old > 96 || (origins[start + old] & TerrainDensitySampler.FLOATING_ORIGIN) != 0) continue;
+            if (old > 96 || (origins[start + old] & TerrainDensitySampler.FLOATING_ORIGIN) != 0) continue;
+            if (old < 50) {
+                int level = sealLevel(cx * 16 + x, cz * 16 + z), top = Math.max(level, SEA);
+                if (level == Integer.MIN_VALUE || !openAir(cells, origins, start, level - SEAL_DEPTH + 1, top))
+                    continue;
+                for (int y = level - SEAL_DEPTH + 1; y <= top; y++) {
+                    byte state = y > level ? BiomicTerrainSampler.WATER
+                        : y == level && y >= SEA ? BiomicTerrainSampler.GRASS : BiomicTerrainSampler.DIRT;
+                    cells[start + y] = state;
+                    mask.set(start + y);
+                    if (y <= level) origins[start + y] = TerrainDensitySampler.GROUND_ORIGIN;
+                }
+                continue;
+            }
             int target = floor(cx * 16 + x, cz * 16 + z, old);
             // An unchanged bed under the sea line still takes the marsh's water: left dry, it held air beside its
             // neighbours' water, which Origen's water containment then walled in with stone.
@@ -179,8 +212,11 @@ final class HostedMarshTerrain {
             int oldSource = projection.toSourceBlockY(oldPhysical)
                 .orElseThrow();
             int oldIndex = layout.index(x, oldPhysical, z);
-            if (oldSource < 50 || oldSource > 96 || (origins[oldIndex] & TerrainDensitySampler.FLOATING_ORIGIN) != 0)
+            if (oldSource > 96 || (origins[oldIndex] & TerrainDensitySampler.FLOATING_ORIGIN) != 0) continue;
+            if (oldSource < 50) {
+                sealShifted(cells, origins, mask, x, z, cx * 16 + x, cz * 16 + z);
                 continue;
+            }
             int targetSource = floor(cx * 16 + x, cz * 16 + z, oldSource);
             // As in the legacy layout: an unchanged bed under the sea line still takes the marsh's water.
             if (targetSource == oldSource && oldSource >= sea) continue;
@@ -210,6 +246,41 @@ final class HostedMarshTerrain {
         synchronized (changed) {
             changed.put(key(cx, cz), mask);
         }
+    }
+
+    /** A cave opening in the shifted layout: its bed and water (see sealLevel), only where the pit is open air. */
+    private void sealShifted(byte[] cells, byte[] origins, BitSet mask, int x, int z, int blockX, int blockZ) {
+        int level = sealLevel(blockX, blockZ);
+        if (level == Integer.MIN_VALUE) return;
+        int top = Math.max(level, sea);
+        for (int sourceY = level - SEAL_DEPTH + 1; sourceY <= top; sourceY++) {
+            int i = layout.index(
+                x,
+                projection.toPhysicalBlockY(sourceY)
+                    .orElseThrow(),
+                z);
+            // Only an open pit: never a lake, whose water already meets the marsh's.
+            if (cells[i] != BiomicTerrainSampler.AIR || (origins[i] & TerrainDensitySampler.FLOATING_ORIGIN) != 0)
+                return;
+        }
+        for (int sourceY = level - SEAL_DEPTH + 1; sourceY <= top; sourceY++) {
+            int i = layout.index(
+                x,
+                projection.toPhysicalBlockY(sourceY)
+                    .orElseThrow(),
+                z);
+            cells[i] = sourceY > level ? BiomicTerrainSampler.WATER
+                : sourceY == level && sourceY >= sea ? BiomicTerrainSampler.GRASS : BiomicTerrainSampler.DIRT;
+            mask.set(i);
+            if (sourceY <= level) origins[i] = TerrainDensitySampler.GROUND_ORIGIN;
+        }
+    }
+
+    /** Whether a legacy column is open air (and not floating) from {@code bottom} to {@code top}. */
+    private static boolean openAir(byte[] cells, byte[] origins, int start, int bottom, int top) {
+        for (int y = bottom; y <= top; y++) if (cells[start + y] != BiomicTerrainSampler.AIR
+            || (origins[start + y] & TerrainDensitySampler.FLOATING_ORIGIN) != 0) return false;
+        return true;
     }
 
     byte[] authoredView(byte[] authored, int bx, int bz, Supplier<byte[]> source, Runnable restoreMask) {
