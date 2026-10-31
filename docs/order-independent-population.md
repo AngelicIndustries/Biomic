@@ -39,9 +39,14 @@ fixed rule decides it, whatever order they came in.
    A spider corridor gets one spawner at a spot chosen from the corridor alone. A written block's `onBlockAdded` (a
    torch or rail settling) and a generator's height queries (height map, top solid block) read the box, not the world. Village decoration protection comes from the village plans,
    never from the structure starts generated so far.
-6. **Other mods' generators** (Forge's `IWorldGenerator` pass) run confined to the box the same way
-   (`MixinChunkProviderServerForeignBox`). Inside a box a column's biome comes from the biome map, never from a loaded
-   chunk (whether that chunk was loaded yet depended on timing: a Growthcraft hive came and went).
+6. **Other mods' generators** (Forge's `IWorldGenerator` pass) run on the world, whole, as in any world type. From
+   2026-10-23 to 2026-10-31 they ran confined to the box like structures, which they are not built for: a structure
+   start draws only the pieces in the box it is given, but other mods build from one chunk whatever they place. A Ruins
+   pirate ship (30 × 30) stood as one 16 × 16 square of itself (646 of its 1023 built blocks), and Ruins, reading air
+   past the box, took it for overhang and gave up on most sites: the pack's spawn area and the 17 × 17 chunks around
+   that ship held 7 ruins boxed and 21 unboxed, the ship whole. A cell they change is no population's claim any more
+   (`foreignWrite`, marked by `MixinChunkProviderServerForeignGeneration`): untagged and off the provided terrain, it
+   refuses every later population's write, except a block over a plant (`admits`).
 
 ## Measurements (2026-10-23)
 
@@ -60,4 +65,6 @@ fixed rule decides it, whatever order they came in.
 
 - A feature no longer sees a neighbour's trees, so trees from neighbouring chunks can grow into each other; the rule
   decides each contested cell.
+- Other mods' generators read the world, so what they place can depend on the order chunks were generated in, as in
+  any world type. Biomic's own population never reads what they wrote.
 - Chunk NBT carries the population tags (16 bytes per cell a neighbour reached into) and, rarely, displaced writes.

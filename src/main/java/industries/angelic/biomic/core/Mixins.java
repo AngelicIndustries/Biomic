@@ -28,7 +28,7 @@ public final class Mixins extends AngelMixins {
         registry.mixin("MixinChunkProviderServerNetherGeneration")
             .phase(MixinUtil.Phase.EARLY)
             .build();
-        registry.mixin("MixinChunkProviderServerForeignBox")
+        registry.mixin("MixinChunkProviderServerForeignGeneration")
             .phase(MixinUtil.Phase.EARLY)
             .build();
         registry.mixin("MixinChunkProviderServerDeferredGeneration")

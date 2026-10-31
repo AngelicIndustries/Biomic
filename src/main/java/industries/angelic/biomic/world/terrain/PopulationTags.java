@@ -66,6 +66,13 @@ final class PopulationTags {
         if (cells != null) cells.remove(cell);
     }
 
+    /** The cell is no population's: its tag and the writes it displaced go. */
+    void clear(long chunkKey, long cell) {
+        remove(chunkKey, cell);
+        var cellClaims = claims.get(chunkKey);
+        if (cellClaims != null) cellClaims.remove(cell);
+    }
+
     /** Whether writer {@code a} wins a cell over {@code b} (both neighbours' chunk keys): lower X, then lower Z. */
     static boolean beats(long a, long b) {
         int ax = (int) (a >> 32), bx = (int) (b >> 32);

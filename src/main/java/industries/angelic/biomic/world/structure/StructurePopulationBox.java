@@ -59,17 +59,6 @@ public final class StructurePopulationBox implements NativeFeatureCapture.BoxedA
     }
 
     /**
-     * Runs other mods' world generators (Forge's IWorldGenerator pass) the same way: under order-independent
-     * population they too read the box as provided and their own writes, and write nothing outside it.
-     */
-    public static void runForeign(World world, int chunkX, int chunkZ, Terrain terrain, Runnable generation) {
-        NativeFeatureCapture.run(world, new StructurePopulationBox(world, chunkX, chunkZ, terrain), () -> {
-            generation.run();
-            return null;
-        });
-    }
-
-    /**
      * Mineshafts, villages and strongholds of one chunk's box under order-independent population: last, after the
      * journal, each confined to the box and reading it as provided; a blacksmith's basin is sealed in the box too.
      */

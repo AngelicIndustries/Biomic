@@ -89,6 +89,19 @@ public abstract class MixinChunk implements BiomeVolumeChunk {
         return !(provider instanceof ChunkProviderBiomic || provider instanceof ChunkProviderBiomicTall);
     }
 
+    /** A cell another mod's generator changed is no population's claim any more (OrigenFeatureRuntime#foreignWrite). */
+    @Inject(method = "func_150807_a", at = @At("RETURN"))
+    private void biomic$foreignWrite(int localX, int y, int localZ, Block block, int metadata,
+        org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<Boolean> callback) {
+        if (!industries.angelic.biomic.world.GenerationScope.foreign() || !callback.getReturnValueZ()) return;
+        Chunk chunk = (Chunk) (Object) this;
+        if (!(chunk.worldObj instanceof WorldServer world) || world.theChunkProviderServer == null
+            || !(world.theChunkProviderServer.currentChunkProvider instanceof industries.angelic.biomic.world.JournaledPopulation journaled))
+            return;
+        journaled.populationRuntime()
+            .foreignWrite((chunk.xPosition << 4) + localX, y, (chunk.zPosition << 4) + localZ);
+    }
+
     /** {@code -Dbiomic.traceCell}: every write to a traced cell, with its caller (CellTrace). */
     @Inject(method = "func_150807_a", at = @At("HEAD"))
     private void biomic$traceCell(int localX, int y, int localZ, Block block, int metadata,

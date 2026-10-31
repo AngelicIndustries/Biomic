@@ -627,7 +627,7 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
         return baselineState(x, y, z).metadata();
     }
 
-    /** What box-confined structures and other mods' generators see under order-independent population. */
+    /** What box-confined structures see under order-independent population. */
     public final industries.angelic.biomic.world.structure.StructurePopulationBox.Terrain providedTerrain = new industries.angelic.biomic.world.structure.StructurePopulationBox.Terrain() {
 
         @Override
@@ -724,13 +724,16 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
     }
 
     /**
-     * Forge's world-generator pass over a chunk (ChunkProviderServer#populate, after the provider's own): under
-     * order-independent population other mods' generators are confined to the box and read it as provided.
+     * Another mod's generator (Forge's world-generator pass, after the provider's own) changed this cell. Those
+     * generators build on the world as in any world type: confined to the population's box, they lost everything
+     * outside it (a Ruins pirate ship stood as one 16 × 16 square of itself) and read air there (Ruins took it for
+     * overhang and gave up on most sites). The cell is no population's claim any more, and a changed cell without a
+     * tag refuses every later population's write but a block over a plant (admits).
      */
-    public void generateForeign(World world, int chunkX, int chunkZ, Runnable generation) {
-        if (!journaledPopulation()) generation.run();
-        else industries.angelic.biomic.world.structure.StructurePopulationBox
-            .runForeign(world, chunkX, chunkZ, providedTerrain, generation);
+    public void foreignWrite(int x, int y, int z) {
+        // A population applying its own writes (a queued one as a chunk loads) keeps its tags itself.
+        if (providedSkins == null || populationView != null || !heightTransport.containsPhysicalY(y)) return;
+        populationTags.clear(horizontalKey(x >> 4, z >> 4), blockKey(x, y, z));
     }
 
     /**
@@ -1106,7 +1109,7 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
     }
 
     /**
-     * A box-confined generator (village, mineshaft, foreign mod) wrote this cell of its own box: no neighbour may.
+     * A box-confined structure (village, mineshaft, stronghold) wrote this cell of its own box: no neighbour may.
      * A cell that now differs from the provided terrain and carries no tag already says so.
      */
     public void ownedWrite(int x, int y, int z, Block block, int metadata) {

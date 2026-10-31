@@ -7,6 +7,7 @@ package industries.angelic.biomic.world;
 public final class GenerationScope {
 
     private static int depth;
+    private static boolean foreign;
 
     private GenerationScope() {}
 
@@ -20,5 +21,25 @@ public final class GenerationScope {
 
     public static boolean active() {
         return depth > 0;
+    }
+
+    /**
+     * Runs one pass of a population: Forge's world-generator pass (other mods' generators) or the provider's own. A
+     * chunk the foreign pass makes generate populates inside it, with this off again for its provider's pass (marked by
+     * MixinChunkProviderServerForeignGeneration).
+     */
+    public static void pass(boolean foreignPass, Runnable pass) {
+        boolean previous = foreign;
+        foreign = foreignPass;
+        try {
+            pass.run();
+        } finally {
+            foreign = previous;
+        }
+    }
+
+    /** Whether other mods' generators are writing now. */
+    public static boolean foreign() {
+        return foreign;
     }
 }
