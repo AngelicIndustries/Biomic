@@ -157,7 +157,9 @@ public final class HostedCaveRuntime {
     public BiomeVolume surface(int cx, int cz, byte[] materials, Block[] blocks, byte[] metadata,
         BiomeVolume original) {
         CaveChunk chunk = new CaveChunk(cx, cz, materials, original);
-        chunks.put(key(cx, cz), chunk);
+        synchronized (chunks) {
+            chunks.put(key(cx, cz), chunk);
+        }
         chunk.surfaces.forEach((index, state) -> {
             Resolved resolved = ModernStateCompatibility.resolve(state);
             blocks[index] = resolved.getBlock();
@@ -213,12 +215,16 @@ public final class HostedCaveRuntime {
 
     private CaveChunk chunk(int cx, int cz) {
         long key = key(cx, cz);
-        CaveChunk found = chunks.get(key);
-        if (found != null) return found;
+        synchronized (chunks) {
+            CaveChunk found = chunks.get(key);
+            if (found != null) return found;
+        }
         BiomeVolume volume = source.volume(cx, cz);
-        found = new CaveChunk(cx, cz, source.materials(cx, cz, volume), volume);
-        chunks.put(key, found);
-        return found;
+        CaveChunk made = new CaveChunk(cx, cz, source.materials(cx, cz, volume), volume);
+        synchronized (chunks) {
+            chunks.put(key, made);
+        }
+        return made;
     }
 
     private static long key(int x, int z) {

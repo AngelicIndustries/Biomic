@@ -353,16 +353,31 @@ public final class BiomicScatteredFeatures {
     }
 
     private Plan plan(int regionX, int regionZ, int region, int separation, long salt) {
-        long key = WorldgenContext.mix64(salt ^ (long) regionX << 32 ^ regionZ & 0xFFFF_FFFFL);
+        long key = planKey(regionX, regionZ, salt);
         synchronized (plans) {
             Plan known = plans.get(key);
             if (known != null) return known;
         }
-        Plan plan = compute(regionX, regionZ, region, separation, salt);
-        synchronized (plans) {
-            plans.put(key, plan);
+        // As with sky plans: the first thread computes it, a worker's warm-up or the server's check, the other waits.
+        Pending pending = this.pending.computeIfAbsent(key, ignored -> new Pending());
+        if (!pending.claimed.compareAndSet(false, true)) return pending.result.join();
+        try {
+            Plan plan = compute(regionX, regionZ, region, separation, salt);
+            synchronized (plans) {
+                plans.put(key, plan);
+            }
+            pending.result.complete(plan);
+            return plan;
+        } catch (RuntimeException | Error failure) {
+            pending.result.completeExceptionally(failure);
+            throw failure;
+        } finally {
+            this.pending.remove(key, pending);
         }
-        return plan;
+    }
+
+    private static long planKey(int regionX, int regionZ, long salt) {
+        return WorldgenContext.mix64(salt ^ (long) regionX << 32 ^ regionZ & 0xFFFF_FFFFL);
     }
 
     private Plan compute(int regionX, int regionZ, int region, int separation, long salt) {
@@ -450,7 +465,7 @@ public final class BiomicScatteredFeatures {
     private static final int CHECK_RANGE = 8;
 
     /**
-     * Hands the sky plans the server's structure check will ask for around a chunk to the workers. A plan searches its
+     * Hands the plans the server's structure check will ask for around a chunk to the workers. A sky plan searches its
      * cluster's islands, which samples the ground under them: done by the server thread, it made the first chunk of
      * an area with islands overhead take hundreds of milliseconds. Plans are pure functions of the seed and the
      * region, so a worker's plan is the one the server would have made.
@@ -473,6 +488,46 @@ public final class BiomicScatteredFeatures {
                             int r = cluster == null ? -1 : cluster.radius() + 16 + reach;
                             if (cluster != null && Math.abs(x - cluster.centerX()) <= r
                                 && Math.abs(z - cluster.centerZ()) <= r) skyPlan(regionX, regionZ);
+                        } catch (RuntimeException ignored) {
+                            // The server's own request plans again and reports it.
+                        } finally {
+                            warming.remove(key);
+                        }
+                    };
+                    try {
+                        workers.execute(task);
+                    } catch (java.util.concurrent.RejectedExecutionException stopping) {
+                        warming.remove(key);
+                        return;
+                    }
+                }
+        warmPlans(chunkX, chunkZ, REGION, SEPARATION, TEMPLE_SALT, workers);
+        warmPlans(chunkX, chunkZ, PORTAL_REGION, PORTAL_SEPARATION, PORTAL_SALT, workers);
+    }
+
+    /**
+     * The temple and ruined portal plans the check will ask for around a chunk: those of the regions whose candidate
+     * chunk lies within its reach (planAt). A plan reads the provided terrain at its candidate chunk, which the server
+     * built for it, often well ahead of the look-ahead: up to half a second for one chunk.
+     */
+    private void warmPlans(int chunkX, int chunkZ, int region, int separation, long salt,
+        java.util.concurrent.Executor workers) {
+        for (int rx = Math.floorDiv(chunkX - CHECK_RANGE, region); rx
+            <= Math.floorDiv(chunkX + CHECK_RANGE, region); rx++)
+            for (int rz = Math.floorDiv(chunkZ - CHECK_RANGE, region); rz
+                <= Math.floorDiv(chunkZ + CHECK_RANGE, region); rz++) {
+                    long candidate = candidate(rx, rz, region, separation, salt);
+                    if (Math.abs((int) (candidate >> 32) - chunkX) > CHECK_RANGE
+                        || Math.abs((int) candidate - chunkZ) > CHECK_RANGE) continue;
+                    long key = planKey(rx, rz, salt);
+                    synchronized (plans) {
+                        if (plans.containsKey(key)) continue;
+                    }
+                    if (pending.containsKey(key) || !warming.add(key)) continue;
+                    int regionX = rx, regionZ = rz;
+                    Runnable task = () -> {
+                        try {
+                            plan(regionX, regionZ, region, separation, salt);
                         } catch (RuntimeException ignored) {
                             // The server's own request plans again and reports it.
                         } finally {
