@@ -71,8 +71,9 @@ public final class ShiftedNativeMarshTerrainAccess implements HostedTerrainAcces
         return cached(chunkX, chunkZ).clone();
     }
 
+    /** Lock-free apart from the cache lookups: a miss builds the chunk while other threads keep reading. */
     @Override
-    public synchronized int sampleCarvedGroundSurfaceHeight(int x, int z) {
+    public int sampleCarvedGroundSurfaceHeight(int x, int z) {
         int cx = Math.floorDiv(x, 16), cz = Math.floorDiv(z, 16), lx = Math.floorMod(x, 16), lz = Math.floorMod(z, 16);
         byte[] values = cached(cx, cz);
         for (int y = 447; y >= 64; y--) {
@@ -119,12 +120,17 @@ public final class ShiftedNativeMarshTerrainAccess implements HostedTerrainAcces
             () -> { if (!lookup.prepare(this, cx, cz, 2)) restore(cx, cz); });
     }
 
-    private synchronized void restore(int cx, int cz) {
-        chunks.remove((long) cx << 32 ^ (cz & 0xffffffffL));
+    private void restore(int cx, int cz) {
+        synchronized (this) {
+            chunks.remove((long) cx << 32 ^ (cz & 0xffffffffL));
+        }
         cached(cx, cz);
     }
 
-    /** The (pure) chunk is computed outside the lock so worker threads never queue behind one another. */
+    /**
+     * The (pure) chunk is computed outside the lock so worker threads never queue behind one another; callers must
+     * not hold it either. A stored chunk is never written again.
+     */
     private byte[] cached(int cx, int cz) {
         long key = (long) cx << 32 ^ (cz & 0xffffffffL);
         synchronized (this) {
