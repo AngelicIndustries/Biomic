@@ -47,6 +47,7 @@ public class CommonProxy {
         FMLCommonHandler.instance()
             .bus()
             .register(industries.angelic.biomic.browser.BrowserServer.INSTANCE);
+        industries.angelic.biomic.world.ServerTickTiming.enableIfRequested();
         industries.angelic.biomic.world.structure.BiomicScatteredFeatures.register();
     }
 

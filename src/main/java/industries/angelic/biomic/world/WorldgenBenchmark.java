@@ -121,6 +121,7 @@ public final class WorldgenBenchmark {
      */
     public static void reportOnStopIfRequested() {
         if (!Boolean.getBoolean("biomic.performanceReportOnStop")) return;
+        Biomic.LOG.info("Performance: {}", ServerTickTiming.report());
         for (WorldServer world : MinecraftServer.getServer().worldServers) {
             if (!(world.theChunkProviderServer.currentChunkProvider instanceof BenchmarkedChunkProvider provider))
                 continue;
