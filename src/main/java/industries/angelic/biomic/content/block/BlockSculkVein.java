@@ -39,7 +39,7 @@ public class BlockSculkVein extends Block {
         this.up = up;
         this.down = down;
         setBlockName(Biomic.MODID + "." + name);
-        setBlockTextureName("minecraft:sculk_vein");
+        setBlockTextureName("biomic:sculk_vein");
         setHardness(0.2F);
         setStepSound(soundTypeGrass);
         setLightOpacity(0);
@@ -107,7 +107,7 @@ public class BlockSculkVein extends Block {
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister register) {
-        veinIcon = register.registerIcon("minecraft:sculk_vein");
+        veinIcon = register.registerIcon("biomic:sculk_vein");
         blockIcon = veinIcon;
     }
 

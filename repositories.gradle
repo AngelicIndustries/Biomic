@@ -13,4 +13,16 @@ repositories {
         name = "Solo Studios Releases"
         url "https://maven.solo-studios.ca/releases"
     }
+    // MCLib (makamys), shaded for its Asset Director; only it comes from JitPack.
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "JitPack"
+                url "https://jitpack.io"
+            }
+        }
+        filter {
+            includeGroup("com.github.makamys")
+        }
+    }
 }

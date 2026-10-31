@@ -23,7 +23,6 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import industries.angelic.biomic.Biomic;
-import industries.angelic.biomic.compat.efr.VanillaArtwork;
 
 /**
  * Mojang's textures under the names Biomic's blocks and particles use, read from the client jar that Asset Director
@@ -40,17 +39,19 @@ public final class VanillaTextures implements IResourcePack {
 
     static {
         for (String name : new String[] { "big_dripleaf_side", "big_dripleaf_stem", "big_dripleaf_tip",
-            "big_dripleaf_top", "brain_coral", "brain_coral_block", "brain_coral_fan", "bubble_coral",
-            "bubble_coral_block", "bubble_coral_fan", "dead_brain_coral", "dead_brain_coral_block",
+            "big_dripleaf_top", "blackstone", "bone_block_top", "brain_coral", "brain_coral_block", "brain_coral_fan",
+            "bubble_coral", "bubble_coral_block", "bubble_coral_fan", "dead_brain_coral", "dead_brain_coral_block",
             "dead_brain_coral_fan", "dead_bubble_coral", "dead_bubble_coral_block", "dead_bubble_coral_fan",
             "dead_fire_coral", "dead_fire_coral_block", "dead_fire_coral_fan", "dead_horn_coral",
             "dead_horn_coral_block", "dead_horn_coral_fan", "dead_tube_coral", "dead_tube_coral_block",
             "dead_tube_coral_fan", "fire_coral", "fire_coral_block", "fire_coral_fan", "hanging_roots", "horn_coral",
-            "horn_coral_block", "horn_coral_fan", "kelp", "kelp_plant", "mushroom_stem", "ochre_froglight_side",
-            "ochre_froglight_top", "powder_snow", "rooted_dirt", "sea_pickle", "seagrass", "small_dripleaf_side",
-            "small_dripleaf_stem_bottom", "small_dripleaf_stem_top", "small_dripleaf_top", "spore_blossom",
-            "spore_blossom_base", "tall_seagrass_bottom", "tall_seagrass_top", "tube_coral", "tube_coral_block",
-            "tube_coral_fan" }) put("blocks/" + name, "blocks/" + name);
+            "horn_coral_block", "horn_coral_fan", "kelp", "kelp_plant", "mangrove_propagule_hanging", "mushroom_stem",
+            "ochre_froglight_side", "ochre_froglight_top", "powder_snow", "rooted_dirt", "sculk_sensor_bottom",
+            "sculk_sensor_side", "sculk_sensor_tendril_inactive", "sculk_sensor_top", "sculk_shrieker_bottom",
+            "sculk_shrieker_can_summon_inner_top", "sculk_shrieker_side", "sculk_shrieker_top", "sculk_vein",
+            "sea_pickle", "seagrass", "small_dripleaf_side", "small_dripleaf_stem_bottom", "small_dripleaf_stem_top",
+            "small_dripleaf_top", "spore_blossom", "spore_blossom_base", "tall_seagrass_bottom", "tall_seagrass_top",
+            "tube_coral", "tube_coral_block", "tube_coral_fan" }) put("blocks/" + name, "blocks/" + name);
         put("blocks/seagrass_item", "items/seagrass");
         put("blocks/clover_stem", "blocks/pink_petals_stem");
         put("blocks/ru_grass_block_top", "blocks/grass_block_top");

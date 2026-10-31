@@ -452,9 +452,10 @@ public final class NetherAmbience {
     private static ResourceLocation[] locations(String prefix, String suffix) {
         Effects[] sets = Effects.values();
         ResourceLocation[] sounds = new ResourceLocation[sets.length];
-        // Et Futurum's Asset Director namespace for the modern sounds it downloads: silent without it.
-        for (int i = 0; i < sets.length; i++)
-            sounds[i] = new ResourceLocation("minecraft_1.21.10", prefix + sets[i].key() + suffix);
+        // The Asset Director's namespace for the sounds VanillaArtwork asks it to download.
+        for (int i = 0; i < sets.length; i++) sounds[i] = new ResourceLocation(
+            "minecraft_" + VanillaArtwork.SOUND_VERSION,
+            prefix + sets[i].key() + suffix);
         return sounds;
     }
 

@@ -58,3 +58,11 @@ tasks.withType<JavaExec>().configureEach {
         }
     }
 }
+
+// MCLib finds its classes by name across the copies other mods shade (SharedLibHelper), so
+// minimization would drop classes it loads reflectively. Keep the whole library.
+tasks.named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
+    minimize {
+        exclude(dependency("com.github.makamys:MCLib:.*"))
+    }
+}

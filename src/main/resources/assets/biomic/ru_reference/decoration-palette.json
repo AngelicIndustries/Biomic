@@ -139,9 +139,9 @@
       "light": 0,
       "material": "ROCK",
       "registry_name": "ru_decor_blackstone_cluster",
-      "side": "minecraft:blackstone",
+      "side": "blackstone",
       "tint": "CONSTANT",
-      "top": "minecraft:blackstone"
+      "top": "blackstone"
     },
     {
       "id": "regions_unexplored:blackwood_shrub",
@@ -309,7 +309,7 @@
       "top": "ru_decor/cobalt_log_top"
     },
     {
-      "bottom": "minecraft:blackstone",
+      "bottom": "blackstone",
       "id": "regions_unexplored:cobalt_nylium",
       "kind": "solid",
       "light": 0,
@@ -831,7 +831,7 @@
       "upper": "ru_decor/orange_maple_shrub_top"
     },
     {
-      "bottom": "minecraft:bone_block_top",
+      "bottom": "bone_block_top",
       "id": "regions_unexplored:overgrown_bone_block",
       "kind": "solid",
       "light": 0,

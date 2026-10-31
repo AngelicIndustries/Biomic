@@ -39,9 +39,8 @@ and mangrove roots). They exist only with it installed; their ids (`regions_unex
 `regions_unexplored:icicle`) are in the palette like the others. Floating islands' amethyst geodes come from Et
 Futurum Requiem's own generator and are left out without it.
 
-Without it, the client also gets no modern textures and sounds from Et Futurum Requiem's Asset Director: Biomic's
-blocks that borrow Mojang's modern textures (corals, dripleaf, Regions Unexplored grass) show missing textures, and
-the Nether's ambience is silent.
+The modern textures and sounds Biomic's own blocks and the Nether's ambience use come through the Asset Director
+Biomic ships (MCLib's), with or without Et Futurum Requiem.
 
 ## How it works
 

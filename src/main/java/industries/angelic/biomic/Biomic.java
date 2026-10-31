@@ -12,7 +12,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import industries.angelic.biomic.bootstrap.EfrContentContract;
-import industries.angelic.biomic.compat.efr.VanillaArtwork;
+import industries.angelic.biomic.client.VanillaArtwork;
 import industries.angelic.biomic.config.DebugConfig;
 import industries.angelic.biomic.world.WorldgenBenchmark;
 
@@ -58,8 +58,9 @@ public class Biomic {
     @Mod.EventHandler
     public void construct(FMLConstructionEvent event) {
         if (cpw.mods.fml.common.Loader.isModLoaded("etfuturum")) EfrContentContract.enforce();
-        if (event.getSide()
-            .isClient()) VanillaArtwork.request();
+        VanillaArtwork.request(
+            event.getSide()
+                .isClient());
     }
 
     @Mod.EventHandler

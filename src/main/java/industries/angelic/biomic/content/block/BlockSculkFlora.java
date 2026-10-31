@@ -25,7 +25,7 @@ public final class BlockSculkFlora extends Block {
         super(Material.rock);
         this.kind = kind;
         setBlockName(Biomic.MODID + "." + name);
-        setBlockTextureName("minecraft:" + name + "_bottom");
+        setBlockTextureName(Biomic.MODID + ":" + name + "_bottom");
         setHardness(1.5F);
         setResistance(1.5F);
         setStepSound(soundTypeGrass);
@@ -75,12 +75,11 @@ public final class BlockSculkFlora extends Block {
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister register) {
         String prefix = kind == Kind.SENSOR ? "sculk_sensor" : "sculk_shrieker";
-        bottomIcon = register.registerIcon("minecraft:" + prefix + "_bottom");
-        sideIcon = register.registerIcon("minecraft:" + prefix + "_side");
-        topIcon = register.registerIcon("minecraft:" + prefix + "_top");
-        detailIcon = register.registerIcon(
-            kind == Kind.SENSOR ? "minecraft:sculk_sensor_tendril_inactive"
-                : "minecraft:sculk_shrieker_can_summon_inner_top");
+        bottomIcon = register.registerIcon(Biomic.MODID + ":" + prefix + "_bottom");
+        sideIcon = register.registerIcon(Biomic.MODID + ":" + prefix + "_side");
+        topIcon = register.registerIcon(Biomic.MODID + ":" + prefix + "_top");
+        String detail = kind == Kind.SENSOR ? "sculk_sensor_tendril_inactive" : "sculk_shrieker_can_summon_inner_top";
+        detailIcon = register.registerIcon(Biomic.MODID + ":" + detail);
         blockIcon = bottomIcon;
     }
 

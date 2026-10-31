@@ -41,6 +41,11 @@ if (providers.gradleProperty("biomicHodgepodgeAuditJar").isPresent()) {
 }
 
 dependencies {
+    // MCLib's Asset Director (Unlicense), relocated into Biomic: downloads Mojang's textures and sounds that Biomic
+    // uses without shipping them, with or without Et Futurum Requiem (which ships its own copy).
+    shadowImplementation("com.github.makamys:MCLib:0.4") {
+        exclude group: "codechicken"
+    }
     // Terra's sampler runtime. It is relocated into Biomic and bytecode-downgraded by GTNHGradle.
     shadowImplementation("com.dfsek:seismic:2.5.7") {
         exclude group: "org.jetbrains", module: "annotations"

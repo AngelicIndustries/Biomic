@@ -28,10 +28,13 @@ Native integration with [Biomes O' Plenty](https://github.com/Glitchfiend/Biomes
 Optional, and used by default: [Et Futurum Requiem](https://github.com/GTNewHorizons/Et-Futurum-Requiem) 2.6.54-GTNH
 [![git](images/icons/git.png)](https://github.com/GTNewHorizons/Et-Futurum-Requiem/releases) (GTNH's builds; CurseForge
 and Modrinth have only older ones). Biomic's default block palette places its modern blocks (deepslate, tuff, moss,
-crimson nylium...), and through it the client downloads modern Minecraft textures and sounds on its first launch.
-Every block Biomic generates can be replaced in `config/biomic-palette.json`; map every Et Futurum Requiem block
-elsewhere (`config/biomic-palette-vanilla.json` does, with 1.7.10 blocks) and Biomic runs without it. See
-[docs/block-palette.md](docs/block-palette.md).
+crimson nylium...). Every block Biomic generates can be replaced in `config/biomic-palette.json`; map every Et Futurum
+Requiem block elsewhere (`config/biomic-palette-vanilla.json` does, with 1.7.10 blocks) and Biomic runs without it.
+See [docs/block-palette.md](docs/block-palette.md).
+
+On its first launch the client downloads the modern Minecraft textures and sounds Biomic uses from Mojang, through
+[MCLib](https://github.com/makamys/MCLib)'s Asset Director (Unlicense), which Biomic ships; Biomic itself bundles no
+Mojang art.
 
 Recommended: [Hohen Angst](https://github.com/AngelicIndustries/Hohenangst) for 512-high worlds, with
 [ArchaicFix](https://github.com/embeddedt/ArchaicFix) for its lighting engine.

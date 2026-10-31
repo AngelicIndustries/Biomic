@@ -27,7 +27,7 @@ public final class BlockHangingMangrovePropagule extends Block {
     public BlockHangingMangrovePropagule() {
         super(Material.plants);
         setBlockName(Biomic.MODID + ".hanging_mangrove_propagule");
-        setBlockTextureName("minecraft:mangrove_propagule_hanging");
+        setBlockTextureName("biomic:mangrove_propagule_hanging");
         setHardness(0.0F);
         setStepSound(soundTypeGrass);
         setLightOpacity(0);
@@ -114,8 +114,7 @@ public final class BlockHangingMangrovePropagule extends Block {
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister register) {
-        // EFR already ships the exact vanilla artwork in the minecraft namespace, but not the hanging block state.
-        hangingIcon = register.registerIcon("minecraft:mangrove_propagule_hanging");
+        hangingIcon = register.registerIcon("biomic:mangrove_propagule_hanging");
         blockIcon = hangingIcon;
     }
 
