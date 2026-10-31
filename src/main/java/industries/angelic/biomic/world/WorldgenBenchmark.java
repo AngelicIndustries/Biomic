@@ -19,7 +19,8 @@ public final class WorldgenBenchmark {
     public static final String ENABLE_PROPERTY = "biomic.worldgenBenchmark";
     public static final String RESULT_PROPERTY = "biomic.worldgenBenchmarkResult";
 
-    private static final long WORLD_SEED = 42L;
+    /** The world seed the benchmark expects (42 unless another is given, to look at a world's own terrain). */
+    private static final long WORLD_SEED = Long.getLong("biomic.worldgenBenchmarkSeed", 42L);
     private static final int RADIUS_CHUNKS = integerProperty("biomic.worldgenBenchmarkRadius", 12, 1, 32);
     private static final int CENTER_CHUNK_X = Integer.getInteger("biomic.worldgenBenchmarkCenterChunkX", 256);
     private static final int CENTER_CHUNK_Z = Integer.getInteger("biomic.worldgenBenchmarkCenterChunkZ", -256);

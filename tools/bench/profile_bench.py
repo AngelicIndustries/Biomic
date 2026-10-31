@@ -8,7 +8,7 @@
 
 Usage: tools/bench/profile_bench.py --profile pack|standalone --out DIR [--height 512|256] [--order grid|shuffled|dh]
        [--windows standard|order|"CX,CZ;CX,CZ"] [--radius 12] [--jar JAR] [--aac JAR] [--hohenangst JAR] [--archaicfix] [--port 25712] [--cpus 8-13]
-       [--jvm -Dname=value ...] [--palette FILE]
+       [--jvm -Dname=value ...] [--palette FILE] [--seed SEED]
 
 The benchmark always generates its default window (chunk 256,-256) besides the listed centres: "standard" is 17
 windows, "order" (the determinism check's) 4. DIR gets server/world, server.log, result.txt and manifest.json (the
@@ -56,6 +56,7 @@ def main():
     parser.add_argument('--timeout', type=int, default=3600)
     parser.add_argument('--jvm', action='append', default=[], help='an extra JVM argument (repeatable)')
     parser.add_argument('--palette', default=None, help="a block palette to use as the server's config/biomic-palette.json")
+    parser.add_argument('--seed', default=None, help="the world seed in place of the template's")
     args = parser.parse_args()
     if args.profile == 'pack' and args.height != '512':
         sys.exit('the pack profile is 512 high (Hohen Angst is part of the pack)')
@@ -77,6 +78,11 @@ def main():
         review.drop_biomic_configs(os.path.join(server, 'config'))
     if args.palette:
         shutil.copy2(os.path.abspath(args.palette), os.path.join(server, 'config', 'biomic-palette.json'))
+    if args.seed is not None:
+        properties = os.path.join(server, 'server.properties')
+        lines = [f'level-seed={args.seed}' if l.startswith('level-seed=') else l
+                 for l in open(properties).read().splitlines()]
+        open(properties, 'w').write('\n'.join(lines) + '\n')
 
     launch = json.load(open(os.path.join(TEMPLATE, 'launch.json')))
     command = review.retarget(launch['server'], launch['old_session'], out, jar)
@@ -91,6 +97,8 @@ def main():
     bench = ['-Dbiomic.worldgenBenchmark=true', f'-Dbiomic.worldgenBenchmarkResult={os.path.join(out, "result.txt")}',
              f'-Dbiomic.worldgenBenchmarkRadius={args.radius}', f'-Dbiomic.worldgenBenchmarkCenters={windows}',
              f'-Dbiomic.worldgenBenchmarkOrder={args.order}', '-Dbiomic.strictTerrainOwnership=true', *args.jvm]
+    if args.seed is not None:
+        bench.append(f'-Dbiomic.worldgenBenchmarkSeed={args.seed}')
     command = ['taskset', '--cpu-list', args.cpus] + command[:java + 1] + bench + command[java + 1:]
     port = command.index('--port') + 1
     command[port] = args.port

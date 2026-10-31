@@ -26,6 +26,10 @@ final class OrigenBiomePipeline {
     private static final double PATCHWORK_FREQUENCY = 1.4D;
     private static final double CELL_JITTER = 0.9D;
     private static final int PIPELINE_RESOLUTION = 4;
+    /** Rivers run where the river noise is within this of zero. */
+    private static final double RIVER_BAND = 0.04D;
+    /** The span the river noise's slope is measured over, in blocks. */
+    private static final int RIVER_SLOPE_SPAN = 8;
     /** How far a sinkhole keeps from coast and sea, and the grid offsets probed for them (rings at 1/2 and full). */
     private static final int SINKHOLE_SHORE_GAP = 32;
     private static final int[][] SHORE_PROBES = shoreProbes();
@@ -359,6 +363,23 @@ final class OrigenBiomePipeline {
         return new OrigenProvinceSample(sampleProfile(blockX, blockZ));
     }
 
+    /**
+     * About how far a column is from the edge of the river noise's band, in blocks, negative inside: the noise read
+     * where the biome grid reads it (warped), over its local slope. The river biome follows the band to within the
+     * grid's four blocks.
+     */
+    double riverEdgeDistance(int blockX, int blockZ) {
+        double slopeX = riverNoise(blockX + RIVER_SLOPE_SPAN, blockZ) - riverNoise(blockX - RIVER_SLOPE_SPAN, blockZ);
+        double slopeZ = riverNoise(blockX, blockZ + RIVER_SLOPE_SPAN) - riverNoise(blockX, blockZ - RIVER_SLOPE_SPAN);
+        double slope = Math.sqrt(slopeX * slopeX + slopeZ * slopeZ) / (2 * RIVER_SLOPE_SPAN);
+        return (Math.abs(riverNoise(blockX, blockZ)) - RIVER_BAND) / Math.max(slope, 1.0E-9D);
+    }
+
+    private double riverNoise(int blockX, int blockZ) {
+        int warpedX = warpedX(blockX, blockZ);
+        return river.getSample(worldSeed, warpedX, warpedZ(warpedX, blockZ));
+    }
+
     OrigenBiomeProfile sampleProfile(int blockX, int blockZ) {
         int warpedX = warpedX(blockX, blockZ);
         int warpedZ = warpedZ(warpedX, blockZ);
@@ -447,7 +468,7 @@ final class OrigenBiomePipeline {
     private OrigenBiomeProfile riverAt(int gridX, int gridZ) {
         OrigenBiomeProfile profile = firstSmoothAt(gridX, gridZ);
         double value = river.getSample(worldSeed, worldCoordinate(gridX), worldCoordinate(gridZ));
-        return Math.abs(value) < 0.04D ? riverVariant(profile) : profile;
+        return Math.abs(value) < RIVER_BAND ? riverVariant(profile) : profile;
     }
 
     private OrigenBiomeProfile firstSmoothAt(int gridX, int gridZ) {
@@ -659,6 +680,12 @@ final class OrigenBiomePipeline {
 
     private boolean isLandCell(double blockX, double blockZ) {
         return sourceCells.getSample(worldSeed, blockX, blockZ) >= 0.0D;
+    }
+
+    /** Whether a profile is a lowland river (Origen's EQ_GLOBAL_RIVER) or turns into one where a river runs. */
+    static boolean hasLowlandRiver(OrigenBiomeProfile profile) {
+        OrigenBiomeProfile river = riverVariant(profile);
+        return river == OrigenBiomeProfile.RIVER || river == OrigenBiomeProfile.FROZEN_RIVER;
     }
 
     private static OrigenBiomeProfile riverVariant(OrigenBiomeProfile profile) {
