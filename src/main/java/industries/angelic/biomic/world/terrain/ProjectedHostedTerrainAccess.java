@@ -23,6 +23,7 @@ public final class ProjectedHostedTerrainAccess implements HostedTerrainAccess {
     }
 
     private final ChunkSource source;
+    private final GroundHeights groundHeights = new GroundHeights(ProjectedHostedTerrainAccess::groundHeight);
     private final Map<Long, byte[]> chunks = new LinkedHashMap<>(32, .75F, true) {
 
         @Override
@@ -67,9 +68,15 @@ public final class ProjectedHostedTerrainAccess implements HostedTerrainAccess {
     /** Highest actual solid mainland support; floating-owned surfaces never conceal the ground surface. */
     @Override
     public int sampleCarvedGroundSurfaceHeight(int blockX, int blockZ) {
-        byte[] materials = cached(Math.floorDiv(blockX, 16), Math.floorDiv(blockZ, 16));
+        int chunkX = Math.floorDiv(blockX, 16), chunkZ = Math.floorDiv(blockZ, 16);
         int x = Math.floorMod(blockX, 16), z = Math.floorMod(blockZ, 16);
-        for (int y = projection().physicalMaxYExclusive() - 1; y >= minimumEcologyY(); y--) {
+        int known = groundHeights.get(chunkX, chunkZ, x, z);
+        return known != GroundHeights.UNKNOWN ? known : groundHeight(cached(chunkX, chunkZ), x, z);
+    }
+
+    private static int groundHeight(byte[] materials, int x, int z) {
+        for (int y = AuthoredVerticalProjections.shifted512()
+            .physicalMaxYExclusive() - 1; y >= 64; y--) {
             byte material = materials[LAYOUT.index(x, y, z)];
             if (material != BiomicTerrainSampler.AIR && material != BiomicTerrainSampler.WATER
                 && material != BiomicTerrainSampler.LAVA) {
@@ -77,7 +84,7 @@ public final class ProjectedHostedTerrainAccess implements HostedTerrainAccess {
             }
         }
         // No eligible ground. A bare deep-below surface is not a vegetation root or a fabricated sea floor.
-        return minimumEcologyY() - 1;
+        return 63;
     }
 
     @Override
@@ -102,6 +109,7 @@ public final class ProjectedHostedTerrainAccess implements HostedTerrainAccess {
             throw new IllegalArgumentException("Hosted physical source must supply all 512 layers");
         }
         byte[] result = supplied.clone();
+        groundHeights.remember(chunkX, chunkZ, result);
         synchronized (this) {
             byte[] raced = chunks.get(key);
             if (raced != null) return raced;

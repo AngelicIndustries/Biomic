@@ -17,6 +17,7 @@ public final class ShiftedNativeMarshTerrainAccess implements HostedTerrainAcces
     public static final int MAX_CACHED_CHUNKS = 128;
     private final HostedTerrainAccess foundation;
     private final HostedMarshTerrain marsh;
+    private final GroundHeights groundHeights = new GroundHeights(ShiftedNativeMarshTerrainAccess::groundHeight);
     private final Map<Long, byte[]> chunks = new LinkedHashMap<Long, byte[]>(32, .75F, true) {
 
         @Override
@@ -75,9 +76,13 @@ public final class ShiftedNativeMarshTerrainAccess implements HostedTerrainAcces
     @Override
     public int sampleCarvedGroundSurfaceHeight(int x, int z) {
         int cx = Math.floorDiv(x, 16), cz = Math.floorDiv(z, 16), lx = Math.floorMod(x, 16), lz = Math.floorMod(z, 16);
-        byte[] values = cached(cx, cz);
+        int known = groundHeights.get(cx, cz, lx, lz);
+        return known != GroundHeights.UNKNOWN ? known : groundHeight(cached(cx, cz), lx, lz);
+    }
+
+    private static int groundHeight(byte[] values, int lx, int lz) {
         for (int y = 447; y >= 64; y--) {
-            byte value = values[layout().index(lx, y, lz)];
+            byte value = values[ChunkVerticalLayout.EXTENDED_512.index(lx, y, lz)];
             if (value != BiomicTerrainSampler.AIR && value != BiomicTerrainSampler.WATER
                 && value != BiomicTerrainSampler.LAVA) return y;
         }
@@ -146,6 +151,7 @@ public final class ShiftedNativeMarshTerrainAccess implements HostedTerrainAcces
             if (made[i] != BiomicTerrainSampler.AIR && made[i] != BiomicTerrainSampler.WATER
                 && made[i] != BiomicTerrainSampler.LAVA) origins[i] = TerrainDensitySampler.GROUND_ORIGIN;
         marsh.apply(made, origins, cx, cz);
+        groundHeights.remember(cx, cz, made);
         synchronized (this) {
             byte[] raced = chunks.get(key);
             if (raced != null) return raced;
