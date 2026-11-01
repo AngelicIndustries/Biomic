@@ -1664,7 +1664,8 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
                     if (!heightTransport.containsPhysicalY(physicalY)) continue;
                     if (hostedEnvironmentOwner != null && hostedEnvironmentOwner.owns(x, physicalY, z)
                         && AbyssalHostPollutionPolicy.displaced(stages.get(stageOrdinal), feature.id)) continue;
-                    if (intrinsicEnvironmentOwner != null && intrinsicEnvironmentOwner.owns(x, physicalY, z)) continue;
+                    if (intrinsicEnvironmentOwner != null && intrinsicEnvironmentOwner.owns(x, physicalY, z)
+                        && !containsWater(feature.id)) continue;
                     // Reject the rooted proposal before its script runs; never trim an individual flora body.
                     // Veins select individual BLOCK structures, bypassing OreStructure's blob guard.
                     // Their authored-space MATCH_SET must also hold in the physical terrain.
@@ -1702,11 +1703,12 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
                         continue;
                     // Reject the complete surface-rooted structure before it can leave a clipped tree, cactus or
                     // canopy at a village boundary. Deep ores and cave features remain unaffected.
-                    if (!SNOW_COVER.contains(feature.id) && isProtectedSurface(
-                        x,
-                        physicalY,
-                        z,
-                        "trees".equals(stages.get(stageOrdinal)) || "landforms".equals(stages.get(stageOrdinal))))
+                    if (!SNOW_COVER.contains(feature.id) && !containsWater(feature.id)
+                        && isProtectedSurface(
+                            x,
+                            physicalY,
+                            z,
+                            "trees".equals(stages.get(stageOrdinal)) || "landforms".equals(stages.get(stageOrdinal))))
                         continue;
                     // Animated kelp and seagrass are creative-only (ecology review): MarineLayer dresses the sea floor.
                     if (MarineLayer.replaces(feature.id)) continue;
@@ -2177,6 +2179,8 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
                 .getAsJsonObject();
             Distributor distributor = compileDistributor(object(definition, "distributor"));
             JsonObject locatorDefinition = object(definition, "locator");
+            if ("CONTAIN_FLOATING_WATER_HIGH".equals(entry.getKey()))
+                locatorDefinition = sealUnderWater(locatorDefinition);
             Locator locator = compileLocator(locatorDefinition);
             locator = optimizeFeatureLocator(entry.getKey(), locatorDefinition, locator);
             NoiseSampler selector = compiler.compileSampler(object(definition, "structure_sampler"));
@@ -2194,6 +2198,50 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
             features
                 .put(entry.getKey(), new Feature(entry.getKey(), distributor, locator, selector, choices, totalWeight));
         }
+    }
+
+    /**
+     * Origen's floating-water containment: stone into air under or beside standing water. It also runs in cells that
+     * villages, caves and islands own: none of them wants water hanging over air, and a village shaped from ground
+     * read without its ponds can leave exactly that (a player's village at 282 207 366).
+     */
+    static boolean containsWater(String featureId) {
+        return featureId.startsWith("CONTAIN_FLOATING_WATER");
+    }
+
+    /**
+     * Origen seals the air beside and under standing water below the sea's level (CONTAIN_FLOATING_WATER), but above
+     * it only the air beside (CONTAIN_FLOATING_WATER_HIGH), so a pond above the sea whose bed a hollow opened hung in
+     * the air (a player's Black Forest at 282 207 366). Above the sea the air under water is sealed as well, by the
+     * low band's own pattern: water one block up, or water beside.
+     */
+    private static JsonObject sealUnderWater(JsonObject locator) {
+        JsonArray children = locator.getAsJsonArray("locators");
+        if (children == null || children.size() != 2)
+            throw new IllegalStateException("CONTAIN_FLOATING_WATER_HIGH changed");
+        JsonObject beside = children.get(1)
+            .getAsJsonObject();
+        JsonObject pattern = new JsonObject();
+        pattern.addProperty("block", "minecraft:water");
+        pattern.addProperty("offset", 1);
+        pattern.addProperty("type", "MATCH");
+        JsonObject under = new JsonObject();
+        under.add("pattern", pattern);
+        under.add("range", beside.get("range"));
+        under.addProperty("type", "PATTERN");
+        JsonArray either = new JsonArray();
+        either.add(under);
+        either.add(beside);
+        JsonObject or = new JsonObject();
+        or.add("locators", either);
+        or.addProperty("type", "OR");
+        JsonArray sealed = new JsonArray();
+        sealed.add(children.get(0));
+        sealed.add(or);
+        JsonObject copy = new JsonObject();
+        copy.add("locators", sealed);
+        copy.add("type", locator.get("type"));
+        return copy;
     }
 
     private Locator optimizeFeatureLocator(String featureId, JsonObject definition, Locator fallback) {
@@ -2400,7 +2448,8 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
             case "CONTAIN_FLOATING_WATER_HIGH" -> {
                 minimum = 64;
                 maximum = 112;
-                above = false;
+                // Origen seals only the air beside water here; the air under it too (sealUnderWater).
+                above = true;
                 below = false;
                 adjacent = true;
             }
@@ -3545,7 +3594,8 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
         .of("SNOW_LAYERS", "SINKHOLE_SNOW_LAYERS", "ICEBERG_SNOW_LAYERS", "TREE_SNOW", "TREE_SNOW_CANYON");
 
     private boolean isProtectedSurface(int blockX, int physicalY, int blockZ, boolean bulky) {
-        if (activeFeatureId != null && SNOW_COVER.contains(activeFeatureId)) return false;
+        if (activeFeatureId != null && (SNOW_COVER.contains(activeFeatureId) || containsWater(activeFeatureId)))
+            return false;
         if (!surfaceProtection.contains(blockX, physicalY, blockZ, bulky)) return false;
         return isProtectedSurface(physicalY, terrainAccess.carvedGroundSurfaceHeight(blockX, blockZ));
     }
@@ -5309,6 +5359,7 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
 
         private boolean rejectHostedEnvironmentWrite(int x, int y, int z) {
             if (hostedPhysicalPopulation || activeFeatureId == null || activeFeatureStage == null) return false;
+            if (containsWater(activeFeatureId)) return false;
             return intrinsicEnvironmentOwner != null && intrinsicEnvironmentOwner.owns(x, y, z)
                 || hostedEnvironmentOwner != null && hostedEnvironmentOwner.owns(x, y, z)
                     && AbyssalHostPollutionPolicy.displaced(activeFeatureStage, activeFeatureId);

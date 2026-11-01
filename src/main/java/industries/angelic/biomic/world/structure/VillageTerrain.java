@@ -113,6 +113,8 @@ final class VillageTerrain {
             if (planned == UNSHAPED || target == UNSHAPED || target == planned && !road) continue;
             int ground = surface(materials, x, z, planned, road);
             if (ground == UNSHAPED || target == ground) continue;
+            target = underWater(materials, x, z, ground, target);
+            if (target == ground) continue;
             int depth = 0;
             for (int y = ground; y > ground - SKIN; y--) {
                 byte material = materials[layout.index(x, y, z)];
@@ -124,6 +126,24 @@ final class VillageTerrain {
             for (int y = Math.min(target, ground) - SKIN + 1; y <= target; y++)
                 materials[layout.index(x, y, z)] = skin[Math.min(SKIN - 1, target - y)];
         }
+    }
+
+    /** How far above shaped ground water may hang over air before the ground rises to hold it. */
+    private static final int HANGING = 8;
+
+    /**
+     * The shaped height, raised to hold any water hanging just above it: the plan reads the ground without the ponds
+     * above the sea, so it lowered a road under one and left a hollow under another's edge, the water floating over
+     * air (a player's village at 282 207 366). Ground never sinks from under water, and rises to meet water above it.
+     */
+    private int underWater(byte[] materials, int x, int z, int ground, int target) {
+        int top = Math.max(ground, target);
+        for (int y = top + 1; y <= top + HANGING && y < terrain.maxY() - 1; y++) {
+            byte material = materials[layout.index(x, y, z)];
+            if (material == BiomicTerrainSampler.WATER) return Math.max(target, y - 1);
+            if (material != BiomicTerrainSampler.AIR) break;
+        }
+        return target;
     }
 
     /**
