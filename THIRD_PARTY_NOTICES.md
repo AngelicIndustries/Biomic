@@ -50,12 +50,22 @@ indexed images are stored as RGBA. Each keeps its own licence; the full texts sh
 Biomic ships none of Mojang's textures or sounds. Some of its blocks and particles use Minecraft's own textures (big and
 small dripleaf, spore blossom, powder snow, rooted dirt, hanging roots, mushroom stem, the living and dead corals, kelp,
 seagrass, sea pickle, ochre froglight, the Abyssal ruins' chain, copper, lightning rod, iron trapdoor and stone, the
-grass top and pink petals stem some Regions Unexplored blocks reuse, large bamboo leaves, and the big_smoke particle
-frames). On the client, MCLib's Asset Director, which Et Futurum Requiem includes, downloads Minecraft 1.20.4's client
-jar from Mojang at the first launch, and `client.VanillaTextures` serves those textures from it under Biomic's names.
-Biomic's renderers for these blocks are its own code; their geometry follows the corresponding vanilla block models.
-Hanging mangrove propagules, sculk sensors, can-summon shriekers and sculk veins use the textures Et Futurum Requiem
-provides.
+grass top and pink petals stem some Regions Unexplored blocks reuse, large bamboo leaves, the sculk sensor, shrieker and
+vein, the hanging mangrove propagule, blackstone, the bone block's top, and the big_smoke particle frames). On the client,
+MCLib's Asset Director (see MCLib below) downloads Minecraft 1.20.4's client jar from Mojang at the first launch, and
+`client.VanillaTextures` serves those textures from it under Biomic's names. Biomic's renderers for these blocks are its
+own code; their geometry follows the corresponding vanilla block models.
+
+## MCLib
+
+Biomic includes, relocated, [makamys/MCLib](https://github.com/makamys/MCLib) 0.4 for its Asset Director, under the
+Unlicense (`META-INF/licenses/UNLICENSE-MCLib.txt`), less its `ccl` package (LGPL-2.1), which Biomic leaves out.
+MCLib brings with it:
+
+- `SloppyDepLoader`, based on CodeChickenCore, copyright 2014 ChickenBones, MIT
+  (`META-INF/licenses/MIT-CodeChickenCore.txt`).
+- cglib-nodep 3.1, Apache License 2.0 (`META-INF/licenses/Apache-2.0-cglib.txt`, `META-INF/licenses/NOTICE-cglib.txt`),
+  with ASM, copyright 2000, 2002, 2003 INRIA, France Telecom, BSD (`META-INF/licenses/BSD-ASM.txt`).
 
 ## GTNewHorizons ExampleMod1.7.10
 

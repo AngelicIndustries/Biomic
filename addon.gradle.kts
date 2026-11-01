@@ -65,4 +65,6 @@ tasks.named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJ
     minimize {
         exclude(dependency("com.github.makamys:MCLib:.*"))
     }
+    // MCLib's inventory helper (LGPL-2.1, from CodeChickenLib): nothing else in MCLib uses it.
+    exclude("makamys/mclib/ccl/**")
 }
