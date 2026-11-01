@@ -44,16 +44,19 @@ final class OrigenDensityField {
     private static final int CACHE_LOCK_STRIPES = 64;
     private static final int SNOWY_BOUNDARY_BLEND_MIN_Y = 48;
     private static final int SNOWY_BOUNDARY_BLEND_FULL_Y = 64;
-    /** How far inside its band's edge a lowland river reaches its bed, and how far outside its water reaches. */
+    /** How far inside its band's edge a lowland river reaches its bed, and how far outside its bowl reaches. */
     private static final double RIVER_BED_INSET = 2.0D;
     private static final double RIVER_SHORE_REACH = 12.0D;
-    /** How steeply a lowland river's valley first rises from the water, in blocks up per block out. */
-    private static final double VALLEY_SLOPE = 1.0D;
-    /** How far from the water a lowland river's valley starts to steepen, and how fast. */
-    private static final double VALLEY_FLAT_REACH = 12.0D;
-    private static final double VALLEY_STEEPENING = 0.06D;
-    /** Beyond this distance from the river's band the valley rises above any ground. */
+    /** How steeply land the valley leaves standing at the shore drops into the river's bowl. */
+    private static final double RIVER_BANK_SLOPE = 2.0D;
+    /** How far beyond the shore a lowland river's valley reaches, and how much relief the land keeps at the shore. */
     private static final double VALLEY_REACH = 80.0D;
+    private static final double VALLEY_FLOOR_RELIEF = 0.05D;
+    /** How far below the water the valley's floor sinks at the shore, and how far out it sinks at all. */
+    private static final double VALLEY_SINK = 2.0D;
+    private static final double VALLEY_SINK_REACH = 24.0D;
+    /** How far beyond the shore the river's bowl can still meet standing land. */
+    private static final double RIVER_BANK_REACH = 16.0D;
     private static final int SHARED_FIELD_COUNT = 4;
     private static final OrigenBiomeProfile[] PROFILE_VALUES = OrigenBiomeProfile.values();
     private static final Map<FieldKey, OrigenDensityField> SHARED = new LinkedHashMap<FieldKey, OrigenDensityField>(
@@ -80,6 +83,8 @@ final class OrigenDensityField {
     private final LongDoubleCache riverDistanceCache = new LongDoubleCache(RIVER_DISTANCE_CACHE_SIZE);
     private final LongProfileCache profileCache = new LongProfileCache(PROFILE_CACHE_SIZE);
     private final ThreadLocal<int[]> profileCounts = ThreadLocal.withInitial(() -> new int[PROFILE_VALUES.length]);
+    /** The elevation blend's own: a lattice blend (a river's valley) reads elevation while its counts are in use. */
+    private final ThreadLocal<int[]> elevationCounts = ThreadLocal.withInitial(() -> new int[PROFILE_VALUES.length]);
     private final ThreadLocal<boolean[]> missingLatticePlanes = ThreadLocal
         .withInitial(() -> new boolean[UPSTREAM_GRID_HEIGHT]);
     private final ThreadLocal<byte[]> extrudedProfileColumnScratch = ThreadLocal
@@ -314,7 +319,7 @@ final class OrigenDensityField {
             }
         }
 
-        int[] counts = profileCounts.get();
+        int[] counts = elevationCounts.get();
         for (int localX = 0; localX < BiomicTerrainSampler.CHUNK_WIDTH; localX++) {
             int blockX = worldStartX + localX;
             for (int localZ = 0; localZ < BiomicTerrainSampler.CHUNK_WIDTH; localZ++) {
@@ -523,11 +528,13 @@ final class OrigenDensityField {
         double weightedDensity = 0.0D;
         double weightedRawDensity = 0.0D;
         double totalWeight = 0.0D;
-        double riverWeight = 0.0D;
-        double valleyWeight = 0.0D;
         boolean mixedSnowySpiresBoundary = upstreamY >= SNOWY_BOUNDARY_BLEND_MIN_Y
             && counts[OrigenBiomeProfile.SNOWY_SPIRES.ordinal()] != 0
             && distinctProfiles > 1;
+        if (!mixedSnowySpiresBoundary) {
+            double presence = lowlandRiverPresence(counts);
+            if (presence > 0.0D) return lowlandRiverValley(blockX, upstreamY, blockZ, counts, presence);
+        }
         for (int ordinal = 0; ordinal < counts.length; ordinal++) {
             int count = counts[ordinal];
             if (count == 0) continue;
@@ -545,18 +552,9 @@ final class OrigenDensityField {
                     weightedRawDensity += sampleBoundarySafeBase(profile, blockX, upstreamY, blockZ) * weight;
                 }
             } else {
-                if (OrigenBiomePipeline.hasLowlandRiver(profile)) valleyWeight += weight;
-                if (isLowlandRiver(profile)) {
-                    riverWeight += weight;
-                    continue;
-                }
                 weightedDensity += sampleBoundarySafeBase(profile, blockX, upstreamY, blockZ) * weight;
             }
             totalWeight += weight;
-        }
-        if (valleyWeight > 0.0D) {
-            double presence = valleyWeight / (totalWeight + riverWeight);
-            return lowlandRiverValley(blockX, upstreamY, blockZ, weightedDensity, totalWeight, presence);
         }
         double sampled = weightedDensity / totalWeight;
         if (mixedSnowySpiresBoundary) {
@@ -571,41 +569,85 @@ final class OrigenDensityField {
     }
 
     /**
-     * Lowland rivers and their valleys. Origen's EQ_GLOBAL_RIVER is five times as dense as land (-y + h) and erodes
-     * the 24 blocks above y 66 by up to 1500, so in Terra's box average a few river samples cut the land to a flat
-     * floor near the water, and the land stood up again as a wall where the river left the 12-block stencil. Here
-     * the land is blended without the river, and cut down to a valley around it: the river's bed inside its band,
-     * a shore sloping up to the water a little outside, then a bank that steepens with distance
-     * ({@link #valleySurface}). Land below the valley keeps its shape, so flat land keeps flat banks and hills get
-     * valleys about as wide as they are high.
-     * {@code presence} is the stencil's share of biomes whose river is a lowland one; the valley fades with it
-     * where a river turns into another kind or reaches the sea.
+     * Lowland rivers and the valleys they carve. Origen's EQ_GLOBAL_RIVER is five times as dense as land (-y + h) and
+     * erodes the 24 blocks above y 66 by up to 1500, so in Terra's box average its banks were cut out of whatever
+     * land stood there: hills, terraces and ponds sliced along the river's line. Here the land is blended without
+     * the river and worn down around it instead, as if the river had been there first. Toward the river the land's
+     * relief over the water shrinks ({@link #VALLEY_FLOOR_RELIEF} of it at the shore, all of it
+     * {@link #VALLEY_REACH} beyond), and its floor sinks a little under the water near the shore, so ground drowns
+     * along its own height lines: a hill keeps a round shore as it shrinks, pond rims dissolve into the river's
+     * shallows. The river's bowl is set into that floor. {@code presence} is the stencil's share of biomes whose
+     * river is a lowland one; the valley fades with it where a river turns into another kind or reaches the sea.
      */
-    private double lowlandRiverValley(int blockX, int upstreamY, int blockZ, double landDensity, double landWeight,
-        double presence) {
+    private double lowlandRiverValley(int blockX, int upstreamY, int blockZ, int[] counts, double presence) {
         double distance = riverEdgeDistance(blockX, blockZ);
-        if (distance >= VALLEY_REACH && landWeight > 0.0D) return landDensity / landWeight;
-        double bed = sampleBoundaryBaseHeight(OrigenBiomeProfile.RIVER, blockX, blockZ);
-        // The column's 2D elevation is added after interpolation; take it off so the valley stays where it is.
-        double valley = valleySurface(distance, bed) - upstreamY - sampleElevation(blockX, blockZ);
-        if (landWeight == 0.0D) return valley;
-        double land = landDensity / landWeight;
-        // In its band the river is all there is, and along its shore it lifts land lower than the shore (a trench
-        // or the sea floor beside it) up toward it, as Origen's river did; past the water's edge only the cut is left.
-        double fill = Math.min(Math.max((RIVER_SHORE_REACH - distance) / RIVER_SHORE_REACH, 0.0D), 1.0D);
-        return lerp(land, lerp(Math.min(land, valley), valley, fill), presence);
+        double land = landDensity(blockX, upstreamY, blockZ, counts);
+        double beyond = distance - RIVER_SHORE_REACH;
+        if (beyond >= VALLEY_REACH && !Double.isNaN(land)) return land;
+        double water = UPSTREAM_SEA_LEVEL + 1.0D;
+        double reach = smoothstep(beyond / VALLEY_REACH), sinking = 1.0D - smoothstep(beyond / VALLEY_SINK_REACH);
+        double relief = VALLEY_FLOOR_RELIEF + (1.0D - VALLEY_FLOOR_RELIEF) * reach;
+        // Ground at h over the water now stands at relief * h - sink: read the land where this height came from.
+        // The column's 2D elevation is added after interpolation, so it is worn down here with the rest.
+        double elevation = sampleElevation(blockX, blockZ);
+        double source = water + (upstreamY + VALLEY_SINK * sinking - water) / relief;
+        double valley = relief * (landDensity(blockX, source, blockZ, counts) + elevation) - elevation;
+        if (beyond < RIVER_BANK_REACH) {
+            double bed = sampleBoundaryBaseHeight(OrigenBiomeProfile.RIVER, blockX, blockZ);
+            double bowl = riverBowl(distance, bed) - upstreamY - elevation;
+            valley = Double.isNaN(valley) ? bowl : Math.min(valley, bowl);
+        }
+        return Double.isNaN(land) ? valley : lerp(land, valley, presence);
     }
 
-    /** The valley's ground at a distance from the river's band (negative inside), given the river's bed height. */
-    private static double valleySurface(double distance, double bed) {
+    /**
+     * The river's bowl, steep under the water's edge and flattening onto the bed (Origen's shape), then rising
+     * steeply past the shore: land the valley leaves standing beside the river drops into it.
+     */
+    private static double riverBowl(double distance, double bed) {
         double water = UPSTREAM_SEA_LEVEL + 1.0D;
-        if (distance < RIVER_SHORE_REACH) {
-            // Origen's river bowl: steep under the water's edge, flattening onto the bed.
-            double t = Math.min((RIVER_SHORE_REACH - distance) / (RIVER_SHORE_REACH + RIVER_BED_INSET), 1.0D);
-            return lerp(water, bed, t * (2.0D - t));
+        if (distance >= RIVER_SHORE_REACH) return water + RIVER_BANK_SLOPE * (distance - RIVER_SHORE_REACH);
+        double t = Math.min((RIVER_SHORE_REACH - distance) / (RIVER_SHORE_REACH + RIVER_BED_INSET), 1.0D);
+        return lerp(water, bed, t * (2.0D - t));
+    }
+
+    /** The share of a stencil whose biomes have lowland rivers (or are one). */
+    private double lowlandRiverPresence(int[] counts) {
+        double lowland = 0.0D, total = 0.0D;
+        for (int ordinal = 0; ordinal < counts.length; ordinal++) {
+            if (counts[ordinal] == 0) continue;
+            OrigenBiomeProfile profile = PROFILE_VALUES[ordinal];
+            double weight = runtime.profile(profile)
+                .getBlendWeight() * counts[ordinal];
+            total += weight;
+            if (OrigenBiomePipeline.hasLowlandRiver(profile)) lowland += weight;
         }
-        double out = distance - RIVER_SHORE_REACH, steep = Math.max(out - VALLEY_FLAT_REACH, 0.0D);
-        return water + VALLEY_SLOPE * out + VALLEY_STEEPENING * steep * steep;
+        return lowland / total;
+    }
+
+    /**
+     * The stencil's land at an upstream height, lowland rivers left out (NaN when there is nothing else). Profiles
+     * are sampled at whole heights; past the nearest one, and past the world's top and bottom, the ground continues
+     * as -y.
+     */
+    private double landDensity(int blockX, double upstreamY, int blockZ, int[] counts) {
+        int y = clamp((int) Math.round(upstreamY), UPSTREAM_MIN_Y, UPSTREAM_MAX_Y_EXCLUSIVE - 1);
+        double density = 0.0D, total = 0.0D;
+        for (int ordinal = 0; ordinal < counts.length; ordinal++) {
+            if (counts[ordinal] == 0) continue;
+            OrigenBiomeProfile profile = PROFILE_VALUES[ordinal];
+            if (isLowlandRiver(profile)) continue;
+            double weight = runtime.profile(profile)
+                .getBlendWeight() * counts[ordinal];
+            density += sampleBoundarySafeBase(profile, blockX, y, blockZ) * weight;
+            total += weight;
+        }
+        return total == 0.0D ? Double.NaN : density / total - (upstreamY - y);
+    }
+
+    private static double smoothstep(double t) {
+        t = Math.min(Math.max(t, 0.0D), 1.0D);
+        return t * t * (3.0D - 2.0D * t);
     }
 
     private double riverEdgeDistance(int blockX, int blockZ) {
@@ -684,7 +726,7 @@ final class OrigenDensityField {
             return cached;
         }
         OrigenBiomeProfile center = pipeline.sampleProfile(blockX, blockZ);
-        int[] counts = profileCounts.get();
+        int[] counts = elevationCounts.get();
         Arrays.fill(counts, 0);
         boolean same = true;
         for (int offsetX = -ELEVATION_SMOOTH_RADIUS; offsetX <= ELEVATION_SMOOTH_RADIUS; offsetX++) {

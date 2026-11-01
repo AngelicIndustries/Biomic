@@ -30,6 +30,8 @@ final class OrigenBiomePipeline {
     private static final double RIVER_BAND = 0.04D;
     /** The span the river noise's slope is measured over, in blocks. */
     private static final int RIVER_SLOPE_SPAN = 8;
+    /** How far, in blocks, a river's banks wander from the line of its band. */
+    private static final double RIVER_BANK_WANDER = 6.0D;
     /** How far a sinkhole keeps from coast and sea, and the grid offsets probed for them (rings at 1/2 and full). */
     private static final int SINKHOLE_SHORE_GAP = 32;
     private static final int[][] SHORE_PROBES = shoreProbes();
@@ -315,6 +317,7 @@ final class OrigenBiomePipeline {
     private final Sampler blend;
     private final Sampler borders;
     private final Sampler wobble;
+    private final Sampler riverBanks;
     private final Sampler whiteNoise;
     private final LongEntryCache sourceCache = new LongEntryCache(CACHE_SIZE);
     /** The source before sinkholes, which the shore test around a sinkhole reads. */
@@ -353,6 +356,7 @@ final class OrigenBiomePipeline {
         blend = new Terra64OpenSimplex2Sampler(0.012D, 0L);
         borders = new Terra64OpenSimplex2Sampler(1.0D / 300.0D, 0L);
         wobble = new Terra64OpenSimplex2Sampler(1.0D / 32.0D, 0L);
+        riverBanks = new Terra64OpenSimplex2Sampler(1.0D / 24.0D, 0L);
         // Terra 6.4.2's generic noise template defaults to 0.02 when the Origen
         // pipeline declares a bare WHITE_NOISE sampler. Seismic requires the
         // frequency explicitly and otherwise has no equivalent default.
@@ -365,14 +369,15 @@ final class OrigenBiomePipeline {
 
     /**
      * About how far a column is from the edge of the river noise's band, in blocks, negative inside: the noise read
-     * where the biome grid reads it (warped), over its local slope. The river biome follows the band to within the
-     * grid's four blocks.
+     * where the biome grid reads it (warped), over its local slope, plus a few blocks of wander so banks do not run
+     * as straight as the band. The river biome follows the band to within the grid's four blocks.
      */
     double riverEdgeDistance(int blockX, int blockZ) {
         double slopeX = riverNoise(blockX + RIVER_SLOPE_SPAN, blockZ) - riverNoise(blockX - RIVER_SLOPE_SPAN, blockZ);
         double slopeZ = riverNoise(blockX, blockZ + RIVER_SLOPE_SPAN) - riverNoise(blockX, blockZ - RIVER_SLOPE_SPAN);
         double slope = Math.sqrt(slopeX * slopeX + slopeZ * slopeZ) / (2 * RIVER_SLOPE_SPAN);
-        return (Math.abs(riverNoise(blockX, blockZ)) - RIVER_BAND) / Math.max(slope, 1.0E-9D);
+        double band = (Math.abs(riverNoise(blockX, blockZ)) - RIVER_BAND) / Math.max(slope, 1.0E-9D);
+        return band + RIVER_BANK_WANDER * riverBanks.getSample(worldSeed + 31L, blockX, blockZ);
     }
 
     private double riverNoise(int blockX, int blockZ) {
