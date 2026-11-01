@@ -55,6 +55,9 @@ public class Biomic {
     @SidedProxy(clientSide = MODGROUP + ".biomic.ClientProxy", serverSide = MODGROUP + ".biomic.CommonProxy")
     public static CommonProxy proxy;
 
+    @Mod.Instance(MODID)
+    public static Biomic instance;
+
     @Mod.EventHandler
     public void construct(FMLConstructionEvent event) {
         if (cpw.mods.fml.common.Loader.isModLoaded("etfuturum")) EfrContentContract.enforce();

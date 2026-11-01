@@ -203,6 +203,13 @@ public final class Mixins extends AngelMixins {
         registry.mixin("MixinChunk")
             .phase(MixinUtil.Phase.EARLY)
             .build();
+        registry.mixin("MixinBlockFenceConnect")
+            .phase(MixinUtil.Phase.EARLY)
+            .build();
+        registry.mixin("MixinGuiEditSignWoodSign")
+            .phase(MixinUtil.Phase.EARLY)
+            .side(Side.CLIENT)
+            .build();
         // Command classes also execute in the integrated server on physical clients.
         registry.mixin("MixinBlockGrassAlphaRendering")
             .phase(MixinUtil.Phase.EARLY)

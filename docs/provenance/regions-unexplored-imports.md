@@ -19,6 +19,18 @@ Requiem's bamboo planks (birch without it), as RU makes vanilla's. Names are RU'
 Ukrainian and Chinese where RU has them. Biomic's 1.7 block, slab and stairs classes are its own code, and the ore names
 (`logWood`, `plankWood`, `slabWood`, `stairWood`, `treeLeaves`) are Forge conventions, not RU data.
 
+The 22 woods RU makes pieces of (all but alpha oak) also get RU's fence, fence gate, door, trapdoor, button, pressure
+plate and sign under RU's ids (`biomic:pine_fence`, `pine_fence_gate`, `pine_door`, `pine_trapdoor`, `pine_button`,
+`pine_pressure_plate`, `pine_sign`; the wall sign block is `pine_wall_sign`), and the 16 RU gives boats get
+`pine_boat`, with `pine_chest_boat` where Et Futurum Requiem's new boats are on. Art copied verbatim from the pinned
+revision: the door halves (`block/<wood>_door_top`/`_bottom`, under 1.7.10's `_upper`/`_lower` names), trapdoors, the
+door, sign, boat and chest boat items, and the sign and boat entity textures (`entity/signs`, `entity/boat`; wisteria's
+are RU's `mauve`); brimwood's door and trapdoor keep their animation `.mcmeta`. Fences, gates, buttons and plates are
+faced with the planks, as RU's models are. Recipes and counts are RU's (`recipe/<wood>_fence.json` and the rest: three
+fences, three doors, two trapdoors, three signs). The boat model is Minecraft's since 1.9, which RU's boat art is drawn
+for; with EFR the boats are EFR's modern boats, registered with it as its Biomes O' Plenty boat is. Hanging signs have
+no 1.7.10 block. The 1.7 blocks, items, renderers and the fence joining (`MixinBlockFenceConnect`) are Biomic's code.
+
 ## Surface rendering repair — September 7, 2026
 
 `tools/ru_reference/import_cave_models.py` now imports 21 source-model families.

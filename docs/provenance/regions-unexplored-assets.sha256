@@ -145,3 +145,189 @@ b1a032ed359df23c84f99d4014a4f250fbcf84df7b7cd4e24e331588754eb5dc  ru/redwood_pla
 81cef10d7d6d6f86c2705b408406ce508161d6b4b98b2751ea51e0e372dcb431  ru/willow_planks.png               RU:block/willow_planks.png                  verbatim
 6bb1453da8fbd6d437a59476b9872033a75951699658e451571d9be2b0794113  ru/wisteria_planks.png             RU:block/wisteria_planks.png                verbatim
 e0b5dd812125d3779780f22b333ae40bae75906db00f851a503750759219b7a4  ru/yellow_bioshroom_planks.png     RU:block/yellow_bioshroom_planks.png        verbatim
+
+# Wood pieces (2026-11-01): RU:<dir>/ is under the RU textures root (the parent of block/); destinations under
+# assets/biomic/textures/. Door halves take 1.7.10's _upper/_lower names; wisteria's sign and boat art is RU's mauve.
+91f80647bd8b2f49b1a8e5d727f84bf460dc405f9a4a6a991364e8268267aa80  blocks/ru/baobab_door_upper.png    RU:block/baobab_door_top.png                verbatim, renamed
+a5188bd5e33443c833726b4638a150438295419e91315b09c1ddd31140e63e0b  blocks/ru/baobab_door_lower.png    RU:block/baobab_door_bottom.png             verbatim, renamed
+73197360d81f53222953b3eefaed8f4426426ce24b96cdbed3025d3f8ccca064  blocks/ru/baobab_trapdoor.png      RU:block/baobab_trapdoor.png                verbatim
+ed2118b20e3461dad44899dee6af46a06479b32fe3972424747de98593960686  items/ru/baobab_door.png           RU:item/baobab_door.png                     verbatim
+f06a69555d96611024cb0a5a893f54b2b5b2924e3a33104451c9c6313baa3508  items/ru/baobab_sign.png           RU:item/baobab_sign.png                     verbatim
+17cda44e214f78390e30926e298c51fcd3719f2d30d845b9d93fb9eae57ce207  entity/signs/baobab.png            RU:entity/signs/baobab.png                  verbatim
+8d854a8a9ba21e65720ce0eae6f39d24445e4516f8f96e46097a1f48cfb99175  items/ru/baobab_boat.png           RU:item/baobab_boat.png                     verbatim
+23a1edf1fa524194dd09d7b56fc7a94a845ee6f73f000afeb8675856b2e3410f  items/ru/baobab_chest_boat.png     RU:item/baobab_chest_boat.png               verbatim
+101ee17b7976c553f62748778350a47129f5056c164c1e85e51cb68f55e8d64a  entity/boat/baobab.png             RU:entity/boat/baobab.png                   verbatim
+9afed54c7cbe031dfd3e8ca322217c9b994a8d9cd0bda616379d5bad04eb5895  blocks/ru/blackwood_door_upper.png RU:block/blackwood_door_top.png             verbatim, renamed
+b0271eee75aee311fcb989e5362563150cfe10cf6f2f1e49d7190d3cf0f77027  blocks/ru/blackwood_door_lower.png RU:block/blackwood_door_bottom.png          verbatim, renamed
+dab05ed5563cf2f600416e42eba07470396d5f1c968904e635d772d558b022ab  blocks/ru/blackwood_trapdoor.png   RU:block/blackwood_trapdoor.png             verbatim
+813e5ea514d3f18b97c8bb7a8fdb7489f20fdd66c2c12ad876ddb9fed8f56b49  items/ru/blackwood_door.png        RU:item/blackwood_door.png                  verbatim
+6fbd43b42709ba86c86d401e1f7912ebb0d4c0af301e3eeab753b87a450a503f  items/ru/blackwood_sign.png        RU:item/blackwood_sign.png                  verbatim
+eb67c627d206f05930b2ddbe040e13d39f257b2748a9da9cfe3a88ab43248986  entity/signs/blackwood.png         RU:entity/signs/blackwood.png               verbatim
+5e9714e6a770a8903d76fbbe93a79b096dbfafcd44572a48129c11ad9998571b  items/ru/blackwood_boat.png        RU:item/blackwood_boat.png                  verbatim
+880c1d0ccc431b6a5e8b5a21b91324ce8910150a8c68bb056a5b713c7d40d85c  items/ru/blackwood_chest_boat.png  RU:item/blackwood_chest_boat.png            verbatim
+0ea53c076916e7ba105779bea7599bc99be6ab9b2e16b4a94269ae0176bc5b48  entity/boat/blackwood.png          RU:entity/boat/blackwood.png                verbatim
+9655282e8176bb5bec6b00bb72a522a905bfdd3bc5de4199dbdd26e6b4de3ff2  blocks/ru/blue_bioshroom_door_upper.png RU:block/blue_bioshroom_door_top.png        verbatim, renamed
+dfcba6edbe2f4ae333c77f1d165a3b1f469997f01c984e76538b260520b1feb2  blocks/ru/blue_bioshroom_door_lower.png RU:block/blue_bioshroom_door_bottom.png     verbatim, renamed
+6cce28a426dba753ae9af6f940064ce72426c7b3056a21c01e71701a7675eb2a  blocks/ru/blue_bioshroom_trapdoor.png RU:block/blue_bioshroom_trapdoor.png        verbatim
+7d7da394820fed24a26933f8be94cbfb24a8f7ad83a1564d0d0d32d9506605fa  items/ru/blue_bioshroom_door.png   RU:item/blue_bioshroom_door.png             verbatim
+3bf0c9742c8bd9c4aa730abbc98532368a35305372d6c09951ad079e1192830c  items/ru/blue_bioshroom_sign.png   RU:item/blue_bioshroom_sign.png             verbatim
+170e9a59ad4f15409f31c18d82cc48c1d9d00c36031e4ac502e1ffdd4aab7b29  entity/signs/blue_bioshroom.png    RU:entity/signs/blue_bioshroom.png          verbatim
+7818002e693d5d4a2443379953099467eaec1ea1bc29ecc84abe10b750f8f7c4  blocks/ru/brimwood_door_upper.png  RU:block/brimwood_door_top.png              verbatim, renamed
+e9b8025fde1b09b0a4d2a38427b04f98f28a593045be6d177eb2b29164c872b0  blocks/ru/brimwood_door_upper.png.mcmeta RU:block/brimwood_door_top.png.mcmeta       verbatim, renamed
+ecc4288790b35f198d15d8e372bd3b9d8a34caec3da2c860f68968d77d547cbd  blocks/ru/brimwood_door_lower.png  RU:block/brimwood_door_bottom.png           verbatim, renamed
+e9b8025fde1b09b0a4d2a38427b04f98f28a593045be6d177eb2b29164c872b0  blocks/ru/brimwood_door_lower.png.mcmeta RU:block/brimwood_door_bottom.png.mcmeta    verbatim, renamed
+743c8baed5ac580fe52e6f2c2ff2b726ba45f79e6434d7378d54c8bc17c86ef9  blocks/ru/brimwood_trapdoor.png    RU:block/brimwood_trapdoor.png              verbatim
+e9b8025fde1b09b0a4d2a38427b04f98f28a593045be6d177eb2b29164c872b0  blocks/ru/brimwood_trapdoor.png.mcmeta RU:block/brimwood_trapdoor.png.mcmeta       verbatim
+e025969abd334958ac672548f64ffba9def9d9e51fd327484a4926182cf2eefe  items/ru/brimwood_door.png         RU:item/brimwood_door.png                   verbatim
+4e4381a12f31780addf00716a18f900cf91417d224b49c37396eb46a57eb017e  items/ru/brimwood_sign.png         RU:item/brimwood_sign.png                   verbatim
+733a5dca3c9524a43e8d65cad5d05397605635de9f829e67a454c6c9a8b0b6c6  entity/signs/brimwood.png          RU:entity/signs/brimwood.png                verbatim
+1235e480498b9ceccdc66b5216bf1261b6ed49a3440e93bbc82492eac18cfc02  blocks/ru/cobalt_door_upper.png    RU:block/cobalt_door_top.png                verbatim, renamed
+2fb5e418c2ef6f27cb482e963b052d4fd1f18fc52d272f14b33fe4311491d8bd  blocks/ru/cobalt_door_lower.png    RU:block/cobalt_door_bottom.png             verbatim, renamed
+410d12c8deea87baf5b0866c66e0d4adf4e12233df6ffa09570a5889aa15e646  blocks/ru/cobalt_trapdoor.png      RU:block/cobalt_trapdoor.png                verbatim
+c7195b2d388bf9ac68dfea8bfbffaa58c4a9d4c7072f7160b036a9b39a2df7f9  items/ru/cobalt_door.png           RU:item/cobalt_door.png                     verbatim
+7d04d77d1360eeb3721fb42c619c6b5d89791a93e26b84daca6742aa997117f2  items/ru/cobalt_sign.png           RU:item/cobalt_sign.png                     verbatim
+9bfbbdc15974aa35c11458d62708595e19d8fdbd9049f913aabf95e1ffc98671  entity/signs/cobalt.png            RU:entity/signs/cobalt.png                  verbatim
+dcbf145d27d8ef256431cc540e3df62ca7818856b87fdf29caec3c823d8190b5  blocks/ru/cypress_door_upper.png   RU:block/cypress_door_top.png               verbatim, renamed
+67f1b6273bd6c721f54ce9a2ecfb446089f999372ee6902f44a344bca6c579d0  blocks/ru/cypress_door_lower.png   RU:block/cypress_door_bottom.png            verbatim, renamed
+bc3592f2ebb5395a23393fe7c3a1cb62e8515ea06535a8e84ca96bac64f57899  blocks/ru/cypress_trapdoor.png     RU:block/cypress_trapdoor.png               verbatim
+8bce2181afb5f5361f8afd9e38c16ddcf894ac90e38873db9833ec3cf9523c75  items/ru/cypress_door.png          RU:item/cypress_door.png                    verbatim
+d0a95ec30758418a8194a82bdb35eaaa8151d3f18f801c3af2b01b0d40556202  items/ru/cypress_sign.png          RU:item/cypress_sign.png                    verbatim
+427f58d126e2995c1b2685a5adb1ab79ed48644460021927e59589b53307f8c3  entity/signs/cypress.png           RU:entity/signs/cypress.png                 verbatim
+7bab38f9662e056a964c78f22daffaea41560c5be44be348f0ecad92cdb0e170  items/ru/cypress_boat.png          RU:item/cypress_boat.png                    verbatim
+ecb6f95c64bc0d28a6256ec441fa1a4f6360a8d2e1a10bda51c7bd9b7cf2583a  items/ru/cypress_chest_boat.png    RU:item/cypress_chest_boat.png              verbatim
+15fe962be292abbfe1d27b28ba0be2a0a35d43ce3b3d280ba059d36c9766caaa  entity/boat/cypress.png            RU:entity/boat/cypress.png                  verbatim
+52dd9997367cc9eb02d1f22f188eb54b79f3741268d1c997fd22e6179de2fd4d  blocks/ru/dead_door_upper.png      RU:block/dead_door_top.png                  verbatim, renamed
+a4eb9ae7bf59db15282bd33af6ecaf2e40af1439fb811fce9a3a9e96acb93d40  blocks/ru/dead_door_lower.png      RU:block/dead_door_bottom.png               verbatim, renamed
+0dc19c51854cf3aca6f6bc575522d7f2c1b5b30a61dba3958dd31d8992c59019  blocks/ru/dead_trapdoor.png        RU:block/dead_trapdoor.png                  verbatim
+b1ad9192a0080659c32ecea65b8ddfd766346467352556b2faaf9412370616b4  items/ru/dead_door.png             RU:item/dead_door.png                       verbatim
+bd932b3cfa405572a24859515709bcd00c0d2cc16f612bfe928a502a78753fa5  items/ru/dead_sign.png             RU:item/dead_sign.png                       verbatim
+2e524a92e1382db436420d86899c7481758b1baeb1013379b2ab2a3a242dc5b9  entity/signs/dead.png              RU:entity/signs/dead.png                    verbatim
+a9e6140291416dbe815c04b74690ef109eba312a0f24bda647cbaa12a1be474e  items/ru/dead_boat.png             RU:item/dead_boat.png                       verbatim
+50ec60851fbfa2b35f28c4a7972be0f844b14e98bbecae06e3716efbc04301bc  items/ru/dead_chest_boat.png       RU:item/dead_chest_boat.png                 verbatim
+bcade2be46e7dd6af8acb33ee47510be8e6d2021b25a8a361b7799bfb41931b7  entity/boat/dead.png               RU:entity/boat/dead.png                     verbatim
+ca4ee1e461f7e27331f0bc5187ac14a647055cdfc3b4a8b1d6465a766aca2e63  blocks/ru/eucalyptus_door_upper.png RU:block/eucalyptus_door_top.png            verbatim, renamed
+e7476f907e63f724a95b848b1b09e40fe4963ab5352c4e1ad0b9b6f1e86955cc  blocks/ru/eucalyptus_door_lower.png RU:block/eucalyptus_door_bottom.png         verbatim, renamed
+fa4b8838c7d121d460a053a90ea4d7904836a2df56baa95a05a7f2e66f0d7218  blocks/ru/eucalyptus_trapdoor.png  RU:block/eucalyptus_trapdoor.png            verbatim
+b8dd7e54bd983afe957873529947ce15d19eaa8d8d97a8a9e711babcbee32a25  items/ru/eucalyptus_door.png       RU:item/eucalyptus_door.png                 verbatim
+43e5f7974a42211178b7086ae54aae356245a0f4356b776e1558da53dd49c0d2  items/ru/eucalyptus_sign.png       RU:item/eucalyptus_sign.png                 verbatim
+41b952c854e204aba680b0573a5dc2fd0e22e7cf9b037e84aab82f470a0bbcc5  entity/signs/eucalyptus.png        RU:entity/signs/eucalyptus.png              verbatim
+79d1e022f046e33227b9a6a76efa06d4877c86c3ccf93860a481f9949d8301ff  items/ru/eucalyptus_boat.png       RU:item/eucalyptus_boat.png                 verbatim
+165319121931027e05b85134ad875cc812f1a2987bd573f01588974320aae433  items/ru/eucalyptus_chest_boat.png RU:item/eucalyptus_chest_boat.png           verbatim
+b32d16862ca10dd2ea7abd6c0f86d78a6d7b28d00c2b50b89f7237f860dc2f4c  entity/boat/eucalyptus.png         RU:entity/boat/eucalyptus.png               verbatim
+0bcdaa8cf4ba19dedac1e83316d65eeb885c3a6f1e4d2f968dfff74facfae308  blocks/ru/green_bioshroom_door_upper.png RU:block/green_bioshroom_door_top.png       verbatim, renamed
+8738ed717b1227a9290448197cdeebfd72e2bb921e0dca37d2723df44c2cc577  blocks/ru/green_bioshroom_door_lower.png RU:block/green_bioshroom_door_bottom.png    verbatim, renamed
+7606e2252fdcda540604b491eafb9717992783523a24b374e16eb24df647b4db  blocks/ru/green_bioshroom_trapdoor.png RU:block/green_bioshroom_trapdoor.png       verbatim
+eb83566d534ce7c8ef077a96dc164ca6fae670611eaf3c5f513ee858430360ab  items/ru/green_bioshroom_door.png  RU:item/green_bioshroom_door.png            verbatim
+cc2fd043649151974414ed5c12e9a8eb1277e115597d847d52120f71692af850  items/ru/green_bioshroom_sign.png  RU:item/green_bioshroom_sign.png            verbatim
+4f4b88b882e3ea82bb9796757ce48de6e5e119fad94a859e151f6686fc768432  entity/signs/green_bioshroom.png   RU:entity/signs/green_bioshroom.png         verbatim
+fd736b8373d526347bdd7f97f4dc9f41d1ae29895ace2cf09461324b283506b3  blocks/ru/joshua_door_upper.png    RU:block/joshua_door_top.png                verbatim, renamed
+427e41c9ae2898c6aa385bd51c86a15157d3754e28776d4b3fb1cc00dbd5370c  blocks/ru/joshua_door_lower.png    RU:block/joshua_door_bottom.png             verbatim, renamed
+3b6f91f5ccdbf3fc64b186d1bf80395db7f0a4e9ca2eced71157f8052a9ce45f  blocks/ru/joshua_trapdoor.png      RU:block/joshua_trapdoor.png                verbatim
+899dcca5b534e1edfbe57f1d0a80d193895b4abdc21748b390ff07dba8812195  items/ru/joshua_door.png           RU:item/joshua_door.png                     verbatim
+c7768bb65a09b136b0c2c4fc2974dab3d69345fea02fbca71873d86cf0099593  items/ru/joshua_sign.png           RU:item/joshua_sign.png                     verbatim
+240ef26af8d926d4f05d56f72030d213fd14905d485f3de6ba08db384fc5868a  entity/signs/joshua.png            RU:entity/signs/joshua.png                  verbatim
+cf9735b55dd2ac96a4f3a7e61cb835cf6d6fe56c98bebcffd16c06aaccf2549a  items/ru/joshua_boat.png           RU:item/joshua_boat.png                     verbatim
+d36f7f69028673785d4d17557d563611c943fa609727646fd111f9eb1bccfd2c  items/ru/joshua_chest_boat.png     RU:item/joshua_chest_boat.png               verbatim
+f744098b614a1b542c48b99841df2a331ff1e5649083c1634a7e846e65767277  entity/boat/joshua.png             RU:entity/boat/joshua.png                   verbatim
+9c012da49905d24d2cefa8732793637d269256e316aed21998775f0d7e8f235a  blocks/ru/kapok_door_upper.png     RU:block/kapok_door_top.png                 verbatim, renamed
+702e0ebfff6126f447888cf505201c6323abac1f8186532361060a1e70e6ec8c  blocks/ru/kapok_door_lower.png     RU:block/kapok_door_bottom.png              verbatim, renamed
+0dfb61e13712950b52c805a3f973fe8459278ad9db623df7afcefab2a1a04ebd  blocks/ru/kapok_trapdoor.png       RU:block/kapok_trapdoor.png                 verbatim
+b61f89a08aed597b4743d6d7dfb91dc2c640b52cdafac079b62525b5ad165dc8  items/ru/kapok_door.png            RU:item/kapok_door.png                      verbatim
+75bc4cece6dd8413ca62a5f7d33b5285dd42ea2a54e606d0084bb363d57fcd89  items/ru/kapok_sign.png            RU:item/kapok_sign.png                      verbatim
+b8fb3aba2afea591932094c8165a57ed1c389948bd1a5f5595e309be29f41365  entity/signs/kapok.png             RU:entity/signs/kapok.png                   verbatim
+40e1ebe455c8a34202ddac89e900f652df61bf37f1a77053742bc8fb20d8e55a  items/ru/kapok_boat.png            RU:item/kapok_boat.png                      verbatim
+39ae815c7011647530cbe67edc3647b28d60cdebaca07829323260e80419cb37  items/ru/kapok_chest_boat.png      RU:item/kapok_chest_boat.png                verbatim
+e00fb8e321e3a2fb2d296b7ac71e87d2cd4609b1673210a1ea21f1fd7600c5f0  entity/boat/kapok.png              RU:entity/boat/kapok.png                    verbatim
+b3c434b90c4f78e2da6ffadd3e1655d59fb40ce27120e522049a16c5a4e3053d  blocks/ru/larch_door_upper.png     RU:block/larch_door_top.png                 verbatim, renamed
+af911a7cfbe01bfe196e340e3043e1dd3c032827805ea49f1908f932b77d7d17  blocks/ru/larch_door_lower.png     RU:block/larch_door_bottom.png              verbatim, renamed
+4d6999411c6158b5f314aebb25a9df6dbf86718346ac9d9c0cf32c2f094fc458  blocks/ru/larch_trapdoor.png       RU:block/larch_trapdoor.png                 verbatim
+b18e531646b2ec5c182a3eda06c03074d253504ce49ade9a7df94366cd61be78  items/ru/larch_door.png            RU:item/larch_door.png                      verbatim
+4b2b6c41dccf1083e938bf5baa02ca46f6365bca89109b1f7841d13616cad1a5  items/ru/larch_sign.png            RU:item/larch_sign.png                      verbatim
+f2a3ca2916509b7adc107b9f69a7bc9bea41e1e49d61004a0f0345585ab3e2da  entity/signs/larch.png             RU:entity/signs/larch.png                   verbatim
+c51448dfb0f5fe0ececee740e8db5c9088b6efb571783c26b8db84722e65cd45  items/ru/larch_boat.png            RU:item/larch_boat.png                      verbatim
+353b507d10107183e0ee85b51cfedade6e4517ead6069670c6ba7174688e2129  items/ru/larch_chest_boat.png      RU:item/larch_chest_boat.png                verbatim
+139352b485c2a46fc3602da12df05c561bc03a69998b01e9c50480e5c814d41d  entity/boat/larch.png              RU:entity/boat/larch.png                    verbatim
+269205d3741b75d38d07be76a51642b93137c4912273dde99c5381fc18265367  blocks/ru/magnolia_door_upper.png  RU:block/magnolia_door_top.png              verbatim, renamed
+d12f26d164ad2300e0a7f96c6e46897a3a6540d4f1561e02e514dac954790897  blocks/ru/magnolia_door_lower.png  RU:block/magnolia_door_bottom.png           verbatim, renamed
+61e754e5c3a17d0c1018dc946900d69c6493ce2f2f5c2944ce056390f6e7f066  blocks/ru/magnolia_trapdoor.png    RU:block/magnolia_trapdoor.png              verbatim
+9fe314f10942c466e85504e8a7987ab241d8e01dd267fc743e61ab26125470d4  items/ru/magnolia_door.png         RU:item/magnolia_door.png                   verbatim
+8583fc8c0a9f60a636f5d4c0b65c8de2e530308286471696c2240cb06484b680  items/ru/magnolia_sign.png         RU:item/magnolia_sign.png                   verbatim
+0bf717c58b62944c42dcccae6249b2f7764d23568213f792d750d0a6e932b29a  entity/signs/magnolia.png          RU:entity/signs/magnolia.png                verbatim
+c7de49c07c9a50a6afec0b6c0b6dcdfa07c3c9befd7562192de439a34f6189bc  items/ru/magnolia_boat.png         RU:item/magnolia_boat.png                   verbatim
+5d71ea0b865499e2d1ae462b6a95ab5ebbac7a65196c884d2cfc14cd88ef27b2  items/ru/magnolia_chest_boat.png   RU:item/magnolia_chest_boat.png             verbatim
+3f59399b50f4d48550da361153314af33a9c6bbcce61b031d83eae3a87c25d87  entity/boat/magnolia.png           RU:entity/boat/magnolia.png                 verbatim
+82f8a313170bcbf22a8d0b6859005a376cee41bebf9b1550a49e4be0d6a7e3e7  blocks/ru/maple_door_upper.png     RU:block/maple_door_top.png                 verbatim, renamed
+42b817d39092598f25d629650fca0aa6c1ff7b0bdba7d295669f09c42ff32c9b  blocks/ru/maple_door_lower.png     RU:block/maple_door_bottom.png              verbatim, renamed
+4efed96a3fb3b3d0d29ca2704daed891aca8e826eebbb8457385e2dc3f6fdbf4  blocks/ru/maple_trapdoor.png       RU:block/maple_trapdoor.png                 verbatim
+fef90b206dddd410ba74b16b8a0c987d8a195572fabb7dadad468196129203ea  items/ru/maple_door.png            RU:item/maple_door.png                      verbatim
+bb31dbb29f4b2430aa00f5056c6752cd6bbb14d423f249313de9e8d45bdc7b43  items/ru/maple_sign.png            RU:item/maple_sign.png                      verbatim
+ed5d3d4308da70ef85c62711e5efe3923382d4a87fe347e3a288421440cfc2f0  entity/signs/maple.png             RU:entity/signs/maple.png                   verbatim
+4a10275456b1fbbdcdadfc5517dd88684af4bb40735aa12a8b5f8cb8f2717f11  items/ru/maple_boat.png            RU:item/maple_boat.png                      verbatim
+ecbbd29bfe9b41d99d40487efdc4e55164c7269488c094d50366f609b420982d  items/ru/maple_chest_boat.png      RU:item/maple_chest_boat.png                verbatim
+84d218c1b0b408413693be392d93f396ea865ddc79c4af99455dd548e85e67b6  entity/boat/maple.png              RU:entity/boat/maple.png                    verbatim
+2ca1ebcbaca145e3a8f55173fe49310a2270766b5707a6d3580cbfb3b4e61893  blocks/ru/palm_door_upper.png      RU:block/palm_door_top.png                  verbatim, renamed
+40cfcafd0d8231c9571fbd2bec6664b5bded87abe6bac47cb5109f6df5c102f0  blocks/ru/palm_door_lower.png      RU:block/palm_door_bottom.png               verbatim, renamed
+7cf6483cb5a1156da86f852560f9a7eec1803acdc6cd7d40d66b6bb7701a1b2b  blocks/ru/palm_trapdoor.png        RU:block/palm_trapdoor.png                  verbatim
+4105a4c804fd5336180c10a8641f2e578ea3d6f47df862e87163fb73912f9e25  items/ru/palm_door.png             RU:item/palm_door.png                       verbatim
+2dd78d55c97195bb8c77fd86e187e65ccbcc06aea3d978f11bd0ca8c8d4a4688  items/ru/palm_sign.png             RU:item/palm_sign.png                       verbatim
+1363fcd4951270c2f6ba0cf9b8c3ca20eb279a237d96a0926cb5ddbe6fcc3c03  entity/signs/palm.png              RU:entity/signs/palm.png                    verbatim
+5150894818dc1d5301efa85d10d0a197c95d795f97f4fe356b7291f484636e40  items/ru/palm_boat.png             RU:item/palm_boat.png                       verbatim
+72ce516fe20b42d61fe564adfaac42223de8cbc8b2655bf1ec156cab808495e3  items/ru/palm_chest_boat.png       RU:item/palm_chest_boat.png                 verbatim
+1ae90d3ef3427ecf6cbc36fcbb8940cc92c993529403d3f0b256182b8b80e82a  entity/boat/palm.png               RU:entity/boat/palm.png                     verbatim
+571a27466b540883d13f65f40d384bfce09f73a126144f7f9ff630b33cf84466  blocks/ru/pine_door_upper.png      RU:block/pine_door_top.png                  verbatim, renamed
+4245345ce18c09db15a8659cffb383f8eef78927804f223202d89347350e4c0b  blocks/ru/pine_door_lower.png      RU:block/pine_door_bottom.png               verbatim, renamed
+4d07ead052345d75846dfe6fa2de721ba38b43a82da22cab62dd97510764be1c  blocks/ru/pine_trapdoor.png        RU:block/pine_trapdoor.png                  verbatim
+308f5c10ce960a583e503c5187dcd35062159bc552d3f9927a34f01d18527e2c  items/ru/pine_door.png             RU:item/pine_door.png                       verbatim
+97e4639b529ee802a44d530551a8dcece88dbc8d9b7505481e15ea84ce7b4534  items/ru/pine_sign.png             RU:item/pine_sign.png                       verbatim
+b71dd9a5e183c3e9ca90c1fdf2120b28bcf6a1888e41fcbba703021852ac5511  entity/signs/pine.png              RU:entity/signs/pine.png                    verbatim
+93d49739b6db642080242447a6195e97ecfa6f11d5158368013790fe8a173d76  items/ru/pine_boat.png             RU:item/pine_boat.png                       verbatim
+d66ee09d80a2d70c3e6d1db4870820d16c524f74783862f38d97f116a91b38d0  items/ru/pine_chest_boat.png       RU:item/pine_chest_boat.png                 verbatim
+0e54f3071e35ab1b2d7608a68437e78c22402c36f2011591045ad5f724d6c255  entity/boat/pine.png               RU:entity/boat/pine.png                     verbatim
+7782311e90189b6297c468cbcf5471c50c61f198ae6360abb0cc2fd4be7af395  blocks/ru/pink_bioshroom_door_upper.png RU:block/pink_bioshroom_door_top.png        verbatim, renamed
+a245b99a46eb602a3855b84e92a4659b7936cafbd47638c7d28f58645175ac1e  blocks/ru/pink_bioshroom_door_lower.png RU:block/pink_bioshroom_door_bottom.png     verbatim, renamed
+d2605f37166c0613c0607a80104871173d11545a2fd27aa639d1d16247346c1c  blocks/ru/pink_bioshroom_trapdoor.png RU:block/pink_bioshroom_trapdoor.png        verbatim
+d402a410eef97c3ada1ff95fb8399eb2ac60f01673379892f139da0ee9b3141d  items/ru/pink_bioshroom_door.png   RU:item/pink_bioshroom_door.png             verbatim
+49b6aa377f32eade7689491830924d44a255b7d35b60f1b5722a1c96ba89d2ee  items/ru/pink_bioshroom_sign.png   RU:item/pink_bioshroom_sign.png             verbatim
+22c8f71f6c9a4107f907ba6867d4285115c70cd6b738ad1b70337f7174914f3d  entity/signs/pink_bioshroom.png    RU:entity/signs/pink_bioshroom.png          verbatim
+84fdca032f1d8d8e62aa172458aadccf0750e1d50da7c7fc970e53f739fd39ec  blocks/ru/redwood_door_upper.png   RU:block/redwood_door_top.png               verbatim, renamed
+d8195adebea34895cf120fd704bdff3220f0bd98e8f9fa9cf1b78fc1412f9309  blocks/ru/redwood_door_lower.png   RU:block/redwood_door_bottom.png            verbatim, renamed
+fa6a48c72b83b6e3ff185c7af1878f3137820722bb5fec0be1eb207a82f8a360  blocks/ru/redwood_trapdoor.png     RU:block/redwood_trapdoor.png               verbatim
+9888e9130483b4c28e34c975e5814d62bb99d679943c450341fa8596a0bd890f  items/ru/redwood_door.png          RU:item/redwood_door.png                    verbatim
+43ab58ef072456fbaba14590017e97e9d1de558f8cb4dc45a6676afcf0ea4805  items/ru/redwood_sign.png          RU:item/redwood_sign.png                    verbatim
+1484a2ddb6e81cf9220caf933542c271769c5ea23a8f461a4f859750185f08cc  entity/signs/redwood.png           RU:entity/signs/redwood.png                 verbatim
+10bcb95ab7a311d64b159575c800901f7ab618edf27d154b7ba85c4ad3aebf09  items/ru/redwood_boat.png          RU:item/redwood_boat.png                    verbatim
+24cefb0c6a32ba8664913634c41b6ff2d2be0748fa6d39a7cb86c61df31d4927  items/ru/redwood_chest_boat.png    RU:item/redwood_chest_boat.png              verbatim
+4b8e25f00b3dfa2bc50fcf9be7fae059435ca94b622eab981b95aed9d89d63f3  entity/boat/redwood.png            RU:entity/boat/redwood.png                  verbatim
+71bf698e4e06211900a4bc1be9e593664ed55ac56217e8a7f795f6b809adf0e9  blocks/ru/socotra_door_upper.png   RU:block/socotra_door_top.png               verbatim, renamed
+2556de1416cae372b85d5a81e0c1d5d7ae1dbe059781c69242e5c20d59ca3d18  blocks/ru/socotra_door_lower.png   RU:block/socotra_door_bottom.png            verbatim, renamed
+bfea6c566c2548af0b73705d6144ef3786b00b120002d9861bde9c3d31dbff7b  blocks/ru/socotra_trapdoor.png     RU:block/socotra_trapdoor.png               verbatim
+b9017c908f22bd5c5811667b01b15932daf2b018c271f695d911554b9fa9ea06  items/ru/socotra_door.png          RU:item/socotra_door.png                    verbatim
+e00eea0df08b843b0e81e28064eeb875af6caae667dbacf3ae937dad0ca62411  items/ru/socotra_sign.png          RU:item/socotra_sign.png                    verbatim
+6facaad1b7716adbb6a8c2b64a082f03621c88e1f0c85825779bf529a5cc9bd2  entity/signs/socotra.png           RU:entity/signs/socotra.png                 verbatim
+3a19678b904c0581c13d827dee40475f43a365245c596ac3744b8c96e9fd16fc  items/ru/socotra_boat.png          RU:item/socotra_boat.png                    verbatim
+25e6f6c1c3e9602987283f77dccb9fb83960956fd02d2c6cd7a6122c99cb8b95  items/ru/socotra_chest_boat.png    RU:item/socotra_chest_boat.png              verbatim
+243be8d8b2f3339903bdfc58c29ed9d5597292e56237fe215aa80a7aec4e4e77  entity/boat/socotra.png            RU:entity/boat/socotra.png                  verbatim
+b2f3c44c998e027e6a78a5f31de75514eddda19889828d753e3e5baa50e22213  blocks/ru/willow_door_upper.png    RU:block/willow_door_top.png                verbatim, renamed
+dd7f6709f5a14ef6495f1c96c5da0edfa0f84fc6cde771ef45f6f8b7e74600f0  blocks/ru/willow_door_lower.png    RU:block/willow_door_bottom.png             verbatim, renamed
+d4d3e21a8fda28f71c3df5e8b9f2c1cd74659f72b1e6287b70b4cf24915c2f67  blocks/ru/willow_trapdoor.png      RU:block/willow_trapdoor.png                verbatim
+3c50c0d4fd2814f3dc95a7a3a201fce3dce19de84b99e141a3f0ed1f4fdb89ed  items/ru/willow_door.png           RU:item/willow_door.png                     verbatim
+eeeb561c439e74e2e64d7041f72faec4546c3dd0a1b78c20db4b3fa1054d1592  items/ru/willow_sign.png           RU:item/willow_sign.png                     verbatim
+f318bdc6b35db13bf0131692fa23e1c20451c215d53cb9bf1b1bc53d25c24f7c  entity/signs/willow.png            RU:entity/signs/willow.png                  verbatim
+5b05694854d367f8205391541888b61f9fa50933044649ffe2d4c66f968668da  items/ru/willow_boat.png           RU:item/willow_boat.png                     verbatim
+62f834a159ea7f81bf1c1b104127430a3cdd99acd7e8e375b449ee2466f412de  items/ru/willow_chest_boat.png     RU:item/willow_chest_boat.png               verbatim
+d6094082e2ddce9520bce929929c7232f50e94f592e5c69aec0a66c404544ebf  entity/boat/willow.png             RU:entity/boat/willow.png                   verbatim
+fcf17a458fdd30e788a347f193c02ae463020dfc439ab2a2f998b677dbf5da8c  blocks/ru/wisteria_door_upper.png  RU:block/wisteria_door_top.png              verbatim, renamed
+99374606cdb6e39da9f9ed92e8769d277f345a85026f9f5416a2bbedeaa1f681  blocks/ru/wisteria_door_lower.png  RU:block/wisteria_door_bottom.png           verbatim, renamed
+f9b4a5ede8ebfc483836a315b1ae5699a53c34868627f1ae61da891f0fd4364f  blocks/ru/wisteria_trapdoor.png    RU:block/wisteria_trapdoor.png              verbatim
+c1c09c511f711e8ad52a8c4c6e56380a4b15e1b5fb1af643c9a4844994723f1c  items/ru/wisteria_door.png         RU:item/wisteria_door.png                   verbatim
+86d936073276632cdb901a3c1c3d73e29a2a458d1f7b586e4d9789aadcbc9190  items/ru/wisteria_sign.png         RU:item/wisteria_sign.png                   verbatim
+70d86c04c451231d3259756527fbfcd8a66af26cd9b122a847a04b3d60319fe6  entity/signs/wisteria.png          RU:entity/signs/mauve.png                   verbatim, renamed
+b47794e66379c080c1be3d26ff0046e90d2dc20345d4d4ad83aa67041c871dbb  items/ru/wisteria_boat.png         RU:item/wisteria_boat.png                   verbatim
+25ec52fbac7033faa1188aff58afe42c01001294ae6d3b9692b310c9c0b7ade2  items/ru/wisteria_chest_boat.png   RU:item/wisteria_chest_boat.png             verbatim
+ee36eab51e1e249a3b5722ea20f69db12488ce4d37548952fb218b6a2c5e169f  entity/boat/wisteria.png           RU:entity/boat/mauve.png                    verbatim, renamed
+997b3cba055c1ad00644894fe1d10c437c7476242f11524960de50a9ac846eba  blocks/ru/yellow_bioshroom_door_upper.png RU:block/yellow_bioshroom_door_top.png      verbatim, renamed
+f27c2aa66780937f9cf1baa68ff05c1a2935087cb0126ac5351b86a837b3eee0  blocks/ru/yellow_bioshroom_door_lower.png RU:block/yellow_bioshroom_door_bottom.png   verbatim, renamed
+8863fa2fced1f8eaa100dba9f1b8fb811fdce7f1d7c549ff12fecdb306a10a99  blocks/ru/yellow_bioshroom_trapdoor.png RU:block/yellow_bioshroom_trapdoor.png      verbatim
+b207f8693fab261ca40c2d423a4fcceb3e4ce84b94302883ed61b234a3f26ab2  items/ru/yellow_bioshroom_door.png RU:item/yellow_bioshroom_door.png           verbatim
+08ecccc0c087f7df249b7b28a4e2531c543c27f8d3f2546db9062e47ff70e213  items/ru/yellow_bioshroom_sign.png RU:item/yellow_bioshroom_sign.png           verbatim
+1d6eed0cb3a4e9c3b6919501505620f3dd9903bbb144f93b634673e91ee4da0a  entity/signs/yellow_bioshroom.png  RU:entity/signs/yellow_bioshroom.png        verbatim

@@ -2,6 +2,7 @@ package industries.angelic.biomic;
 
 import net.minecraftforge.common.MinecraftForge;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import industries.angelic.biomic.client.BiomicRenderIds;
@@ -20,6 +21,10 @@ import industries.angelic.biomic.client.render.RuAquaticRenderer;
 import industries.angelic.biomic.client.render.RuBranchRenderer;
 import industries.angelic.biomic.client.render.RuDoublePlantRenderer;
 import industries.angelic.biomic.client.render.SculkRenderer;
+import industries.angelic.biomic.client.render.WoodBoatRenderer;
+import industries.angelic.biomic.client.render.WoodSignRenderer;
+import industries.angelic.biomic.content.block.TileEntityWoodSign;
+import industries.angelic.biomic.content.entity.EntityWoodBoat;
 
 public class ClientProxy extends CommonProxy {
 
@@ -47,6 +52,8 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void init(FMLInitializationEvent event) {
         super.init(event);
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodSign.class, new WoodSignRenderer());
+        RenderingRegistry.registerEntityRenderingHandler(EntityWoodBoat.class, new WoodBoatRenderer());
         BiomicRenderIds.DRIPLEAF = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(new DripleafRenderer(BiomicRenderIds.DRIPLEAF));
         BiomicRenderIds.LUSH_PLANTS = RenderingRegistry.getNextAvailableRenderId();
