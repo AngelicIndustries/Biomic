@@ -1187,6 +1187,11 @@ final class OrigenSurfaceRuntime {
         return material == BiomicTerrainSampler.STONE || material == BiomicTerrainSampler.BEDROCK;
     }
 
+    /** Whether Origen floods a profile's open ground under the sea's level (sinkholes and sunken basins stay dry). */
+    boolean holdsSea(OrigenBiomeProfile biome) {
+        return profile(biome).hasOcean();
+    }
+
     private SurfaceProfile profile(OrigenBiomeProfile biome) {
         SurfaceProfile profile = profiles[biome.ordinal()];
         if (profile == null) {

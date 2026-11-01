@@ -8,7 +8,7 @@
 
 Usage: tools/bench/profile_bench.py --profile pack|standalone --out DIR [--height 512|256] [--order grid|shuffled|dh]
        [--windows standard|order|"CX,CZ;CX,CZ"] [--radius 12] [--jar JAR] [--aac JAR] [--hohenangst JAR] [--archaicfix] [--port 25712] [--cpus 8-13]
-       [--jvm -Dname=value ...] [--palette FILE] [--seed SEED]
+       [--jvm -Dname=value ...] [--palette FILE] [--seed SEED] [--with REGEX] [--config FILE]
 
 The benchmark always generates its default window (chunk 256,-256) besides the listed centres: "standard" is 17
 windows, "order" (the determinism check's) 4. DIR gets server/world, server.log, result.txt and manifest.json (the
@@ -18,6 +18,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -57,6 +58,9 @@ def main():
     parser.add_argument('--jvm', action='append', default=[], help='an extra JVM argument (repeatable)')
     parser.add_argument('--palette', default=None, help="a block palette to use as the server's config/biomic-palette.json")
     parser.add_argument('--seed', default=None, help="the world seed in place of the template's")
+    parser.add_argument('--with', dest='keep', default=None,
+                        help="a standalone run keeps the template's optional mods whose jar names match this regex")
+    parser.add_argument('--config', default=None, help="a biomic.cfg for the server (Biomic fills in the rest)")
     args = parser.parse_args()
     if args.profile == 'pack' and args.height != '512':
         sys.exit('the pack profile is 512 high (Hohen Angst is part of the pack)')
@@ -78,6 +82,8 @@ def main():
         review.drop_biomic_configs(os.path.join(server, 'config'))
     if args.palette:
         shutil.copy2(os.path.abspath(args.palette), os.path.join(server, 'config', 'biomic-palette.json'))
+    if args.config:
+        shutil.copy2(os.path.abspath(args.config), os.path.join(server, 'config', 'biomic.cfg'))
     if args.seed is not None:
         properties = os.path.join(server, 'server.properties')
         lines = [f'level-seed={args.seed}' if l.startswith('level-seed=') else l
@@ -86,7 +92,12 @@ def main():
 
     launch = json.load(open(os.path.join(TEMPLATE, 'launch.json')))
     command = review.retarget(launch['server'], launch['old_session'], out, jar)
+    template = command
     command = review.with_mods(command, args.profile, int(args.height), os.path.abspath(args.aac) if args.aac else None)
+    if args.keep:
+        for jar in template[template.index('-cp') + 1].split(':'):
+            if re.search(args.keep, os.path.basename(jar), re.I):
+                command = review.with_jar(command, jar)
     if args.hohenangst:
         command = review.with_hohenangst(command, os.path.abspath(args.hohenangst))
     if args.archaicfix:

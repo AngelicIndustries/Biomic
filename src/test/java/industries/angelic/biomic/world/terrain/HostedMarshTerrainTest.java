@@ -26,6 +26,22 @@ public class HostedMarshTerrainTest {
     }
 
     @Test
+    public void onlyTheMarshsOwnColumnsTakeItsWater() {
+        // A dry hollow at y 55, under the sea's level: Pillow Plains' sunken floor, Origen keeps it dry. Outside the
+        // wetland it must stay dry; it flooded to the sea's level and stood as water walls (report, 2026-11-01).
+        var marsh = new HostedMarshTerrain(42, (x, z) -> x >= 8);
+        byte[] cells = new byte[65536], origins = new byte[65536];
+        for (int x = 0; x < 16; x++) for (int z = 0; z < 16; z++) for (int y = 1; y <= 55; y++) {
+            cells[index(x, y, z)] = y == 55 ? GRASS : STONE;
+            origins[index(x, y, z)] = 1;
+        }
+        marsh.apply(cells, origins, 0, 0);
+        for (int x = 0; x < 8; x++) for (int z = 0; z < 16; z++) for (int y = 56; y <= 63; y++)
+            assertEquals("outside the marsh at " + x + "," + y + "," + z, AIR, cells[index(x, y, z)]);
+        assertEquals(WATER, cells[index(12, 63, 8)]);
+    }
+
+    @Test
     public void rewritesAreProjectedWithoutTouchingFloatingIslandsOrSharedAuthoredData() {
         var marsh = new HostedMarshTerrain(42, (x, z) -> true);
         byte[] cells = new byte[65536], origins = new byte[65536];

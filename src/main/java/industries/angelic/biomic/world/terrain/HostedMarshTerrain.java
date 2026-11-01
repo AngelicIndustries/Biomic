@@ -46,15 +46,21 @@ final class HostedMarshTerrain {
         this(
             context.getSettings()
                 .getWorldSeed(),
-            new RegionalHabitatSampler(context));
+            marsh(new RegionalHabitatSampler(context), OrigenSurfaceRuntime.shared(context)));
     }
 
-    private HostedMarshTerrain(long seed, RegionalHabitatSampler habitats) {
-        this(seed, (x, z) -> {
+    /**
+     * A wetland habitat's column, where Origen's ground holds the sea. On a basin Origen keeps dry under the sea's
+     * level (sinkholes, the Pillow Plains' sunken floor) the marsh's water would stand as walls over the dry ground
+     * around it, so there the habitat keeps Origen's ground, and the marsh's flattening fades out at the basin's edge.
+     */
+    private static BiPredicate<Integer, Integer> marsh(RegionalHabitatSampler habitats, OrigenSurfaceRuntime surface) {
+        return (x, z) -> {
             String key = habitats.sample(x, z);
-            return SaltMarshCompat.BIOME.equals(key)
-                || industries.angelic.biomic.compat.biome.BopNativeBiomes.lowlandWetland(key);
-        });
+            return (SaltMarshCompat.BIOME.equals(key)
+                || industries.angelic.biomic.compat.biome.BopNativeBiomes.lowlandWetland(key))
+                && surface.holdsSea(habitats.foundationAt(x, z));
+        };
     }
 
     HostedMarshTerrain(long seed, BiPredicate<Integer, Integer> habitat) {
@@ -62,15 +68,10 @@ final class HostedMarshTerrain {
     }
 
     static HostedMarshTerrain shifted512(WorldgenContext context) {
-        RegionalHabitatSampler habitats = new RegionalHabitatSampler(context);
         return shifted512(
             context.getSettings()
                 .getWorldSeed(),
-            (x, z) -> {
-                String key = habitats.sample(x, z);
-                return SaltMarshCompat.BIOME.equals(key)
-                    || industries.angelic.biomic.compat.biome.BopNativeBiomes.lowlandWetland(key);
-            });
+            marsh(new RegionalHabitatSampler(context), OrigenSurfaceRuntime.shared(context)));
     }
 
     static HostedMarshTerrain shifted512(long seed, BiPredicate<Integer, Integer> habitat) {
@@ -164,6 +165,9 @@ final class HostedMarshTerrain {
                 old--;
             // A floating island or high authored landform above the marsh vetoes this column.
             if (old > 96 || (origins[start + old] & TerrainDensitySampler.FLOATING_ORIGIN) != 0) continue;
+            // Only the marsh's own columns: the water below kept the sea's level only for them, and without this every
+            // dry hollow from y 50 up in the world flooded wherever a wetland was enabled (report, 2026-11-01).
+            if (!habitat.test(cx * 16 + x, cz * 16 + z)) continue;
             if (old < 50) {
                 int level = sealLevel(cx * 16 + x, cz * 16 + z), top = Math.max(level, SEA);
                 if (level == Integer.MIN_VALUE || !openAir(cells, origins, start, level - SEAL_DEPTH + 1, top))
@@ -213,6 +217,7 @@ final class HostedMarshTerrain {
                 .orElseThrow();
             int oldIndex = layout.index(x, oldPhysical, z);
             if (oldSource > 96 || (origins[oldIndex] & TerrainDensitySampler.FLOATING_ORIGIN) != 0) continue;
+            if (!habitat.test(cx * 16 + x, cz * 16 + z)) continue;
             if (oldSource < 50) {
                 sealShifted(cells, origins, mask, x, z, cx * 16 + x, cz * 16 + z);
                 continue;
