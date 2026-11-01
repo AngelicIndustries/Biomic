@@ -4,6 +4,21 @@ Source repository: <https://github.com/ApolloUnknowndev/RegionsUnexplored>
 Pinned revision: `f5dfe4eea916cb7ccb4990faebc952459dad5f8b`  
 License: MIT; full notice in `THIRD_PARTY_NOTICES.md`
 
+## Woods — November 1, 2026
+
+`content.BiomicWoods` gives every RU wood Biomic grows logs of its planks, slab and stairs, under RU's ids
+(`biomic:pine_planks`, `pine_slab`, `pine_stairs`; the double slab is `pine_double_slab`), with the 23 planks textures
+its `models/block/<wood>_planks.json` bind, copied verbatim (brimwood's two-frame animation with its `.mcmeta`); hashes
+in `regions-unexplored-assets.sha256`. Slabs and stairs use the planks art, as RU's models do. From pinned `RUBlocks`
+and `WoodSet`: hardness 2 and resistance 3, the fireproof sets (brimwood, cobalt, dead, yellow bioshroom) take no fire,
+and the alpha slab keeps its stone-like properties (hardness 1.5, stone sound, a pickaxe to drop). Recipes follow RU's
+data: `recipe/<wood>_planks.json` (one log of the wood's `<wood>_logs` tag, stripped and transition logs included,
+makes four planks; ashen logs make dead planks), the slab and stairs recipes, and charcoal for the logs in RU's
+`minecraft:logs_that_burn`. Small oak and silver birch logs make vanilla oak and birch planks and bamboo logs Et Futurum
+Requiem's bamboo planks (birch without it), as RU makes vanilla's. Names are RU's, in English, Japanese, Russian,
+Ukrainian and Chinese where RU has them. Biomic's 1.7 block, slab and stairs classes are its own code, and the ore names
+(`logWood`, `plankWood`, `slabWood`, `stairWood`, `treeLeaves`) are Forge conventions, not RU data.
+
 ## Surface rendering repair — September 7, 2026
 
 `tools/ru_reference/import_cave_models.py` now imports 21 source-model families.

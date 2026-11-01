@@ -305,6 +305,7 @@ public final class BiomicBlocks {
         industries.angelic.biomic.content.ports.PortBlocks.register();
         RuImportedTreeBlocks.register();
         RuImportedDecorationBlocks.register();
+        BiomicWoods.register();
         Blocks.fire.setFireInfo(WISTERIA_LOG, 5, 5);
         Blocks.fire.setFireInfo(WISTERIA_BRANCH, 5, 5);
         Blocks.fire.setFireInfo(WISTERIA_LEAVES, 30, 60);

@@ -119,3 +119,29 @@ c5964f1d355e65588e4af8445981627decb19526e823cc1bb70da92fb11f5d0d  ru_reference/m
 64b9af9b396156b430854c67dc4c6efbf16cecc7089c6de98a6f6f6dfcf838fd  ru_reference/models/clover_4.json  RU:models/block/clover_4.json  verbatim
 
 # Vanilla compatibility item art, not RU-authored content.
+
+# Woods (2026-11-01): planks art, also facing the slabs and stairs; destinations under textures/blocks/ru/.
+bda5af5ea29953500bdc6064d240c7f71b9ff0bf300fc9d9a52ecd0d60e322f0  ru/alpha_oak_planks.png            RU:block/alpha_oak_planks.png               verbatim
+eaace691c2f07a83cd434005a2c2d717de458154c40621a3ceb6d1ef5fdf732d  ru/baobab_planks.png               RU:block/baobab_planks.png                  verbatim
+458130d778a265c0c6dd572ac11c17995db914eb23f38c8838bcaac6c8e5fa97  ru/blackwood_planks.png            RU:block/blackwood_planks.png               verbatim
+83774e80e9a579873dcca94f032887c178fa2526c2542d33ad033dcf8ccd8627  ru/blue_bioshroom_planks.png       RU:block/blue_bioshroom_planks.png          verbatim
+8c2b13510f59f2c79ec39e45672ffffef7607e381f1ca32cc15060127210a624  ru/brimwood_planks.png             RU:block/brimwood_planks.png                verbatim
+c89e4ebe0147fcd5e23c83c612ebf6ed321a15e37c60b86837e99b938d29db3f  ru/brimwood_planks.png.mcmeta      RU:block/brimwood_planks.png.mcmeta         verbatim
+bd5c4c5bcac5c29c649f2bac0ed45822831d4814d1b4e857175f01b21b3f7663  ru/cobalt_planks.png               RU:block/cobalt_planks.png                  verbatim
+dfde6258ad0cec64e54e94e66abb5edb03989cd815127befca22f7fc59672258  ru/cypress_planks.png              RU:block/cypress_planks.png                 verbatim
+77d1aa9b90e515cfbeeffa1bfe88ace95ad77ffe7edaa5963c657272285ca5c8  ru/dead_planks.png                 RU:block/dead_planks.png                    verbatim
+c6c4904899307a9b238fadbea0da9541747fb968839f3f5d9a1dc8c449f63893  ru/eucalyptus_planks.png           RU:block/eucalyptus_planks.png              verbatim
+74ab323ec927e21c82b7b4cfb48a121cbfea319eff534a97ea8215037f352c7c  ru/green_bioshroom_planks.png      RU:block/green_bioshroom_planks.png         verbatim
+9007ef648bb9bf8241b75b4c00f56cd9acdba868861ebc020c54d8da631b25ee  ru/joshua_planks.png               RU:block/joshua_planks.png                  verbatim
+81f9ad303aa68499b9d66211cb310e629e4313550ede05a60b74236a623a0d9a  ru/kapok_planks.png                RU:block/kapok_planks.png                   verbatim
+7eca1280822b3a1f30f470c56cc3b690d23abd70eead6366375af8bb29e9f3c9  ru/larch_planks.png                RU:block/larch_planks.png                   verbatim
+c1b24a8d6a6e059f9f52bf587adc03cc5d1c5097485ceee595ebc87a70482c44  ru/magnolia_planks.png             RU:block/magnolia_planks.png                verbatim
+406480fa36c8aeb302e6bd624a48d0cb277975252b2a74152698f86ae42513ec  ru/maple_planks.png                RU:block/maple_planks.png                   verbatim
+0cb904f82ba52e6aa029e1f49bc6f138da9e88aada42f66eaf39947038fdf7a9  ru/palm_planks.png                 RU:block/palm_planks.png                    verbatim
+fc097e12989465be9de74912a0a1590b797bfc88b9387676d0bab0b63e5946a8  ru/pine_planks.png                 RU:block/pine_planks.png                    verbatim
+99de68e7acb3d2dd78f22aabf9372639f7547842ac3a0fe48c187f27e8b45cc8  ru/pink_bioshroom_planks.png       RU:block/pink_bioshroom_planks.png          verbatim
+b1a032ed359df23c84f99d4014a4f250fbcf84df7b7cd4e24e331588754eb5dc  ru/redwood_planks.png              RU:block/redwood_planks.png                 verbatim
+460d473f183753d735aaa75577cde0acb58442e58852c8f7b99b950299c902ae  ru/socotra_planks.png              RU:block/socotra_planks.png                 verbatim
+81cef10d7d6d6f86c2705b408406ce508161d6b4b98b2751ea51e0e372dcb431  ru/willow_planks.png               RU:block/willow_planks.png                  verbatim
+6bb1453da8fbd6d437a59476b9872033a75951699658e451571d9be2b0794113  ru/wisteria_planks.png             RU:block/wisteria_planks.png                verbatim
+e0b5dd812125d3779780f22b333ae40bae75906db00f851a503750759219b7a4  ru/yellow_bioshroom_planks.png     RU:block/yellow_bioshroom_planks.png        verbatim

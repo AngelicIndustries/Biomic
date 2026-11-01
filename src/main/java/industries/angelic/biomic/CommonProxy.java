@@ -52,6 +52,7 @@ public class CommonProxy {
             .register(industries.angelic.biomic.browser.BrowserServer.INSTANCE);
         industries.angelic.biomic.world.ServerTickTiming.enableIfRequested();
         industries.angelic.biomic.world.structure.BiomicScatteredFeatures.register();
+        industries.angelic.biomic.content.BiomicWoods.addRecipes();
     }
 
     public void postInit() {
