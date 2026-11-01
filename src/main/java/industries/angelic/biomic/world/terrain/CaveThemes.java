@@ -82,7 +82,7 @@ public final class CaveThemes {
         int authoredY = ry * REGION_Y + REGION_Y / 2;
         OrigenBiomeProfile surface = origen.sampleSurfaceProfile(cx, cz);
         String name = surface.name();
-        boolean cold = surface.getClimate() == OrigenBiomeProfile.Climate.COLD;
+        boolean cold = surface.isCold();
         boolean arid = name.matches(".*(DESERT|MESA|BADLANDS|BALCON|SANDY|SALT|TERRACOTTA|ARID|CARVING|INFERNO).*");
         boolean humid = name.matches(
             ".*(SWAMP|MARSH|LUSH|JUNGLE|CANOPY|VINE|WATERY|MANGROVE|FEN|LOOPS|OVERGROWN|GLOOMY|VERDANT|BAMBOO).*");

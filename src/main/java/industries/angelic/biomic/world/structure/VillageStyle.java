@@ -69,6 +69,9 @@ record VillageStyle(String type, String material, BiomeGenBase biome) {
         if (wood == Wood.ACACIA || site.temperature() >= 1.0F && site.downfall() < 0.3F)
             return new VillageStyle("SAVANNA", "ACACIA", biome);
         if (wood == Wood.SPRUCE && site.forested()) return new VillageStyle("TAIGA", "SPRUCE", biome);
+        // Cold where snow does not lie (vanilla's taiga is 0.25): a taiga village, as modern Minecraft builds there.
+        if (site.temperature() < 0.3F)
+            return new VillageStyle("TAIGA", wood == null || wood == Wood.OAK ? "SPRUCE" : wood.name(), biome);
         if (site.ground() == Ground.MYCELIUM) return new VillageStyle("PLAINS", "MUSHROOM", biome);
         return new VillageStyle("PLAINS", wood == null || wood == Wood.SPRUCE ? "OAK" : wood.name(), biome);
     }
@@ -230,7 +233,8 @@ record VillageStyle(String type, String material, BiomeGenBase biome) {
                 swamp |= swampName(tree);
             }
             float temperature = switch (profile.getClimate()) {
-                case COLD -> 0.05F;
+                case SNOWY -> 0.05F;
+                case COLD -> 0.25F;
                 case TEMPERATE -> 0.7F;
                 case WARM -> 1.1F;
             };

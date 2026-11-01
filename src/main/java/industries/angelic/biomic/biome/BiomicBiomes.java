@@ -513,8 +513,13 @@ public final class BiomicBiomes {
     }
 
     private static Definition origenDefinition(int id, boolean register, OrigenBiomeProfile profile) {
-        float temperature = profile.getClimate() == OrigenBiomeProfile.Climate.COLD ? 0.05F
-            : profile.getClimate() == OrigenBiomeProfile.Climate.WARM ? 1.1F : 0.70F;
+        // Snow lies and falls below 0.15: snowy biomes sit under it, the cold but bare ones at vanilla taiga's 0.25.
+        float temperature = switch (profile.getClimate()) {
+            case SNOWY -> 0.05F;
+            case COLD -> 0.25F;
+            case TEMPERATE -> 0.70F;
+            case WARM -> 1.1F;
+        };
         float rainfall = profile.getClimate() == OrigenBiomeProfile.Climate.WARM ? 0.45F : 0.72F;
         float rootHeight = (float) ((profile.getAuthoredBaseY() - 63.0D) / 64.0D);
         float variation = (float) Math.min(1.6D, profile.getAuthoredRelief() / 72.0D);
@@ -531,7 +536,7 @@ public final class BiomicBiomes {
         if (isMountain(profile.getTerrainFamily())) {
             tags.add(BiomeTags.MOUNTAIN);
         }
-        if (profile.getClimate() == OrigenBiomeProfile.Climate.COLD) {
+        if (profile.isCold()) {
             tags.add(BiomeTags.COLD);
         } else if (profile.getClimate() == OrigenBiomeProfile.Climate.WARM) {
             tags.add(BiomeTags.WARM);
@@ -560,7 +565,7 @@ public final class BiomicBiomes {
 
     private static int profileColor(OrigenBiomeProfile profile) {
         int ordinalVariation = (profile.ordinal() * 0x001109) & 0x1F1F1F;
-        int base = profile.getClimate() == OrigenBiomeProfile.Climate.COLD ? 0x89A6A5
+        int base = profile.isCold() ? 0x89A6A5
             : profile.getClimate() == OrigenBiomeProfile.Climate.WARM ? 0x8EAD62 : 0x69A763;
         return (base ^ ordinalVariation) & 0xFFFFFF;
     }
@@ -589,7 +594,7 @@ public final class BiomicBiomes {
         return switch (profile) {
             case SCARLET_SANCTUARY, SCARLET_SANCTUARY_RIVER -> 0x5DB7EF;
             case FROZEN_FUNGI, FROZEN_FUNGI_RIVER -> 0xA298E4;
-            default -> profile.getClimate() == OrigenBiomeProfile.Climate.COLD ? 0x3F76E4 : 0x44AFF5;
+            default -> profile.isCold() ? 0x3F76E4 : 0x44AFF5;
         };
     }
 

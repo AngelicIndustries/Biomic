@@ -15,23 +15,23 @@ public enum OrigenBiomeProfile {
 
     ABYSSAL_ALLEYS("Abyssal Alleys", Kind.OCEAN, Climate.TEMPERATE, OrigenTerrainFamily.ABYSSAL_OCEAN, 28, 32),
     STONEGATE_SEAS("Stonegate Seas", Kind.OCEAN, Climate.TEMPERATE, OrigenTerrainFamily.OCEAN_ARCHES, 52, 24),
-    ARCTIC_ARCHES("Arctic Arches", Kind.OCEAN, Climate.COLD, OrigenTerrainFamily.OCEAN_ARCHES, 52, 24),
+    ARCTIC_ARCHES("Arctic Arches", Kind.OCEAN, Climate.SNOWY, OrigenTerrainFamily.OCEAN_ARCHES, 52, 24),
     ARID_ARBORETUM("Arid Arboretum", Kind.LAND, Climate.WARM, OrigenTerrainFamily.ARID_PILLARS, 73, 38),
     BADLANDS_BALCONIES("Badlands Balconies", Kind.LAND, Climate.WARM, OrigenTerrainFamily.TERRACE_MOUNTAINS, 75, 58),
     BAMBOO_BASIN("Bamboo Basin", Kind.LAND, Climate.WARM, OrigenTerrainFamily.BASIN_MOUNTAIN, 72, 58),
     BARE_BOULDERFIELDS("Bare Boulderfields", Kind.LAND, Climate.COLD, OrigenTerrainFamily.TILTED_PLATEAU, 85, 44),
     BLACK_FOREST("Black Forest", Kind.LAND, Climate.TEMPERATE, OrigenTerrainFamily.MOUNTAIN_CLEARINGS, 82, 55),
     SANDY_SPLITS("Sandy Splits", Kind.SPECIAL, Climate.WARM, OrigenTerrainFamily.CANYON, 73, 48),
-    ICY_INCISIONS("Icy Incisions", Kind.SPECIAL, Climate.COLD, OrigenTerrainFamily.CANYON, 73, 48),
+    ICY_INCISIONS("Icy Incisions", Kind.SPECIAL, Climate.SNOWY, OrigenTerrainFamily.CANYON, 73, 48),
     CARVING_CREAKS("Carving Creaks", Kind.LAND, Climate.WARM, OrigenTerrainFamily.CANYON, 79, 62),
     VINE_VAULT("Vine Vault", Kind.CAVE, Climate.WARM, OrigenTerrainFamily.CAVE_VAULT, 31, 44),
     FOSSILIZED_FENLANDS("Fossilized Fenlands", Kind.LAND, Climate.TEMPERATE, OrigenTerrainFamily.SEGMENTED_LOWLAND, 67,
         22),
-    FROSTY_FINGERS("Frosty Fingers", Kind.LAND, Climate.COLD, OrigenTerrainFamily.FROZEN_DUNES, 66, 31),
-    FROZEN_FUNGI("Frozen Fungi", Kind.LAND, Climate.COLD, OrigenTerrainFamily.TILTED_PLATEAU, 71, 55),
-    MOUNTAIN_MIRRORS("Mountain Mirrors", Kind.LAND, Climate.COLD, OrigenTerrainFamily.TERRACE_MOUNTAINS, 75, 58),
+    FROSTY_FINGERS("Frosty Fingers", Kind.LAND, Climate.SNOWY, OrigenTerrainFamily.FROZEN_DUNES, 66, 31),
+    FROZEN_FUNGI("Frozen Fungi", Kind.LAND, Climate.SNOWY, OrigenTerrainFamily.TILTED_PLATEAU, 71, 55),
+    MOUNTAIN_MIRRORS("Mountain Mirrors", Kind.LAND, Climate.SNOWY, OrigenTerrainFamily.TERRACE_MOUNTAINS, 75, 58),
     GLOOMY_GORGE("Gloomy Gorge", Kind.LAND, Climate.TEMPERATE, OrigenTerrainFamily.ERODED_VALLEY_MOUNTAINS, 73, 75),
-    ALPINE_ASCENDANCY("Alpine Ascendancy", Kind.LAND, Climate.COLD, OrigenTerrainFamily.ALPINE, 90, 190),
+    ALPINE_ASCENDANCY("Alpine Ascendancy", Kind.LAND, Climate.SNOWY, OrigenTerrainFamily.ALPINE, 90, 190),
     INFERNO_ISLES("Inferno Isles", Kind.CAVE, Climate.WARM, OrigenTerrainFamily.CAVE_ISLANDS, 22, 50),
     CANOPY_CASCADES("Canopy Cascades", Kind.LAND, Climate.WARM, OrigenTerrainFamily.TERRACE_MOUNTAINS, 75, 58),
     LUSH_LOOPS("Lush Loops", Kind.LAND, Climate.WARM, OrigenTerrainFamily.LOOP_MOUNTAINS, 76, 54),
@@ -57,19 +57,19 @@ public enum OrigenBiomeProfile {
     SECLUDED_VALLEY_OUTER("Secluded Valley Outer", Kind.LAND, Climate.TEMPERATE, OrigenTerrainFamily.SECLUDED_OUTER, 83,
         44),
     SINKHOLE_FOREST("Forest Sinkhole", Kind.SPECIAL, Climate.TEMPERATE, OrigenTerrainFamily.SINKHOLE_INNER, -40, 9),
-    SINKHOLE_FROZEN("Frozen Sinkhole", Kind.SPECIAL, Climate.COLD, OrigenTerrainFamily.SINKHOLE_INNER, -40, 9),
+    SINKHOLE_FROZEN("Frozen Sinkhole", Kind.SPECIAL, Climate.SNOWY, OrigenTerrainFamily.SINKHOLE_INNER, -40, 9),
     SINKHOLE_JUNGLE("Jungle Sinkhole", Kind.SPECIAL, Climate.WARM, OrigenTerrainFamily.SINKHOLE_INNER, -40, 9),
     SINKHOLE_OUTER("Sinkhole Rim", Kind.SPECIAL, Climate.TEMPERATE, OrigenTerrainFamily.SINKHOLE_OUTER, 69, 36),
-    SNOWY_SPIRES("Snowy Spires", Kind.LAND, Climate.COLD, OrigenTerrainFamily.ARID_PILLARS, 75, 63),
+    SNOWY_SPIRES("Snowy Spires", Kind.LAND, Climate.SNOWY, OrigenTerrainFamily.ARID_PILLARS, 75, 63),
     WATERY_WILDS("Watery Wilds", Kind.LAND, Climate.WARM, OrigenTerrainFamily.LOWLAND_HILLS, 63, 32),
     TERRACOTTA_TOMBS("Terracotta Tombs", Kind.CAVE, Climate.WARM, OrigenTerrainFamily.CAVE_VAULT, 24, 46),
-    TUNDRA_TRACKS("Tundra Tracks", Kind.LAND, Climate.COLD, OrigenTerrainFamily.LOWLAND_HILLS, 63, 32),
+    TUNDRA_TRACKS("Tundra Tracks", Kind.LAND, Climate.SNOWY, OrigenTerrainFamily.LOWLAND_HILLS, 63, 32),
     VERDANT_VALLEYS("Verdant Valleys", Kind.LAND, Climate.TEMPERATE, OrigenTerrainFamily.VERDANT_VALLEY, 67, 38),
     VERTICAL_VISTAS("Vertical Vistas", Kind.LAND, Climate.TEMPERATE, OrigenTerrainFamily.TERRACE_MOUNTAINS, 75, 78),
     WHITE_WALLOWS("White Wallows", Kind.LAND, Climate.TEMPERATE, OrigenTerrainFamily.ERODED_VALLEY_MOUNTAINS, 73, 75),
 
     // Appended in upstream registry order so every previously assigned numeric ID remains stable.
-    ALPINE_ASCENDANCY_RIVER("Alpine Ascendancy River", Kind.LAND, Climate.COLD, OrigenTerrainFamily.RIVER_CHANNEL, 90,
+    ALPINE_ASCENDANCY_RIVER("Alpine Ascendancy River", Kind.LAND, Climate.SNOWY, OrigenTerrainFamily.RIVER_CHANNEL, 90,
         190),
     BAD_BALCOONIES_RIVER("Badlands Balconies River", Kind.LAND, Climate.WARM, OrigenTerrainFamily.RIVER_CHANNEL, 75,
         58),
@@ -82,15 +82,15 @@ public enum OrigenBiomeProfile {
     DESERT_SPIKES_GOLD("Golden Desert Spikes", Kind.LAND, Climate.WARM, OrigenTerrainFamily.ARID_PILLARS, 75, 63),
     DRIPSTONE_CAVES("Dripstone Caves", Kind.CAVE, Climate.TEMPERATE, OrigenTerrainFamily.CAVE_VAULT, 24, 46),
     FLOWERING_FOREST("Flowering Forest", Kind.LAND, Climate.TEMPERATE, OrigenTerrainFamily.GENERAL, 67, 22),
-    FROZEN_FUNGI_RIVER("Frozen Fungi River", Kind.LAND, Climate.COLD, OrigenTerrainFamily.RIVER_CHANNEL, 71, 55),
-    FROZEN_OCEAN("Frozen Ocean", Kind.OCEAN, Climate.COLD, OrigenTerrainFamily.ABYSSAL_OCEAN, 42, 22),
-    FROZEN_RIVER("Frozen River", Kind.LAND, Climate.COLD, OrigenTerrainFamily.RIVER_CHANNEL, 63, 16),
+    FROZEN_FUNGI_RIVER("Frozen Fungi River", Kind.LAND, Climate.SNOWY, OrigenTerrainFamily.RIVER_CHANNEL, 71, 55),
+    FROZEN_OCEAN("Frozen Ocean", Kind.OCEAN, Climate.SNOWY, OrigenTerrainFamily.ABYSSAL_OCEAN, 42, 22),
+    FROZEN_RIVER("Frozen River", Kind.LAND, Climate.SNOWY, OrigenTerrainFamily.RIVER_CHANNEL, 63, 16),
     GLOOMY_GORGE_RIVER("Gloomy Gorge River", Kind.LAND, Climate.TEMPERATE, OrigenTerrainFamily.RIVER_CHANNEL, 73, 75),
-    ICEBERG_OCEAN("Iceberg Ocean", Kind.OCEAN, Climate.COLD, OrigenTerrainFamily.OCEAN_ARCHES, 44, 30),
+    ICEBERG_OCEAN("Iceberg Ocean", Kind.OCEAN, Climate.SNOWY, OrigenTerrainFamily.OCEAN_ARCHES, 44, 30),
     LOOPS_RIVER("Lush Loops River", Kind.LAND, Climate.WARM, OrigenTerrainFamily.RIVER_CHANNEL, 76, 54),
     LUSH_CAVES("Lush Caves", Kind.CAVE, Climate.WARM, OrigenTerrainFamily.CAVE_VAULT, 31, 44),
     MANGROVE_SWAMP("Mangrove Swamp", Kind.COAST, Climate.WARM, OrigenTerrainFamily.MARSH_TERRACES, 63, 14),
-    MOUNTAIN_MIRRORS_RIVER("Mountain Mirrors River", Kind.LAND, Climate.COLD, OrigenTerrainFamily.RIVER_CHANNEL, 75,
+    MOUNTAIN_MIRRORS_RIVER("Mountain Mirrors River", Kind.LAND, Climate.SNOWY, OrigenTerrainFamily.RIVER_CHANNEL, 75,
         58),
     OCEAN("Temperate Ocean", Kind.OCEAN, Climate.TEMPERATE, OrigenTerrainFamily.ABYSSAL_OCEAN, 42, 22),
     OVERGROWN_CLIFFS("Overgrown Cliffs", Kind.LAND, Climate.WARM, OrigenTerrainFamily.ERODED_PILLARS, 75, 63),
@@ -104,8 +104,8 @@ public enum OrigenBiomeProfile {
     SCARLET_SANCTUARY_RIVER("Scarlet Sanctuary River", Kind.LAND, Climate.WARM, OrigenTerrainFamily.RIVER_CHANNEL, 71,
         55),
     SHALE_BEACH("Shale Beach", Kind.COAST, Climate.TEMPERATE, OrigenTerrainFamily.FLAT_ERODED, 63, 10),
-    SNOWY_MEADOW("Snowy Meadow", Kind.LAND, Climate.COLD, OrigenTerrainFamily.GENERAL, 65, 18),
-    SNOWY_MOUNTAINS("Snowy Mountains", Kind.LAND, Climate.COLD, OrigenTerrainFamily.TERRACE_MOUNTAINS, 75, 58),
+    SNOWY_MEADOW("Snowy Meadow", Kind.LAND, Climate.SNOWY, OrigenTerrainFamily.GENERAL, 65, 18),
+    SNOWY_MOUNTAINS("Snowy Mountains", Kind.LAND, Climate.SNOWY, OrigenTerrainFamily.TERRACE_MOUNTAINS, 75, 58),
     TEMPERATE_SEA_ARCHES("Temperate Sea Arches", Kind.COAST, Climate.TEMPERATE, OrigenTerrainFamily.OCEAN_ARCHES, 80,
         50),
     TROPICAL_DEEP_OCEAN("Tropical Deep Ocean", Kind.OCEAN, Climate.WARM, OrigenTerrainFamily.ABYSSAL_OCEAN, 28, 34),
@@ -148,6 +148,11 @@ public enum OrigenBiomeProfile {
         return kind;
     }
 
+    /** Snowy or cold: the cold palette, waters and caves. */
+    public boolean isCold() {
+        return climate == Climate.SNOWY || climate == Climate.COLD;
+    }
+
     public Climate getClimate() {
         return climate;
     }
@@ -176,7 +181,12 @@ public enum OrigenBiomeProfile {
         SPECIAL
     }
 
+    /**
+     * Snowy ground (Origen's snowy plains, frozen peaks, ice spikes and frozen water), cold but bare (the biomes Origen
+     * gives vanilla's taiga, windswept hills and old-growth pine taiga: snow does not lie there), temperate or warm.
+     */
     public enum Climate {
+        SNOWY,
         COLD,
         TEMPERATE,
         WARM
