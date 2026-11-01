@@ -1625,6 +1625,13 @@ public final class OrigenFeatureRuntime implements OrigenStructureEnvironment {
             if (caveLichenColonies && "CAVE_GLOW_LICHEN".equals(feature.id)
                 && "global-preprocessors".equals(stages.get(stageOrdinal))) continue;
             if (!feature.distributor.matches(x, z, seed)) continue;
+            // Origen plants its Great Azalea Trees over Lush Caves under any land; a broad-leaved azalea on a cold
+            // steppe or snowfield reads as misplaced, so they keep to temperate and warm ground. Origen's script moves
+            // the tree to the middle of its chunk: that is the ground judged.
+            if ("GREAT_AZALEA_TREES".equals(feature.id)
+                && densityField.sampleSurfaceProfile((x & ~15) + 8, (z & ~15) + 8)
+                    .isCold())
+                continue;
             FeatureProfile timing = PROFILE_FEATURES
                 ? featureProfiles.computeIfAbsent(feature.id, ignored -> new FeatureProfile())
                 : null;
