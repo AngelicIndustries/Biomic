@@ -26,12 +26,11 @@ public final class RetainedPlantSourceWater {
             return metadata < 8 && block == BiomicDripleafBlocks.WET_SMALL_DRIPLEAF;
         if (block instanceof BlockWetSculkVein vein)
             return BiomicWetSculkBlocks.wet(block) && vein.faceMask(metadata) != 0;
-        if (block instanceof BlockSkylandsWetMangroveRoots)
-            return metadata == 0 && block == industries.angelic.biomic.content.efr.EfrBackedBlocks.wetMangroveRoots()
-                && block != null;
-        return block instanceof BlockSkylandsWetGlowLichen && metadata == 0
-            && block == industries.angelic.biomic.content.efr.EfrBackedBlocks.wetGlowLichen()
-            && block != null;
+        // By identity: the glow lichen's class extends Et Futurum Requiem's, and naming it (instanceof) loads EFR's,
+        // which Biomic runs without (both are null then).
+        if (block == null) return false;
+        if (block == industries.angelic.biomic.content.efr.EfrBackedBlocks.wetMangroveRoots()) return metadata == 0;
+        return block == industries.angelic.biomic.content.efr.EfrBackedBlocks.wetGlowLichen() && metadata == 0;
     }
 
     public static boolean contains(IBlockAccess world, int x, int y, int z) {
