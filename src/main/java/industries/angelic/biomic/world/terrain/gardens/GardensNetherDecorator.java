@@ -30,6 +30,12 @@ public final class GardensNetherDecorator {
 
         /** The Gardens biome key of a column, or null. */
         String profile(int x, int z);
+
+        /** Starts a placement whose writes stand or fall together. */
+        void begin();
+
+        /** Ends the innermost placement; false if its writes were dropped (it reached a planned fortress). */
+        boolean end();
     }
 
     private static final int VEGETAL_DECORATION_STEP = 9, TOP = GardensProfiles.SOURCE_MAX_Y;
@@ -167,6 +173,7 @@ public final class GardensNetherDecorator {
                 }
             });
         if (!result.accepted()) return;
+        region.begin();
         for (var entry : result.proposal()
             .writes()
             .entrySet()) {
@@ -178,6 +185,7 @@ public final class GardensNetherDecorator {
                 entry.getValue()
                     .canonical());
         }
+        region.end();
     }
 
     private static String rejection(Region region, int x, int y, int z, State after) {

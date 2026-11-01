@@ -21,6 +21,7 @@ import industries.angelic.biomic.world.modern.ModernGroundCoverSupport;
 import industries.angelic.biomic.world.modern.ModernStateCompatibility;
 import industries.angelic.biomic.world.modern.ModernSurfaceSystem;
 import industries.angelic.biomic.world.modern.noise.ModernLegacyRandom;
+import industries.angelic.biomic.world.modern.noise.ModernRandom;
 import industries.angelic.biomic.world.modern.noise.ModernWorldgenRandom;
 
 /**
@@ -43,6 +44,12 @@ final class RuNetherDressing {
 
         /** The RU Nether biome (its modern key) of a column, or null. */
         String ruBiome(int x, int z);
+
+        /** Starts a placement whose writes stand or fall together. */
+        void begin();
+
+        /** Ends the innermost placement; false if its writes were dropped (it reached a planned fortress). */
+        boolean end();
     }
 
     /** The decoration step a Nether biome's features sit in (underground decoration). */
@@ -80,8 +87,8 @@ final class RuNetherDressing {
                     new ModernDecorationEngine(
                         GRAPH,
                         density,
-                        (engine, type, config, world, random, pos) -> features
-                            .place(engine, type, config, world, random, pos)),
+                        (engine, type, config, world, random,
+                            pos) -> placeWhole(features, engine, type, config, world, random, pos)),
                     density);
             });
         AreaWorld view = new AreaWorld(region, seed);
@@ -95,6 +102,19 @@ final class RuNetherDressing {
             seeded.engine()
                 .place(new com.google.gson.JsonPrimitive(feature), feature, view, random, origin);
         }
+    }
+
+    /**
+     * One configured feature at one position, as a whole: a tree that would reach a planned fortress is not grown, as
+     * in modern Minecraft, where the fortress stands before vegetation. Nested features (a patch's plants) stand or
+     * fall on their own.
+     */
+    private static boolean placeWhole(ModernFeatureEngine features, ModernDecorationEngine engine, String type,
+        com.google.gson.JsonObject config, ModernDecorationEngine.World world, ModernRandom random, Pos pos) {
+        if (!(world instanceof AreaWorld area)) return features.place(engine, type, config, world, random, pos);
+        area.region.begin();
+        boolean placed = features.place(engine, type, config, world, random, pos);
+        return area.region.end() && placed;
     }
 
     /**

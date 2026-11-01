@@ -1,13 +1,17 @@
 package industries.angelic.biomic.world;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.atomic.AtomicLong;
+
+import net.minecraft.world.gen.structure.StructureBoundingBox;
 
 import industries.angelic.biomic.Biomic;
 import industries.angelic.biomic.internal.terra.noise.samplers.noise.simplex.OpenSimplex2Sampler;
@@ -24,6 +28,13 @@ import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
  * Arrays use (x*16+z)*256+y.
  */
 final class NetherTerrainSource {
+
+    /** Where fortresses will stand: the planned pieces' bounds meeting columns minX..maxX, minZ..maxZ. */
+    @FunctionalInterface
+    interface Fortresses {
+
+        List<StructureBoundingBox> pieces(int minX, int minZ, int maxX, int maxZ);
+    }
 
     static final int HEIGHT = 256;
     /** Tartarus' features reach at most 9 blocks past their chunk; anything past one chunk is dropped and counted. */
@@ -51,7 +62,9 @@ final class NetherTerrainSource {
     private final Cache<Decoration> decorations;
     private final Cache<TerraPackChunkRasterizer.SourceChunk> snapshots;
     private final AtomicLong droppedWrites = new AtomicLong(), rasterRuns = new AtomicLong(),
-        decorationRuns = new AtomicLong(), magmaCooled = new AtomicLong(), magmaShores = new AtomicLong();
+        decorationRuns = new AtomicLong(), magmaCooled = new AtomicLong(), magmaShores = new AtomicLong(),
+        keptFromFortresses = new AtomicLong();
+    private volatile Fortresses fortresses;
     private final OpenSimplex2Sampler shorePatches = new OpenSimplex2Sampler(), keelDrips = new OpenSimplex2Sampler(),
         keelStrata = new OpenSimplex2Sampler();
 
@@ -72,6 +85,17 @@ final class NetherTerrainSource {
         keelDrips.setSalt(0x6b65656c64L);
         keelStrata.setFrequency(1 / 9D);
         keelStrata.setSalt(0x6b65656c73L);
+    }
+
+    /**
+     * Keeps the Gardens and RU dressing out of the fortresses the world will build. Fortress pieces are laid at
+     * population, over the finished terrain: carving rock as in vanilla, but cutting a tree or plant in two. As in
+     * modern Minecraft, where structures are placed before vegetation, a placement that would reach into a planned
+     * piece (or stand on rock it carves) is not made. Set before the first chunk; plans are pure, so the dressing stays
+     * order-independent.
+     */
+    void avoid(Fortresses planned) {
+        fortresses = planned;
     }
 
     /** The finished chunk: terrain and every feature write that lands in it. */
@@ -282,7 +306,9 @@ final class NetherTerrainSource {
             + magmaCooled.get()
             + " magma blocks away from lava cooled to rock, "
             + magmaShores.get()
-            + " shore blocks turned to magma";
+            + " shore blocks turned to magma, "
+            + keptFromFortresses.get()
+            + " dressing placements kept out of fortresses";
     }
 
     private byte[] raster(int chunkX, int chunkZ) {
@@ -345,6 +371,11 @@ final class NetherTerrainSource {
 
         private final int originX, originZ;
         private final Int2ByteOpenHashMap writes = new Int2ByteOpenHashMap();
+        /** The dressing placements under way, innermost last: their writes, and whether one reached a fortress. */
+        private final List<Int2ByteOpenHashMap> placements = new ArrayList<>();
+        private final List<Boolean> reachedFortress = new ArrayList<>();
+        /** The planned fortress pieces within reach of this area's writes, each grown by a block; null until asked. */
+        private StructureBoundingBox[] fortressPieces;
         private final Map<String, Byte> written = new HashMap<>();
         private String[] names = states.states();
         private net.minecraft.block.Block[] blocks = states.blocks();
@@ -360,8 +391,14 @@ final class NetherTerrainSource {
         private byte id(int x, int y, int z) {
             int dx = x - originX, dz = z - originZ;
             if (dx >= -REACH && dx < 16 + REACH && dz >= -REACH && dz < 16 + REACH) {
-                byte written = writes.get(key(dx, y, dz));
-                // -1 is the map's absent value; NetherStates never hands out id 255.
+                int key = key(dx, y, dz);
+                // -1 is the maps' absent value; NetherStates never hands out id 255.
+                for (int i = placements.size() - 1; i >= 0; i--) {
+                    byte pending = placements.get(i)
+                        .get(key);
+                    if (pending != (byte) -1) return pending;
+                }
+                byte written = writes.get(key);
                 if (written != (byte) -1) return written;
             }
             if (raster == null || rasterX != x >> 4 || rasterZ != z >> 4) {
@@ -393,7 +430,63 @@ final class NetherTerrainSource {
             }
             Byte id = written.get(state);
             if (id == null) written.put(state, id = states.id(state));
-            writes.put(key(dx, y, dz), id.byteValue());
+            if (placements.isEmpty()) {
+                writes.put(key(dx, y, dz), id.byteValue());
+                return;
+            }
+            int innermost = placements.size() - 1;
+            placements.get(innermost)
+                .put(key(dx, y, dz), id.byteValue());
+            if (!reachedFortress.get(innermost) && inFortress(x, y, z)) reachedFortress.set(innermost, true);
+        }
+
+        /** Starts a dressing placement: its writes stand or fall together. */
+        @Override
+        public void begin() {
+            var placement = new Int2ByteOpenHashMap();
+            placement.defaultReturnValue((byte) -1);
+            placements.add(placement);
+            reachedFortress.add(false);
+        }
+
+        /** Ends the innermost placement, keeping its writes unless one reached a fortress; whether it was kept. */
+        @Override
+        public boolean end() {
+            int innermost = placements.size() - 1;
+            Int2ByteOpenHashMap placement = placements.remove(innermost);
+            if (reachedFortress.remove(innermost)) {
+                keptFromFortresses.incrementAndGet();
+                return false;
+            }
+            // Kept writes lie outside every fortress, so they never mark the placement holding them.
+            (innermost == 0 ? writes : placements.get(innermost - 1)).putAll(placement);
+            return true;
+        }
+
+        /** Whether a cell is within a block of a planned fortress piece: in it, or on or under rock it carves. */
+        private boolean inFortress(int x, int y, int z) {
+            if (fortressPieces == null) {
+                Fortresses planned = fortresses;
+                List<StructureBoundingBox> met = planned == null ? List.of()
+                    : planned.pieces(
+                        originX - REACH - 1,
+                        originZ - REACH - 1,
+                        originX + 15 + REACH + 1,
+                        originZ + 15 + REACH + 1);
+                fortressPieces = new StructureBoundingBox[met.size()];
+                for (int i = 0; i < fortressPieces.length; i++) {
+                    StructureBoundingBox piece = met.get(i);
+                    fortressPieces[i] = new StructureBoundingBox(
+                        piece.minX - 1,
+                        piece.minY - 1,
+                        piece.minZ - 1,
+                        piece.maxX + 1,
+                        piece.maxY + 1,
+                        piece.maxZ + 1);
+                }
+            }
+            for (StructureBoundingBox piece : fortressPieces) if (piece.isVecInside(x, y, z)) return true;
+            return false;
         }
 
         @Override

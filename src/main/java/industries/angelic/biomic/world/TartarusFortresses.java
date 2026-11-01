@@ -1,6 +1,8 @@
 package industries.angelic.biomic.world;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -17,14 +19,15 @@ import industries.angelic.biomic.config.StructureConfig;
  * {@code chance} get a fortress, its start in the middle half of the region as vanilla places it. The layout is
  * vanilla's; its height is where the largest share of its pieces' volume is open cavern air in the pure Tartarus
  * terrain, so bridges span caverns instead of tunnelling through rock, above the lava sea and below the roof. Plans
- * are pure, cached per region, and made by the terrain workers ahead of the server thread.
+ * are pure, cached per region, and made by the terrain workers ahead of the server thread, which also keep the
+ * Nether's dressing out of the planned pieces (NetherTerrainSource).
  */
 final class TartarusFortresses extends MapGenNetherBridge {
 
-    /** A planned fortress: its start chunk and the lowest Y of its bounds. */
-    private record Plan(int chunkX, int chunkZ, int minY) {}
+    /** A planned fortress: its start chunk, the lowest Y of its bounds and its pieces' bounds at that height. */
+    private record Plan(int chunkX, int chunkZ, int minY, StructureBoundingBox[] pieces) {}
 
-    private static final Plan NONE = new Plan(0, 0, 0);
+    private static final Plan NONE = new Plan(0, 0, 0, new StructureBoundingBox[0]);
     /** Tartarus' lava sea is at 32: bridges keep this far above it. */
     private static final int LOWEST = 40;
     /** Headroom kept under the roof of the world. */
@@ -49,6 +52,20 @@ final class TartarusFortresses extends MapGenNetherBridge {
         for (int rx = Math.floorDiv(chunkX - range, spacing); rx <= Math.floorDiv(chunkX + range, spacing); rx++)
             for (int rz = Math.floorDiv(chunkZ - range, spacing); rz <= Math.floorDiv(chunkZ + range, spacing); rz++)
                 plan(rx, rz);
+    }
+
+    /** The planned pieces' bounds that meet the columns minX..maxX, minZ..maxZ (inclusive). Worker-safe. */
+    List<StructureBoundingBox> pieces(int minX, int minZ, int maxX, int maxZ) {
+        if (!settings.enabled()) return List.of();
+        int spacing = settings.spacingChunks();
+        List<StructureBoundingBox> met = new ArrayList<>();
+        for (int rx = Math.floorDiv((minX >> 4) - range, spacing); rx
+            <= Math.floorDiv((maxX >> 4) + range, spacing); rx++)
+            for (int rz = Math.floorDiv((minZ >> 4) - range, spacing); rz
+                <= Math.floorDiv((maxZ >> 4) + range, spacing); rz++)
+                for (StructureBoundingBox piece : plan(rx, rz).pieces)
+                    if (piece.intersectsWith(minX, minZ, maxX, maxZ)) met.add(piece);
+        return met;
     }
 
     @Override
@@ -118,7 +135,13 @@ final class TartarusFortresses extends MapGenNetherBridge {
         int chunkX = regionX * spacing + spacing / 4 + region.nextInt(Math.max(1, spacing / 2));
         int chunkZ = regionZ * spacing + spacing / 4 + region.nextInt(Math.max(1, spacing / 2));
         StructureStart start = new MapGenNetherBridge.Start(null, structureRandom(chunkX, chunkZ), chunkX, chunkZ);
-        return new Plan(chunkX, chunkZ, openestHeight(start));
+        int minY = openestHeight(start);
+        lift(start, minY - start.getBoundingBox().minY);
+        List<?> components = start.getComponents();
+        StructureBoundingBox[] pieces = new StructureBoundingBox[components.size()];
+        for (int i = 0; i < pieces.length; i++)
+            pieces[i] = new StructureBoundingBox(((StructureComponent) components.get(i)).getBoundingBox());
+        return new Plan(chunkX, chunkZ, minY, pieces);
     }
 
     /**

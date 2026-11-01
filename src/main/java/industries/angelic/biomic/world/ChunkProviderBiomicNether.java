@@ -63,6 +63,8 @@ public final class ChunkProviderBiomicNether implements IChunkProvider, Benchmar
             .isMapFeaturesEnabled();
         fortresses = (MapGenNetherBridge) TerrainGen
             .getModdedMapGen(new TartarusFortresses(terrain, world.getSeed()), InitMapGenEvent.EventType.NETHER_BRIDGE);
+        // The dressing stays out of the fortresses Biomic plans; another mod's generator is not known ahead.
+        if (mapFeaturesEnabled && fortresses instanceof TartarusFortresses planned) terrain.avoid(planned::pieces);
         food = new NetherFood(world.getSeed());
         trees = new NetherTrees(world.getSeed());
         terrainPrecompute = new TerrainPrecomputeScheduler(
