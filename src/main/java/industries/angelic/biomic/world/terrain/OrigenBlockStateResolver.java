@@ -807,7 +807,7 @@ public final class OrigenBlockStateResolver {
     }
 
     /**
-     * The palette's block for an id (BlockPalette): Et Futurum Requiem's by default, falling back as the palette lists;
+     * The palette's block for an id (BlockPalette): Et Futurum Requiem's by default, else the vanilla example's;
      * {@code computed} is the metadata the state gives for the default block, used where the entry's metadata is
      * "auto".
      */
@@ -819,7 +819,7 @@ public final class OrigenBlockStateResolver {
         industries.angelic.biomic.world.palette.BlockPalette.Choice choice = industries.angelic.biomic.world.palette.BlockPalette
             .choice(key);
         if (choice == null) throw new IllegalStateException("Biomic's block palette has no entry for " + key);
-        return block(choice.block(), choice.metadata(computed), id, parsed, choice.substitute());
+        return block(choice.block(), choice.metadata(computed), id, parsed);
     }
 
     private static ResolvedBlock oldLog(int species, boolean wood, String id, ParsedState parsed) {

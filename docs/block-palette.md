@@ -3,7 +3,8 @@
 Every block Biomic generates is named by an id from its vocabulary, the modern Minecraft ids its terrain and features
 use (`minecraft:deepslate`, `minecraft:crimson_nylium`, `regions_unexplored:icicle`). The block palette decides which
 installed block each id places. Biomic's defaults (`assets/biomic/palette/default.json`) use Et Futurum Requiem's
-blocks, with a 1.7.10 block to fall back on where one fits; `config/biomic-palette.json` overrides any id.
+blocks; where one is not installed, the id takes its 1.7.10 block from the vanilla palette (below).
+`config/biomic-palette.json` overrides any id.
 
 ```json
 {
@@ -25,14 +26,15 @@ blocks, with a 1.7.10 block to fall back on where one fits; `config/biomic-palet
 - Changes apply to chunks generated afterwards.
 
 At every start Biomic writes `config/biomic-palette-reference.json`: every id with an entry, its default, the
-override if any and the block in use. It also writes `config/biomic-palette-vanilla.json`, a palette that maps every
-default id to a 1.7.10 block.
+override if any and the block in use. It also writes `config/biomic-palette-vanilla.json`, the palette that maps every
+default id to a 1.7.10 block (`assets/biomic/palette/examples/vanilla-1.7.10.json`).
 
 ## Without Et Futurum Requiem
 
-Et Futurum Requiem is optional. When no installed block is left for an id (the mod is not installed and the id lists
-no fallback), Biomic stops at startup and names each such id. Map them elsewhere, or copy the `blocks` of
-`config/biomic-palette-vanilla.json` into `config/biomic-palette.json`, and Biomic runs without the mod.
+Et Futurum Requiem is optional. A default whose block is not installed, because the mod is missing or has that block
+turned off in its config (`enablePrismarine=false` in `config/etfuturum/blocksitems.cfg`, say), takes its block from
+the vanilla palette, exactly as if `config/biomic-palette.json` mapped it there. Biomic logs those ids at startup.
+Only an id your own file sets, with none of its blocks installed, stops the game at startup, naming it.
 
 Some of Biomic's own blocks are built on Et Futurum Requiem's (clover, icicles, the Skylands' waterlogged glow lichen
 and mangrove roots). They exist only with it installed; their ids (`regions_unexplored:clover`,

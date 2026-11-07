@@ -32,9 +32,11 @@ import industries.angelic.biomic.Biomic;
  * {@code config/biomic-palette.json}. An entry is a block ({@code "mod:block"} or {@code "mod:block:meta"}), a list
  * tried in order (the first installed one is used), or {@code {"block": "mod:block", "meta": 3}}; meta {@code "auto"}
  * keeps the metadata Biomic computes from the state (a log's axis, a stair's facing), for a block laid out like the
- * default one. {@code minecraft:air} places nothing. Blocks of mods that are not installed are skipped; an id none of
- * whose blocks is installed stops the game at startup, naming it. Nothing here touches another mod's classes, so a
- * palette without Et Futurum Requiem's blocks needs no Et Futurum Requiem.
+ * default one. {@code minecraft:air} places nothing. Blocks of mods that are not installed are skipped. A default
+ * whose block is not installed (Et Futurum Requiem missing, or the block turned off in its config) takes the vanilla
+ * example's 1.7.10 block as if the user's file set it, logged at startup. An id the user's file sets with none of its
+ * blocks installed stops the game at startup, naming it. Nothing here touches another mod's classes, so Biomic runs
+ * without Et Futurum Requiem.
  */
 public final class BlockPalette {
 
@@ -54,9 +56,11 @@ public final class BlockPalette {
         }
     }
 
-    /** What an entry places: its block, a fixed metadata or the state's, and whether a later candidate stood in. */
-    public record Choice(Block block, int fixedMetadata, boolean auto, boolean substitute, boolean overridden,
-        String name) {
+    /**
+     * What an entry places: its block, a fixed metadata or the state's, and whether it replaces the default block (the
+     * user's file or the vanilla fallback set it), so that the block reads back as the id.
+     */
+    public record Choice(Block block, int fixedMetadata, boolean auto, boolean overridden, String name) {
 
         /** The metadata to place, given the one Biomic computes from the state. */
         public int metadata(int computed) {
@@ -65,8 +69,15 @@ public final class BlockPalette {
     }
 
     private static volatile Map<String, List<Candidate>> defaults;
+    /** The vanilla example's blocks: what a default places when none of its own blocks is installed. */
+    private static volatile Map<String, List<Candidate>> vanilla;
     private static volatile Map<String, List<Candidate>> overrides = Map.of();
     private static volatile Map<String, Choice> chosen;
+    /**
+     * The ids whose choice replaces the default block, fixed in post-init (resolveAll): the user's in file order, then
+     * the fallbacks. Until then only the user's count.
+     */
+    private static volatile List<String> replaced;
     private static File configDirectory;
 
     private BlockPalette() {}
@@ -75,6 +86,7 @@ public final class BlockPalette {
     public static synchronized void load(File directory) {
         configDirectory = directory;
         defaults = readDefaults();
+        vanilla = read(VANILLA_EXAMPLE_RESOURCE, "Biomic's vanilla example palette");
         File file = new File(directory, FILE);
         try {
             if (!file.exists()) write(file, template());
@@ -88,12 +100,14 @@ public final class BlockPalette {
             throw new IllegalStateException("Cannot read " + file + ": " + error.getMessage(), error);
         }
         chosen = null;
+        replaced = null;
         if (!overrides.isEmpty()) Biomic.LOG.info("Block palette: {} override(s) from {}", overrides.size(), FILE);
     }
 
     /**
      * Chooses every entry's block once all mods registered theirs (post-init), and writes the reference file. Stops
-     * the game, naming them, if some ids have no installed block.
+     * the game, naming them, if ids the user's file sets have no installed block; defaults with none take the vanilla
+     * example's, logged.
      */
     public static synchronized void resolveAll() {
         Selection selection = select();
@@ -112,7 +126,19 @@ public final class BlockPalette {
         }
         if (!selection.missing()
             .isEmpty()) throw new PaletteException(selection.missing());
+        if (!selection.vanilla()
+            .isEmpty())
+            Biomic.LOG.warn(
+                "Block palette: {} default block(s) are not installed ({}); their ids place the 1.7.10 blocks of {}:\n  {}",
+                selection.vanilla()
+                    .size(),
+                cpw.mods.fml.common.Loader.isModLoaded("etfuturum")
+                    ? "Et Futurum Requiem has them turned off in its config"
+                    : "Et Futurum Requiem is not installed",
+                VANILLA_EXAMPLE,
+                String.join("\n  ", selection.vanilla()));
         chosen = selection.chosen();
+        replaced = replaced(chosen);
     }
 
     /** The entry's choice for an id, or null if the palette has no entry for it (Biomic's own mapping applies). */
@@ -163,30 +189,24 @@ public final class BlockPalette {
         return choice != null && block != null && choice.block() == block && block != net.minecraft.init.Blocks.air;
     }
 
-    /** Whether the user's file sets the id. */
-    public static boolean overridden(String id) {
-        return overrides.containsKey(id);
-    }
-
-    /** The user's choice for an id the defaults leave to Biomic's own mapping (vanilla blocks), or null. */
-    public static Choice override(String id) {
-        if (!overrides.containsKey(id)) return null;
-        return choice(id);
-    }
-
     /** The user's choice for an id Biomic maps itself (one without a default entry, like minecraft:stone), or null. */
     public static Choice builtinOverride(String id) {
         if (overrides.isEmpty() || !overrides.containsKey(id) || defaults().containsKey(id)) return null;
         return choice(id);
     }
 
-    /** The id the user mapped onto this placed block, if the user's file maps one onto it; else null. */
+    /** The id mapped onto this placed block in place of its default (overridden or fallen back), if any; else null. */
     public static String overriddenId(Block block, int metadata) {
-        if (overrides.isEmpty()) return null;
+        List<String> ids = replaced;
+        if (ids == null) {
+            if (overrides.isEmpty()) return null;
+            ids = List.copyOf(overrides.keySet());
+        }
+        if (ids.isEmpty()) return null;
         Map<String, Choice> map = chosen;
         if (map == null) map = choose();
         String byBlock = null;
-        for (String id : overrides.keySet()) {
+        for (String id : ids) {
             Choice choice = map.get(id);
             if (choice == null || choice.block() != block) continue;
             if (!choice.auto() && choice.fixedMetadata() == metadata) return typeId(id);
@@ -212,26 +232,35 @@ public final class BlockPalette {
         return select().chosen();
     }
 
-    private record Selection(Map<String, Choice> chosen, List<String> missing) {}
+    /** missing: ids with no installed block (the user's); vanilla: defaults placing the vanilla example's block. */
+    private record Selection(Map<String, Choice> chosen, List<String> missing, List<String> vanilla) {}
+
+    private static List<String> replaced(Map<String, Choice> map) {
+        List<String> ids = new ArrayList<>();
+        for (String id : overrides.keySet()) if (map.containsKey(id)) ids.add(id);
+        for (String id : vanilla().keySet()) {
+            Choice choice = map.get(id);
+            if (choice != null && choice.overridden() && !overrides.containsKey(id)) ids.add(id);
+        }
+        return List.copyOf(ids);
+    }
 
     private static Selection select() {
         Map<String, List<Candidate>> base = defaults();
         Map<String, Choice> result = new LinkedHashMap<>();
         List<String> missing = new ArrayList<>();
+        List<String> substituted = new ArrayList<>();
         for (String id : ids()) {
             boolean user = overrides.containsKey(id);
             List<Candidate> candidates = user ? overrides.get(id) : base.get(id);
-            Choice choice = null;
-            for (int index = 0; index < candidates.size() && choice == null; index++) {
-                Candidate candidate = candidates.get(index);
-                Block block = registered(candidate.name());
-                if (block != null) choice = new Choice(
-                    block,
-                    candidate.metadata(),
-                    candidate.auto(),
-                    index > 0,
-                    user,
-                    candidate.name());
+            Choice choice = first(candidates, user);
+            if (choice == null && !user) {
+                choice = first(vanilla().getOrDefault(id, List.of()), true);
+                if (choice != null) substituted.add(
+                    id + " -> "
+                        + (choice.auto() ? choice.name() + ":auto"
+                            : choice.fixedMetadata() == 0 ? choice.name()
+                                : choice.name() + ":" + choice.fixedMetadata()));
             }
             if (choice == null) missing.add(
                 id + " -> "
@@ -243,7 +272,17 @@ public final class BlockPalette {
                     + (user ? " (your " + FILE + ")" : ""));
             else result.put(id, choice);
         }
-        return new Selection(Collections.unmodifiableMap(result), missing);
+        return new Selection(Collections.unmodifiableMap(result), missing, substituted);
+    }
+
+    /** The first installed candidate's choice, or null. */
+    private static Choice first(List<Candidate> candidates, boolean overridden) {
+        for (Candidate candidate : candidates) {
+            Block block = registered(candidate.name());
+            if (block != null)
+                return new Choice(block, candidate.metadata(), candidate.auto(), overridden, candidate.name());
+        }
+        return null;
     }
 
     private static Block registered(String name) {
@@ -263,18 +302,33 @@ public final class BlockPalette {
         return map;
     }
 
+    private static Map<String, List<Candidate>> vanilla() {
+        Map<String, List<Candidate>> map = vanilla;
+        if (map == null) {
+            synchronized (BlockPalette.class) {
+                if (vanilla == null) vanilla = read(VANILLA_EXAMPLE_RESOURCE, "Biomic's vanilla example palette");
+                map = vanilla;
+            }
+        }
+        return map;
+    }
+
     private static Map<String, List<Candidate>> readDefaults() {
-        try (InputStream stream = BlockPalette.class.getResourceAsStream(DEFAULTS)) {
-            if (stream == null) throw new IllegalStateException("Biomic's default palette is missing: " + DEFAULTS);
+        return read(DEFAULTS, "Biomic's default palette");
+    }
+
+    private static Map<String, List<Candidate>> read(String resource, String source) {
+        try (InputStream stream = BlockPalette.class.getResourceAsStream(resource)) {
+            if (stream == null) throw new IllegalStateException(source + " is missing: " + resource);
             try (Reader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
                 return entries(
                     new JsonParser().parse(reader)
                         .getAsJsonObject()
                         .getAsJsonObject("blocks"),
-                    "Biomic's default palette");
+                    source);
             }
         } catch (IOException error) {
-            throw new IllegalStateException("Cannot read Biomic's default palette: " + error.getMessage(), error);
+            throw new IllegalStateException("Cannot read " + source + ": " + error.getMessage(), error);
         }
     }
 
@@ -354,8 +408,10 @@ public final class BlockPalette {
                 + " for every one, its default and what it uses now). A value is \"mod:block\", \"mod:block:meta\", "
                 + "a list of those (the first installed one is used) or {\"block\": \"mod:block\", \"meta\": 3}; "
                 + "meta \"auto\" keeps the metadata Biomic computes from the state, for blocks laid out like the default. "
-                + "\"minecraft:air\" places nothing. Applies to chunks generated afterwards. Map every Et Futurum "
-                + "Requiem block elsewhere and Biomic runs without it.");
+                + "\"minecraft:air\" places nothing. Applies to chunks generated afterwards. Without Et Futurum "
+                + "Requiem, or for its blocks turned off in its config, Biomic places the 1.7.10 blocks of "
+                + VANILLA_EXAMPLE
+                + ".");
         JsonObject example = new JsonObject();
         example.addProperty("minecraft:deepslate", "minecraft:stone");
         example.add("minecraft:tuff", array("minecraft:gravel"));
@@ -411,7 +467,7 @@ public final class BlockPalette {
         }
     }
 
-    /** Ids whose blocks are none of them installed: names them and how to fix it. */
+    /** Ids the user's file sets with none of their blocks installed: names them and how to fix it. */
     public static final class PaletteException extends RuntimeException {
 
         PaletteException(List<String> missing) {
@@ -421,7 +477,9 @@ public final class BlockPalette {
         private static String message(List<String> missing) {
             boolean efr = missing.stream()
                 .anyMatch(line -> line.contains("etfuturum:"));
-            return "Biomic's block palette names blocks that are not installed, for " + missing.size()
+            return "config/" + FILE
+                + " names blocks that are not installed, for "
+                + missing.size()
                 + " id(s):\n  "
                 + String.join("\n  ", missing)
                 + "\n"
