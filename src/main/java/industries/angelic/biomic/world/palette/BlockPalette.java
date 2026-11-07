@@ -66,6 +66,11 @@ public final class BlockPalette {
         public int metadata(int computed) {
             return auto ? computed : fixedMetadata;
         }
+
+        /** The block as a palette spells it: {@code mod:block}, {@code mod:block:meta} or {@code mod:block:auto}. */
+        public String spelled() {
+            return auto ? name + ":auto" : fixedMetadata == 0 ? name : name + ":" + fixedMetadata;
+        }
     }
 
     private static volatile Map<String, List<Candidate>> defaults;
@@ -78,6 +83,8 @@ public final class BlockPalette {
      * the fallbacks. Until then only the user's count.
      */
     private static volatile List<String> replaced;
+    /** The defaults whose block is not installed and that place the vanilla example's (resolveAll), in id order. */
+    private static volatile List<String> fallbacks = List.of();
     private static File configDirectory;
 
     private BlockPalette() {}
@@ -101,6 +108,7 @@ public final class BlockPalette {
         }
         chosen = null;
         replaced = null;
+        fallbacks = List.of();
         if (!overrides.isEmpty()) Biomic.LOG.info("Block palette: {} override(s) from {}", overrides.size(), FILE);
     }
 
@@ -126,19 +134,31 @@ public final class BlockPalette {
         }
         if (!selection.missing()
             .isEmpty()) throw new PaletteException(selection.missing());
-        if (!selection.vanilla()
-            .isEmpty())
-            Biomic.LOG.warn(
-                "Block palette: {} default block(s) are not installed ({}); their ids place the 1.7.10 blocks of {}:\n  {}",
-                selection.vanilla()
-                    .size(),
-                cpw.mods.fml.common.Loader.isModLoaded("etfuturum")
-                    ? "Et Futurum Requiem has them turned off in its config"
-                    : "Et Futurum Requiem is not installed",
-                VANILLA_EXAMPLE,
-                String.join("\n  ", selection.vanilla()));
         chosen = selection.chosen();
         replaced = replaced(chosen);
+        fallbacks = selection.fallbacks();
+        if (!fallbacks.isEmpty()) Biomic.LOG.warn(
+            "Block palette: {} default block(s) are not installed ({}); their ids place the 1.7.10 blocks of {}:\n  {}",
+            fallbacks.size(),
+            cpw.mods.fml.common.Loader.isModLoaded("etfuturum") ? "Et Futurum Requiem has them turned off in its config"
+                : "Et Futurum Requiem is not installed",
+            VANILLA_EXAMPLE,
+            String.join(
+                "\n  ",
+                fallbacks.stream()
+                    .map(
+                        id -> id + " -> "
+                            + chosen.get(id)
+                                .spelled())
+                    .toList()));
+    }
+
+    /**
+     * The ids whose default block is not installed (Et Futurum Requiem missing, or the block turned off in its config)
+     * and that place the vanilla example's block instead: empty until post-init, and when every default is installed.
+     */
+    public static List<String> fallbacks() {
+        return fallbacks;
     }
 
     /** The entry's choice for an id, or null if the palette has no entry for it (Biomic's own mapping applies). */
@@ -232,8 +252,8 @@ public final class BlockPalette {
         return select().chosen();
     }
 
-    /** missing: ids with no installed block (the user's); vanilla: defaults placing the vanilla example's block. */
-    private record Selection(Map<String, Choice> chosen, List<String> missing, List<String> vanilla) {}
+    /** missing: ids with no installed block (the user's); fallbacks: defaults placing the vanilla example's block. */
+    private record Selection(Map<String, Choice> chosen, List<String> missing, List<String> fallbacks) {}
 
     private static List<String> replaced(Map<String, Choice> map) {
         List<String> ids = new ArrayList<>();
@@ -249,18 +269,14 @@ public final class BlockPalette {
         Map<String, List<Candidate>> base = defaults();
         Map<String, Choice> result = new LinkedHashMap<>();
         List<String> missing = new ArrayList<>();
-        List<String> substituted = new ArrayList<>();
+        List<String> fallbacks = new ArrayList<>();
         for (String id : ids()) {
             boolean user = overrides.containsKey(id);
             List<Candidate> candidates = user ? overrides.get(id) : base.get(id);
             Choice choice = first(candidates, user);
             if (choice == null && !user) {
                 choice = first(vanilla().getOrDefault(id, List.of()), true);
-                if (choice != null) substituted.add(
-                    id + " -> "
-                        + (choice.auto() ? choice.name() + ":auto"
-                            : choice.fixedMetadata() == 0 ? choice.name()
-                                : choice.name() + ":" + choice.fixedMetadata()));
+                if (choice != null) fallbacks.add(id);
             }
             if (choice == null) missing.add(
                 id + " -> "
@@ -272,7 +288,7 @@ public final class BlockPalette {
                     + (user ? " (your " + FILE + ")" : ""));
             else result.put(id, choice);
         }
-        return new Selection(Collections.unmodifiableMap(result), missing, substituted);
+        return new Selection(Collections.unmodifiableMap(result), missing, List.copyOf(fallbacks));
     }
 
     /** The first installed candidate's choice, or null. */
@@ -435,10 +451,7 @@ public final class BlockPalette {
             if (base.containsKey(id)) entry.add("default", spelled(base.get(id)));
             if (overrides.containsKey(id)) entry.add("override", spelled(overrides.get(id)));
             Choice choice = result.get(id);
-            if (choice != null) entry.addProperty(
-                "uses",
-                choice.auto() ? choice.name() + ":auto"
-                    : choice.fixedMetadata() == 0 ? choice.name() : choice.name() + ":" + choice.fixedMetadata());
+            if (choice != null) entry.addProperty("uses", choice.spelled());
             blocks.add(id, entry);
         }
         root.add("blocks", blocks);

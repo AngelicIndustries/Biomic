@@ -33,8 +33,10 @@ default id to a 1.7.10 block (`assets/biomic/palette/examples/vanilla-1.7.10.jso
 
 Et Futurum Requiem is optional. A default whose block is not installed, because the mod is missing or has that block
 turned off in its config (`enablePrismarine=false` in `config/etfuturum/blocksitems.cfg`, say), takes its block from
-the vanilla palette, exactly as if `config/biomic-palette.json` mapped it there. Biomic logs those ids at startup.
-Only an id your own file sets, with none of its blocks installed, stops the game at startup, naming it.
+the vanilla palette, exactly as if `config/biomic-palette.json` mapped it there. Biomic logs those ids at startup, and
+the client shows them before its first screen, each with the block it places instead, to Continue or Quit Game; mapping
+them in `config/biomic-palette.json` stops the message. Only an id your own file sets, with none of its blocks
+installed, stops the game at startup, naming it.
 
 Some of Biomic's own blocks are built on Et Futurum Requiem's (clover, icicles, the Skylands' waterlogged glow lichen
 and mangrove roots). They exist only with it installed; their ids (`regions_unexplored:clover`,

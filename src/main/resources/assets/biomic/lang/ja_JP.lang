@@ -529,3 +529,10 @@ tile.biomic.yellow_bioshroom_slab.name=黄色のバイオシュルームのハ�
 tile.biomic.yellow_bioshroom_stairs.name=黄色のバイオシュルームの階段
 tile.biomic.yellow_bioshroom_trapdoor.name=黄色のバイオシュルームのトラップドア
 # END GENERATED RU LOCALIZATIONS
+biomic.palette.fallback.title=Biomic: ブロックが導入されていません
+biomic.palette.fallback.missing=Et Futurum Requiem が導入されていないため、Biomic のブロックが %s 個ありません。
+biomic.palette.fallback.disabled=Et Futurum Requiem の設定で Biomic のブロックが %s 個無効になっています。
+biomic.palette.fallback.instead=新しいチャンクには代わりに次の 1.7.10 のブロックが置かれます:
+biomic.palette.fallback.hint=別のブロックを選ぶか、このメッセージを消すには、config/biomic-palette.json でこれらの ID を指定してください。
+biomic.palette.fallback.nothing=なし
+biomic.palette.fallback.continue=続ける

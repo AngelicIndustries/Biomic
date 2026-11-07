@@ -286,3 +286,10 @@ tile.biomic.willow_slab.name=Ивовая плита
 tile.biomic.willow_stairs.name=Ивовые Ступеньки
 tile.biomic.willow_trapdoor.name=Ивовая люк
 # END GENERATED RU LOCALIZATIONS
+biomic.palette.fallback.title=Biomic: блоки не установлены
+biomic.palette.fallback.missing=Et Futurum Requiem не установлен: не хватает блоков Biomic: %s.
+biomic.palette.fallback.disabled=В конфиге Et Futurum Requiem отключены блоки Biomic: %s.
+biomic.palette.fallback.instead=Новые чанки получат вместо них эти блоки 1.7.10:
+biomic.palette.fallback.hint=Укажите эти id в config/biomic-palette.json, чтобы выбрать другие блоки или убрать это сообщение.
+biomic.palette.fallback.nothing=ничего
+biomic.palette.fallback.continue=Продолжить

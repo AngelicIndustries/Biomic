@@ -527,3 +527,10 @@ tile.biomic.yellow_bioshroom_slab.name=Плита з жовтого біошру
 tile.biomic.yellow_bioshroom_stairs.name=Сходи з жовтого біошрума
 tile.biomic.yellow_bioshroom_trapdoor.name=Люк із жовтого біошрума
 # END GENERATED RU LOCALIZATIONS
+biomic.palette.fallback.title=Biomic: блоки не встановлено
+biomic.palette.fallback.missing=Et Futurum Requiem не встановлено: бракує блоків Biomic: %s.
+biomic.palette.fallback.disabled=У конфігу Et Futurum Requiem вимкнено блоки Biomic: %s.
+biomic.palette.fallback.instead=Нові чанки отримають замість них ці блоки 1.7.10:
+biomic.palette.fallback.hint=Вкажіть ці id у config/biomic-palette.json, щоб вибрати інші блоки або прибрати це повідомлення.
+biomic.palette.fallback.nothing=нічого
+biomic.palette.fallback.continue=Продовжити

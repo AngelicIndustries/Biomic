@@ -300,3 +300,10 @@ tile.biomic.willow_slab.name=柳木台阶
 tile.biomic.willow_stairs.name=柳木楼梯
 tile.biomic.willow_trapdoor.name=柳木活板门
 # END GENERATED RU LOCALIZATIONS
+biomic.palette.fallback.title=Biomic：方块未安装
+biomic.palette.fallback.missing=未安装 Et Futurum Requiem：缺少 %s 个 Biomic 方块。
+biomic.palette.fallback.disabled=Et Futurum Requiem 的配置关闭了 %s 个 Biomic 方块。
+biomic.palette.fallback.instead=新区块将改用以下 1.7.10 方块：
+biomic.palette.fallback.hint=在 config/biomic-palette.json 中映射这些 ID，可选择其他方块或不再显示此消息。
+biomic.palette.fallback.nothing=无
+biomic.palette.fallback.continue=继续

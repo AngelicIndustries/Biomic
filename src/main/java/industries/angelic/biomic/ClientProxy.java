@@ -141,6 +141,7 @@ public class ClientProxy extends CommonProxy {
             .bus()
             .register(industries.angelic.biomic.client.AbyssalVentEffects.INSTANCE);
         MinecraftForge.EVENT_BUS.register(new VerticalBiomeDebugOverlay());
+        MinecraftForge.EVENT_BUS.register(new industries.angelic.biomic.client.GuiPaletteFallbacks.Hook());
         // Sounds and fog on the Forge bus, the loop and particles on FML's.
         MinecraftForge.EVENT_BUS.register(industries.angelic.biomic.client.NetherAmbience.INSTANCE);
         cpw.mods.fml.common.FMLCommonHandler.instance()
