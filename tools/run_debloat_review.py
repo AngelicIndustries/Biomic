@@ -65,11 +65,11 @@ def village_names_jar():
 
 def harvest_jars():
     pam = glob.glob(os.path.expanduser(
-        '~/.gradle/caches/modules-2/files-2.1/com.github.GTNewHorizons/harvestcraft/1.3.13-GTNH/*/harvestcraft-1.3.13-GTNH-dev.jar'))
+        '~/.gradle/caches/modules-2/files-2.1/com.github.GTNewHorizons/harvestcraft/1.4.0-GTNH/*/harvestcraft-1.4.0-GTNH-dev.jar'))
     nether = glob.glob(os.path.expanduser(
         '~/.gradle/caches/*/transforms/*/transformed/pams-harvest-the-nether-231262-2241397-deobf.jar'))
     if not pam or not nether:
-        sys.exit('HarvestCraft 1.3.13-GTNH dev jar or the deobfuscated Harvest the Nether jar is missing; '
+        sys.exit('HarvestCraft 1.4.0-GTNH dev jar or the deobfuscated Harvest the Nether jar is missing; '
                  'run: ./gradlew --offline compileJava')
     return [max(pam, key=os.path.getmtime), max(nether, key=os.path.getmtime)]
 
