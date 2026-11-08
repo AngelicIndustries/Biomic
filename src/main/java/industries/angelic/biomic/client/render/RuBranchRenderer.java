@@ -36,8 +36,10 @@ public final class RuBranchRenderer implements ISimpleBlockRenderingHandler {
     @Override
     public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId,
         RenderBlocks renderer) {
+        // A hidden branch draws nothing, and says so: branches render in the translucent pass, where vanilla's chunk
+        // renderer crashes (Tessellator#getVertexState on no vertices) when a block claims geometry it did not add.
         if (((BlockRuBranch) block).isSilverBirch()
-            && !industries.angelic.biomic.config.VisualConfig.silverBirch3dBranches) return true;
+            && !industries.angelic.biomic.config.VisualConfig.silverBirch3dBranches) return false;
         Tessellator tessellator = Tessellator.instance;
         tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
         tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
