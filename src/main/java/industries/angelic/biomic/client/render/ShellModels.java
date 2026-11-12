@@ -36,11 +36,15 @@ public final class ShellModels {
 
     private static final Map<String, Model> MODELS = new HashMap<>();
     private static final Map<String, IIcon> ICONS = new HashMap<>();
+    /** Each sprite's opaque pixels, [column][row], read from its texture; chunk meshes may be built off-thread. */
+    private static final Map<String, boolean[][]> MASKS = new java.util.concurrent.ConcurrentHashMap<>();
 
     private ShellModels() {}
 
     /** Registers every texture the shell kinds draw with (call from the shell block's icon registration). */
     public static void registerIcons(IIconRegister register, String[] kinds) {
+        // A resource reload may bring other textures: their outlines are read again.
+        MASKS.clear();
         for (String kind : kinds) {
             icon(register, "biomic:ports/" + kind);
             Model model = model(kind);
@@ -164,9 +168,11 @@ public final class ShellModels {
     }
 
     /**
-     * A sprite lying flat as an extruded item, a little smaller than the block. Every face is seen from outside only,
-     * as
-     * vanilla draws an item: two strips share each pixel edge, and seen from both sides they fought for its pixels.
+     * A sprite lying flat as an extruded item, a little smaller than the block: its top and bottom, and a side face
+     * along each edge of its outline. Vanilla extrudes an item with a strip the sprite's length at every pixel row and
+     * column, its transparent texels cut by the alpha test; on the mipmapped block atlas those strips, seen edge-on,
+     * sample blurred levels where the transparent texels are no longer transparent, and drew as long lines across the
+     * block. Here each side face covers one pixel's edge and samples that texel's centre alone, so it is never blurred.
      */
     private static void renderSprite(Tessellator tess, IIcon icon, double x, double y, double z, int turn) {
         float s = 0.75F, o = (1 - s) / 2, bottom = LIFT, top = bottom + 1 / 16F;
@@ -176,53 +182,79 @@ public final class ShellModels {
         float[][] downFace = { { o, bottom, o + s }, { o, bottom, o }, { o + s, bottom, o }, { o + s, bottom, o + s } };
         double[][] flipped = { { 0, 16 }, { 0, 0 }, { 16, 0 }, { 16, 16 } };
         quad(tess, icon, downFace, flipped, x, y, z, turn, DOWN);
-        // Edge strips at every pixel, each with its own pixel column or row, as vanilla extrudes an item.
-        for (int i = 0; i < 16; i++) {
-            float a = o + s * i / 16, b = o + s * (i + 1) / 16;
-            float[][] alongZ = { { a, top, o }, { a, bottom, o }, { a, bottom, o + s }, { a, top, o + s } };
-            quad(
+        boolean[][] mask = MASKS.computeIfAbsent(icon.getIconName(), ShellModels::mask);
+        int n = mask.length;
+        float p = s / n;
+        for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) {
+            if (!mask[i][j]) continue;
+            float x0 = o + p * i, x1 = x0 + p, z0 = o + p * j, z1 = z0 + p;
+            double u = (i + 0.5) * 16 / n, v = (j + 0.5) * 16 / n;
+            double[][] texel = { { u, v }, { u, v }, { u, v }, { u, v } };
+            if (i == 0 || !mask[i - 1][j]) quad(
                 tess,
                 icon,
-                alongZ,
-                new double[][] { { i, 0 }, { i, 16 }, { i + 1, 16 }, { i + 1, 0 } },
+                new float[][] { { x0, top, z0 }, { x0, bottom, z0 }, { x0, bottom, z1 }, { x0, top, z1 } },
+                texel,
                 x,
                 y,
                 z,
                 turn,
                 WEST);
-            float[][] alongX = { { o, top, a }, { o, bottom, a }, { o + s, bottom, a }, { o + s, top, a } };
-            quad(
+            if (i == n - 1 || !mask[i + 1][j]) quad(
                 tess,
                 icon,
-                alongX,
-                new double[][] { { 0, i }, { 0, i + 1 }, { 16, i + 1 }, { 16, i } },
-                x,
-                y,
-                z,
-                turn,
-                NORTH);
-            float[][] alongZ2 = { { b, top, o }, { b, bottom, o }, { b, bottom, o + s }, { b, top, o + s } };
-            quad(
-                tess,
-                icon,
-                alongZ2,
-                new double[][] { { i, 0 }, { i, 16 }, { i + 1, 16 }, { i + 1, 0 } },
+                new float[][] { { x1, top, z0 }, { x1, bottom, z0 }, { x1, bottom, z1 }, { x1, top, z1 } },
+                texel,
                 x,
                 y,
                 z,
                 turn,
                 EAST);
-            float[][] alongX2 = { { o, top, b }, { o, bottom, b }, { o + s, bottom, b }, { o + s, top, b } };
-            quad(
+            if (j == 0 || !mask[i][j - 1]) quad(
                 tess,
                 icon,
-                alongX2,
-                new double[][] { { 0, i }, { 0, i + 1 }, { 16, i + 1 }, { 16, i } },
+                new float[][] { { x0, top, z0 }, { x0, bottom, z0 }, { x1, bottom, z0 }, { x1, top, z0 } },
+                texel,
+                x,
+                y,
+                z,
+                turn,
+                NORTH);
+            if (j == n - 1 || !mask[i][j + 1]) quad(
+                tess,
+                icon,
+                new float[][] { { x0, top, z1 }, { x0, bottom, z1 }, { x1, bottom, z1 }, { x1, top, z1 } },
+                texel,
                 x,
                 y,
                 z,
                 turn,
                 SOUTH);
+        }
+    }
+
+    /**
+     * The opaque pixels of an icon's texture ({@code domain:path} under textures/blocks), as the alpha test keeps them;
+     * the first frame of an animated one. A texture that cannot be read gets no side faces.
+     */
+    private static boolean[][] mask(String iconName) {
+        int colon = iconName.indexOf(':');
+        ResourceLocation location = new ResourceLocation(
+            colon < 0 ? "minecraft" : iconName.substring(0, colon),
+            "textures/blocks/" + iconName.substring(colon + 1) + ".png");
+        try (InputStream in = Minecraft.getMinecraft()
+            .getResourceManager()
+            .getResource(location)
+            .getInputStream()) {
+            java.awt.image.BufferedImage image = javax.imageio.ImageIO.read(in);
+            int n = image.getWidth();
+            boolean[][] mask = new boolean[n][n];
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n && j < image.getHeight(); j++) mask[i][j] = (image.getRGB(i, j) >>> 24) > 25;
+            return mask;
+        } catch (Exception failure) {
+            Biomic.LOG.warn("Shell sprite {} has no readable outline: {}", iconName, failure.toString());
+            return new boolean[0][0];
         }
     }
 
