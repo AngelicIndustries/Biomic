@@ -8,10 +8,11 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
+import ganymedes01.etfuturum.blocks.BlockCaveVines;
 import industries.angelic.biomic.compat.flora.NativeFeatureCapture;
 
 /** EFR's growth method uses World.rand even when its caller supplies a feature Random. */
-@Mixin(targets = "ganymedes01.etfuturum.blocks.BlockCaveVines", remap = false)
+@Mixin(value = BlockCaveVines.class, remap = false)
 public abstract class MixinNativeCaveVineRandom {
 
     @Redirect(

@@ -6,13 +6,14 @@ import net.minecraft.block.material.Material;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
+import com.gtnewhorizons.angelica.rendering.celeritas.AngelicaChunkBuilderMeshingTask;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 
 import industries.angelic.biomic.client.render.AquaticRenderSemantics;
 
 /** Material.water describes the contents, not our pass-zero plant mesh. */
-@Mixin(targets = "com.gtnewhorizons.angelica.rendering.celeritas.AngelicaChunkBuilderMeshingTask", remap = false)
+@Mixin(value = AngelicaChunkBuilderMeshingTask.class, remap = false)
 public abstract class MixinAquaticRenderPass {
 
     @ModifyExpressionValue(
