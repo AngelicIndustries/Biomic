@@ -12,6 +12,7 @@ import java.util.Set;
 
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeDictionary.Type;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -598,14 +599,66 @@ public final class BiomicBiomes {
         };
     }
 
+    /**
+     * An Origen biome's landscape for other mods (Waystones' names, structure and spawn rules; its climate comes from
+     * registerClimateTypes): the vanilla biome Origen's pack gives it (biomes/*.yml {@code vanilla:}, Rearth/Origen
+     * c01cd79, also the latest upstream) in Forge's types, and what it grows where Origen only says plains. Seas are
+     * oceans and river channels rivers, whatever biome they run through; caves get none, as Forge has no cave type and
+     * a cave is never a column's biome. MOUNTAIN is for the biomes that are mountains first; a forest on mountain
+     * terrain (Black Forest) is a forest in hills.
+     */
     private static void registerOrigenDictionaryTypes(OrigenBiomeProfile profile, BiomeGenBase biome) {
-        if (profile.getKind() == OrigenBiomeProfile.Kind.OCEAN) {
-            registerDictionaryTypes(biome, BiomeDictionary.Type.OCEAN);
-        } else if (isMountain(profile.getTerrainFamily())) {
-            registerDictionaryTypes(biome, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.HILLS);
-        } else if (profile.getKind() != OrigenBiomeProfile.Kind.CAVE) {
-            registerDictionaryTypes(biome, BiomeDictionary.Type.PLAINS);
-        }
+        if (profile.getKind() == OrigenBiomeProfile.Kind.CAVE) return;
+        if (profile.getKind() == OrigenBiomeProfile.Kind.OCEAN) registerDictionaryTypes(biome, Type.OCEAN);
+        else if (profile.getTerrainFamily() == OrigenTerrainFamily.RIVER_CHANNEL)
+            registerDictionaryTypes(biome, Type.RIVER);
+        else registerDictionaryTypes(biome, landscape(profile));
+    }
+
+    /** The landscape types of an Origen land, coast or special biome, with Origen's vanilla biome alongside. */
+    static Type[] landscape(OrigenBiomeProfile profile) {
+        return switch (profile) {
+            case ARID_ARBORETUM -> types(Type.SAVANNA, Type.SPARSE, Type.DRY); // plains: dead and subtropical bushes
+            case BADLANDS_BALCONIES -> types(Type.MESA, Type.SANDY, Type.DRY, Type.MOUNTAIN, Type.HILLS); // badlands
+            case BAMBOO_BASIN -> types(Type.JUNGLE, Type.FOREST, Type.DENSE, Type.WET, Type.HILLS); // bamboo_jungle
+            case BARE_BOULDERFIELDS -> types(Type.MOUNTAIN, Type.HILLS, Type.SPARSE); // windswept_hills
+            case BLACK_FOREST -> types(Type.FOREST, Type.DENSE, Type.SPOOKY, Type.HILLS); // dark_forest
+            case SANDY_SPLITS -> types(Type.SANDY, Type.DRY); // a cactus canyon (Origen: lush_caves)
+            case ICY_INCISIONS -> types(Type.CONIFEROUS, Type.SPARSE); // a spruce canyon (Origen: dripstone_caves)
+            case CARVING_CREAKS, MESA_MONUMENTS -> types(Type.MESA, Type.SANDY, Type.DRY); // badlands
+            case FOSSILIZED_FENLANDS -> types(Type.SWAMP, Type.WET); // plains: swamp trees and bamboo
+            case FROSTY_FINGERS -> types(Type.WASTELAND); // ice_spikes
+            case FROZEN_FUNGI -> types(Type.MUSHROOM); // mushroom_fields
+            case MOUNTAIN_MIRRORS, SNOWY_MOUNTAINS, ALPINE_ASCENDANCY -> types(Type.MOUNTAIN, Type.HILLS); // peaks
+            case GLOOMY_GORGE -> types(Type.MOUNTAIN, Type.HILLS, Type.LUSH); // plains: a vine and bamboo gorge
+            case CANOPY_CASCADES, OVERGROWN_CLIFFS -> types(Type.JUNGLE, Type.FOREST, Type.DENSE, Type.WET, Type.HILLS);
+            case LUSH_LOOPS -> types(Type.JUNGLE, Type.FOREST, Type.DENSE, Type.WET, Type.LUSH, Type.HILLS); // jungle
+            case MARINE_MONOLITHS, BEACH, PALM_BEACH, SHALE_BEACH, TEMPERATE_SEA_ARCHES -> types(Type.BEACH); // beach
+            case MURKY_MARSHLANDS, MANGROVE_SWAMP -> types(Type.SWAMP, Type.WET); // swamp, mangrove_swamp
+            case OASIS -> types(Type.SANDY, Type.LUSH, Type.WET); // beach: palms in the desert
+            case PILLOW_PLAINS_INNER, PILLOW_PLAINS_MIDDLE, PILLOW_PLAINS_OUTER, SINKHOLE_OUTER -> types(Type.PLAINS);
+            case FOLIAGE_FORTRESS_INNER -> types(Type.FOREST); // plains: mixed and mesquite trees
+            case FOLIAGE_FORTRESS_MIDDLE, FOLIAGE_FORTRESS_OUTER -> types(Type.SAVANNA, Type.SPARSE, Type.HILLS); // savanna
+            case TALL_TIMBERLAND -> types(Type.CONIFEROUS, Type.FOREST, Type.DENSE, Type.HILLS); // old_growth_pine_taiga
+            case ROCKY_REFUGE, VERTICAL_VISTAS, WHITE_WALLOWS -> types(Type.MOUNTAIN, Type.HILLS, Type.SPARSE);
+            case SAKURA_STREAMS -> types(Type.FOREST, Type.HILLS); // cherry_grove
+            case SCARLET_SANCTUARY, SINKHOLE_FOREST, FLOWERING_FOREST, FERN_FISSURES -> types(Type.FOREST); // forest
+            case SECLUDED_VALLEY -> types(Type.FOREST, Type.LUSH); // plains: sakura trees and glow berries
+            case SECLUDED_VALLEY_OUTER -> types(Type.PLAINS, Type.HILLS); // meadow
+            case SINKHOLE_FROZEN, SNOWY_MEADOW -> types(Type.PLAINS); // snowy_plains
+            case SINKHOLE_JUNGLE -> types(Type.JUNGLE, Type.FOREST, Type.DENSE, Type.WET); // jungle
+            case SNOWY_SPIRES -> types(Type.CONIFEROUS, Type.FOREST); // snowy_taiga
+            case WATERY_WILDS -> types(Type.SAVANNA, Type.SPARSE, Type.WET); // savanna
+            case TUNDRA_TRACKS, COLD_STEPPE -> types(Type.PLAINS, Type.SPARSE); // snowy_plains, taiga without trees
+            case VERDANT_VALLEYS -> types(Type.PLAINS, Type.LUSH); // plains: flowers and melons
+            case DESERT, DESERT_SPIKES_GOLD -> types(Type.SANDY, Type.DRY); // desert
+            case SALT_FLATS -> types(Type.SANDY, Type.WASTELAND, Type.DRY); // desert: bare salt
+            default -> throw new IllegalStateException("No dictionary landscape for Origen biome " + profile);
+        };
+    }
+
+    private static Type[] types(Type... types) {
+        return types;
     }
 
     private static void registerRuDictionaryTypes(RuBiomeDefinition definition, BiomeGenBase biome) {
