@@ -14,7 +14,12 @@ import industries.angelic.biomic.compat.flora.NativeFeatureCapture;
 public final class SaltMarshCompat {
 
     public static final String BIOME = "saltymod:salt_marsh";
-    public static final String VERSION = "2.0.0-master.150+9a0954aa6f";
+    public static final String VERSION = "2.0.0-master.162+2a8955c302-dirty";
+    /**
+     * Earlier builds that give the same marsh: 2.0.8 (2.1.2 changed only the brickmaker camp, which Biomic bounds). A
+     * save made with one carries on with VERSION.
+     */
+    public static final java.util.Set<String> EARLIER_VERSIONS = java.util.Set.of("2.0.0-master.150+9a0954aa6f");
     private static boolean discovered;
     private static Constructor<?> plants;
     private static Constructor<?> deadTree, fallenLog, bigDeadTree;
@@ -102,7 +107,7 @@ public final class SaltMarshCompat {
                 .getInt(null);
             if (campFrequency <= 0)
                 throw new IllegalStateException("Invalid Salty brickmaker camp frequency " + campFrequency);
-            status = "native Salty 2.0.8 artifact / " + VERSION;
+            status = "native Salty 2.1.2 artifact / " + VERSION;
         } catch (ReflectiveOperationException | LinkageError | RuntimeException error) {
             plants = null;
             status = error.toString();

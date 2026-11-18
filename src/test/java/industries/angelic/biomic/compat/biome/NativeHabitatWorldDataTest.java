@@ -24,6 +24,13 @@ public class NativeHabitatWorldDataTest {
     }
 
     @Test
+    public void savesFromAnEarlierSaltyBuildCarryOn() {
+        var saved = new NativeHabitatSettings("2.0.0-master.150+9a0954aa6f", 2);
+        assertEquals(SaltMarshCompat.VERSION, saved.saltMarshVersion());
+        assertTrue(saved.fullMarsh());
+    }
+
+    @Test
     public void absentOptionalProvidersProduceAnExplicitOffManifest() {
         var selected = NativeHabitatWorldData.initialSettings(false, true, false, true, false, List.of());
         assertFalse(selected.shifted512());

@@ -25,6 +25,7 @@ public record NativeHabitatSettings(String saltMarshVersion, int marshRevision, 
     }
 
     public NativeHabitatSettings {
+        if (SaltMarshCompat.EARLIER_VERSIONS.contains(saltMarshVersion)) saltMarshVersion = SaltMarshCompat.VERSION;
         if (!"".equals(saltMarshVersion) && !SaltMarshCompat.VERSION.equals(saltMarshVersion))
             throw new IllegalArgumentException("Unsupported saved Salty habitat version: " + saltMarshVersion);
         if (saltMarshVersion.isEmpty() ? marshRevision != 0 : marshRevision < 1 || marshRevision > 2)
