@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -45,6 +46,12 @@ public final class BlockRuFlatPlant extends Block {
     @Override
     public boolean renderAsNormalBlock() {
         return false;
+    }
+
+    /** Players, mobs and boats pass through the mat, as through grass; it can still be aimed at and broken. */
+    @Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
+        return null;
     }
 
     @Override
