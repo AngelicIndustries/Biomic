@@ -5,8 +5,6 @@
 package industries.angelic.biomic.world.cave;
 
 import java.util.BitSet;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 import industries.angelic.biomic.world.cave.CaveComposition.Material;
@@ -57,7 +55,7 @@ public final class YungCaveLiquidPlan {
         Math.addExact(ox, 16);
         Math.subtractExact(oz, 1);
         Math.addExact(oz, 16);
-        var selections = new HashMap<Long, YungWaterRegionSelector.Selection>();
+        var selections = new it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap<YungWaterRegionSelector.Selection>();
         BitSet retained = new BitSet(65536);
         for (int i = sourceMask.nextSetBit(0); i >= 0; i = sourceMask.nextSetBit(i + 1)) {
             int x = ox + i / 4096, z = oz + (i / 256) % 16, y = i % 256;
@@ -72,7 +70,9 @@ public final class YungCaveLiquidPlan {
     }
 
     private static boolean sealed(int x, int y, int z, Kind kind, CaveComposition.Host host, Excavations excavations,
-        YungWaterRegionSelector selector, Map<Long, YungWaterRegionSelector.Selection> selections, Settings settings) {
+        YungWaterRegionSelector selector,
+        it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap<YungWaterRegionSelector.Selection> selections,
+        Settings settings) {
         return barrier(x, y - 1, z, kind, host, excavations, selector, selections, settings)
             && barrier(x - 1, y, z, kind, host, excavations, selector, selections, settings)
             && barrier(x + 1, y, z, kind, host, excavations, selector, selections, settings)
@@ -81,7 +81,9 @@ public final class YungCaveLiquidPlan {
     }
 
     private static boolean barrier(int x, int y, int z, Kind kind, CaveComposition.Host host, Excavations excavations,
-        YungWaterRegionSelector selector, Map<Long, YungWaterRegionSelector.Selection> selections, Settings settings) {
+        YungWaterRegionSelector selector,
+        it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap<YungWaterRegionSelector.Selection> selections,
+        Settings settings) {
         if (y < 0 || y > 255) return false;
         Material before = host.at(x, y, z);
         if (before != Material.ROCK && before != Material.SOLID) return false;
@@ -94,11 +96,13 @@ public final class YungCaveLiquidPlan {
         return neighbor == Kind.NONE || neighbor == kind;
     }
 
-    private static Kind kind(YungWaterRegionSelector selector, Map<Long, YungWaterRegionSelector.Selection> selections,
-        int x, int z) {
+    private static Kind kind(YungWaterRegionSelector selector,
+        it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap<YungWaterRegionSelector.Selection> selections, int x,
+        int z) {
         int cx = Math.floorDiv(x, 16), cz = Math.floorDiv(z, 16);
         long key = ((long) cx << 32) | (cz & 0xffffffffL);
-        return selections.computeIfAbsent(key, k -> selector.chunk(cx, cz))
-            .at(Math.floorMod(x, 16), Math.floorMod(z, 16));
+        YungWaterRegionSelector.Selection selection = selections.get(key);
+        if (selection == null) selections.put(key, selection = selector.chunk(cx, cz));
+        return selection.at(Math.floorMod(x, 16), Math.floorMod(z, 16));
     }
 }

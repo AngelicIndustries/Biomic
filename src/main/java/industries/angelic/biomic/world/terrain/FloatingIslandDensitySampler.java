@@ -1,7 +1,6 @@
 package industries.angelic.biomic.world.terrain;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -76,16 +75,9 @@ public final class FloatingIslandDensitySampler {
             return new ColumnCache();
         }
     };
-    private final Map<Long, ClusterPlacement> placementCache = new LinkedHashMap<Long, ClusterPlacement>(
-        64,
-        0.75F,
-        true) {
-
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<Long, ClusterPlacement> eldest) {
-            return size() > PLACEMENT_CACHE_SIZE;
-        }
-    };
+    /** Least recently used first, at most PLACEMENT_CACHE_SIZE clusters; unboxed, as every column asks it. */
+    private final it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap<ClusterPlacement> placementCache = new it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap<>(
+        64);
 
     public FloatingIslandDensitySampler(WorldgenContext context) {
         this(
@@ -558,7 +550,7 @@ public final class FloatingIslandDensitySampler {
     private ClusterPlacement resolvePlacement(long clusterHash, FloatingIslandArchetype archetype, double centerX,
         double centerZ, double initialCenterY) {
         synchronized (placementCache) {
-            ClusterPlacement cached = placementCache.get(clusterHash);
+            ClusterPlacement cached = placementCache.getAndMoveToLast(clusterHash);
             if (cached != null) {
                 return cached;
             }
@@ -573,12 +565,13 @@ public final class FloatingIslandDensitySampler {
         try {
             ClusterPlacement placement;
             synchronized (placementCache) {
-                placement = placementCache.get(clusterHash);
+                placement = placementCache.getAndMoveToLast(clusterHash);
             }
             if (placement == null) {
                 placement = calculatePlacement(clusterHash, archetype, centerX, centerZ, initialCenterY);
                 synchronized (placementCache) {
-                    placementCache.put(clusterHash, placement);
+                    placementCache.putAndMoveToLast(clusterHash, placement);
+                    if (placementCache.size() > PLACEMENT_CACHE_SIZE) placementCache.removeFirst();
                 }
             }
             mine.complete(placement);

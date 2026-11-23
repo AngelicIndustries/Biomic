@@ -14,9 +14,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-
 import industries.angelic.biomic.biome.BiomicBiomes;
 
 /** Renders vanilla grass with the pre-colored Alpha artwork inside Alpha Grove without changing saved block IDs. */
@@ -62,11 +59,11 @@ public abstract class MixinBlockGrassAlphaRendering {
         }
     }
 
-    @WrapMethod(method = "colorMultiplier")
-    private int biomic$disableTintForPrecoloredAlphaGrass(IBlockAccess world, int blockX, int blockY, int blockZ,
-        Operation<Integer> original) {
-        if (biomic$isAlphaGrove(world, blockX, blockZ)) return 0xFFFFFF;
-        return original.call(world, blockX, blockY, blockZ);
+    /** A plain cancellable head: chunk meshing asks this for every grass block, and a wrapper allocated per call. */
+    @Inject(method = "colorMultiplier", at = @At("HEAD"), cancellable = true)
+    private void biomic$disableTintForPrecoloredAlphaGrass(IBlockAccess world, int blockX, int blockY, int blockZ,
+        CallbackInfoReturnable<Integer> callbackInfo) {
+        if (biomic$isAlphaGrove(world, blockX, blockZ)) callbackInfo.setReturnValue(0xFFFFFF);
     }
 
     @Unique

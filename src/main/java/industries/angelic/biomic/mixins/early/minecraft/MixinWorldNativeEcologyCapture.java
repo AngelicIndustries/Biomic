@@ -12,9 +12,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-
 import industries.angelic.biomic.compat.flora.NativeFeatureCapture;
 
 /** Tile mutations stay inside a synchronous cave feature transaction until its bounded writes are accepted. */
@@ -51,10 +48,14 @@ public abstract class MixinWorldNativeEcologyCapture {
         }
     }
 
-    @WrapMethod(method = "getSavedLightValue")
-    private int biomic$light(EnumSkyBlock kind, int x, int y, int z, Operation<Integer> original) {
+    /**
+     * A plain cancellable head: vanilla lighting asks this for nearly every cell it touches, and a wrapping handler
+     * allocated an Operation and boxed arguments on every call.
+     */
+    @Inject(method = "getSavedLightValue", at = @At("HEAD"), cancellable = true, require = 1)
+    private void biomic$light(EnumSkyBlock kind, int x, int y, int z, CallbackInfoReturnable<Integer> result) {
         var frame = biomic$ecologyFrame();
-        return frame == null ? original.call(kind, x, y, z) : frame.savedLight(kind, x, y, z);
+        if (frame != null) result.setReturnValue(frame.savedLight(kind, x, y, z));
     }
 
     @Inject(

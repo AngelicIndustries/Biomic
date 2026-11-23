@@ -49,13 +49,9 @@ public final class HostedCaveRuntime {
     private final ModernFeatureEngine features = new ModernFeatureEngine();
     private final ModernDecorationEngine engine;
     private final boolean completeBioshrooms = false;
-    private final Map<Long, CaveChunk> chunks = new LinkedHashMap<Long, CaveChunk>(96, .75f, true) {
-
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<Long, CaveChunk> entry) {
-            return size() > 96;
-        }
-    };
+    /** Least recently used first, at most 96 chunks; unboxed (a packed key's Long hash is x ^ z). */
+    private final it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap<CaveChunk> chunks = new it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap<>(
+        97);
 
     public HostedCaveRuntime(WorldgenContext context, BiomicTerrainSampler terrain) {
         this(
@@ -158,7 +154,8 @@ public final class HostedCaveRuntime {
         BiomeVolume original) {
         CaveChunk chunk = new CaveChunk(cx, cz, materials, original);
         synchronized (chunks) {
-            chunks.put(key(cx, cz), chunk);
+            chunks.putAndMoveToLast(key(cx, cz), chunk);
+            if (chunks.size() > 96) chunks.removeFirst();
         }
         chunk.surfaces.forEach((index, state) -> {
             Resolved resolved = ModernStateCompatibility.resolve(state);
@@ -216,13 +213,14 @@ public final class HostedCaveRuntime {
     private CaveChunk chunk(int cx, int cz) {
         long key = key(cx, cz);
         synchronized (chunks) {
-            CaveChunk found = chunks.get(key);
+            CaveChunk found = chunks.getAndMoveToLast(key);
             if (found != null) return found;
         }
         BiomeVolume volume = source.volume(cx, cz);
         CaveChunk made = new CaveChunk(cx, cz, source.materials(cx, cz, volume), volume);
         synchronized (chunks) {
-            chunks.put(key, made);
+            chunks.putAndMoveToLast(key, made);
+            if (chunks.size() > 96) chunks.removeFirst();
         }
         return made;
     }

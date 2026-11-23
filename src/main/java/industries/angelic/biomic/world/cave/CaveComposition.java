@@ -96,6 +96,37 @@ public final class CaveComposition {
     public static BitSet planWithClearance(int chunkX, int chunkZ, Host host, Density field, Limits limits) {
         if (host == null || field == null || limits == null)
             throw new IllegalArgumentException("Missing cave planner input");
+        Scratch scratch = SCRATCH.get();
+        // A host read that plans a neighbouring chunk on this thread gets arrays of its own.
+        if (scratch.busy) return plan(chunkX, chunkZ, host, field, limits, new Scratch());
+        scratch.busy = true;
+        try {
+            return plan(chunkX, chunkZ, host, field, limits, scratch);
+        } finally {
+            scratch.busy = false;
+        }
+    }
+
+    /**
+     * A plan's work arrays, per thread: they came to about 130 KB a plan and several plans a chunk, most of a cave
+     * pass's garbage. Each is cleared before use, as a new array would be.
+     */
+    private static final class Scratch {
+
+        boolean busy;
+        private final long[][] arrays = new long[7][];
+
+        long[] zeroed(int slot, int length) {
+            long[] array = arrays[slot];
+            if (array == null || array.length < length) return arrays[slot] = new long[length];
+            java.util.Arrays.fill(array, 0, length, 0L);
+            return array;
+        }
+    }
+
+    private static final ThreadLocal<Scratch> SCRATCH = ThreadLocal.withInitial(Scratch::new);
+
+    private static BitSet plan(int chunkX, int chunkZ, Host host, Density field, Limits limits, Scratch scratch) {
         // Bit-parallel over 256-cell Y columns: each host cell is read once, the roof/floor/wall support scans
         // become shifted ANDs, and the 3x3x4 clearance test and write are separable box erosion/dilation.
         // Output is identical to the per-voxel version (verified on randomized hosts and the 256 reference window),
@@ -103,8 +134,8 @@ public final class CaveComposition {
         final int width = 20, pad = limits.wall(), span = width + 2 * pad, y0 = limits.minY() - limits.floor(),
             y1 = limits.maxY() + limits.roof();
         final int ox = chunkX * 16 - 2, oz = chunkZ * 16 - 2;
-        long[] rock = new long[span * span * 4], cavity = new long[span * span * 4],
-            hostRock = new long[span * span * 4];
+        long[] rock = scratch.zeroed(0, span * span * 4), cavity = scratch.zeroed(1, span * span * 4),
+            hostRock = scratch.zeroed(2, span * span * 4);
         for (int i = 0; i < span; i++) for (int k = 0; k < span; k++) {
             int c = (i * span + k) * 4;
             for (int y = y0; y <= y1; y++) {
@@ -118,7 +149,7 @@ public final class CaveComposition {
         }
         long[] band = columnRange(limits.minY(), limits.maxY()),
             seedBand = columnRange(limits.minY() + 1, limits.maxY() - 2);
-        long[] allowed = new long[width * width * 4], t = new long[4], acc = new long[4];
+        long[] allowed = scratch.zeroed(3, width * width * 4), t = new long[4], acc = new long[4];
         for (int x = 0; x < width; x++) for (int z = 0; z < width; z++) {
             int c = ((x + pad) * span + z + pad) * 4, a = (x * width + z) * 4;
             for (int w = 0; w < 4; w++) acc[w] = (rock[c + w] | cavity[c + w]) & band[w];
@@ -139,7 +170,7 @@ public final class CaveComposition {
             System.arraycopy(acc, 0, allowed, a, 4);
         }
         // Vertical erosion: a seed at y needs y-1..y+2 allowed; then the 3x3 horizontal erosion.
-        long[] vertical = new long[width * width * 4];
+        long[] vertical = scratch.zeroed(4, width * width * 4);
         for (int col = 0; col < width * width; col++) {
             int a = col * 4;
             System.arraycopy(allowed, a, acc, 0, 4);
@@ -151,7 +182,7 @@ public final class CaveComposition {
             and(acc, t);
             for (int w = 0; w < 4; w++) vertical[a + w] = acc[w] & seedBand[w];
         }
-        long[] seeds = new long[width * width * 4];
+        long[] seeds = scratch.zeroed(5, width * width * 4);
         for (int x = 1; x < width - 1; x++) for (int z = 1; z < width - 1; z++) {
             int a = (x * width + z) * 4;
             System.arraycopy(vertical, a, acc, 0, 4);
@@ -169,7 +200,7 @@ public final class CaveComposition {
             }
         }
         // Dilation back: a seed at y clears y-1..y+2 over its 3x3, but only host ROCK inside this chunk.
-        long[] cover = new long[width * width * 4];
+        long[] cover = scratch.zeroed(6, width * width * 4);
         for (int col = 0; col < width * width; col++) {
             int a = col * 4;
             System.arraycopy(seeds, a, acc, 0, 4);
