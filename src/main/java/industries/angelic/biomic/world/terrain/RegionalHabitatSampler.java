@@ -2,12 +2,11 @@ package industries.angelic.biomic.world.terrain;
 
 import java.util.ArrayDeque;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Set;
 
 import industries.angelic.biomic.biome.origen.OrigenBiomeProfile;
 import industries.angelic.biomic.world.WorldgenContext;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
 
 /** Assigns whole connected compatible landscape regions, never a second independently clipped biome noise map. */
 public final class RegionalHabitatSampler {
@@ -20,20 +19,10 @@ public final class RegionalHabitatSampler {
     private final long seed;
     private final boolean saltyMarsh;
     private final java.util.List<String> bopHabitats;
-    private final Map<Long, String> regions = new LinkedHashMap<Long, String>(8192, .75f, true) {
-
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<Long, String> entry) {
-            return size() > 65536;
-        }
-    };
-    private final Map<Long, String> narrowRegions = new LinkedHashMap<Long, String>(8192, .75f, true) {
-
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<Long, String> entry) {
-            return size() > 65536;
-        }
-    };
+    /** Least recently used first, at most REGION_CACHE cells; unboxed (a packed key's Long hash is x ^ z). */
+    private final Long2ObjectLinkedOpenHashMap<String> regions = new Long2ObjectLinkedOpenHashMap<>(8192);
+    private final Long2ObjectLinkedOpenHashMap<String> narrowRegions = new Long2ObjectLinkedOpenHashMap<>(8192);
+    private static final int REGION_CACHE = 65536;
 
     public RegionalHabitatSampler(WorldgenContext context) {
         profiles = new OrigenVerticalProfileSampler(context);
@@ -151,9 +140,9 @@ public final class RegionalHabitatSampler {
     }
 
     private String component(int x, int z, int family, int grid) {
-        Map<Long, String> regions = grid == GRID ? this.regions : narrowRegions;
+        Long2ObjectLinkedOpenHashMap<String> regions = grid == GRID ? this.regions : narrowRegions;
         long first = key(x, z);
-        String known = regions.get(first);
+        String known = regions.getAndMoveToLast(first);
         if (known != null) return known;
         ArrayDeque<Long> queue = new ArrayDeque<>();
         Set<Long> seen = new HashSet<>();
@@ -164,7 +153,7 @@ public final class RegionalHabitatSampler {
         while (!queue.isEmpty()) {
             long next = queue.removeFirst();
             if (next < anchor) anchor = next;
-            String cached = regions.get(next);
+            String cached = regions.getAndMoveToLast(next);
             if (cached != null) {
                 selected = cached;
                 break;
@@ -187,7 +176,10 @@ public final class RegionalHabitatSampler {
         // 6,144 square blocks minimum for naturally narrow channels; not little biome patches.
         if (selected == null)
             selected = seen.size() < (grid == GRID ? MIN_CELLS : 96) ? ORIGEN : choose(family, anchor, grid);
-        for (long cell : seen) regions.put(cell, selected);
+        for (long cell : seen) {
+            regions.putAndMoveToLast(cell, selected);
+            if (regions.size() > REGION_CACHE) regions.removeFirst();
+        }
         return selected;
     }
 

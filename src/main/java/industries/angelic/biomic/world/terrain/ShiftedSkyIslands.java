@@ -1,9 +1,7 @@
 package industries.angelic.biomic.world.terrain;
 
 import java.util.BitSet;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import industries.angelic.biomic.api.ChunkVerticalLayout;
 import industries.angelic.biomic.world.WorldgenContext;
@@ -28,13 +26,9 @@ public final class ShiftedSkyIslands implements HostedIslandRuntime.IslandShape 
     private final ShiftedGroundHeights ground;
     private final SkyIslandHabitats habitats;
     private final long seed;
-    private final Map<Long, Chunk> chunks = new LinkedHashMap<Long, Chunk>(256, .75f, true) {
-
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<Long, Chunk> eldest) {
-            return size() > MASK_CACHE;
-        }
-    };
+    /** Least recently used first; unboxed (a packed key's Long hash is x ^ z, one bucket per diagonal). */
+    private final it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap<Chunk> chunks = new it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap<>(
+        MASK_CACHE + 1);
 
     /** One chunk's islands: its cells and each column's span ({@code bottom << 16 | top}, or -1). */
     private record Chunk(BitSet mask, int[] spans) {}
@@ -64,12 +58,13 @@ public final class ShiftedSkyIslands implements HostedIslandRuntime.IslandShape 
     private Chunk chunk(int chunkX, int chunkZ) {
         long key = (long) chunkX << 32 ^ (chunkZ & 0xffffffffL);
         synchronized (chunks) {
-            Chunk known = chunks.get(key);
+            Chunk known = chunks.getAndMoveToLast(key);
             if (known != null) return known;
         }
         Chunk made = rasterize(chunkX, chunkZ);
         synchronized (chunks) {
-            chunks.put(key, made);
+            chunks.putAndMoveToLast(key, made);
+            if (chunks.size() > MASK_CACHE) chunks.removeFirst();
         }
         return made;
     }

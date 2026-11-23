@@ -1,8 +1,8 @@
 package industries.angelic.biomic.world.cave;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
+
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
 /**
  * Biomic smooth regional adaptation: source-faithful kernels, not upstream YUNG region-controller parity.
@@ -105,11 +105,19 @@ public final class RegionalCaveContentDensity {
             legacy.liquidRegions());
     }
 
+    /**
+     * Columns by packed position, in a primitive map: this runs for every cell planned, and a boxed key with a
+     * capturing lambda per call was most of worldgen's garbage. The packed key's Long hash is x ^ z, which piled whole
+     * diagonals into one java.util.HashMap bucket.
+     */
     private CaveComposition.Density createPlanningDensity(CaveComposition.Density planningBase) {
-        Map<Long, Column> columns = new HashMap<>();
-        return (x, y, z) -> columns
-            .computeIfAbsent(((long) x << 32) | (z & 0xffffffffL), ignored -> column(x, z, planningBase))
-            .openDensity(y);
+        Long2ObjectOpenHashMap<Column> columns = new Long2ObjectOpenHashMap<>();
+        return (x, y, z) -> {
+            long key = ((long) x << 32) | (z & 0xffffffffL);
+            Column column = columns.get(key);
+            if (column == null) columns.put(key, column = column(x, z, planningBase));
+            return column.openDensity(y);
+        };
     }
 
     private static double checked(double value) {

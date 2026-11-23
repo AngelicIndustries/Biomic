@@ -65,15 +65,18 @@ public final class CaveThemes {
         return region(rx, ry, rz);
     }
 
-    private final Map<Long, Theme> regions = new java.util.concurrent.ConcurrentHashMap<>();
+    /** Per worker thread, unboxed: a region's theme depends on its position alone (choose). */
+    private final ThreadLocal<it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap<Theme>> regions = ThreadLocal
+        .withInitial(it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap::new);
 
     private Theme region(int rx, int ry, int rz) {
         long key = ((long) rx & 0x1FFFFFL) << 42 | ((long) rz & 0x1FFFFFL) << 21 | (ry & 0x1FFFFFL);
-        Theme cached = regions.get(key);
+        it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap<Theme> known = regions.get();
+        Theme cached = known.get(key);
         if (cached != null) return cached;
-        if (regions.size() > 65536) regions.clear();
+        if (known.size() > 65536) known.clear();
         Theme theme = choose(rx, ry, rz);
-        regions.put(key, theme);
+        known.put(key, theme);
         return theme;
     }
 
