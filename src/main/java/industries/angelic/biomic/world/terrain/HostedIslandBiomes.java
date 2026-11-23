@@ -91,9 +91,22 @@ public final class HostedIslandBiomes {
     public static String modernKey(String stored) {
         String known = MODERN_KEYS.get(stored);
         if (known != null || stored == null || !stored.startsWith(PREFIX)) return known;
+        String derived = DERIVED.get(stored);
+        if (derived == null) DERIVED.put(stored, derived = derive(stored));
+        return derived == NONE ? null : derived;
+    }
+
+    /**
+     * Keys read from a stored hosted key's path, each worked out once: biome lookups ask for every block a chunk mesh
+     * colours, on the meshing threads, and building the string each time was a fifth of their garbage.
+     */
+    private static final Map<String, String> DERIVED = new java.util.concurrent.ConcurrentHashMap<>();
+    private static final String NONE = new String("");
+
+    private static String derive(String stored) {
         String path = stored.substring(PREFIX.length());
         int slash = path.indexOf('/');
-        return slash <= 0 || path.indexOf('/', slash + 1) >= 0 ? null
+        return slash <= 0 || path.indexOf('/', slash + 1) >= 0 ? NONE
             : path.substring(0, slash) + ':' + path.substring(slash + 1);
     }
 
