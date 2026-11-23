@@ -3,42 +3,14 @@ package industries.angelic.biomic.compat.flora;
 import static org.junit.Assert.*;
 
 import net.minecraft.block.Block;
-import net.minecraft.world.World;
 
 import org.junit.Test;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import industries.angelic.biomic.mixins.early.minecraft.MixinWorldNativeFeatureCapture;
-
-/** Exercises the exact handler without claiming a transformed Forge runtime. */
+/** Exercises the exact hook World's setBlockMetadataWithNotify calls, without claiming a transformed Forge runtime. */
 public class WorldMetadataMutationCaptureTest {
-
-    private static void invoke(MixinWorldNativeFeatureCapture fixture, CallbackInfoReturnable<Boolean> result) {
-        try {
-            var method = MixinWorldNativeFeatureCapture.class.getDeclaredMethod(
-                "biomic$capturedMetadataWrite",
-                int.class,
-                int.class,
-                int.class,
-                int.class,
-                int.class,
-                CallbackInfoReturnable.class);
-            method.setAccessible(true);
-            method.invoke(fixture, -17, 120, 31, 7, 2, result);
-        } catch (ReflectiveOperationException failure) {
-            throw new AssertionError(failure);
-        }
-    }
 
     @Test
     public void virtualMetadataUsesCurrentVirtualBlockAndNeverFallsThrough() {
-        var fixture = new MixinWorldNativeFeatureCapture() {
-
-            @Override
-            protected World biomic$metadataMutationWorld() {
-                return null;
-            }
-        };
         int[] calls = { 0 };
         NativeFeatureCapture.scoped(null, new NativeFeatureCapture.Access() {
 
@@ -63,10 +35,8 @@ public class WorldMetadataMutationCaptureTest {
                 return true;
             }
         }, () -> {
-            var result = new CallbackInfoReturnable<Boolean>("metadata", true, false);
-            invoke(fixture, result);
-            assertTrue(result.isCancelled());
-            assertTrue(result.getReturnValue());
+            assertTrue(WorldCaptureHooks.setMetadataApplies(null, -17, 120, 31, 7, 2));
+            assertTrue(WorldCaptureHooks.setMetadata(null, -17, 120, 31, 7, 2));
             return null;
         });
         assertEquals(2, calls[0]);
@@ -75,15 +45,6 @@ public class WorldMetadataMutationCaptureTest {
 
     @Test
     public void noCapturePreservesOrdinaryMetadataExecution() {
-        var fixture = new MixinWorldNativeFeatureCapture() {
-
-            @Override
-            protected World biomic$metadataMutationWorld() {
-                return null;
-            }
-        };
-        var result = new CallbackInfoReturnable<Boolean>("metadata", true, false);
-        invoke(fixture, result);
-        assertFalse(result.isCancelled());
+        assertFalse(WorldCaptureHooks.setMetadataApplies(null, -17, 120, 31, 7, 2));
     }
 }

@@ -4,5 +4,6 @@
   "package": "industries.angelic.biomic.mixins.early",
   "refmap": "mixins.biomic.refmap.json",
   "target": "@env(DEFAULT)",
-  "compatibilityLevel": "JAVA_8"
+  "compatibilityLevel": "JAVA_8",
+  "plugin": "industries.angelic.biomic.core.EarlyMixinPlugin"
 }

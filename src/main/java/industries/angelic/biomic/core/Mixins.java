@@ -55,9 +55,6 @@ public final class Mixins extends AngelMixins {
         registry.mixin("MixinRetainedPlantWaterDecay")
             .phase(MixinUtil.Phase.EARLY)
             .build();
-        registry.mixin("MixinWorldNativeEcologyCapture")
-            .phase(MixinUtil.Phase.EARLY)
-            .build();
         registry.mixin("MixinNativeCaveVineRandom")
             .modid("etfuturum")
             .phase(MixinUtil.Phase.LATE)
