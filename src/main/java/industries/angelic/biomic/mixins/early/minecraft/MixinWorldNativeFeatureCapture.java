@@ -13,8 +13,17 @@ import industries.angelic.biomic.compat.flora.NativeFeatureCapture;
  * nothing while no capture runs.
  */
 @Mixin(World.class)
-public abstract class MixinWorldNativeFeatureCapture {
+public abstract class MixinWorldNativeFeatureCapture implements NativeFeatureCapture.CountedWorld {
 
     @Unique
     private static final boolean biomic$nativeCaptureInstalled = NativeFeatureCapture.install();
+
+    /** The captures running on this world: a world none runs on (the client's, always) answers its hooks at once. */
+    @Unique
+    private final java.util.concurrent.atomic.AtomicInteger biomic$captures = new java.util.concurrent.atomic.AtomicInteger();
+
+    @Override
+    public java.util.concurrent.atomic.AtomicInteger biomic$captures() {
+        return biomic$captures;
+    }
 }

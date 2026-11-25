@@ -104,6 +104,17 @@ public final class NativeFeatureCapture {
 
     private static final ThreadLocal<Frame> ACTIVE = new ThreadLocal<>();
     private static final java.util.concurrent.atomic.AtomicInteger CAPTURES = new java.util.concurrent.atomic.AtomicInteger();
+
+    /**
+     * A World's own count of the captures running on it (MixinWorldNativeFeatureCapture). World's hooks ask on every
+     * block, light and tile lookup; with only the global count, a capture on the server's world sent every lookup the
+     * client made into a thread-local search while it lasted, which during generation was most of the time.
+     */
+    public interface CountedWorld {
+
+        java.util.concurrent.atomic.AtomicInteger biomic$captures();
+    }
+
     private static boolean installed;
 
     private NativeFeatureCapture() {}
@@ -140,10 +151,15 @@ public final class NativeFeatureCapture {
         Frame frame = new Frame(world, access);
         ACTIVE.set(frame);
         CAPTURES.incrementAndGet();
+        java.util.concurrent.atomic.AtomicInteger own = world instanceof CountedWorld counted
+            ? counted.biomic$captures()
+            : null;
+        if (own != null) own.incrementAndGet();
         try {
             return operation.get();
         } finally {
             ACTIVE.remove();
+            if (own != null) own.decrementAndGet();
             CAPTURES.decrementAndGet();
         }
     }
@@ -164,7 +180,8 @@ public final class NativeFeatureCapture {
     }
 
     public static Frame current(World world) {
-        if (CAPTURES.get() == 0) return null; // No thread-local lookup in ordinary block reads/writes.
+        // No thread-local lookup in ordinary block reads and writes: a world no capture runs on answers at once.
+        if ((world instanceof CountedWorld counted ? counted.biomic$captures() : CAPTURES).get() == 0) return null;
         Frame frame = ACTIVE.get();
         return frame != null && !frame.delegating && frame.world == world ? frame : null;
     }
