@@ -68,7 +68,7 @@ public final class ExpansionConfig {
     @Config.RequiresWorldRestart
     public static boolean modernNetherMobs = false;
 
-    @Config.Comment("NEW Biomic saves only: use installed SaltyMod Expanded 2.1.2 native marsh soil/plants "
+    @Config.Comment("NEW Biomic saves only: use installed SaltyMod Expanded 2.1.2 or 2.1.3 native marsh soil/plants "
         + "in a share of Origen wetland provinces. Existing saves keep their pinned providers. Soft dependency.")
     @Config.DefaultBoolean(true)
     @Config.RequiresMcRestart

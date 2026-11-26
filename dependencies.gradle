@@ -127,7 +127,7 @@ dependencies {
         }
     }
     if (providers.gradleProperty("biomicSaltyAudit").isPresent() || providers.gradleProperty("biomicExpansionPreview").isPresent()) {
-        runtimeOnlyNonPublishable(rfg.deobf("maven.modrinth:saltymod-expanded:pz3E7wWr"))
+        runtimeOnlyNonPublishable(rfg.deobf("maven.modrinth:saltymod-expanded:m4irgcn9"))
     }
     // Shared, opt-in CLIENT/SERVER review profile. No optional jars are published or
     // silently installed in the ordinary client. Growthcraft uses the pinned local audit artifact.

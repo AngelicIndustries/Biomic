@@ -25,9 +25,11 @@ public class NativeHabitatWorldDataTest {
 
     @Test
     public void savesFromAnEarlierSaltyBuildCarryOn() {
-        var saved = new NativeHabitatSettings("2.0.0-master.150+9a0954aa6f", 2);
-        assertEquals(SaltMarshCompat.VERSION, saved.saltMarshVersion());
-        assertTrue(saved.fullMarsh());
+        for (String earlier : List.of("2.0.0-master.150+9a0954aa6f", "2.0.0-master.162+2a8955c302-dirty")) {
+            var saved = new NativeHabitatSettings(earlier, 2);
+            assertEquals(SaltMarshCompat.VERSION, saved.saltMarshVersion());
+            assertTrue(saved.fullMarsh());
+        }
     }
 
     @Test

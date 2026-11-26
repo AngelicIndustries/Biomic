@@ -14,12 +14,19 @@ import industries.angelic.biomic.compat.flora.NativeFeatureCapture;
 public final class SaltMarshCompat {
 
     public static final String BIOME = "saltymod:salt_marsh";
-    public static final String VERSION = "2.0.0-master.162+2a8955c302-dirty";
+    /** 2.1.3. */
+    public static final String VERSION = "2.0.0-master.164+575583cf7f";
     /**
-     * Earlier builds that give the same marsh: 2.0.8 (2.1.2 changed only the brickmaker camp, which Biomic bounds). A
-     * save made with one carries on with VERSION.
+     * Builds that generate the same marsh and camp, which Biomic runs with too: 2.1.2 (2.1.3 changed only how blocks
+     * behave, bonemeal, hoes and dispensers; its world generation classes are the same).
      */
-    public static final java.util.Set<String> EARLIER_VERSIONS = java.util.Set.of("2.0.0-master.150+9a0954aa6f");
+    public static final java.util.Set<String> SAME_VERSIONS = java.util.Set.of("2.0.0-master.162+2a8955c302-dirty");
+    /**
+     * Earlier builds that give the same marsh: 2.0.8 (2.1.2 changed only the brickmaker camp, which Biomic bounds) and
+     * SAME_VERSIONS. A save made with one carries on with VERSION.
+     */
+    public static final java.util.Set<String> EARLIER_VERSIONS = java.util.Set
+        .of("2.0.0-master.150+9a0954aa6f", "2.0.0-master.162+2a8955c302-dirty");
     private static boolean discovered;
     private static Constructor<?> plants;
     private static Constructor<?> deadTree, fallenLog, bigDeadTree;
@@ -50,7 +57,7 @@ public final class SaltMarshCompat {
         if (discovered) return;
         discovered = true;
         var biome = NativeBiomeCatalogue.get(BIOME);
-        if (biome == null || !VERSION.equals(biome.version)) {
+        if (biome == null || !VERSION.equals(biome.version) && !SAME_VERSIONS.contains(biome.version)) {
             status = "Pinned Salty marsh absent or disabled";
             return;
         }
@@ -107,7 +114,7 @@ public final class SaltMarshCompat {
                 .getInt(null);
             if (campFrequency <= 0)
                 throw new IllegalStateException("Invalid Salty brickmaker camp frequency " + campFrequency);
-            status = "native Salty 2.1.2 artifact / " + VERSION;
+            status = "native Salty artifact " + biome.version;
         } catch (ReflectiveOperationException | LinkageError | RuntimeException error) {
             plants = null;
             status = error.toString();
