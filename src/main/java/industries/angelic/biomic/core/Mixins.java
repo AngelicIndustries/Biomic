@@ -237,6 +237,10 @@ public final class Mixins extends AngelMixins {
             .phase(MixinUtil.Phase.EARLY)
             .side(Side.CLIENT)
             .build();
+        registry.mixin("MixinBiomeTallColors")
+            .phase(MixinUtil.Phase.EARLY)
+            .side(Side.CLIENT)
+            .build();
         registry.mixin("MixinClonedSectionBiomes")
             .modid("angelica")
             .phase(MixinUtil.Phase.LATE)
