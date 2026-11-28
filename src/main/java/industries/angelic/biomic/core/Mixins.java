@@ -88,6 +88,9 @@ public final class Mixins extends AngelMixins {
         registry.mixin("MixinWorldVillageGround")
             .phase(MixinUtil.Phase.EARLY)
             .build();
+        registry.mixin("MixinWorldTallClimate")
+            .phase(MixinUtil.Phase.EARLY)
+            .build();
         registry.mixin("MixinStructureStartVillage")
             .phase(MixinUtil.Phase.EARLY)
             .build();
@@ -220,8 +223,17 @@ public final class Mixins extends AngelMixins {
             .phase(MixinUtil.Phase.EARLY)
             .side(Side.CLIENT)
             .build();
+        registry.mixin("MixinEntityRendererTallClimate")
+            .phase(MixinUtil.Phase.EARLY)
+            .side(Side.CLIENT)
+            .build();
         registry.mixin("MixinClonedSectionBiomes")
             .modid("angelica")
+            .phase(MixinUtil.Phase.LATE)
+            .side(Side.CLIENT)
+            .build();
+        registry.mixin("MixinWeatherUtilsTallClimate")
+            .modid("dsurround")
             .phase(MixinUtil.Phase.LATE)
             .side(Side.CLIENT)
             .build();
