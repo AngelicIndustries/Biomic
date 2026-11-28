@@ -3,6 +3,7 @@ package industries.angelic.biomic.client.render;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.ForgeHooksClient;
 
@@ -14,6 +15,12 @@ public final class NativeMarshReedsRendering {
     private NativeMarshReedsRendering() {}
 
     public static boolean render(IBlockAccess world, int x, int y, int z, Block block, RenderBlocks renderer) {
+        return render(world, x, y, z, block, renderer, block.getIcon(0, world.getBlockMetadata(x, y, z)));
+    }
+
+    /** ICON: the reed texture for this column (Salty picks one of four when its diverseMarshReeds option is on). */
+    public static boolean render(IBlockAccess world, int x, int y, int z, Block block, RenderBlocks renderer,
+        IIcon icon) {
         int pass = ForgeHooksClient.getWorldRenderPass();
         if (pass == 1) return block instanceof WaterloggedRenderPlant
             && AquaticPlantRenderer.renderWater(world, x, y, z, renderer);
@@ -21,7 +28,7 @@ public final class NativeMarshReedsRendering {
         Tessellator tessellator = Tessellator.instance;
         tessellator.setBrightness(block.getMixedBrightnessForBlock(world, x, y, z));
         tessellator.setColorOpaque_F(1, 1, 1);
-        renderer.drawCrossedSquares(block.getIcon(0, world.getBlockMetadata(x, y, z)), x, y, z, 1);
+        renderer.drawCrossedSquares(icon, x, y, z, 1);
         return true;
     }
 }

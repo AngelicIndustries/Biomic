@@ -179,6 +179,16 @@ public final class Mixins extends AngelMixins {
             .phase(MixinUtil.Phase.LATE)
             .side(Side.CLIENT)
             .build();
+        registry.mixin("AccessorMarshReedsBottom")
+            .modid("saltymod")
+            .phase(MixinUtil.Phase.LATE)
+            .side(Side.CLIENT)
+            .build();
+        registry.mixin("AccessorMarshReedsTop")
+            .modid("saltymod")
+            .phase(MixinUtil.Phase.LATE)
+            .side(Side.CLIENT)
+            .build();
         registry.mixin("MixinNativeCoralPass")
             .modid("biomesoplenty")
             .extraModid("BiomesOPlenty")
@@ -314,9 +324,10 @@ public final class Mixins extends AngelMixins {
             cpw.mods.fml.common.ModContainer mod = cpw.mods.fml.common.Loader.instance()
                 .getIndexedModList()
                 .get("saltymod");
-            // Modrinth release 2.0.8 reports this build version internally. Other builds
-            // may have fixed the SideOnly initializers and must not receive this patch.
-            if (mod == null || !"2.0.0-master.150+9a0954aa6f".equals(mod.getVersion()))
+            // The reed renderer and render passes as of 2.1.2 and 2.1.3 (2.1.2 added the reed variants).
+            String version = mod == null ? null : mod.getVersion();
+            if (!industries.angelic.biomic.compat.biome.SaltyBuilds.V2_1_2.equals(version)
+                && !industries.angelic.biomic.compat.biome.SaltyBuilds.V2_1_3.equals(version))
                 selected.removeIf(name -> name.startsWith("saltymod."));
         }
         String naturaVersion = null;
